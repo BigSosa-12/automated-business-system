@@ -10,6 +10,7 @@ import { Replies } from './pages/Replies';
 import { Operations } from './pages/Operations';
 import { Analytics } from './pages/Analytics';
 import { Engine } from './pages/Engine';
+import { Atmos } from './components/Atmos';
 import { Templates } from './pages/Templates';
 import { ago, fmtTime } from './format';
 
@@ -55,7 +56,7 @@ export default function App() {
 
   return (
     <>
-      <div className="atmos" aria-hidden />
+      <Atmos />
       <nav className="nav" aria-label="Primary">
         <div className="logo" aria-hidden><LayoutDashboard size={20} /></div>
         {TABS.map(({ id, label, Icon }) => (

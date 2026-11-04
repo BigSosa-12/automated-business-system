@@ -2,6 +2,7 @@ import { Activity, Gauge, Inbox, Layers, MailCheck, MessageSquareReply, ShieldCh
 import type { Snapshot } from '../types';
 import { Kpi, Panel, Pill, healthTone, invTone } from '../components/ui';
 import { AlertList, PipelinePulse } from '../components/shared';
+import { Deck } from '../components/Deck';
 import { ago, fmtTime, num, until } from '../format';
 
 export function Overview({ s, now, effective }: { s: Snapshot; now: number; effective: Snapshot['health']['status'] }) {
@@ -12,6 +13,7 @@ export function Overview({ s, now, effective }: { s: Snapshot; now: number; effe
   const verified = s.leads.funnel.find((f) => f.id === 'VERIFIED_READY')?.count ?? null;
   return (
     <>
+      <Deck s={s} now={now} effective={effective} />
       <div className="grid kpis">
         <Kpi accent label="Emails sent today" icon={<MailCheck size={14} />} value={num(outreach.sentToday)} unit={`/ ${outreach.dailyCap}`}
           progress={(outreach.sentToday ?? 0) / outreach.dailyCap} foot={outreach.coverage.status === 'PARTIAL' ? 'Gmail confirmation partial' : 'Gmail-confirmed'} />

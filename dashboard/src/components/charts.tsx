@@ -3,7 +3,7 @@ import { Tip } from './ui';
 import { shortDay } from '../format';
 
 // Lavender / purple gradients, quiet gridlines, transparent plot area. Status hues are used only where the series IS a status.
-export const C = { lav: '#A78BFA', purple: '#8B5CF6', lilac: '#E9D5FF', good: '#6EE7B7', warn: '#FCD34D', bad: '#FCA5A5', mute: '#A7A1B5' };
+export const C = { cyan: '#22D3EE', lav: '#A78BFA', purple: '#8B5CF6', lilac: '#E9D5FF', good: '#6EE7B7', warn: '#FCD34D', bad: '#FCA5A5', mute: '#A7A1B5' };
 const axis = { stroke: 'transparent', tick: { fill: '#A7A1B5', fontSize: 11 } } as const;
 const GRID = <CartesianGrid vertical={false} stroke="rgba(233,213,255,0.08)" />;
 
@@ -11,7 +11,7 @@ export function GradDefs({ id, color }: { id: string; color: string }) {
   return <defs><linearGradient id={id} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={color} stopOpacity={0.55} /><stop offset="100%" stopColor={color} stopOpacity={0.02} /></linearGradient></defs>;
 }
 
-export function AreaTrend({ data, x, y, name, color = C.lav, tall }: { data: Record<string, unknown>[]; x: string; y: string; name: string; color?: string; tall?: boolean }) {
+export function AreaTrend({ data, x, y, name, color = C.cyan, tall }: { data: Record<string, unknown>[]; x: string; y: string; name: string; color?: string; tall?: boolean }) {
   const id = `g-${y}-${name.length}`;
   return (
     <div className={`chart ${tall ? 'tall' : ''}`} role="img" aria-label={`${name} over time`}>

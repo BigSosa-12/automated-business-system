@@ -1,0 +1,1173 @@
+{
+ "schemaVersion": 1,
+ "generatedAt": "2026-11-04T18:03:41.917Z",
+ "sourceAsOf": "2026-11-04T17:53:09.517Z",
+ "timezone": "America/New_York",
+ "exporter": {
+  "version": "1.0.0",
+  "mode": "read-only",
+  "refreshMinutes": 5,
+  "staleAfterMinutes": 75
+ },
+ "health": {
+  "status": "BLOCKED",
+  "reasons": [
+   "Gmail authorization: Configuration / authorization incomplete; sender is gated",
+   "Send-safety audit: Status BLOCKED",
+   "Daily quality audit: SENT_HISTORY_NOT_RECONCILED_WITH_GMAIL",
+   "Gmail ↔ CRM ledger reconciliation: Historical Gmail sends not reconciled; zero local sends is not proof of zero sent"
+  ],
+  "checks": [
+   {
+    "id": "sqlite_read",
+    "label": "CRM database readable",
+    "state": "OK",
+    "detail": "Read-only snapshot taken",
+    "blocking": true
+   },
+   {
+    "id": "gmail_authorization",
+    "label": "Gmail authorization",
+    "state": "FAIL",
+    "detail": "Configuration / authorization incomplete; sender is gated",
+    "blocking": true
+   },
+   {
+    "id": "safety_audit",
+    "label": "Send-safety audit",
+    "state": "FAIL",
+    "detail": "Status BLOCKED",
+    "blocking": true
+   },
+   {
+    "id": "quality_audit",
+    "label": "Daily quality audit",
+    "state": "WARN",
+    "detail": "SENT_HISTORY_NOT_RECONCILED_WITH_GMAIL",
+    "blocking": false
+   },
+   {
+    "id": "ledger_reconciliation",
+    "label": "Gmail ↔ CRM ledger reconciliation",
+    "state": "WARN",
+    "detail": "Historical Gmail sends not reconciled; zero local sends is not proof of zero sent",
+    "blocking": false
+   },
+   {
+    "id": "preparation_fresh",
+    "label": "Preparation freshness",
+    "state": "OK",
+    "detail": "Last prepared 1.3h ago",
+    "blocking": false
+   },
+   {
+    "id": "dispatch_controls",
+    "label": "Dispatch schedule (3 windows)",
+    "state": "OK",
+    "detail": "Windows 9:30 AM ET · 1:00 PM ET · 4:00 PM ET",
+    "blocking": false
+   },
+   {
+    "id": "production_lock",
+    "label": "Execution lock",
+    "state": "OK",
+    "detail": "Lock absent",
+    "blocking": false
+   },
+   {
+    "id": "duplicate_risk",
+    "label": "One READY campaign per business",
+    "state": "OK",
+    "detail": "0 business(es) READY in more than one campaign",
+    "blocking": false
+   },
+   {
+    "id": "suppression_integrity",
+    "label": "Suppression integrity",
+    "state": "OK",
+    "detail": "0 suppressed contact(s) in READY routes",
+    "blocking": true
+   },
+   {
+    "id": "handoff_consistency",
+    "label": "READY vs handoff export",
+    "state": "OK",
+    "detail": "CRM 1077 · export 1077",
+    "blocking": false
+   },
+   {
+    "id": "exporter_last_run",
+    "label": "Dashboard exporter",
+    "state": "OK",
+    "detail": "Last export succeeded",
+    "blocking": false
+   }
+  ],
+  "rule": "BLOCKED: a blocking check fails. UNKNOWN: critical evidence missing. DEGRADED: any warning. HEALTHY: all checks pass."
+ },
+ "leads": {
+  "total": 5704,
+  "classified": 5704,
+  "byQualification": {
+   "QUALIFIED": 3094,
+   "READY": 1077,
+   "UNRESOLVED": 1530,
+   "SUPPRESSED": 3
+  },
+  "readyByRoute": {
+   "EMAIL": 298,
+   "FORM": 779
+  },
+  "contactChannels": [
+   {
+    "channel": "EMAIL",
+    "verification": "PUBLIC_OFFICIAL_SITE",
+    "n": 785
+   },
+   {
+    "channel": "EMAIL",
+    "verification": "UNVERIFIED",
+    "n": 2730
+   },
+   {
+    "channel": "FORM",
+    "verification": "PUBLIC_OFFICIAL_SITE",
+    "n": 2381
+   },
+   {
+    "channel": "PHONE",
+    "verification": "PUBLIC_OFFICIAL_SITE",
+    "n": 436
+   },
+   {
+    "channel": "PHONE",
+    "verification": "UNVERIFIED",
+    "n": 78
+   }
+  ],
+  "potentialDuplicates": 26,
+  "unassigned": 1490,
+  "routeQueue": {
+   "ready": 1077,
+   "blocked": 1963
+  },
+  "blockedReasons": [
+   {
+    "reason": "Qualified; EMAIL or FORM route still needed. Phone-only is retained as metadata but excluded from READY outreach.",
+    "n": 1345
+   },
+   {
+    "reason": "No material automated website opportunity detected",
+    "n": 384
+   },
+   {
+    "reason": "Superseded campaign assignment",
+    "n": 213
+   },
+   {
+    "reason": "Identity quarantine: directory/article/nonlocal result requires human verification",
+    "n": 18
+   },
+   {
+    "reason": "Matched local suppression index",
+    "n": 3
+   }
+  ],
+  "quarantined": 14,
+  "byCampaign": [
+   {
+    "id": "LOCAL_DETAILING",
+    "label": "B's Supa Clean Cars",
+    "short": "Interior detailing",
+    "territory": "BATTLE_CREEK_30MI",
+    "target": 300,
+    "total": 402,
+    "qualified": 389,
+    "ready": 253,
+    "readyEmail": 106,
+    "readyForm": 147,
+    "unresolved": 13,
+    "suppressed": 0,
+    "inventoryState": "CRITICAL"
+   },
+   {
+    "id": "LOCAL_PROPERTY",
+    "label": "Battle Creek Property Services",
+    "short": "Property services",
+    "territory": "LOCAL_APPROVED",
+    "target": 300,
+    "total": 252,
+    "qualified": 241,
+    "ready": 172,
+    "readyEmail": 65,
+    "readyForm": 107,
+    "unresolved": 11,
+    "suppressed": 0,
+    "inventoryState": "CRITICAL"
+   },
+   {
+    "id": "WEBSITE_WORLD",
+    "label": "Website Design",
+    "short": "Website design",
+    "territory": "WORLDWIDE",
+    "target": 300,
+    "total": 1296,
+    "qualified": 1281,
+    "ready": 156,
+    "readyEmail": 27,
+    "readyForm": 129,
+    "unresolved": 12,
+    "suppressed": 3,
+    "inventoryState": "CRITICAL"
+   },
+   {
+    "id": "DIGITAL_INQUIRY",
+    "label": "Digital Inquiry Follow-Up",
+    "short": "Inquiry follow-up",
+    "territory": "APPROVED_REMOTE",
+    "target": 300,
+    "total": 1269,
+    "qualified": 1268,
+    "ready": 189,
+    "readyEmail": 32,
+    "readyForm": 157,
+    "unresolved": 1,
+    "suppressed": 0,
+    "inventoryState": "CRITICAL"
+   },
+   {
+    "id": "DIGITAL_ESTIMATES",
+    "label": "Outstanding Estimate Follow-Up",
+    "short": "Estimate follow-up",
+    "territory": "APPROVED_REMOTE",
+    "target": 300,
+    "total": 781,
+    "qualified": 780,
+    "ready": 187,
+    "readyEmail": 49,
+    "readyForm": 138,
+    "unresolved": 1,
+    "suppressed": 0,
+    "inventoryState": "CRITICAL"
+   },
+   {
+    "id": "OTHER_APPROVED",
+    "label": "Other Approved Campaigns",
+    "short": "Other approved",
+    "territory": "APPROVED_REMOTE",
+    "target": 300,
+    "total": 214,
+    "qualified": 212,
+    "ready": 120,
+    "readyEmail": 19,
+    "readyForm": 101,
+    "unresolved": 2,
+    "suppressed": 0,
+    "inventoryState": "CRITICAL"
+   },
+   {
+    "id": "UNASSIGNED",
+    "label": "Unassigned",
+    "short": "Needs evidence",
+    "territory": null,
+    "target": null,
+    "total": 1490,
+    "qualified": 0,
+    "ready": 0,
+    "readyEmail": 0,
+    "readyForm": 0,
+    "unresolved": 1490,
+    "suppressed": 0,
+    "inventoryState": null
+   }
+  ],
+  "funnel": [
+   {
+    "id": "DISCOVERED",
+    "label": "Discovered",
+    "count": 5704,
+    "note": "Business identities in the CRM"
+   },
+   {
+    "id": "QUALIFIED",
+    "label": "Qualified",
+    "count": 4171,
+    "note": "QUALIFIED + READY classification"
+   },
+   {
+    "id": "ROUTE_READY",
+    "label": "Route-ready",
+    "count": 1077,
+    "note": "READY = handoff eligible, not safe to email yet"
+   },
+   {
+    "id": "VERIFIED_READY",
+    "label": "Verified send-ready",
+    "count": 0,
+    "note": "Mailbox + identity verified for send"
+   },
+   {
+    "id": "CONTACTED",
+    "label": "Confirmed sends",
+    "count": 4,
+    "note": "Gmail API accepted (ledger); coverage partial"
+   },
+   {
+    "id": "REPLIED",
+    "label": "Replied",
+    "count": null,
+    "note": "Not tracked until reply coverage is complete"
+   },
+   {
+    "id": "CONVERTED",
+    "label": "Converted",
+    "count": null,
+    "note": "Not tracked: no confirmed conversion events"
+   }
+  ]
+ },
+ "outreach": {
+  "dailyCap": 50,
+  "sentToday": 0,
+  "remainingToday": 50,
+  "sentThisWeek": 0,
+  "sentThisMonth": 0,
+  "sent7d": 0,
+  "sent30d": 4,
+  "capacityNote": "Nominal capacity. Sending is blocked until Gmail authorization is complete.",
+  "coverage": {
+   "status": "PARTIAL",
+   "note": "Counts come from send ledgers and CRM events. Gmail history is not fully reconciled, so zero here is not proof of zero sent."
+  },
+  "evidence": "GMAIL_API_ACCEPTED",
+  "inboxDeliveryConfirmed": false,
+  "daily": [
+   {
+    "day": "2026-10-06",
+    "count": 0
+   },
+   {
+    "day": "2026-10-07",
+    "count": 0
+   },
+   {
+    "day": "2026-10-08",
+    "count": 0
+   },
+   {
+    "day": "2026-10-09",
+    "count": 0
+   },
+   {
+    "day": "2026-10-10",
+    "count": 0
+   },
+   {
+    "day": "2026-10-11",
+    "count": 0
+   },
+   {
+    "day": "2026-10-12",
+    "count": 0
+   },
+   {
+    "day": "2026-10-13",
+    "count": 0
+   },
+   {
+    "day": "2026-10-14",
+    "count": 0
+   },
+   {
+    "day": "2026-10-15",
+    "count": 0
+   },
+   {
+    "day": "2026-10-16",
+    "count": 4
+   },
+   {
+    "day": "2026-10-17",
+    "count": 0
+   },
+   {
+    "day": "2026-10-18",
+    "count": 0
+   },
+   {
+    "day": "2026-10-19",
+    "count": 0
+   },
+   {
+    "day": "2026-10-20",
+    "count": 0
+   },
+   {
+    "day": "2026-10-21",
+    "count": 0
+   },
+   {
+    "day": "2026-10-22",
+    "count": 0
+   },
+   {
+    "day": "2026-10-23",
+    "count": 0
+   },
+   {
+    "day": "2026-10-24",
+    "count": 0
+   },
+   {
+    "day": "2026-10-25",
+    "count": 0
+   },
+   {
+    "day": "2026-10-26",
+    "count": 0
+   },
+   {
+    "day": "2026-10-27",
+    "count": 0
+   },
+   {
+    "day": "2026-10-28",
+    "count": 0
+   },
+   {
+    "day": "2026-10-29",
+    "count": 0
+   },
+   {
+    "day": "2026-10-30",
+    "count": 0
+   },
+   {
+    "day": "2026-10-31",
+    "count": 0
+   },
+   {
+    "day": "2026-11-01",
+    "count": 0
+   },
+   {
+    "day": "2026-11-02",
+    "count": 0
+   },
+   {
+    "day": "2026-11-03",
+    "count": 0
+   },
+   {
+    "day": "2026-11-04",
+    "count": 0
+   }
+  ],
+  "byCampaign": [
+   {
+    "campaign": "BattleCreekServices",
+    "count": 4
+   }
+  ],
+  "byAccount": [
+   {
+    "account": "Account A",
+    "count": 4
+   }
+  ],
+  "failedAttempts": 0,
+  "suppressedContacts": 3,
+  "bounces": null,
+  "duplicatesPrevented": null,
+  "queued": {
+   "routeReady": 1077,
+   "preparedSnapshots": 0,
+   "queueRows": 0,
+   "agingHours": null
+  },
+  "windows": [
+   {
+    "id": "MORNING",
+    "label": "9:30 AM ET Dispatch",
+    "scheduledAt": "2026-11-04T14:30:00.000Z",
+    "startedAt": null,
+    "finishedAt": "2026-11-04T14:33:44.819Z",
+    "sent": 0,
+    "errors": 4,
+    "runId": "outreach_run_report_2026-11-04_0930",
+    "evidence": "RUN_REPORT",
+    "state": "BLOCKED"
+   },
+   {
+    "id": "MIDDAY",
+    "label": "1:00 PM ET Dispatch",
+    "scheduledAt": "2026-11-04T18:00:00.000Z",
+    "startedAt": null,
+    "finishedAt": null,
+    "sent": null,
+    "errors": null,
+    "runId": null,
+    "evidence": "NONE",
+    "state": "UNKNOWN"
+   },
+   {
+    "id": "AFTERNOON",
+    "label": "4:00 PM ET Dispatch",
+    "scheduledAt": "2026-11-04T21:00:00.000Z",
+    "startedAt": null,
+    "finishedAt": null,
+    "sent": null,
+    "errors": null,
+    "runId": null,
+    "evidence": "NONE",
+    "state": "SCHEDULED"
+   }
+  ],
+  "lastDispatch": {
+   "at": "2026-11-04T14:33:44.819Z",
+   "runId": "outreach_run_report_2026-11-04_0930",
+   "sent": 0,
+   "state": "BLOCKED",
+   "blockers": [
+    "Final prior-contact and suppression checks across both Gmail accounts could not be completed after explicit Gmail connector quota error.",
+    "Handoff overstates EMAIL-ready inventory: 1277 EMAIL rows contain NOT_RESEARCHED/blank contact.",
+    "At least 27 syntactically plausible contacts are obvious extraction artifacts; many other rows are unrelated or outside approved local territory.",
+    "WEBSITE_WORLD count is inconsistent: post-controller log reports 530 READY, while current handoff contains 152 total (39 EMAIL, 113 FORM)."
+   ]
+  },
+  "nextDispatchAt": "2026-11-04T21:00:00.000Z",
+  "lastPreparation": {
+   "at": "2026-11-04T16:42:49.219Z",
+   "rows": 1077,
+   "state": "COMPLETED"
+  }
+ },
+ "replies": {
+  "coverage": "UNKNOWN",
+  "counts": {
+   "POSITIVE": null,
+   "QUESTION": null,
+   "NOT_NOW": null,
+   "DECLINE": null,
+   "STOP": null,
+   "AUTO_REPLY": null,
+   "BOUNCE": null,
+   "UNKNOWN": null
+  },
+  "converted": null,
+  "rates": {
+   "reply": null,
+   "positive": null,
+   "conversion": null,
+   "denominator": "confirmed sends (unavailable until reply coverage is complete)"
+  },
+  "pendingUnreadable": 1,
+  "needsAttention": [
+   {
+    "kind": "UNREADABLE_REPLY",
+    "note": "An inbound reply could not be read (Gmail quota error). Review it manually."
+   }
+  ],
+  "revenue": {
+   "tracked": false
+  },
+  "conversions": {
+   "tracked": false
+  }
+ },
+ "schedules": [
+  {
+   "name": "BattleCreek_Prospect_Foundry_Controller",
+   "mode": "Prepare",
+   "enabled": true,
+   "times": [
+    "9:00 AM ET"
+   ],
+   "lastRun": null,
+   "lastResult": null,
+   "nextRun": null,
+   "taskStatus": null
+  },
+  {
+   "name": "BattleCreek_Prospect_Foundry_Dispatch",
+   "mode": "Dispatch",
+   "enabled": true,
+   "times": [
+    "9:30 AM ET",
+    "1:00 PM ET",
+    "4:00 PM ET"
+   ],
+   "lastRun": null,
+   "lastResult": null,
+   "nextRun": null,
+   "taskStatus": null
+  },
+  {
+   "name": "BattleCreek_Prospect_Foundry_Quality_Audit",
+   "mode": "Audit",
+   "enabled": false,
+   "times": [
+    "6:00 PM ET"
+   ],
+   "lastRun": null,
+   "lastResult": null,
+   "nextRun": null,
+   "taskStatus": null
+  }
+ ],
+ "schedulerEvidence": {
+  "available": false,
+  "reason": "NOT_WINDOWS"
+ },
+ "locks": {
+  "production": "ABSENT",
+  "protectedWindowNow": true
+ },
+ "pipeline": [
+  {
+   "id": "DISCOVERY",
+   "label": "Discovery",
+   "lastRun": "2026-11-04T14:42:57.247Z",
+   "lastSuccess": null,
+   "durationSec": null,
+   "status": "DEGRADED",
+   "items": 2908,
+   "errors": 1,
+   "note": "1 source job(s) unavailable"
+  },
+  {
+   "id": "ENRICHMENT",
+   "label": "Enrichment",
+   "lastRun": "2026-11-04T14:46:36.027Z",
+   "lastSuccess": "2026-11-04T14:46:36.027Z",
+   "durationSec": null,
+   "status": "OK",
+   "items": 226,
+   "errors": 0,
+   "note": null
+  },
+  {
+   "id": "CLASSIFICATION",
+   "label": "Classification",
+   "lastRun": "2026-11-04T14:46:36.521Z",
+   "lastSuccess": "2026-11-04T14:46:36.521Z",
+   "durationSec": null,
+   "status": "OK",
+   "items": 5704,
+   "errors": 0,
+   "note": null
+  },
+  {
+   "id": "VALIDATION",
+   "label": "Validation",
+   "lastRun": "2026-11-04T16:42:49.428Z",
+   "lastSuccess": null,
+   "durationSec": null,
+   "status": "FAILED",
+   "items": 1077,
+   "errors": 1,
+   "note": "sent history not reconciled with gmail"
+  },
+  {
+   "id": "RECONCILIATION",
+   "label": "Reconciliation",
+   "lastRun": "2026-11-04T17:53:09.517Z",
+   "lastSuccess": null,
+   "durationSec": null,
+   "status": "DEGRADED",
+   "items": 3,
+   "errors": 1,
+   "note": "Gmail send history not reconciled"
+  },
+  {
+   "id": "QUEUE_PREPARATION",
+   "label": "Queue Prep",
+   "lastRun": "2026-11-04T16:42:49.219Z",
+   "lastSuccess": "2026-11-04T16:42:49.219Z",
+   "durationSec": null,
+   "status": "OK",
+   "items": 1077,
+   "errors": 0,
+   "note": null
+  },
+  {
+   "id": "DISPATCH",
+   "label": "Dispatch",
+   "lastRun": "2026-11-04T14:33:44.819Z",
+   "lastSuccess": null,
+   "durationSec": null,
+   "status": "BLOCKED",
+   "items": 0,
+   "errors": 4,
+   "note": "Gmail authorization incomplete"
+  },
+  {
+   "id": "REPLY_PROCESSING",
+   "label": "Replies",
+   "lastRun": "2026-11-04T16:42:49.630Z",
+   "lastSuccess": null,
+   "durationSec": null,
+   "status": "UNKNOWN",
+   "items": null,
+   "errors": 1,
+   "note": "Reply coverage incomplete"
+  },
+  {
+   "id": "LEARNING",
+   "label": "Learning",
+   "lastRun": "2026-11-04T14:47:01.464Z",
+   "lastSuccess": "2026-11-04T14:47:01.464Z",
+   "durationSec": null,
+   "status": "OK",
+   "items": 0,
+   "errors": 0,
+   "note": "Not enough samples yet"
+  }
+ ],
+ "charts": {
+  "leadGrowth": [
+   {
+    "day": "2026-11-03",
+    "new": 3319,
+    "cumulative": 3319
+   },
+   {
+    "day": "2026-11-04",
+    "new": 2385,
+    "cumulative": 5704
+   }
+  ],
+  "emailActivity": [
+   {
+    "day": "2026-10-06",
+    "count": 0
+   },
+   {
+    "day": "2026-10-07",
+    "count": 0
+   },
+   {
+    "day": "2026-10-08",
+    "count": 0
+   },
+   {
+    "day": "2026-10-09",
+    "count": 0
+   },
+   {
+    "day": "2026-10-10",
+    "count": 0
+   },
+   {
+    "day": "2026-10-11",
+    "count": 0
+   },
+   {
+    "day": "2026-10-12",
+    "count": 0
+   },
+   {
+    "day": "2026-10-13",
+    "count": 0
+   },
+   {
+    "day": "2026-10-14",
+    "count": 0
+   },
+   {
+    "day": "2026-10-15",
+    "count": 0
+   },
+   {
+    "day": "2026-10-16",
+    "count": 4
+   },
+   {
+    "day": "2026-10-17",
+    "count": 0
+   },
+   {
+    "day": "2026-10-18",
+    "count": 0
+   },
+   {
+    "day": "2026-10-19",
+    "count": 0
+   },
+   {
+    "day": "2026-10-20",
+    "count": 0
+   },
+   {
+    "day": "2026-10-21",
+    "count": 0
+   },
+   {
+    "day": "2026-10-22",
+    "count": 0
+   },
+   {
+    "day": "2026-10-23",
+    "count": 0
+   },
+   {
+    "day": "2026-10-24",
+    "count": 0
+   },
+   {
+    "day": "2026-10-25",
+    "count": 0
+   },
+   {
+    "day": "2026-10-26",
+    "count": 0
+   },
+   {
+    "day": "2026-10-27",
+    "count": 0
+   },
+   {
+    "day": "2026-10-28",
+    "count": 0
+   },
+   {
+    "day": "2026-10-29",
+    "count": 0
+   },
+   {
+    "day": "2026-10-30",
+    "count": 0
+   },
+   {
+    "day": "2026-10-31",
+    "count": 0
+   },
+   {
+    "day": "2026-11-01",
+    "count": 0
+   },
+   {
+    "day": "2026-11-02",
+    "count": 0
+   },
+   {
+    "day": "2026-11-03",
+    "count": 0
+   },
+   {
+    "day": "2026-11-04",
+    "count": 0
+   }
+  ],
+  "campaignPerformance": [
+   {
+    "id": "LOCAL_DETAILING",
+    "label": "Interior detailing",
+    "sent": 0,
+    "ready": 253,
+    "replies": null,
+    "positive": null,
+    "converted": null
+   },
+   {
+    "id": "LOCAL_PROPERTY",
+    "label": "Property services",
+    "sent": 0,
+    "ready": 172,
+    "replies": null,
+    "positive": null,
+    "converted": null
+   },
+   {
+    "id": "WEBSITE_WORLD",
+    "label": "Website design",
+    "sent": 0,
+    "ready": 156,
+    "replies": null,
+    "positive": null,
+    "converted": null
+   },
+   {
+    "id": "DIGITAL_INQUIRY",
+    "label": "Inquiry follow-up",
+    "sent": 0,
+    "ready": 189,
+    "replies": null,
+    "positive": null,
+    "converted": null
+   },
+   {
+    "id": "DIGITAL_ESTIMATES",
+    "label": "Estimate follow-up",
+    "sent": 0,
+    "ready": 187,
+    "replies": null,
+    "positive": null,
+    "converted": null
+   },
+   {
+    "id": "OTHER_APPROVED",
+    "label": "Other approved",
+    "sent": 0,
+    "ready": 120,
+    "replies": null,
+    "positive": null,
+    "converted": null
+   }
+  ],
+  "queueHealth": [
+   {
+    "id": "LOCAL_DETAILING",
+    "label": "Interior detailing",
+    "ready": 253,
+    "blocked": 73
+   },
+   {
+    "id": "LOCAL_PROPERTY",
+    "label": "Property services",
+    "ready": 172,
+    "blocked": 29
+   },
+   {
+    "id": "WEBSITE_WORLD",
+    "label": "Website design",
+    "ready": 156,
+    "blocked": 413
+   },
+   {
+    "id": "DIGITAL_INQUIRY",
+    "label": "Inquiry follow-up",
+    "ready": 189,
+    "blocked": 1009
+   },
+   {
+    "id": "DIGITAL_ESTIMATES",
+    "label": "Estimate follow-up",
+    "ready": 187,
+    "blocked": 334
+   },
+   {
+    "id": "OTHER_APPROVED",
+    "label": "Other approved",
+    "ready": 120,
+    "blocked": 27
+   }
+  ],
+  "reliability": [
+   {
+    "day": "2026-11-04",
+    "completed": 0,
+    "failed": 0,
+    "blocked": 1,
+    "unknown": 1
+   }
+  ],
+  "conversionTrend": []
+ },
+ "alerts": [
+  {
+   "id": "GMAIL_AUTH_MISSING",
+   "severity": "CRITICAL",
+   "title": "Gmail authorization missing",
+   "detail": "Sending is gated until both Gmail accounts are authorized and history is reconciled.",
+   "firstDetected": "2026-11-04T17:56:36.760Z",
+   "lastDetected": "2026-11-04T18:03:41.917Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "DISPATCH_BLOCKED_MORNING",
+   "severity": "CRITICAL",
+   "title": "Dispatch blocked · 9:30 AM ET Dispatch",
+   "detail": "0 sent, 4 blocker(s). Evidence: RUN_REPORT.",
+   "firstDetected": "2026-11-04T17:56:36.760Z",
+   "lastDetected": "2026-11-04T18:03:41.917Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "QUEUE_SNAPSHOT_EMPTY",
+   "severity": "WARNING",
+   "title": "No prepared send queue",
+   "detail": "No immutable send snapshot or queued messages exist yet.",
+   "firstDetected": "2026-11-04T17:56:36.760Z",
+   "lastDetected": "2026-11-04T18:03:41.917Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "QUALITY_AUDIT_FAIL",
+   "severity": "WARNING",
+   "title": "Daily audit failing",
+   "detail": "sent history not reconciled with gmail",
+   "firstDetected": "2026-11-04T17:56:36.760Z",
+   "lastDetected": "2026-11-04T18:03:41.917Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "INVENTORY_CRITICAL",
+   "severity": "WARNING",
+   "title": "EMAIL-ready inventory critical",
+   "detail": "6 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up, Other approved.",
+   "firstDetected": "2026-11-04T17:56:36.760Z",
+   "lastDetected": "2026-11-04T18:03:41.917Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "REPLY_NEEDS_ATTENTION",
+   "severity": "WARNING",
+   "title": "Reply requiring attention",
+   "detail": "An inbound reply could not be read. Review it manually.",
+   "firstDetected": "2026-11-04T17:56:36.760Z",
+   "lastDetected": "2026-11-04T18:03:41.917Z",
+   "state": "ACTIVE"
+  }
+ ],
+ "history": {
+  "startsOn": "2026-11-04",
+  "days": [
+   {
+    "day": "2026-11-04",
+    "total": 5704,
+    "qualified": 4171,
+    "ready": 1077,
+    "sent": 0,
+    "health": "BLOCKED",
+    "windows": {
+     "completed": 0,
+     "failed": 0,
+     "blocked": 1,
+     "unknown": 1
+    }
+   }
+  ]
+ },
+ "dataQuality": {
+  "availability": {
+   "leads": {
+    "state": "AVAILABLE",
+    "note": "SQLite authoritative"
+   },
+   "sends": {
+    "state": "PARTIAL",
+    "note": "Ledger CSV + CRM events; Gmail reconciliation incomplete"
+   },
+   "deliveries": {
+    "state": "NOT_TRACKED",
+    "note": "No inbox-delivery evidence; only Gmail API acceptance"
+   },
+   "replies": {
+    "state": "UNAVAILABLE",
+    "note": "Reply coverage unknown"
+   },
+   "conversions": {
+    "state": "NOT_TRACKED",
+    "note": "No confirmed conversion events"
+   },
+   "revenue": {
+    "state": "NOT_TRACKED",
+    "note": "Sales/revenue not recorded"
+   },
+   "taskScheduler": {
+    "state": "UNAVAILABLE",
+    "note": "Task definitions only (no run results)"
+   }
+  },
+  "crossChecks": [
+   {
+    "id": "crm_vs_handoff",
+    "ok": true,
+    "detail": "CRM READY 1077 · handoff 1077"
+   },
+   {
+    "id": "crm_vs_audit",
+    "ok": true,
+    "detail": "CRM READY 1077 · audit 1077"
+   },
+   {
+    "id": "crm_vs_production_report",
+    "ok": false,
+    "detail": "CRM READY 1077 · older production report 1091 (report predates latest cleanup)"
+   },
+   {
+    "id": "all_classified",
+    "ok": true,
+    "detail": "5704 of 5704 businesses classified"
+   }
+  ],
+  "sources": [
+   {
+    "name": "foundry_health_report",
+    "present": true,
+    "asOf": "2026-11-04T14:47:01.166Z"
+   },
+   {
+    "name": "foundry_daily_audit",
+    "present": true,
+    "asOf": "2026-11-04T16:42:49.428Z"
+   },
+   {
+    "name": "foundry_day_review",
+    "present": true,
+    "asOf": "2026-11-04T16:42:49.630Z"
+   },
+   {
+    "name": "foundry_safety_audit",
+    "present": true,
+    "asOf": "2026-11-04T16:42:49.590Z"
+   },
+   {
+    "name": "foundry_safe_dispatch_report",
+    "present": true,
+    "asOf": "2026-11-04T16:27:21.251Z"
+   },
+   {
+    "name": "foundry_final_handoff_report",
+    "present": true,
+    "asOf": "2026-11-04T16:42:49.219Z"
+   },
+   {
+    "name": "foundry_production_report",
+    "present": true,
+    "asOf": "2026-11-04T16:01:06.682Z"
+   },
+   {
+    "name": "foundry_learning_report",
+    "present": true,
+    "asOf": "2026-11-04T14:47:01.464Z"
+   },
+   {
+    "name": "foundry_targeted_discovery_report",
+    "present": true,
+    "asOf": "2026-11-04T14:42:57.247Z"
+   },
+   {
+    "name": "foundry_contact_enrichment_report",
+    "present": true,
+    "asOf": "2026-11-04T14:44:43.952Z"
+   },
+   {
+    "name": "foundry_local_digital_enrichment_report",
+    "present": true,
+    "asOf": "2026-11-04T14:46:36.027Z"
+   },
+   {
+    "name": "foundry_full_classification_report",
+    "present": true,
+    "asOf": "2026-11-04T14:46:36.521Z"
+   },
+   {
+    "name": "suppression_reconcile_report",
+    "present": true,
+    "asOf": "2026-11-04T17:53:09.517Z"
+   },
+   {
+    "name": "foundry_discovery_import_report",
+    "present": true,
+    "asOf": "2026-11-04T14:43:02.523Z"
+   },
+   {
+    "name": "foundry_quarantine_report",
+    "present": true,
+    "asOf": "2026-11-04T16:42:48.865Z"
+   }
+  ]
+ }
+}

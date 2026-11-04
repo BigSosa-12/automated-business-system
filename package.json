@@ -1,0 +1,14 @@
+{
+  "name": "automated-business-system",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": { "node": ">=22.13" },
+  "scripts": {
+    "test": "node --no-warnings --test exporter/test/exporter.test.mjs",
+    "export": "node --no-warnings exporter/export-snapshot.mjs",
+    "export:publish": "node --no-warnings exporter/export-snapshot.mjs --publish",
+    "explorer": "node --no-warnings exporter/local-explorer.mjs",
+    "dashboard:build": "npm --prefix dashboard ci && npm --prefix dashboard run build"
+  }
+}

@@ -6,6 +6,8 @@ import { SERVICES, STYLES } from './copy.mjs';
 
 export const MIN_ACTIVE = 15;
 export const TARGET_ACTIVE = 18;
+export const POOL_TARGET = 30; // pre-generated reserve per service
+export const POOL_MIN = 10;
 export { SERVICES, STYLES };
 
 // ---- policy lint (mirrors the foundry doctrine: no invented claims, urgency, guarantees, rankings) ------------------
@@ -61,6 +63,7 @@ export class Studio {
     this.file = stateFile; this.existingFile = existingTemplatesFile;
     this.state = fs.existsSync(stateFile) ? JSON.parse(fs.readFileSync(stateFile, 'utf8')) : null;
     if (!this.state) { this.state = { version: 1, counter: 0, templates: [], log: [] }; this.seed(); this.save(); }
+    else { let m = false; for (const sv of Object.keys(SERVICES)) m = this.refillPool(sv) || m; if (m) this.save(); }
   }
   taken() { // everything ever created (active, retired, replaced) so nothing is regenerated
     const t = new Set();
@@ -79,19 +82,38 @@ export class Studio {
         this.state.templates.push({ id: `${service}:existing:${key}`, service, origin: 'existing', origKey: key, style: 'existing', subject: tpl.subject, body: decode(tpl.body), status: 'unreviewed', used: null, createdAt: new Date().toISOString() });
       }
     }
-    for (const service of Object.keys(SERVICES)) this.topUp(service, TARGET_ACTIVE);
+    for (const service of Object.keys(SERVICES)) { this.refillPool(service); this.topUp(service, TARGET_ACTIVE); this.refillPool(service); }
   }
-  active(service) { return this.state.templates.filter((t) => t.service === service && !['retired', 'replaced'].includes(t.status)); }
-  topUp(service, target = TARGET_ACTIVE, avoidStyle = null) {
-    const taken = this.taken(); const added = [];
-    while (this.active(service).length < target) {
-      const counts = Object.fromEntries(STYLES.map((s) => [s, this.active(service).filter((t) => t.style === s).length]));
-      const order = STYLES.filter((s) => s !== avoidStyle).sort((a, b) => counts[a] - counts[b] || STYLES.indexOf(a) - STYLES.indexOf(b));
-      const style = order[0]; const n = ++this.state.counter;
-      const t = generate(service, { seed: n, style, taken });
-      const rec = { id: `${service}:gen:${n}`, ...t, origin: 'generated', status: 'unreviewed', used: false, createdAt: new Date().toISOString(), isNew: true };
-      this.state.templates.push(rec); added.push(rec);
+  active(service) { return this.state.templates.filter((t) => t.service === service && !['retired', 'replaced', 'pool'].includes(t.status)); }
+  reserve(service) { return this.state.templates.filter((t) => t.service === service && t.status === 'pool'); }
+  // Reserve pool: pre-generated templates stored in state. Dislike/Change only *draw the next one*; nothing is generated on click.
+  refillPool(service) {
+    let changed = false; const taken = this.taken();
+    while (this.reserve(service).length < POOL_TARGET) {
+      const pool = this.reserve(service), act = this.active(service);
+      const counts = Object.fromEntries(STYLES.map((st) => [st, [...pool, ...act].filter((t) => t.style === st).length]));
+      const style = [...STYLES].sort((a, b) => counts[a] - counts[b] || STYLES.indexOf(a) - STYLES.indexOf(b))[0];
+      const n = ++this.state.counter; let t;
+      try { t = generate(service, { seed: n, style, taken }); } catch { break; } // pool exhausted for this service: stop quietly
+      this.state.templates.push({ id: `${service}:gen:${n}`, ...t, origin: 'generated', status: 'pool', used: false, createdAt: new Date().toISOString() });
+      changed = true;
     }
+    return changed;
+  }
+  draw(service, avoidStyle = null) {
+    const act = this.active(service);
+    const score = (t) => act.filter((a) => a.style === t.style).length;
+    let cands = this.reserve(service).filter((t) => t.style !== avoidStyle);
+    if (!cands.length) cands = this.reserve(service);
+    if (!cands.length) { this.refillPool(service); cands = this.reserve(service); }
+    if (!cands.length) throw Object.assign(new Error('No unused templates left for this service'), { code: 409 });
+    const t = cands.sort((a, b) => score(a) - score(b))[0];
+    t.status = 'unreviewed'; t.isNew = true; t.activatedAt = new Date().toISOString();
+    return t;
+  }
+  topUp(service, target = TARGET_ACTIVE, avoidStyle = null) {
+    const added = [];
+    while (this.active(service).length < target) added.push(this.draw(service, avoidStyle));
     return added;
   }
   get(id) { const t = this.state.templates.find((x) => x.id === id); if (!t) throw Object.assign(new Error('Unknown template'), { code: 404 }); return t; }
@@ -109,21 +131,17 @@ export class Studio {
     if (t.status === 'liked') throw Object.assign(new Error('Liked templates are kept. Remove the like first to change it.'), { code: 409 });
     if (['retired', 'replaced'].includes(t.status)) throw Object.assign(new Error('Template is retired'), { code: 409 });
     t.status = 'replaced'; t.retiredAt = new Date().toISOString(); t.retiredReason = 'changed'; t.retiredWasUsed = t.used === true;
-    const taken = this.taken(); const n = ++this.state.counter;
-    const style = STYLES.filter((s) => s !== t.style).sort((a, b) => hash(`${n}${a}`) - hash(`${n}${b}`))[0];
-    const g = generate(t.service, { seed: n, style, taken });
-    const rec = { id: `${t.service}:gen:${n}`, ...g, origin: 'generated', status: 'unreviewed', used: false, createdAt: new Date().toISOString(), isNew: true, replaces: t.id };
-    this.state.templates.push(rec); this.log('change', t, { newId: rec.id });
+    const rec = this.draw(t.service, t.style); rec.replaces = t.id; this.log('change', t, { newId: rec.id });
     return this.commit({ added: [rec.id] });
   }
   setUsed(id, used) { const t = this.get(id); t.used = !!used; this.log('used', t, { used: !!used }); return this.commit(); }
-  commit(extra = {}) { this.save(); this.exportDecisions(); return { ok: true, ...extra }; }
+  commit(extra = {}) { for (const sv of Object.keys(SERVICES)) if (this.reserve(sv).length < POOL_MIN) this.refillPool(sv); this.save(); this.exportDecisions(); return { ok: true, ...extra }; }
   save() { fs.mkdirSync(path.dirname(this.file), { recursive: true }); const tmp = this.file + '.tmp'; fs.writeFileSync(tmp, JSON.stringify(this.state, null, 1)); fs.renameSync(tmp, this.file); }
   summary() {
     return Object.entries(SERVICES).map(([id, s]) => {
-      const all = this.state.templates.filter((t) => t.service === id);
+      const all = this.state.templates.filter((t) => t.service === id && t.status !== 'pool');
       const c = (f) => all.filter(f).length;
-      return { id, label: s.label, active: this.active(id).length, liked: c((t) => t.status === 'liked'), unreviewed: c((t) => t.status === 'unreviewed'), retired: c((t) => ['retired', 'replaced'].includes(t.status)), existing: c((t) => t.origin === 'existing' && !['retired', 'replaced'].includes(t.status)) };
+      return { id, label: s.label, active: this.active(id).length, liked: c((t) => t.status === 'liked'), unreviewed: c((t) => t.status === 'unreviewed'), retired: c((t) => ['retired', 'replaced'].includes(t.status)), existing: c((t) => t.origin === 'existing' && !['retired', 'replaced'].includes(t.status)), reserve: this.reserve(id).length };
     });
   }
   // Decisions file for human/Codex review. NOT read by the sender. Production copy format uses literal \n like OutreachTemplates.json.

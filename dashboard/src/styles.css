@@ -211,7 +211,7 @@ tbody tr:hover { background: rgba(167, 139, 250, 0.07); }
   :root { --blur: blur(10px) saturate(130%); --gap: 12px; --r: 18px; }
   .shell { padding: 12px 12px calc(92px + env(safe-area-inset-bottom)); }
   .nav { display: none; }
-  .tabbar { display: grid; grid-template-columns: repeat(7, 1fr); position: fixed; z-index: 30; left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom));
+  .tabbar { display: grid; grid-template-columns: repeat(8, 1fr); position: fixed; z-index: 30; left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom));
     border-radius: 22px; padding: 6px; background: var(--glass); -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
     border: 1px solid var(--edge); box-shadow: var(--shadow), inset 0 1px 0 var(--edge-top); }
   .tab { display: flex; flex-direction: column; align-items: center; gap: 2px; background: transparent; border: 0; padding: 7px 0; border-radius: 16px; color: var(--text-2); font-size: 10px; cursor: pointer; }
@@ -272,3 +272,24 @@ tbody tr:hover { background: rgba(167, 139, 250, 0.07); }
 }
 @media (max-width: 560px) { .engine-stage { grid-template-columns: 1fr; } .core { max-width: 340px; } }
 @media (prefers-reduced-motion: reduce) { .ring, .reactor, .flow, .core .r1, .core .r2, .core .r3 { animation: none !important; } }
+
+/* ───────────── TEMPLATES (private Studio client) ───────────── */
+.tp-sum { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; padding: 12px 16px; font-size: 13px; }
+.tp-tabs, .tp-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.tp-tab { background: rgba(23,19,33,.6); color: var(--text); border: 1px solid var(--edge); border-radius: 12px; padding: 8px 12px; cursor: pointer; font: inherit; font-size: 13px; transition: border-color .2s, background .2s; text-align: left; }
+.tp-tab small { display: block; color: var(--text-2); font-size: 11px; } .tp-tab:hover { border-color: var(--lavender); }
+.tp-tab[aria-selected='true'] { background: rgba(139,92,246,.28); border-color: var(--lavender); }
+.tp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: var(--gap); }
+.tp-card { padding: 14px; display: flex; flex-direction: column; gap: 9px; } .tp-card.liked { border-color: rgba(52,211,153,.55); } .tp-card.off { opacity: .62; }
+.tp-subject { font-weight: 600; overflow-wrap: anywhere; }
+.tp-body { white-space: pre-wrap; overflow-wrap: anywhere; color: #E4E0EE; font-size: 13px; background: rgba(9,9,15,.4); border: 1px solid rgba(167,139,250,.12); border-radius: 12px; padding: 10px 12px; flex: 1; }
+.tp-ph { color: var(--lilac); background: rgba(167,139,250,.18); border-radius: 4px; padding: 0 3px; }
+.tp-badges { display: flex; flex-wrap: wrap; gap: 6px; } .tp-b { font-size: 11px; border: 1px solid var(--edge); border-radius: 999px; padding: 1px 8px; color: var(--text-2); }
+.tp-b.good { color: var(--good); border-color: rgba(52,211,153,.5); } .tp-b.warn { color: var(--warn); border-color: rgba(251,191,36,.5); } .tp-b.bad { color: var(--bad); border-color: rgba(248,113,113,.5); }
+.tp-used { display: flex; gap: 8px; align-items: center; color: var(--text-2); font-size: 12px; } .tp-used select { background: #171321; color: var(--text); border: 1px solid var(--edge); border-radius: 8px; padding: 2px 6px; font: inherit; }
+.tp-act { display: flex; gap: 8px; flex-wrap: wrap; }
+.tp-btn { flex: 1; min-width: 92px; display: inline-flex; gap: 6px; justify-content: center; align-items: center; padding: 8px 10px; border-radius: 12px; border: 1px solid var(--edge); background: rgba(23,19,33,.7); color: var(--text); cursor: pointer; font: inherit; font-size: 13px; transition: transform .2s, border-color .2s; }
+.tp-btn:hover:not(:disabled) { transform: translateY(-1px); border-color: var(--lavender); } .tp-btn:disabled { opacity: .4; cursor: not-allowed; } .tp-btn.on { background: rgba(52,211,153,.18); border-color: rgba(52,211,153,.6); }
+.tp-toast { position: fixed; left: 50%; bottom: 84px; transform: translateX(-50%); background: #171321; border: 1px solid var(--lavender); border-radius: 12px; padding: 10px 16px; max-width: 92vw; z-index: 50; }
+@media (max-width: 760px) { .tabbar a, .tabbar button { font-size: 9.5px; } }
+@media (prefers-reduced-motion: reduce) { .tp-btn, .tp-tab { transition: none; } }

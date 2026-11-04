@@ -19,11 +19,19 @@ test('BLOCKED / FAILED stop and keep a text label', () => { assert.equal(engineV
 test('UNKNOWN never looks healthy', () => { const v = engineView(mk('UNKNOWN', 3), NOW); assert.equal(v.spin, 'stopped'); assert.equal(v.amber, false); });
 test('invalid timestamp is UNKNOWN', () => assert.equal(engineView(mk('IDLE', 1, { generatedAt: 'nope' }), NOW).state, 'UNKNOWN'));
 
-test('frontend is read-only: no write-capable network calls', () => {
+test('frontend is read-only except the Templates tab, which may only POST to the local Template Studio', () => {
   const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]));
   const files = walk(new URL('../../dashboard/src', import.meta.url).pathname).filter((f) => /\.(tsx?|jsx?)$/.test(f));
-  const bad = /XMLHttpRequest|sendBeacon|WebSocket|method\s*:\s*['"`](POST|PUT|PATCH|DELETE)|<form\b|localStorage\.setItem/i;
+  const bad = /XMLHttpRequest|sendBeacon|WebSocket|method\s*:\s*['"`](PUT|PATCH|DELETE)|<form\b|localStorage\.setItem/i;
   for (const f of files) assert.doesNotMatch(fs.readFileSync(f, 'utf8'), bad, f);
-  const fetches = files.flatMap((f) => [...fs.readFileSync(f, 'utf8').matchAll(/fetch\(([^)]*)\)/g)].map((m) => m[0]));
-  assert.ok(fetches.length >= 2); for (const x of fetches) assert.doesNotMatch(x, /method/i);
+  for (const f of files.filter((x) => !x.endsWith('Templates.tsx'))) {
+    const t = fs.readFileSync(f, 'utf8');
+    assert.doesNotMatch(t, /method\s*:\s*['"`]POST/i, f);
+    for (const m of t.matchAll(/fetch\(([^)]*)\)/g)) assert.doesNotMatch(m[0], /method/i, f);
+  }
+  const tpl = fs.readFileSync(files.find((x) => x.endsWith('Templates.tsx')), 'utf8');
+  assert.match(tpl, /STUDIO = 'http:\/\/127\.0\.0\.1:4478'/);
+  const urls = [...tpl.matchAll(/fetch\(([^,)]*)/g)].map((m) => m[1]);
+  assert.ok(urls.length >= 1); for (const u of urls) assert.match(u, /STUDIO/, 'Templates may only call the local Studio');
+  assert.doesNotMatch(tpl, /https?:\/\/(?!127\.0\.0\.1)/, 'no other hosts');
 });

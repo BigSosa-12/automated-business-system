@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { BarChart3, ClipboardList, Cog, Cpu, LayoutDashboard, Mail, MessageSquareReply, RefreshCw, TriangleAlert } from 'lucide-react';
+import { BarChart3, ClipboardList, Cog, Cpu, LayoutTemplate, LayoutDashboard, Mail, MessageSquareReply, RefreshCw, TriangleAlert } from 'lucide-react';
 import type { EngineStatus, Health, Snapshot } from './types';
 import { HealthBanner } from './components/shared';
 import { Pill } from './components/ui';
@@ -10,6 +10,7 @@ import { Replies } from './pages/Replies';
 import { Operations } from './pages/Operations';
 import { Analytics } from './pages/Analytics';
 import { Engine } from './pages/Engine';
+import { Templates } from './pages/Templates';
 import { ago, fmtTime } from './format';
 
 const TABS = [
@@ -20,6 +21,7 @@ const TABS = [
   { id: 'operations', label: 'Ops', Icon: Cog },
   { id: 'analytics', label: 'Analytics', Icon: BarChart3 },
   { id: 'engine', label: 'Engine', Icon: Cpu },
+  { id: 'templates', label: 'Templates', Icon: LayoutTemplate },
 ] as const;
 type TabId = (typeof TABS)[number]['id'];
 const readHash = (): TabId => (TABS.find((t) => t.id === location.hash.slice(1))?.id ?? 'overview');
@@ -86,6 +88,7 @@ export default function App() {
               {tab === 'operations' && <Operations s={snap} now={now} />}
               {tab === 'analytics' && <Analytics s={snap} />}
               {tab === 'engine' && <Engine e={engine} now={now} />}
+              {tab === 'templates' && <Templates />}
               <div className="pagefoot">Data as of {fmtTime(snap.sourceAsOf)} · schema v{snap.schemaVersion} · exporter {snap.exporter.version} · sanitized aggregates only</div>
             </>
           )}

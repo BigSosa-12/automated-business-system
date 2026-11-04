@@ -37,6 +37,8 @@ GitHub Pages is reachable by anyone with the link. Only aggregates are published
 
 ## Template Studio (private, local only)
 
+The dashboard's **Templates** tab connects to the Studio running on your computer (it shows "not running" and reconnects by itself otherwise). Run `powershell -File exporter\install-studio-task.ps1` once to start it at every Windows logon. Dislike and Change draw the next template from a pre-generated reserve (30 per service); nothing is generated on click. Template text is never stored on the public site.
+
 `npm run studio` starts a localhost-only page (http://127.0.0.1:4478) listing every outreach email template by service (18 active each, including your existing ones read from `OutreachTemplates.json`).
 
 - **Like** keeps a template (and locks Change). **Dislike** retires it for good and a replacement is added so each service stays above 15. **Change** retires it and generates a new style.

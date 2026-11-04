@@ -13,13 +13,20 @@ const SRC = arg('--src', process.env.FOUNDRY_DIR || 'C:\\Users\\hahak\\OneDrive\
 const PORT = Number(arg('--port', 4478));
 const STATE = path.resolve(arg('--state', path.join(HERE, 'state', 'studio.json')));
 
+export const ALLOWED_ORIGINS = ['https://bigsosa-12.github.io'];
 const ok = (h) => /^(127\.0\.0\.1|localhost):\d+$/.test(h || '');
-const send = (res, code, body, type = 'application/json') => { res.writeHead(code, { 'content-type': type + '; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', 'content-security-policy': "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'" }); res.end(typeof body === 'string' ? body : JSON.stringify(body)); };
+const send = (res, code, body, type = 'application/json') => { res.writeHead(code, { ...(res.corsOrigin ? { 'access-control-allow-origin': res.corsOrigin, vary: 'Origin' } : {}), 'content-type': type + '; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', 'content-security-policy': "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'" }); res.end(typeof body === 'string' ? body : JSON.stringify(body)); };
 export function makeServer(studio) {
-  const view = () => ({ min: MIN_ACTIVE, services: studio.summary(), templates: studio.state.templates, exportFile: path.join(path.dirname(studio.file), 'template-decisions.json') });
+  const view = () => ({ min: MIN_ACTIVE, services: studio.summary(), templates: studio.state.templates.filter((x) => x.status !== 'pool'), exportFile: path.join(path.dirname(studio.file), 'template-decisions.json') });
   return http.createServer(async (req, res) => {
   if (!ok(req.headers.host)) return send(res, 403, { error: 'forbidden host' });
   const url = new URL(req.url, 'http://x');
+  // Cross-origin access: only the published dashboard (exact origin) or this page itself. Anything else is refused.
+  const origin = req.headers.origin;
+  const self = /^http:\/\/(127\.0\.0\.1|localhost):\d+$/.test(origin || '');
+  if (origin && !self && !ALLOWED_ORIGINS.includes(origin)) return send(res, 403, { error: 'origin not allowed' });
+  if (origin) res.corsOrigin = origin;
+  if (req.method === 'OPTIONS') { res.writeHead(204, { ...(origin ? { 'access-control-allow-origin': origin, vary: 'Origin' } : {}), 'access-control-allow-methods': 'GET, POST', 'access-control-allow-headers': 'content-type, x-studio', 'access-control-allow-private-network': 'true', 'access-control-max-age': '600' }); return res.end(); }
   try {
     if (req.method === 'GET' && url.pathname === '/') return send(res, 200, fs.readFileSync(path.join(HERE, 'ui.html'), 'utf8'), 'text/html');
     if (req.method === 'GET' && url.pathname === '/api/state') return send(res, 200, view());

@@ -4,8 +4,8 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import http from 'node:http';
-import { Studio, SERVICES, lint, MIN_ACTIVE } from '../../studio/library.mjs';
-import { makeServer } from '../../studio/template-studio.mjs';
+import { Studio, SERVICES, lint, MIN_ACTIVE, POOL_TARGET } from '../../studio/library.mjs';
+import { makeServer, ALLOWED_ORIGINS } from '../../studio/template-studio.mjs';
 
 const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), 'studio-'));
 // fake production file with the same shape as OutreachTemplates.json (literal \n line breaks)
@@ -90,4 +90,34 @@ test('studio code has no database, Gmail, or scheduler access', () => {
     const t = fs.readFileSync(new URL('../../studio/' + f, import.meta.url), 'utf8');
     assert.doesNotMatch(t, /node:sqlite|googleapis|nodemailer|child_process|schtasks|FoundrySend|writeFileSync\([^)]*SRC/i, f);
   }
+});
+
+test('reserve pool: every service starts with a full reserve and Dislike/Change draw from it instead of generating live', () => {
+  const s = mk();
+  for (const id of Object.keys(SERVICES)) assert.equal(s.reserve(id).length, POOL_TARGET, id);
+  const pooled = new Set(s.reserve('GOOGLE_REVIEWS').map((t) => t.id));
+  const r = s.change(s.active('GOOGLE_REVIEWS').find((t) => t.origin === 'generated').id);
+  assert.ok(pooled.has(r.added[0]), 'Change drew an already-generated pool entry');
+  const r2 = s.dislike(s.active('GOOGLE_REVIEWS')[0].id); // may not need a top-up while ≥15, but must never throw
+  assert.ok(r2.ok);
+  assert.ok(s.reserve('GOOGLE_REVIEWS').length >= 10, 'reserve refills in the background');
+  assert.equal(s.state.templates.filter((t) => t.status === 'pool' && t.used !== false).length, 0);
+});
+test('reserve pool never leaks into the list the UI shows', async () => {
+  const s = mk(); const srv = makeServer(s); await new Promise((r) => srv.listen(0, '127.0.0.1', r));
+  try { const j = await (await fetch(`http://127.0.0.1:${srv.address().port}/api/state`)).json(); assert.ok(j.templates.every((t) => t.status !== 'pool')); assert.ok(j.services.every((x) => x.reserve > 0)); }
+  finally { srv.closeAllConnections(); srv.close(); }
+});
+test('CORS: the published dashboard origin is allowed (with private-network preflight); every other origin is refused', async () => {
+  const s = mk(); const srv = makeServer(s); await new Promise((r) => srv.listen(0, '127.0.0.1', r));
+  const base = `http://127.0.0.1:${srv.address().port}`; const good = ALLOWED_ORIGINS[0];
+  try {
+    const pre = await fetch(base + '/api/like', { method: 'OPTIONS', headers: { origin: good, 'access-control-request-method': 'POST', 'access-control-request-headers': 'x-studio,content-type', 'access-control-request-private-network': 'true' } });
+    assert.equal(pre.status, 204); assert.equal(pre.headers.get('access-control-allow-origin'), good); assert.equal(pre.headers.get('access-control-allow-private-network'), 'true');
+    const ok = await fetch(base + '/api/state', { headers: { origin: good } }); assert.equal(ok.status, 200); assert.equal(ok.headers.get('access-control-allow-origin'), good);
+    for (const evil of ['https://evil.example', 'https://bigsosa-12.github.io.evil.example', 'http://bigsosa-12.github.io']) {
+      assert.equal((await fetch(base + '/api/state', { headers: { origin: evil } })).status, 403, evil);
+      assert.equal((await fetch(base + '/api/like', { method: 'POST', headers: { origin: evil, 'x-studio': '1' }, body: JSON.stringify({ id: 'x' }) })).status, 403, evil);
+    }
+  } finally { srv.closeAllConnections(); srv.close(); }
 });

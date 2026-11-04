@@ -34,3 +34,12 @@ Needs Node 22.13+ (built-in `node:sqlite`; the exporter has no packages). Source
 
 ## Privacy
 GitHub Pages is reachable by anyone with the link. Only aggregates are published. Business names, contacts and history live only in the local explorer.
+
+## Template Studio (private, local only)
+
+`npm run studio` starts a localhost-only page (http://127.0.0.1:4478) listing every outreach email template by service (18 active each, including your existing ones read from `OutreachTemplates.json`).
+
+- **Like** keeps a template (and locks Change). **Dislike** retires it for good and a replacement is added so each service stays above 15. **Change** retires it and generates a new style.
+- Mark **Already sent?** per template. Send history does not record which template was used, so this cannot be detected automatically.
+- Decisions are saved to `studio/state/` (git-ignored, never published): `studio.json` and `template-decisions.json` (liked list plus a `doNotUse` exclusion list).
+- It never writes to OutreachQueue, SQLite, Gmail or the scheduler. The sender does not read the decisions file until it is deliberately wired in.

@@ -3,3 +3,4 @@ dashboard/dist/
 exporter/state/
 *.tmp
 .DS_Store
+studio/state/

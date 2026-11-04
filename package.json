@@ -3,12 +3,15 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "engines": { "node": ">=22.13" },
+  "engines": {
+    "node": ">=22.13"
+  },
   "scripts": {
-    "test": "node --no-warnings --test exporter/test/exporter.test.mjs",
+    "test": "node --no-warnings --test exporter/test/exporter.test.mjs && node --no-warnings --test exporter/test/engine-ui.test.mjs && node --no-warnings --test exporter/test/studio.test.mjs",
     "export": "node --no-warnings exporter/export-snapshot.mjs",
     "export:publish": "node --no-warnings exporter/export-snapshot.mjs --publish",
     "explorer": "node --no-warnings exporter/local-explorer.mjs",
-    "dashboard:build": "npm --prefix dashboard ci && npm --prefix dashboard run build"
+    "dashboard:build": "npm --prefix dashboard ci && npm --prefix dashboard run build",
+    "studio": "node studio/template-studio.mjs"
   }
 }

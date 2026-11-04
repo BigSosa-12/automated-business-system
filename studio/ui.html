@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Template Studio · Prospect Foundry (private)</title>
+<style>
+:root{--bg:#09090F;--panel:rgba(23,19,33,.55);--edge:rgba(167,139,250,.2);--text:#F8F7FC;--t2:#A7A1B5;--lav:#A78BFA;--vio:#8B5CF6;--lil:#E9D5FF;--good:#34D399;--warn:#FBBF24;--bad:#F87171}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--text);font:14px/1.5 Inter,system-ui,Segoe UI,sans-serif;background:radial-gradient(900px 500px at 12% -10%,rgba(139,92,246,.28),transparent 60%),radial-gradient(700px 500px at 100% 0,rgba(167,139,250,.14),transparent 60%),var(--bg)}
+.wrap{max-width:1180px;margin:0 auto;padding:18px 16px 60px}
+h1{font-size:20px;margin:0}.sub{color:var(--t2);font-size:12.5px}
+.glass{background:var(--panel);border:1px solid var(--edge);border-radius:18px;box-shadow:0 10px 40px rgba(139,92,246,.12);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%)}
+@supports not (backdrop-filter:blur(1px)){.glass{background:#171321}}
+.top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.priv{border:1px solid rgba(251,191,36,.4);color:var(--warn);border-radius:999px;padding:3px 10px;font-size:12px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.tab{background:rgba(23,19,33,.6);color:var(--text);border:1px solid var(--edge);border-radius:12px;padding:8px 12px;cursor:pointer;font:inherit;transition:.2s}
+.tab:hover{border-color:var(--lav)}.tab[aria-selected=true]{background:rgba(139,92,246,.28);border-color:var(--lav)}
+.tab small{color:var(--t2);display:block;font-size:11px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.chip{border:1px solid var(--edge);background:transparent;color:var(--t2);border-radius:999px;padding:4px 11px;cursor:pointer;font:inherit;font-size:12.5px}.chip[aria-pressed=true]{color:var(--text);border-color:var(--lav);background:rgba(139,92,246,.22)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.card{padding:14px;display:flex;flex-direction:column;gap:9px;transition:.2s}
+.card.liked{border-color:rgba(52,211,153,.55)}.card.retired{opacity:.62}
+.subject{font-weight:600;overflow-wrap:anywhere}
+.body{white-space:pre-wrap;overflow-wrap:anywhere;color:#E4E0EE;font-size:13px;background:rgba(9,9,15,.4);border:1px solid rgba(167,139,250,.12);border-radius:12px;padding:10px 12px;flex:1}
+.ph{color:var(--lil);background:rgba(167,139,250,.18);border-radius:4px;padding:0 3px}
+.badges{display:flex;flex-wrap:wrap;gap:6px}.b{font-size:11px;border:1px solid var(--edge);border-radius:999px;padding:1px 8px;color:var(--t2)}
+.b.ex{color:var(--lil)}.b.new{color:var(--good);border-color:rgba(52,211,153,.5)}.b.used{color:var(--warn);border-color:rgba(251,191,36,.5)}.b.like{color:var(--good)}.b.ret{color:var(--bad);border-color:rgba(248,113,113,.5)}
+.act{display:flex;gap:8px;flex-wrap:wrap}
+button.a{flex:1;min-width:92px;display:inline-flex;gap:6px;justify-content:center;align-items:center;padding:8px 10px;border-radius:12px;border:1px solid var(--edge);background:rgba(23,19,33,.7);color:var(--text);cursor:pointer;font:inherit;transition:.2s}
+button.a:hover:not(:disabled){transform:translateY(-1px);border-color:var(--lav)}button.a:disabled{opacity:.4;cursor:not-allowed}
+button.a.on{background:rgba(52,211,153,.18);border-color:rgba(52,211,153,.6)}
+.used-row{display:flex;gap:8px;align-items:center;color:var(--t2);font-size:12px}.used-row select{background:#171321;color:var(--text);border:1px solid var(--edge);border-radius:8px;padding:2px 6px;font:inherit}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#171321;border:1px solid var(--lav);border-radius:12px;padding:10px 16px;max-width:92vw;z-index:9;opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1}
+.note{color:var(--t2);font-size:12px;margin-top:14px}
+:focus-visible{outline:2px solid var(--lav);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+</style></head><body><div class="wrap">
+<div class="top"><div><h1>Template Studio</h1><div class="sub">Email templates by service · Like keeps · Dislike retires · Change generates a new style</div></div><span class="priv">PRIVATE · runs only on this computer · does not change what is sent</span></div>
+<div class="glass" style="padding:12px 14px"><div id="sum" class="sub"></div></div>
+<div class="tabs" id="tabs" role="tablist"></div>
+<div class="filters" id="filters"></div>
+<div class="grid" id="grid"></div>
+<p class="note" id="note"></p>
+</div><div class="toast" id="toast" role="status"></div>
+<script>
+const $=s=>document.querySelector(s);let S=null,svc='ALL',flt='active';
+const LABEL={existing:'EXISTING (in production file)',generated:'GENERATED'};
+async function api(p,b){const r=await fetch('/api/'+p,{method:'POST',headers:{'content-type':'application/json','x-studio':'1'},body:JSON.stringify(b||{})});const j=await r.json();if(!r.ok)throw new Error(j.error||'error');return j}
+async function load(){S=await (await fetch('/api/state')).json();render()}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),4200)}
+function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+function bodyNode(text){const d=el('div','body');text.split(/(\[[^\]]+\])/).forEach(p=>{d.append(/^\[[^\]]+\]$/.test(p)?el('span','ph',p):document.createTextNode(p))});return d}
+function render(){
+  const tot=S.services.reduce((a,s)=>({active:a.active+s.active,liked:a.liked+s.liked,ret:a.ret+s.retired}),{active:0,liked:0,ret:0});
+  $('#sum').textContent=`${tot.active} active templates across ${S.services.length} services · ${tot.liked} liked · ${tot.ret} retired · each service keeps at least ${S.min} active`;
+  const tabs=$('#tabs');tabs.replaceChildren();
+  const mk=(id,label,sub)=>{const b=el('button','tab');b.setAttribute('role','tab');b.setAttribute('aria-selected',svc===id);b.append(document.createTextNode(label),el('small',null,sub));b.onclick=()=>{svc=id;render()};tabs.append(b)};
+  mk('ALL','All services',`${tot.active} active`);S.services.forEach(s=>mk(s.id,s.label,`${s.active} active · ${s.liked} liked`));
+  const f=$('#filters');f.replaceChildren();[['active','Active'],['unreviewed','Not reviewed'],['liked','Liked'],['retired','Retired']].forEach(([k,l])=>{const c=el('button','chip',l);c.setAttribute('aria-pressed',flt===k);c.onclick=()=>{flt=k;render()};f.append(c)});
+  const list=S.templates.filter(t=>(svc==='ALL'||t.service===svc)&&(flt==='retired'?['retired','replaced'].includes(t.status):flt==='liked'?t.status==='liked':flt==='unreviewed'?t.status==='unreviewed':!['retired','replaced'].includes(t.status)));
+  const g=$('#grid');g.replaceChildren();
+  if(!list.length)g.append(el('div','sub','Nothing here yet.'));
+  list.forEach(t=>g.append(card(t)));
+  $('#note').textContent='Decisions are saved to '+S.exportFile+'. Nothing here edits OutreachTemplates.json, the database, Gmail or the schedule. Past sends are never changed.';
+}
+function card(t){
+  const retired=['retired','replaced'].includes(t.status);const c=el('div','glass card'+(t.status==='liked'?' liked':'')+(retired?' retired':''));
+  const bd=el('div','badges');bd.append(el('span','b '+(t.origin==='existing'?'ex':''),(S.services.find(s=>s.id===t.service)||{}).label));
+  bd.append(el('span','b '+(t.origin==='existing'?'ex':''),LABEL[t.origin]));if(t.style!=='existing')bd.append(el('span','b','style: '+t.style));
+  if(t.isNew&&!retired)bd.append(el('span','b new','NEW'));if(t.status==='liked')bd.append(el('span','b like','✓ LIKED'));
+  if(retired)bd.append(el('span','b ret',(t.status==='replaced'?'REPLACED BY CHANGE':'DISLIKED · RETIRED')+(t.retiredWasUsed?' · WAS ALREADY SENT':'')));
+  if(t.used===true)bd.append(el('span','b used','MARKED ALREADY SENT'));
+  c.append(bd,el('div','subject','Subject: '+t.subject),bodyNode(t.body));
+  if(!retired){
+    const u=el('div','used-row');u.append(document.createTextNode('Already sent?'));const sel=document.createElement('select');
+    [['null','Unknown'],['false','No'],['true','Yes']].forEach(([v,l])=>{const o=el('option',null,l);o.value=v;sel.append(o)});sel.value=String(t.used);
+    sel.onchange=async()=>{try{await act('used',{id:t.id,used:sel.value==='true'},sel.value==='true'?'Marked as already sent. If you dislike it, it stays retired for future sends.':'Updated.')}catch(e){toast(e.message)}};
+    u.append(sel);c.append(u);
+    const a=el('div','act');
+    const like=el('button','a'+(t.status==='liked'?' on':''),t.status==='liked'?'👍 Liked (kept)':'👍 Like');like.onclick=()=>act('like',{id:t.id},t.status==='liked'?'Like removed.':'Kept. Change is locked while a template is liked.');
+    const chg=el('button','a','🔄 Change');chg.disabled=t.status==='liked';chg.title=t.status==='liked'?'Remove the like to change it':'Replace with a new style';chg.onclick=()=>act('change',{id:t.id},'Replaced with a new style. The old one is retired.');
+    const dis=el('button','a','👎 Dislike');dis.onclick=()=>act('dislike',{id:t.id},t.used===true?'Retired. It was already sent, so past sends are unchanged and it will not be used going forward.':'Retired and will not be used going forward.');
+    a.append(like,chg,dis);c.append(a);
+  }
+  return c;
+}
+async function act(p,b,msg){try{const j=await api(p,b);S=j.state;render();toast(msg+(j.added&&j.added.length&&p!=='change'?' A replacement was added to keep the service stocked.':''))}catch(e){toast(e.message)}}
+load();
+</script></body></html>

@@ -1,7 +1,7 @@
 // Publishes ONLY dashboard/public/data/* through the machine's existing Git authentication. No tokens are handled here.
 import { execFileSync } from 'node:child_process';
 
-const PATHS = ['dashboard/public/data/snapshot.json'];
+const PATHS = ['dashboard/public/data/snapshot.json', 'dashboard/public/data/engine-status.json'];
 const git = (repo, args) => execFileSync('git', args, { cwd: repo, encoding: 'utf8', timeout: 60000, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] });
 
 export function publish(repo, stamp) {

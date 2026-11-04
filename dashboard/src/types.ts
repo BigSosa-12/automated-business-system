@@ -68,3 +68,23 @@ export interface Snapshot {
     sources: { name: string; present: boolean; asOf: string | null }[];
   };
 }
+
+export type EngineState = 'IDLE' | 'PROCESSING' | 'SLOW' | 'STALE' | 'BLOCKED' | 'UNKNOWN';
+export type IndicatorState = 'OK' | 'ACTIVE' | 'SLOW' | 'WARN' | 'BLOCKED' | 'FAILED' | 'UNKNOWN';
+export interface EngineThresholds { snapshotStaleMin: number; processingTtlMin: number; prepDeadlineMin: number; dispatchDeadlineMin: number; slowFactor: number }
+export interface EngineIndicator {
+  id: string; label: string; state: IndicatorState; lastSuccess: string | null; activity: string | null; errors: number; reason: string; items: number | null;
+  detail: { recent: { at: string; text: string; ok: boolean }[]; durationSec: number | null; baselineMedianSec: number | null; latestIssue: string | null };
+}
+export interface EngineIssue { id: string; rank: number; severity: 'CRITICAL' | 'WARNING' | 'INFO'; stage: string | null; title: string; evidence: string[] }
+export interface EngineStatus {
+  schemaVersion: 1; generatedAt: string; thresholds: EngineThresholds; state: Exclude<EngineState, 'STALE'>; stoppedKind: 'BLOCKED' | 'FAILED' | null; caution: boolean; headline: string;
+  process: { mode: string; jobId: string; stage: string | null; startedAtLowerBound: string | null; elapsedSecAtLeast: number | null; items: number | null; evidence: string } | null;
+  heartbeats: {
+    exporter: { lastSuccessAt: string; lastError: string | null; staleAfterMin: number; note: string };
+    pipeline: { state: string; lastPreparationAt: string | null; lock: string };
+    dispatch: { state: string; gates: { gmailAuthorization: string; safetyAudit: string; dailyCap: number }; windows: { id: string; label: string; state: string }[]; next: { label: string; at: string | null } | null };
+  };
+  indicators: EngineIndicator[]; activePathways: string[]; diagnostics: EngineIssue[];
+  metrics: { ready: number | null; sentToday: number | null; dailyCap: number; preparedSnapshots: number | null; total: number | null };
+}

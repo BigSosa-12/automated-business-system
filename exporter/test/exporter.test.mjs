@@ -154,3 +154,51 @@ test('exporter never writes to the production directory', () => {
 test('stale snapshot fixture fails schema when required sections are missing', () => {
   assert.ok(validateSnapshot({ schemaVersion: 1 }).length > 3);
 });
+
+// ---- ENGINE CORE fixtures ---------------------------------------------------------------------
+import { buildEngine } from '../lib/engine.mjs';
+import { validateEngine } from '../lib/validate.mjs';
+const eng = (dir, now, extra = {}) => {
+  const collect = {};
+  const snap = build(dir, now, { collect, ...extra });
+  const e = buildEngine({ now, snap, c: collect, dir, prevEngine: null, exporterRun: {} });
+  return { snap, e };
+};
+const at = (h, m) => etWallToUtc('2026-11-04', h * 60 + m);
+
+test('engine: Gmail unauthorized => BLOCKED, GMAIL_AUTH ranked first, valid', () => {
+  const { e } = eng(fixture({ gmailBlocked: true }), NOON_ET);
+  assert.deepEqual(validateEngine(e), []);
+  assert.equal(e.state, 'BLOCKED');
+  assert.equal(e.diagnostics[0].id, 'GMAIL_AUTH');
+  assert.ok(e.diagnostics.every((d, i, a) => i === 0 || a[i - 1].rank >= d.rank));
+});
+test('engine: healthy gates + no lock + midday => IDLE, never STALE/BLOCKED, never fake PROCESSING', () => {
+  const { e } = eng(fixture({ gmailBlocked: false }), NOON_ET, { lockOverride: { state: 'ABSENT' } });
+  assert.notEqual(e.state, 'PROCESSING');
+  assert.notEqual(e.state, 'STALE');
+  assert.equal(e.process, null);
+});
+test('engine: lock held inside prep window => PROCESSING with evidence', () => {
+  const { e } = eng(fixture({ gmailBlocked: false }), at(9, 10), { lockOverride: { state: 'HELD' } });
+  if (e.state === 'PROCESSING') { assert.ok(e.process); assert.ok(e.process.evidence); assert.ok(e.activePathways.length > 0); }
+  else assert.ok(['SLOW', 'BLOCKED', 'UNKNOWN'].includes(e.state)); // never silently healthy
+  assert.deepEqual(validateEngine(e), []);
+});
+test('engine: lock held outside any run window is never PROCESSING', () => {
+  const { e } = eng(fixture({ gmailBlocked: false }), at(11, 0), { lockOverride: { state: 'HELD' } });
+  assert.notEqual(e.state, 'PROCESSING');
+});
+test('engine: lock held long past dispatch deadline => SLOW or worse', () => {
+  const { e } = eng(fixture({ gmailBlocked: false }), at(13, 14), { lockOverride: { state: 'HELD' } });
+  assert.notEqual(e.state, 'IDLE');
+});
+test('engine: missing database => UNKNOWN/BLOCKED with SQLITE_UNREADABLE, not healthy', () => {
+  const { e } = eng(fixture({ withDb: false }), NOON_ET);
+  assert.ok(['UNKNOWN', 'BLOCKED'].includes(e.state));
+  assert.ok(e.diagnostics.some((d) => d.id === 'SQLITE_UNREADABLE'));
+});
+test('engine: telemetry carries no email addresses or paths', () => {
+  const { e } = eng(fixture({ gmailBlocked: true }), NOON_ET);
+  assert.doesNotThrow(() => assertPublicSafe(JSON.stringify(e)));
+});

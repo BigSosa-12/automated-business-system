@@ -98,7 +98,7 @@ export function buildSnapshot(ctx) {
     const [, d, hm] = /_(\d{4}-\d{2}-\d{2})_(\d{4})\.json$/.exec(f); const r = readJson(dir, f);
     return { file: f, day: d, minutes: +hm.slice(0, 2) * 60 + +hm.slice(2), r };
   }).filter((x) => x.r.ok);
-  const lock = probeProductionLock(dir);
+  const lock = ctx.lockOverride ?? probeProductionLock(dir);
   const nowMin = etMinutes(now);
   const taskFor = (mode, min) => scheduler?.tasks?.find((tk) => tk.name === defs.find((d) => d.mode === mode && d.minutes.includes(min))?.name);
   const windows = slots.map((slot) => {
@@ -294,6 +294,7 @@ export function buildSnapshot(ctx) {
       sources: names.map((n) => ({ name: n, present: src[n].ok, asOf: toIso(t(n)) })),
     },
   };
+  if (ctx.collect) Object.assign(ctx.collect, { db, dbError, lock, slots, defs, runReports, gmailBlocked, auditFailures, replyCoverage, historyUnreconciled, windows, checks, src, lastDispatch, prepAt });
   return snapshot;
 }
 

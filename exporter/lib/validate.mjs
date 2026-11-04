@@ -35,3 +35,18 @@ export function validateSnapshot(s) {
   need(isObj(s.dataQuality) && isObj(s.dataQuality.availability), 'dataQuality invalid');
   return errs;
 }
+
+const ENGINE_STATES = ['IDLE', 'PROCESSING', 'SLOW', 'STALE', 'BLOCKED', 'UNKNOWN'];
+export function validateEngine(e) {
+  const errs = [];
+  const need = (c, m) => { if (!c) errs.push(m); };
+  need(isObj(e) && e.schemaVersion === 1, 'engine schemaVersion must be 1');
+  if (!isObj(e)) return errs;
+  need(isStr(e.generatedAt) && !Number.isNaN(Date.parse(e.generatedAt)), 'engine.generatedAt invalid');
+  need(ENGINE_STATES.includes(e.state), 'engine.state invalid');
+  need(isArr(e.indicators) && e.indicators.length === 6, 'engine needs 6 indicators');
+  for (const i of e.indicators ?? []) need(['OK', 'ACTIVE', 'SLOW', 'WARN', 'BLOCKED', 'FAILED', 'UNKNOWN'].includes(i.state) && isStr(i.reason), `indicator ${i.id} invalid`);
+  need(isArr(e.diagnostics) && isObj(e.heartbeats) && isObj(e.thresholds), 'engine diagnostics/heartbeats/thresholds missing');
+  need(e.state !== 'PROCESSING' || isObj(e.process), 'PROCESSING requires process evidence');
+  return errs;
+}

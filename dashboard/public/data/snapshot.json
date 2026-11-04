@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-04T18:03:41.917Z",
+ "generatedAt": "2026-11-04T18:06:05.995Z",
  "sourceAsOf": "2026-11-04T17:53:09.517Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -57,7 +57,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 1.3h ago",
+    "detail": "Last prepared 1.4h ago",
     "blocking": false
    },
    {
@@ -971,7 +971,7 @@
    "title": "Gmail authorization missing",
    "detail": "Sending is gated until both Gmail accounts are authorized and history is reconciled.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-04T18:03:41.917Z",
+   "lastDetected": "2026-11-04T18:06:05.995Z",
    "state": "ACTIVE"
   },
   {
@@ -980,7 +980,7 @@
    "title": "Dispatch blocked · 9:30 AM ET Dispatch",
    "detail": "0 sent, 4 blocker(s). Evidence: RUN_REPORT.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-04T18:03:41.917Z",
+   "lastDetected": "2026-11-04T18:06:05.995Z",
    "state": "ACTIVE"
   },
   {
@@ -989,7 +989,7 @@
    "title": "No prepared send queue",
    "detail": "No immutable send snapshot or queued messages exist yet.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-04T18:03:41.917Z",
+   "lastDetected": "2026-11-04T18:06:05.995Z",
    "state": "ACTIVE"
   },
   {
@@ -998,7 +998,7 @@
    "title": "Daily audit failing",
    "detail": "sent history not reconciled with gmail",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-04T18:03:41.917Z",
+   "lastDetected": "2026-11-04T18:06:05.995Z",
    "state": "ACTIVE"
   },
   {
@@ -1007,7 +1007,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "6 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up, Other approved.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-04T18:03:41.917Z",
+   "lastDetected": "2026-11-04T18:06:05.995Z",
    "state": "ACTIVE"
   },
   {
@@ -1016,7 +1016,7 @@
    "title": "Reply requiring attention",
    "detail": "An inbound reply could not be read. Review it manually.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-04T18:03:41.917Z",
+   "lastDetected": "2026-11-04T18:06:05.995Z",
    "state": "ACTIVE"
   }
  ],

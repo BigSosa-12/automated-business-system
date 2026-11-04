@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { BarChart3, ClipboardList, Cog, LayoutDashboard, Mail, MessageSquareReply, RefreshCw, TriangleAlert } from 'lucide-react';
-import type { Health, Snapshot } from './types';
+import { BarChart3, ClipboardList, Cog, Cpu, LayoutDashboard, Mail, MessageSquareReply, RefreshCw, TriangleAlert } from 'lucide-react';
+import type { EngineStatus, Health, Snapshot } from './types';
 import { HealthBanner } from './components/shared';
 import { Pill } from './components/ui';
 import { Overview } from './pages/Overview';
@@ -9,6 +9,7 @@ import { Outreach } from './pages/Outreach';
 import { Replies } from './pages/Replies';
 import { Operations } from './pages/Operations';
 import { Analytics } from './pages/Analytics';
+import { Engine } from './pages/Engine';
 import { ago, fmtTime } from './format';
 
 const TABS = [
@@ -18,6 +19,7 @@ const TABS = [
   { id: 'replies', label: 'Replies', Icon: MessageSquareReply },
   { id: 'operations', label: 'Ops', Icon: Cog },
   { id: 'analytics', label: 'Analytics', Icon: BarChart3 },
+  { id: 'engine', label: 'Engine', Icon: Cpu },
 ] as const;
 type TabId = (typeof TABS)[number]['id'];
 const readHash = (): TabId => (TABS.find((t) => t.id === location.hash.slice(1))?.id ?? 'overview');
@@ -25,6 +27,7 @@ const readHash = (): TabId => (TABS.find((t) => t.id === location.hash.slice(1))
 export default function App() {
   const [tab, setTab] = useState<TabId>(readHash);
   const [snap, setSnap] = useState<Snapshot | null>(null);
+  const [engine, setEngine] = useState<EngineStatus | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [now, setNow] = useState(Date.now());
 
@@ -35,6 +38,7 @@ export default function App() {
       const j = (await r.json()) as Snapshot;
       if (j.schemaVersion !== 1) throw new Error('Unsupported snapshot version');
       setSnap(j); setErr(null);
+      try { const er = await fetch(`${import.meta.env.BASE_URL}data/engine-status.json?t=${Date.now()}`, { cache: 'no-store' }); if (er.ok) { const ej = (await er.json()) as EngineStatus; if (ej.schemaVersion === 1) setEngine(ej); } } catch { /* engine view falls back to UNKNOWN */ }
     } catch (e) { setErr(e instanceof Error ? e.message : 'Load failed'); }
   }, []);
 
@@ -81,6 +85,7 @@ export default function App() {
               {tab === 'replies' && <Replies s={snap} />}
               {tab === 'operations' && <Operations s={snap} now={now} />}
               {tab === 'analytics' && <Analytics s={snap} />}
+              {tab === 'engine' && <Engine e={engine} now={now} />}
               <div className="pagefoot">Data as of {fmtTime(snap.sourceAsOf)} · schema v{snap.schemaVersion} · exporter {snap.exporter.version} · sanitized aggregates only</div>
             </>
           )}

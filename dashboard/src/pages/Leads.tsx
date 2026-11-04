@@ -3,6 +3,7 @@ import type { Snapshot } from '../types';
 import { Kpi, Panel, Pill, invTone } from '../components/ui';
 import { num } from '../format';
 import { Funnel } from './Analytics';
+import { Templates } from './Templates';
 
 export function Leads({ s }: { s: Snapshot }) {
   const [camp, setCamp] = useState<string>('ALL');
@@ -37,6 +38,10 @@ export function Leads({ s }: { s: Snapshot }) {
           <p className="note">Individual business records stay on your computer. Open the local lead explorer to search names, contacts and history.</p>
         </Panel>
       </div>
+      <section id="templates" aria-label="Email templates">
+        <h2 className="sect">Email templates</h2>
+        <Templates />
+      </section>
     </>
   );
 }

@@ -1,4 +1,4 @@
-# Prospect Foundry · Command Center
+# Outreach OS
 
 Read-only monitoring dashboard for the Prospect Foundry outreach system. **Observability only**: it never sends email, changes suppression or leads, touches queues or locks, or triggers any run.
 

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { BarChart3, ClipboardList, Cog, Cpu, LayoutTemplate, LayoutDashboard, Mail, MessageSquareReply, RefreshCw, TriangleAlert } from 'lucide-react';
+import { BarChart3, ClipboardList, Cog, Cpu, LayoutDashboard, Mail, MessageSquareReply, RefreshCw, TriangleAlert } from 'lucide-react';
 import type { EngineStatus, Health, Snapshot } from './types';
 import { HealthBanner } from './components/shared';
 import { Pill } from './components/ui';
@@ -11,7 +11,6 @@ import { Operations } from './pages/Operations';
 import { Analytics } from './pages/Analytics';
 import { Engine } from './pages/Engine';
 import { Atmos } from './components/Atmos';
-import { Templates } from './pages/Templates';
 import { ago, fmtTime } from './format';
 
 const TABS = [
@@ -22,10 +21,9 @@ const TABS = [
   { id: 'operations', label: 'Ops', Icon: Cog },
   { id: 'analytics', label: 'Analytics', Icon: BarChart3 },
   { id: 'engine', label: 'Engine', Icon: Cpu },
-  { id: 'templates', label: 'Templates', Icon: LayoutTemplate },
 ] as const;
 type TabId = (typeof TABS)[number]['id'];
-const readHash = (): TabId => (TABS.find((t) => t.id === location.hash.slice(1))?.id ?? 'overview');
+const readHash = (): TabId => (location.hash === '#templates' ? 'leads' : (TABS.find((t) => t.id === location.hash.slice(1))?.id ?? 'overview'));
 
 export default function App() {
   const [tab, setTab] = useState<TabId>(readHash);
@@ -67,7 +65,7 @@ export default function App() {
       <div className="shell">
         <main className="main">
           <header className="topbar">
-            <div><h1>Prospect Foundry</h1><div className="sub">Command Center · read-only monitoring</div></div>
+            <div><h1>Outreach OS</h1><div className="sub">Read-only monitoring</div></div>
             <div className="sync">
               {snap && <Pill tone={stale ? 'warn' : 'info'}><RefreshCw size={11} aria-hidden />Synced {ago(snap.generatedAt, now)}</Pill>}
               {snap && <span className="sub hide-m">{fmtTime(snap.generatedAt)}</span>}
@@ -89,7 +87,6 @@ export default function App() {
               {tab === 'operations' && <Operations s={snap} now={now} />}
               {tab === 'analytics' && <Analytics s={snap} />}
               {tab === 'engine' && <Engine e={engine} now={now} />}
-              {tab === 'templates' && <Templates />}
               <div className="pagefoot">Data as of {fmtTime(snap.sourceAsOf)} · schema v{snap.schemaVersion} · exporter {snap.exporter.version} · sanitized aggregates only</div>
             </>
           )}

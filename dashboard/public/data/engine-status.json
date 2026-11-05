@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-05T17:52:52.672Z",
- "lastLogAt": "2026-11-04T18:00:03.517Z",
+ "generatedAt": "2026-11-05T18:17:52.385Z",
+ "lastLogAt": "2026-11-05T18:00:04.968Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -25,7 +25,7 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-05T17:52:52.672Z",
+   "lastSuccessAt": "2026-11-05T18:17:52.385Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
@@ -51,7 +51,7 @@
     {
      "id": "MIDDAY",
      "label": "1:00 PM ET Dispatch",
-     "state": "SCHEDULED"
+     "state": "UNKNOWN"
     },
     {
      "id": "AFTERNOON",
@@ -60,8 +60,8 @@
     }
    ],
    "next": {
-    "label": "1:00 PM ET Dispatch",
-    "at": "2026-11-05T18:00:00.000Z"
+    "label": "4:00 PM ET Dispatch",
+    "at": "2026-11-05T21:00:00.000Z"
    }
   }
  },
@@ -180,6 +180,11 @@
    "items": 0,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-05T18:00:04.818Z",
+      "text": "FoundrySend.js exit 1",
+      "ok": false
+     },
      {
       "at": "2026-11-04T18:00:02.404Z",
       "text": "FoundrySend.js exit 1",

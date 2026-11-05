@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-05T22:22:52.676Z",
- "sourceAsOf": "2026-11-05T21:04:50.138Z",
+ "generatedAt": "2026-11-05T22:27:51.639Z",
+ "sourceAsOf": "2026-11-05T22:25:12.871Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -62,7 +62,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 1.3h ago",
+    "detail": "Last prepared 0.0h ago",
     "blocking": false
    },
    {
@@ -538,7 +538,7 @@
   },
   "nextDispatchAt": "2026-11-06T14:00:00.000Z",
   "lastPreparation": {
-   "at": "2026-11-05T21:04:42.966Z",
+   "at": "2026-11-05T22:25:12.554Z",
    "rows": 1488,
    "state": "COMPLETED"
   }
@@ -663,8 +663,8 @@
   {
    "id": "VALIDATION",
    "label": "Validation",
-   "lastRun": "2026-11-05T21:04:43.392Z",
-   "lastSuccess": "2026-11-05T21:04:43.392Z",
+   "lastRun": "2026-11-05T22:25:12.691Z",
+   "lastSuccess": "2026-11-05T22:25:12.691Z",
    "durationSec": null,
    "status": "OK",
    "items": 1488,
@@ -685,8 +685,8 @@
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "lastRun": "2026-11-05T21:04:42.966Z",
-   "lastSuccess": "2026-11-05T21:04:42.966Z",
+   "lastRun": "2026-11-05T22:25:12.554Z",
+   "lastSuccess": "2026-11-05T22:25:12.554Z",
    "durationSec": null,
    "status": "OK",
    "items": 1488,
@@ -707,8 +707,8 @@
   {
    "id": "REPLY_PROCESSING",
    "label": "Replies",
-   "lastRun": "2026-11-05T19:14:38.826Z",
-   "lastSuccess": "2026-11-05T19:14:38.826Z",
+   "lastRun": "2026-11-05T22:25:12.871Z",
+   "lastSuccess": "2026-11-05T22:25:12.871Z",
    "durationSec": null,
    "status": "OK",
    "items": null,
@@ -986,7 +986,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-05T22:22:52.676Z",
+   "lastDetected": "2026-11-05T22:27:51.639Z",
    "state": "ACTIVE"
   },
   {
@@ -995,7 +995,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-05T22:22:52.676Z",
+   "lastDetected": "2026-11-05T22:27:51.639Z",
    "state": "ACTIVE"
   },
   {
@@ -1004,7 +1004,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-05T22:22:52.676Z",
+   "lastDetected": "2026-11-05T22:27:51.639Z",
    "state": "ACTIVE"
   },
   {
@@ -1013,7 +1013,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "6 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up, Other approved.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-05T22:22:52.676Z",
+   "lastDetected": "2026-11-05T22:27:51.639Z",
    "state": "ACTIVE"
   },
   {
@@ -1022,7 +1022,7 @@
    "title": "Reply requiring attention",
    "detail": "An inbound reply could not be read. Review it manually.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-05T22:22:52.676Z",
+   "lastDetected": "2026-11-05T22:27:51.639Z",
    "state": "ACTIVE"
   }
  ],
@@ -1126,17 +1126,17 @@
    {
     "name": "foundry_daily_audit",
     "present": true,
-    "asOf": "2026-11-05T21:04:43.392Z"
+    "asOf": "2026-11-05T22:25:12.691Z"
    },
    {
     "name": "foundry_day_review",
     "present": true,
-    "asOf": "2026-11-05T19:14:38.826Z"
+    "asOf": "2026-11-05T22:25:12.871Z"
    },
    {
     "name": "foundry_safety_audit",
     "present": true,
-    "asOf": "2026-11-05T21:04:50.138Z"
+    "asOf": "2026-11-05T22:25:12.818Z"
    },
    {
     "name": "foundry_safe_dispatch_report",
@@ -1146,7 +1146,7 @@
    {
     "name": "foundry_final_handoff_report",
     "present": true,
-    "asOf": "2026-11-05T21:04:42.966Z"
+    "asOf": "2026-11-05T22:25:12.554Z"
    },
    {
     "name": "foundry_production_report",
@@ -1191,7 +1191,7 @@
    {
     "name": "foundry_quarantine_report",
     "present": true,
-    "asOf": "2026-11-05T21:04:42.695Z"
+    "asOf": "2026-11-05T22:25:04.398Z"
    }
   ]
  }

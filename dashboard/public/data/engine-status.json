@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-05T22:22:52.676Z",
+ "generatedAt": "2026-11-05T22:27:51.639Z",
  "lastLogAt": "2026-11-05T21:04:50.320Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,14 +25,14 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-05T22:22:52.676Z",
+   "lastSuccessAt": "2026-11-05T22:27:51.639Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
    "state": "COMPLETED_TODAY",
-   "lastPreparationAt": "2026-11-05T21:04:42.966Z",
+   "lastPreparationAt": "2026-11-05T22:25:12.554Z",
    "lock": "FREE"
   },
   "dispatch": {
@@ -151,13 +151,18 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-05T21:04:43.435Z",
+   "lastSuccess": "2026-11-05T22:25:12.691Z",
    "activity": null,
    "errors": 1,
    "reason": "Last run completed",
    "items": 1488,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-05T22:25:12.691Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
      {
       "at": "2026-11-05T21:04:50.212Z",
       "text": "FoundrySafetyAudit.js exit 1",
@@ -166,11 +171,6 @@
      {
       "at": "2026-11-05T21:04:43.435Z",
       "text": "FoundryDailyAudit.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-05T21:04:43.392Z",
-      "text": "Report written (ok)",
       "ok": true
      },
      {
@@ -198,13 +198,18 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-05T21:04:49.716Z",
+   "lastSuccess": "2026-11-05T22:25:12.554Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
    "items": 1488,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-05T22:25:12.554Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
      {
       "at": "2026-11-05T21:04:49.716Z",
       "text": "FoundryReady.js completed",
@@ -213,11 +218,6 @@
      {
       "at": "2026-11-05T21:04:43.029Z",
       "text": "FoundryFinalHandoffExport.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-05T21:04:42.966Z",
-      "text": "Report written (ok)",
       "ok": true
      },
      {
@@ -267,7 +267,7 @@
    "id": "REPLY_PROCESSING",
    "label": "Reply Processing",
    "state": "OK",
-   "lastSuccess": "2026-11-05T19:14:38.826Z",
+   "lastSuccess": "2026-11-05T22:25:12.871Z",
    "activity": null,
    "errors": 1,
    "reason": "Last run completed",
@@ -275,7 +275,7 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-05T19:14:38.826Z",
+      "at": "2026-11-05T22:25:12.871Z",
       "text": "Report written (ok)",
       "ok": true
      }

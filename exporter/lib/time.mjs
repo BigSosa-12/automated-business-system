@@ -25,8 +25,8 @@ export function etWallToUtc(day, minutes) {
   return null;
 }
 
-// Dispatch slots mirror FoundryRun.ps1 (570/780/960) and are re-derived from the task XML when available.
-export const DEFAULT_DISPATCH_MINUTES = [570, 780, 960];
+// Dispatch slots mirror FoundryRun.ps1 (540/780/1020) and are re-derived from the task XML when available.
+export const DEFAULT_DISPATCH_MINUTES = [540, 780, 1020];
 // FoundryRun.ps1 treats [slot-5, slot+15) as protected. The exporter does no DB work inside it.
 export function inProtectedWindow(date, slots = DEFAULT_DISPATCH_MINUTES) {
   const m = etMinutes(date);

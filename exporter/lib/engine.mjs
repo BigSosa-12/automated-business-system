@@ -9,7 +9,7 @@ export const ENGINE_VERSION = 1;
 export const THRESHOLDS = {
   snapshotStaleMin: 75,        // GitHub Pages: age of published telemetry before the engine stops
   processingTtlMin: 6,         // "processing" is only claimed for this long after it was observed
-  prepWindowMin: [540, 565],   // FoundryRun.ps1: preparation runs 9:00–9:25 ET
+  prepWindowMin: [480, 505],   // FoundryRun.ps1: preparation runs 9:00–9:25 ET
   prepDeadlineMin: 25, dispatchDeadlineMin: 10, // FoundryRun.ps1 deadlines
   prepGraceMin: 15,            // after the prep deadline before a missing prep counts as MISSED
   backlogPending: 100, backlogIdleHours: 12,
@@ -67,12 +67,13 @@ export function buildEngine({ now, snap, c, dir, prevEngine, exporterRun, thresh
   }
 
   // ---- pipeline heartbeat: is a run executing right now? Evidence = OS-held execution lock inside a scheduled window ----
-  const inPrep = nowMin >= T.prepWindowMin[0] && nowMin < T.prepWindowMin[1] + 5;
+  const prepStart = (c.defs.find(d=>d.mode==='Prepare')?.minutes ?? [480,720,960]).find(m=>nowMin>=m && nowMin<m+T.prepDeadlineMin+5);
+  const inPrep = prepStart != null;
   const slot = c.slots.find((s) => nowMin >= s && nowMin < s + T.dispatchDeadlineMin + 5);
   const running = lock.state === 'HELD' && (inPrep || slot != null);
   const mode = running ? (slot != null ? 'Dispatch' : 'Prepare') : null;
-  const windowStartMin = running ? (slot ?? T.prepWindowMin[0]) : null;
-  const deadlineMin = running ? (slot != null ? slot + T.dispatchDeadlineMin : T.prepWindowMin[0] + T.prepDeadlineMin) : null;
+  const windowStartMin = running ? (slot ?? prepStart) : null;
+  const deadlineMin = running ? (slot != null ? slot + T.dispatchDeadlineMin : prepStart + T.prepDeadlineMin) : null;
   const runLog = running ? log.filter((l) => etDay(l.at) === day && l.mode === mode && etMinutes(l.at) >= windowStartMin - 1) : [];
   const lastStep = [...runLog].reverse().find((l) => l.kind === 'STEP');
   const startedLowerBound = runLog[0]?.at ?? etWallToUtc(day, windowStartMin ?? 0);
@@ -161,7 +162,7 @@ export function buildEngine({ now, snap, c, dir, prevEngine, exporterRun, thresh
     heartbeats: {
       exporter: { lastSuccessAt: nowIso, lastError: exporterRun?.lastError ? scrub(exporterRun.lastError, 160) : null, staleAfterMin: T.snapshotStaleMin, note: 'Age is judged from this file’s publish time on GitHub Pages' },
       pipeline: { state: running ? 'RUNNING' : staleLock ? 'LOCK_ANOMALY' : lock.state === 'UNKNOWN' ? 'UNKNOWN' : prepToday ? 'COMPLETED_TODAY' : 'NO_RUN_EVIDENCE_TODAY', lastPreparationAt: toIso(c.prepAt), lock: lock.state },
-      dispatch: { state: gmailBlocked ? 'BLOCKED' : badWin.length ? 'FAILED' : 'GATES_OK', gates: { gmailAuthorization: gmailBlocked ? 'FAIL' : 'OK', safetyAudit: c.src.foundry_safety_audit.data?.status ?? 'UNKNOWN', dailyCap: snap.outreach.dailyCap }, windows: c.windows.map((w) => ({ id: w.id, label: w.label, state: w.state })), next: nextWin ? { label: nextWin.label, at: nextWin.scheduledAt } : null },
+      dispatch: { state: gmailBlocked || c.defs.some(d=>d.mode==='Dispatch' && !d.enabled) ? 'BLOCKED' : badWin.length ? 'FAILED' : 'GATES_OK', gates: { gmailAuthorization: gmailBlocked ? 'FAIL' : 'OK', safetyAudit: c.src.foundry_safety_audit.data?.status ?? 'UNKNOWN', dailyCap: snap.outreach.dailyCap }, windows: c.windows.map((w) => ({ id: w.id, label: w.label, state: w.state })), next: nextWin ? { label: nextWin.label, at: nextWin.scheduledAt } : null },
     },
     indicators, activePathways: running ? [activeStage] : [],
     diagnostics: issues.slice(0, 12),

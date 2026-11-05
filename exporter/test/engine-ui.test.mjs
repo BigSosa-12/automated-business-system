@@ -1,3 +1,4 @@
+import {fileURLToPath} from 'node:url';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -21,7 +22,7 @@ test('invalid timestamp is UNKNOWN', () => assert.equal(engineView(mk('IDLE', 1,
 
 test('frontend is read-only except the Templates tab, which may only POST to the local Template Studio', () => {
   const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]));
-  const files = walk(new URL('../../dashboard/src', import.meta.url).pathname).filter((f) => /\.(tsx?|jsx?)$/.test(f));
+  const files = walk(fileURLToPath(new URL('../../dashboard/src', import.meta.url))).filter((f) => /\.(tsx?|jsx?)$/.test(f));
   const bad = /XMLHttpRequest|sendBeacon|WebSocket|method\s*:\s*['"`](PUT|PATCH|DELETE)|<form\b|localStorage\.setItem/i;
   for (const f of files) assert.doesNotMatch(fs.readFileSync(f, 'utf8'), bad, f);
   for (const f of files.filter((x) => !x.endsWith('Templates.tsx'))) {
@@ -35,3 +36,4 @@ test('frontend is read-only except the Templates tab, which may only POST to the
   assert.ok(urls.length >= 1); for (const u of urls) assert.match(u, /STUDIO/, 'Templates may only call the local Studio');
   assert.doesNotMatch(tpl, /https?:\/\/(?!127\.0\.0\.1)/, 'no other hosts');
 });
+

@@ -17,8 +17,8 @@ export function Operations({ s, now }: { s: Snapshot; now: number }) {
       <div className="grid cols-eq">
         <Panel title="Scheduled tasks" meta={s.schedulerEvidence.available ? 'From Windows Task Scheduler' : 'Definitions only: run results unavailable'}>
           <div className="tbl-wrap"><table><thead><tr><th>Task</th><th>Mode</th><th>Times</th>{s.schedulerEvidence.available && <th>Last result</th>}</tr></thead>
-            <tbody>{s.schedules.map((t) => <tr key={t.name}><td>{t.name.replace('BattleCreek_Prospect_Foundry_', '')}</td><td>{t.mode ?? '—'}</td><td>{t.times.join(', ')}</td>{s.schedulerEvidence.available && <td>{t.lastResult ?? '—'}</td>}</tr>)}</tbody></table></div>
-          <p className="note">9:00 preparation finishes by 9:25. Dispatch-only windows at 9:30 AM, 1:00 PM and 4:00 PM ET. The dashboard is read-only and never restarts a task or clears a lock.</p>
+            <tbody>{s.schedules.map((t) => <tr key={t.name}><td>{t.name.replace('BattleCreek_Prospect_Foundry_', '')}</td><td>{(t.mode ?? '—') + (t.enabled === false ? ' (disabled)' : '')}</td><td>{t.times.join(', ')}</td>{s.schedulerEvidence.available && <td>{t.lastResult ?? '—'}</td>}</tr>)}</tbody></table></div>
+          <p className="note">Preparation runs one hour before each dispatch window. All times are Eastern. The dashboard is read-only and never restarts a task or clears a lock.</p>
         </Panel>
         <Panel title="Locks & data quality">
           <div className="grid" style={{ gridTemplateColumns: 'repeat(2, minmax(0,1fr))', gap: 10 }}>

@@ -130,7 +130,7 @@ test('timezone: DST transitions resolve correctly', () => {
 });
 test('protected window mirrors FoundryRun.ps1 ([slot-5, slot+15))', () => {
   const at = (h, m) => etWallToUtc('2026-11-04', h * 60 + m);
-  assert.ok(inProtectedWindow(at(9, 25)) && inProtectedWindow(at(9, 44)) && !inProtectedWindow(at(9, 45)) && !inProtectedWindow(at(9, 24)));
+  assert.ok(inProtectedWindow(at(8, 55)) && inProtectedWindow(at(9, 14)) && !inProtectedWindow(at(9, 15)) && !inProtectedWindow(at(8, 54)));
   assert.ok(inProtectedWindow(at(12, 55)) && !inProtectedWindow(at(11, 0)));
 });
 test('csv parser handles quotes and commas', () => {
@@ -180,7 +180,7 @@ test('engine: healthy gates + no lock + midday => IDLE, never STALE/BLOCKED, nev
   assert.equal(e.process, null);
 });
 test('engine: lock held inside prep window => PROCESSING with evidence', () => {
-  const { e } = eng(fixture({ gmailBlocked: false }), at(9, 10), { lockOverride: { state: 'HELD' } });
+  const { e } = eng(fixture({ gmailBlocked: false }), at(8, 10), { lockOverride: { state: 'HELD' } });
   if (e.state === 'PROCESSING') { assert.ok(e.process); assert.ok(e.process.evidence); assert.ok(e.activePathways.length > 0); }
   else assert.ok(['SLOW', 'BLOCKED', 'UNKNOWN'].includes(e.state)); // never silently healthy
   assert.deepEqual(validateEngine(e), []);

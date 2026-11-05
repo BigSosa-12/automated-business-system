@@ -28,7 +28,7 @@ export function buildSnapshot(ctx) {
   const { dir, now, prev, exporterRun, scheduler } = ctx;
   const today = etDay(now);
   const src = {};
-  const names = ['foundry_health_report', 'foundry_daily_audit', 'foundry_day_review', 'foundry_safety_audit', 'foundry_safe_dispatch_report',
+  const names = ['foundry_contact_evidence_audit', 'foundry_health_report', 'foundry_daily_audit', 'foundry_day_review', 'foundry_safety_audit', 'foundry_safe_dispatch_report',
     'foundry_final_handoff_report', 'foundry_production_report', 'foundry_learning_report', 'foundry_targeted_discovery_report',
     'foundry_contact_enrichment_report', 'foundry_local_digital_enrichment_report', 'foundry_full_classification_report',
     'suppression_reconcile_report', 'foundry_discovery_import_report', 'foundry_quarantine_report'];
@@ -110,6 +110,7 @@ export function buildSnapshot(ctx) {
       const sentN = Number.isFinite(ex.emails_sent) ? ex.emails_sent : null;
       return { ...base, state: blockers.length && !sentN ? 'BLOCKED' : 'COMPLETED', finishedAt: toIso(parseTime(rep.r.data.at)), sent: sentN, errors: blockers.length, runId: rep.file.replace(/\.json$/, ''), evidence: 'RUN_REPORT' };
     }
+    if (defs.find(d => d.mode === 'Dispatch')?.enabled === false) return { ...base, state: 'BLOCKED', evidence: 'TASK_SCHEDULER' };
     if (nowMin < slot) return { ...base, state: 'SCHEDULED' };
     if (nowMin < slot + 15 && lock.state === 'HELD') return { ...base, state: 'RUNNING', evidence: 'LOCK_HELD' };
     const tk = taskFor('Dispatch', slot);
@@ -168,15 +169,17 @@ export function buildSnapshot(ctx) {
   const checks = [];
   const add = (id, label, state, detail, blocking = false) => checks.push({ id, label, state, detail, blocking });
   add('sqlite_read', 'CRM database readable', db ? 'OK' : 'FAIL', db ? 'Read-only snapshot taken' : `Read failed (${scrub(dbError, 60)})`, true);
+  const evidence = src.foundry_contact_evidence_audit.data;
+  if (evidence) add('contact_evidence','Verified email routes',evidence.evidence_pass ? 'OK' : 'FAIL',evidence.evidence_pass+' of '+evidence.routes+' routes pass the contact evidence check',true);
   add('gmail_authorization', 'Gmail authorization', gmailBlocked ? 'FAIL' : safety ? 'OK' : 'UNKNOWN', gmailBlocked ? 'Configuration / authorization incomplete; sender is gated' : safety ? 'No blocking safety failures' : 'Safety audit missing', true);
   add('safety_audit', 'Send-safety audit', safety ? (safety.status === 'BLOCKED' ? 'FAIL' : 'OK') : 'UNKNOWN', safety ? `Status ${safety.status}` : 'foundry_safety_audit.json missing', true);
   add('quality_audit', 'Daily quality audit', audit ? (audit.status === 'PASS' ? 'OK' : 'WARN') : 'UNKNOWN', audit ? (auditFailures.length ? auditFailures.join(', ') : 'Passed') : 'foundry_daily_audit.json missing');
   add('ledger_reconciliation', 'Gmail ↔ CRM ledger reconciliation', historyUnreconciled ? 'WARN' : 'OK', historyUnreconciled ? 'Historical Gmail sends not reconciled; zero local sends is not proof of zero sent' : 'Reconciled');
   const prepAge = ageH(prepAt);
   add('preparation_fresh', 'Preparation freshness', prepAt ? (prepAge <= 26 ? 'OK' : 'WARN') : 'UNKNOWN', prepAt ? `Last prepared ${prepAge.toFixed(1)}h ago` : 'No preparation report');
-  const sched3 = defs.some((d) => d.mode === 'Dispatch' && d.minutes.length === 3 && d.enabled);
+  const sched3 = defs.some((d) => d.mode === 'Dispatch' && d.minutes.slice().sort((a,b)=>a-b).join(',') === DEFAULT_DISPATCH_MINUTES.join(','));
   add('dispatch_controls', 'Dispatch schedule (3 windows)', defs.length ? (sched3 ? 'OK' : 'WARN') : 'UNKNOWN', defs.length ? `Windows ${slots.map(fmtHm).join(' · ')}` : 'Task definitions not found');
-  const lockExpected = inProtectedWindow(now, slots) || (nowMin >= 540 && nowMin < 565);
+  const lockExpected = inProtectedWindow(now, slots) || [480,720,960].some(start => nowMin >= start && nowMin < start+25);
   add('production_lock', 'Execution lock', lock.state === 'HELD' && !lockExpected ? 'WARN' : lock.state === 'UNKNOWN' ? 'UNKNOWN' : 'OK', lock.state === 'HELD' ? (lockExpected ? 'Held by an active run' : 'Held outside a scheduled window; possible overlap or stuck run') : `Lock ${lock.state.toLowerCase()}`);
   add('duplicate_risk', 'One READY campaign per business', db ? (db.readyMultiService ? 'WARN' : 'OK') : 'UNKNOWN', db ? `${db.readyMultiService} business(es) READY in more than one campaign` : 'Unavailable');
   add('suppression_integrity', 'Suppression integrity', db ? (db.readySuppressed ? 'FAIL' : 'OK') : 'UNKNOWN', db ? `${db.readySuppressed} suppressed contact(s) in READY routes` : 'Unavailable', true);

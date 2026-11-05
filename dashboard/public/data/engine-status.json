@@ -1,13 +1,13 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-05T19:12:52.915Z",
+ "generatedAt": "2026-11-05T19:18:26.499Z",
  "lastLogAt": "2026-11-05T18:00:04.968Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
   "prepWindowMin": [
-   540,
-   565
+   480,
+   505
   ],
   "prepDeadlineMin": 25,
   "dispatchDeadlineMin": 10,
@@ -19,24 +19,24 @@
   "minBaselineSamples": 5
  },
  "state": "BLOCKED",
- "stoppedKind": "BLOCKED",
+ "stoppedKind": "FAILED",
  "caution": false,
- "headline": "Blocking health check failed",
+ "headline": "Dispatch window did not complete cleanly",
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-05T19:12:52.915Z",
+   "lastSuccessAt": "2026-11-05T19:18:26.499Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "NO_RUN_EVIDENCE_TODAY",
-   "lastPreparationAt": "2026-11-05T02:13:29.000Z",
+   "state": "COMPLETED_TODAY",
+   "lastPreparationAt": "2026-11-05T19:18:27.120Z",
    "lock": "FREE"
   },
   "dispatch": {
-   "state": "GATES_OK",
+   "state": "BLOCKED",
    "gates": {
     "gmailAuthorization": "OK",
     "safetyAudit": "BLOCKED",
@@ -46,23 +46,20 @@
     {
      "id": "MORNING",
      "label": "9:00 AM ET Dispatch",
-     "state": "UNKNOWN"
+     "state": "BLOCKED"
     },
     {
      "id": "MIDDAY",
      "label": "1:00 PM ET Dispatch",
-     "state": "UNKNOWN"
+     "state": "BLOCKED"
     },
     {
      "id": "AFTERNOON",
      "label": "5:00 PM ET Dispatch",
-     "state": "SCHEDULED"
+     "state": "BLOCKED"
     }
    ],
-   "next": {
-    "label": "5:00 PM ET Dispatch",
-    "at": "2026-11-05T22:00:00.000Z"
-   }
+   "next": null
   }
  },
  "indicators": [
@@ -74,11 +71,11 @@
    "activity": null,
    "errors": 1,
    "reason": "1 source job(s) unavailable",
-   "items": 2908,
+   "items": 2946,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-04T14:42:57.247Z",
+      "at": "2026-11-05T19:16:09.798Z",
       "text": "Report written (degraded)",
       "ok": false
      }
@@ -92,15 +89,15 @@
    "id": "CLASSIFICATION",
    "label": "Classification",
    "state": "OK",
-   "lastSuccess": "2026-11-04T14:46:36.521Z",
+   "lastSuccess": "2026-11-05T19:16:35.238Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 5704,
+   "items": 5739,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-04T14:46:36.521Z",
+      "at": "2026-11-05T19:16:35.238Z",
       "text": "Report written (ok)",
       "ok": true
      }
@@ -114,15 +111,15 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-05T02:13:29.193Z",
+   "lastSuccess": "2026-11-05T19:18:27.380Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 1077,
+   "items": 1463,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-05T02:13:29.193Z",
+      "at": "2026-11-05T19:18:27.380Z",
       "text": "Report written (ok)",
       "ok": true
      },
@@ -151,15 +148,15 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-05T02:13:29.000Z",
+   "lastSuccess": "2026-11-05T19:18:27.120Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 1077,
+   "items": 1463,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-05T02:13:29.000Z",
+      "at": "2026-11-05T19:18:27.120Z",
       "text": "Report written (ok)",
       "ok": true
      }
@@ -172,11 +169,11 @@
   {
    "id": "GMAIL_DISPATCH",
    "label": "Gmail Dispatch",
-   "state": "BLOCKED",
+   "state": "FAILED",
    "lastSuccess": null,
    "activity": null,
    "errors": 5,
-   "reason": "Stage blocked",
+   "reason": "Window blocked today",
    "items": 0,
    "detail": {
     "recent": [
@@ -198,14 +195,14 @@
     ],
     "durationSec": null,
     "baselineMedianSec": null,
-    "latestIssue": "Stage blocked"
+    "latestIssue": "Window blocked today"
    }
   },
   {
    "id": "REPLY_PROCESSING",
    "label": "Reply Processing",
    "state": "OK",
-   "lastSuccess": "2026-11-05T02:13:29.366Z",
+   "lastSuccess": "2026-11-05T19:14:38.826Z",
    "activity": null,
    "errors": 1,
    "reason": "Last run completed",
@@ -213,7 +210,7 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-05T02:13:29.366Z",
+      "at": "2026-11-05T19:14:38.826Z",
       "text": "Report written (ok)",
       "ok": true
      }
@@ -227,13 +224,15 @@
  "activePathways": [],
  "diagnostics": [
   {
-   "id": "MISSED_PREP",
-   "rank": 80,
-   "severity": "WARNING",
-   "stage": "QUEUE_PREPARATION",
-   "title": "No preparation report today",
+   "id": "DISPATCH_ERRORS",
+   "rank": 90,
+   "severity": "CRITICAL",
+   "stage": "GMAIL_DISPATCH",
+   "title": "Dispatch window did not complete cleanly",
    "evidence": [
-    "Expected by 9:40 AM ET; latest report 2026-11-05T02:13:29.000Z"
+    "9:00 AM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)",
+    "1:00 PM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)",
+    "5:00 PM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)"
    ]
   },
   {
@@ -245,9 +244,9 @@
    "evidence": [
     "Interior detailing: 106 EMAIL-ready (CRITICAL < 150)",
     "Property services: 65 EMAIL-ready (CRITICAL < 150)",
-    "Website design: 27 EMAIL-ready (CRITICAL < 150)",
-    "Inquiry follow-up: 32 EMAIL-ready (CRITICAL < 150)",
-    "Estimate follow-up: 49 EMAIL-ready (CRITICAL < 150)",
+    "Website design: 122 EMAIL-ready (CRITICAL < 150)",
+    "Inquiry follow-up: 35 EMAIL-ready (CRITICAL < 150)",
+    "Estimate follow-up: 51 EMAIL-ready (CRITICAL < 150)",
     "Other approved: 19 EMAIL-ready (CRITICAL < 150)",
     "No immutable send snapshot prepared (safety_snapshots empty)"
    ]
@@ -264,11 +263,11 @@
   }
  ],
  "metrics": {
-  "ready": 1077,
+  "ready": 1463,
   "sentToday": 0,
   "dailyCap": 50,
   "preparedSnapshots": 0,
-  "total": 5704
+  "total": 5739
  },
  "baselines": {
   "FoundryDailyAudit.js": [

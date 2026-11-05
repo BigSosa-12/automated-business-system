@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-04T18:06:05.995Z",
- "lastLogAt": "2026-11-04T16:35:54.607Z",
+ "generatedAt": "2026-11-05T02:21:29.443Z",
+ "lastLogAt": "2026-11-04T18:00:03.517Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -19,26 +19,26 @@
   "minBaselineSamples": 5
  },
  "state": "BLOCKED",
- "stoppedKind": "BLOCKED",
+ "stoppedKind": "FAILED",
  "caution": false,
- "headline": "Gmail authorization incomplete",
+ "headline": "Dispatch window did not complete cleanly",
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-04T18:06:05.995Z",
+   "lastSuccessAt": "2026-11-05T02:21:29.443Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
    "state": "COMPLETED_TODAY",
-   "lastPreparationAt": "2026-11-04T16:42:49.219Z",
-   "lock": "ABSENT"
+   "lastPreparationAt": "2026-11-05T02:13:29.000Z",
+   "lock": "FREE"
   },
   "dispatch": {
-   "state": "BLOCKED",
+   "state": "FAILED",
    "gates": {
-    "gmailAuthorization": "FAIL",
+    "gmailAuthorization": "OK",
     "safetyAudit": "BLOCKED",
     "dailyCap": 50
    },
@@ -56,13 +56,10 @@
     {
      "id": "AFTERNOON",
      "label": "4:00 PM ET Dispatch",
-     "state": "SCHEDULED"
+     "state": "UNKNOWN"
     }
    ],
-   "next": {
-    "label": "4:00 PM ET Dispatch",
-    "at": "2026-11-04T21:00:00.000Z"
-   }
+   "next": null
   }
  },
  "indicators": [
@@ -113,18 +110,18 @@
   {
    "id": "VERIFICATION",
    "label": "Verification",
-   "state": "FAILED",
-   "lastSuccess": "2026-11-04T16:28:30.291Z",
+   "state": "OK",
+   "lastSuccess": "2026-11-05T02:13:29.193Z",
    "activity": null,
-   "errors": 3,
-   "reason": "Audit failing: sent history not reconciled with gmail",
+   "errors": 2,
+   "reason": "Last run completed",
    "items": 1077,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-04T16:42:49.428Z",
-      "text": "Report written (failed)",
-      "ok": false
+      "at": "2026-11-05T02:13:29.193Z",
+      "text": "Report written (ok)",
+      "ok": true
      },
      {
       "at": "2026-11-04T16:28:30.521Z",
@@ -144,14 +141,14 @@
     ],
     "durationSec": 0.23,
     "baselineMedianSec": null,
-    "latestIssue": "Audit failing: sent history not reconciled with gmail"
+    "latestIssue": null
    }
   },
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-04T16:42:49.219Z",
+   "lastSuccess": "2026-11-05T02:13:29.000Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
@@ -159,7 +156,7 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-04T16:42:49.219Z",
+      "at": "2026-11-05T02:13:29.000Z",
       "text": "Report written (ok)",
       "ok": true
      }
@@ -172,14 +169,19 @@
   {
    "id": "GMAIL_DISPATCH",
    "label": "Gmail Dispatch",
-   "state": "BLOCKED",
+   "state": "FAILED",
    "lastSuccess": null,
    "activity": null,
-   "errors": 4,
-   "reason": "Gmail authorization incomplete. Sender is gated.",
+   "errors": 5,
+   "reason": "Window blocked today",
    "items": 0,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-04T18:00:02.404Z",
+      "text": "FoundrySend.js exit 1",
+      "ok": false
+     },
      {
       "at": "2026-11-04T14:33:44.819Z",
       "text": "Report written (blocked)",
@@ -188,46 +190,34 @@
     ],
     "durationSec": null,
     "baselineMedianSec": null,
-    "latestIssue": "Gmail authorization incomplete. Sender is gated."
+    "latestIssue": "Window blocked today"
    }
   },
   {
    "id": "REPLY_PROCESSING",
    "label": "Reply Processing",
-   "state": "BLOCKED",
-   "lastSuccess": null,
+   "state": "OK",
+   "lastSuccess": "2026-11-05T02:13:29.366Z",
    "activity": null,
    "errors": 1,
-   "reason": "Reply review blocked: Gmail configuration missing",
+   "reason": "Last run completed",
    "items": null,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-04T16:42:49.630Z",
-      "text": "Report written (unknown)",
-      "ok": false
+      "at": "2026-11-05T02:13:29.366Z",
+      "text": "Report written (ok)",
+      "ok": true
      }
     ],
     "durationSec": null,
     "baselineMedianSec": null,
-    "latestIssue": "Reply review blocked: Gmail configuration missing"
+    "latestIssue": null
    }
   }
  ],
  "activePathways": [],
  "diagnostics": [
-  {
-   "id": "GMAIL_AUTH",
-   "rank": 95,
-   "severity": "CRITICAL",
-   "stage": "GMAIL_DISPATCH",
-   "title": "Gmail authorization incomplete",
-   "evidence": [
-    "foundry_safety_audit: GMAIL_CONFIGURATION_MISSING",
-    "foundry_safety_audit: GMAIL_AUTHORIZATION_AND_CONTACT_VERIFICATION_REQUIRED",
-    "safety_control: GMAIL_AUTHORIZATION_AND_CONTACT_VERIFICATION_REQUIRED"
-   ]
-  },
   {
    "id": "DISPATCH_ERRORS",
    "rank": 90,
@@ -236,16 +226,6 @@
    "title": "Dispatch window did not complete cleanly",
    "evidence": [
     "9:30 AM ET Dispatch: BLOCKED (0 sent, 4 blocker(s); run report)"
-   ]
-  },
-  {
-   "id": "VALIDATION_FAILED",
-   "rank": 65,
-   "severity": "WARNING",
-   "stage": "VERIFICATION",
-   "title": "Daily audit failing",
-   "evidence": [
-    "foundry_daily_audit: SENT_HISTORY_NOT_RECONCILED_WITH_GMAIL"
    ]
   },
   {
@@ -262,16 +242,6 @@
     "Estimate follow-up: 49 EMAIL-ready (CRITICAL < 150)",
     "Other approved: 19 EMAIL-ready (CRITICAL < 150)",
     "No immutable send snapshot prepared (safety_snapshots empty)"
-   ]
-  },
-  {
-   "id": "CRM_LEDGER_MISMATCH",
-   "rank": 50,
-   "severity": "WARNING",
-   "stage": "VERIFICATION",
-   "title": "CRM and Gmail ledger not reconciled",
-   "evidence": [
-    "Gmail send history not reconciled; local zero sends is not proof of zero sent"
    ]
   },
   {

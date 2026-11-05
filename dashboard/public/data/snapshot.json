@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-04T18:06:05.995Z",
- "sourceAsOf": "2026-11-04T17:53:09.517Z",
+ "generatedAt": "2026-11-05T02:21:29.443Z",
+ "sourceAsOf": "2026-11-05T02:13:29.366Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -12,10 +12,7 @@
  "health": {
   "status": "BLOCKED",
   "reasons": [
-   "Gmail authorization: Configuration / authorization incomplete; sender is gated",
-   "Send-safety audit: Status BLOCKED",
-   "Daily quality audit: SENT_HISTORY_NOT_RECONCILED_WITH_GMAIL",
-   "Gmail ↔ CRM ledger reconciliation: Historical Gmail sends not reconciled; zero local sends is not proof of zero sent"
+   "Send-safety audit: Status BLOCKED"
   ],
   "checks": [
    {
@@ -28,8 +25,8 @@
    {
     "id": "gmail_authorization",
     "label": "Gmail authorization",
-    "state": "FAIL",
-    "detail": "Configuration / authorization incomplete; sender is gated",
+    "state": "OK",
+    "detail": "No blocking safety failures",
     "blocking": true
    },
    {
@@ -42,22 +39,22 @@
    {
     "id": "quality_audit",
     "label": "Daily quality audit",
-    "state": "WARN",
-    "detail": "SENT_HISTORY_NOT_RECONCILED_WITH_GMAIL",
+    "state": "OK",
+    "detail": "Passed",
     "blocking": false
    },
    {
     "id": "ledger_reconciliation",
     "label": "Gmail ↔ CRM ledger reconciliation",
-    "state": "WARN",
-    "detail": "Historical Gmail sends not reconciled; zero local sends is not proof of zero sent",
+    "state": "OK",
+    "detail": "Reconciled",
     "blocking": false
    },
    {
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 1.4h ago",
+    "detail": "Last prepared 0.1h ago",
     "blocking": false
    },
    {
@@ -71,7 +68,7 @@
     "id": "production_lock",
     "label": "Execution lock",
     "state": "OK",
-    "detail": "Lock absent",
+    "detail": "Lock free",
     "blocking": false
    },
    {
@@ -334,10 +331,10 @@
   "sentThisMonth": 0,
   "sent7d": 0,
   "sent30d": 4,
-  "capacityNote": "Nominal capacity. Sending is blocked until Gmail authorization is complete.",
+  "capacityNote": "50 total across all three windows.",
   "coverage": {
-   "status": "PARTIAL",
-   "note": "Counts come from send ledgers and CRM events. Gmail history is not fully reconciled, so zero here is not proof of zero sent."
+   "status": "FULL",
+   "note": "Gmail history reconciled."
   },
   "evidence": "GMAIL_API_ACCEPTED",
   "inboxDeliveryConfirmed": false,
@@ -520,7 +517,7 @@
     "errors": null,
     "runId": null,
     "evidence": "NONE",
-    "state": "SCHEDULED"
+    "state": "UNKNOWN"
    }
   ],
   "lastDispatch": {
@@ -535,24 +532,24 @@
     "WEBSITE_WORLD count is inconsistent: post-controller log reports 530 READY, while current handoff contains 152 total (39 EMAIL, 113 FORM)."
    ]
   },
-  "nextDispatchAt": "2026-11-04T21:00:00.000Z",
+  "nextDispatchAt": "2026-11-05T14:30:00.000Z",
   "lastPreparation": {
-   "at": "2026-11-04T16:42:49.219Z",
+   "at": "2026-11-05T02:13:29.000Z",
    "rows": 1077,
    "state": "COMPLETED"
   }
  },
  "replies": {
-  "coverage": "UNKNOWN",
+  "coverage": "COMPLETE_AVAILABLE_GMAIL_THROUGH_REVIEW",
   "counts": {
-   "POSITIVE": null,
-   "QUESTION": null,
-   "NOT_NOW": null,
-   "DECLINE": null,
-   "STOP": null,
-   "AUTO_REPLY": null,
-   "BOUNCE": null,
-   "UNKNOWN": null
+   "POSITIVE": 0,
+   "QUESTION": 0,
+   "NOT_NOW": 0,
+   "DECLINE": 0,
+   "STOP": 0,
+   "AUTO_REPLY": 0,
+   "BOUNCE": 0,
+   "UNKNOWN": 0
   },
   "converted": null,
   "rates": {
@@ -616,12 +613,12 @@
   }
  ],
  "schedulerEvidence": {
-  "available": false,
-  "reason": "NOT_WINDOWS"
+  "available": true,
+  "reason": null
  },
  "locks": {
-  "production": "ABSENT",
-  "protectedWindowNow": true
+  "production": "FREE",
+  "protectedWindowNow": false
  },
  "pipeline": [
   {
@@ -660,30 +657,30 @@
   {
    "id": "VALIDATION",
    "label": "Validation",
-   "lastRun": "2026-11-04T16:42:49.428Z",
-   "lastSuccess": null,
+   "lastRun": "2026-11-05T02:13:29.193Z",
+   "lastSuccess": "2026-11-05T02:13:29.193Z",
    "durationSec": null,
-   "status": "FAILED",
+   "status": "OK",
    "items": 1077,
-   "errors": 1,
-   "note": "sent history not reconciled with gmail"
+   "errors": 0,
+   "note": null
   },
   {
    "id": "RECONCILIATION",
    "label": "Reconciliation",
-   "lastRun": "2026-11-04T17:53:09.517Z",
-   "lastSuccess": null,
+   "lastRun": "2026-11-04T14:41:32.448Z",
+   "lastSuccess": "2026-11-04T14:41:32.448Z",
    "durationSec": null,
-   "status": "DEGRADED",
+   "status": "OK",
    "items": 3,
-   "errors": 1,
-   "note": "Gmail send history not reconciled"
+   "errors": 0,
+   "note": null
   },
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "lastRun": "2026-11-04T16:42:49.219Z",
-   "lastSuccess": "2026-11-04T16:42:49.219Z",
+   "lastRun": "2026-11-05T02:13:29.000Z",
+   "lastSuccess": "2026-11-05T02:13:29.000Z",
    "durationSec": null,
    "status": "OK",
    "items": 1077,
@@ -699,18 +696,18 @@
    "status": "BLOCKED",
    "items": 0,
    "errors": 4,
-   "note": "Gmail authorization incomplete"
+   "note": null
   },
   {
    "id": "REPLY_PROCESSING",
    "label": "Replies",
-   "lastRun": "2026-11-04T16:42:49.630Z",
-   "lastSuccess": null,
+   "lastRun": "2026-11-05T02:13:29.366Z",
+   "lastSuccess": "2026-11-05T02:13:29.366Z",
    "durationSec": null,
-   "status": "UNKNOWN",
+   "status": "OK",
    "items": null,
    "errors": 1,
-   "note": "Reply coverage incomplete"
+   "note": null
   },
   {
    "id": "LEARNING",
@@ -959,28 +956,19 @@
     "completed": 0,
     "failed": 0,
     "blocked": 1,
-    "unknown": 1
+    "unknown": 2
    }
   ],
   "conversionTrend": []
  },
  "alerts": [
   {
-   "id": "GMAIL_AUTH_MISSING",
-   "severity": "CRITICAL",
-   "title": "Gmail authorization missing",
-   "detail": "Sending is gated until both Gmail accounts are authorized and history is reconciled.",
-   "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-04T18:06:05.995Z",
-   "state": "ACTIVE"
-  },
-  {
    "id": "DISPATCH_BLOCKED_MORNING",
    "severity": "CRITICAL",
    "title": "Dispatch blocked · 9:30 AM ET Dispatch",
    "detail": "0 sent, 4 blocker(s). Evidence: RUN_REPORT.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-04T18:06:05.995Z",
+   "lastDetected": "2026-11-05T02:21:29.443Z",
    "state": "ACTIVE"
   },
   {
@@ -989,16 +977,7 @@
    "title": "No prepared send queue",
    "detail": "No immutable send snapshot or queued messages exist yet.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-04T18:06:05.995Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "QUALITY_AUDIT_FAIL",
-   "severity": "WARNING",
-   "title": "Daily audit failing",
-   "detail": "sent history not reconciled with gmail",
-   "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-04T18:06:05.995Z",
+   "lastDetected": "2026-11-05T02:21:29.443Z",
    "state": "ACTIVE"
   },
   {
@@ -1007,7 +986,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "6 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up, Other approved.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-04T18:06:05.995Z",
+   "lastDetected": "2026-11-05T02:21:29.443Z",
    "state": "ACTIVE"
   },
   {
@@ -1016,7 +995,7 @@
    "title": "Reply requiring attention",
    "detail": "An inbound reply could not be read. Review it manually.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-04T18:06:05.995Z",
+   "lastDetected": "2026-11-05T02:21:29.443Z",
    "state": "ACTIVE"
   }
  ],
@@ -1034,7 +1013,7 @@
      "completed": 0,
      "failed": 0,
      "blocked": 1,
-     "unknown": 1
+     "unknown": 2
     }
    }
   ]
@@ -1054,8 +1033,8 @@
     "note": "No inbox-delivery evidence; only Gmail API acceptance"
    },
    "replies": {
-    "state": "UNAVAILABLE",
-    "note": "Reply coverage unknown"
+    "state": "PARTIAL",
+    "note": "Reply coverage complete_available_gmail_through_review"
    },
    "conversions": {
     "state": "NOT_TRACKED",
@@ -1066,8 +1045,8 @@
     "note": "Sales/revenue not recorded"
    },
    "taskScheduler": {
-    "state": "UNAVAILABLE",
-    "note": "Task definitions only (no run results)"
+    "state": "AVAILABLE",
+    "note": "schtasks query"
    }
   },
   "crossChecks": [
@@ -1101,27 +1080,27 @@
    {
     "name": "foundry_daily_audit",
     "present": true,
-    "asOf": "2026-11-04T16:42:49.428Z"
+    "asOf": "2026-11-05T02:13:29.193Z"
    },
    {
     "name": "foundry_day_review",
     "present": true,
-    "asOf": "2026-11-04T16:42:49.630Z"
+    "asOf": "2026-11-05T02:13:29.366Z"
    },
    {
     "name": "foundry_safety_audit",
     "present": true,
-    "asOf": "2026-11-04T16:42:49.590Z"
+    "asOf": "2026-11-05T02:13:29.334Z"
    },
    {
     "name": "foundry_safe_dispatch_report",
     "present": true,
-    "asOf": "2026-11-04T16:27:21.251Z"
+    "asOf": "2026-11-04T18:00:02.059Z"
    },
    {
     "name": "foundry_final_handoff_report",
     "present": true,
-    "asOf": "2026-11-04T16:42:49.219Z"
+    "asOf": "2026-11-05T02:13:29.000Z"
    },
    {
     "name": "foundry_production_report",
@@ -1156,7 +1135,7 @@
    {
     "name": "suppression_reconcile_report",
     "present": true,
-    "asOf": "2026-11-04T17:53:09.517Z"
+    "asOf": "2026-11-04T14:41:32.448Z"
    },
    {
     "name": "foundry_discovery_import_report",
@@ -1166,7 +1145,7 @@
    {
     "name": "foundry_quarantine_report",
     "present": true,
-    "asOf": "2026-11-04T16:42:48.865Z"
+    "asOf": "2026-11-05T02:13:20.881Z"
    }
   ]
  }

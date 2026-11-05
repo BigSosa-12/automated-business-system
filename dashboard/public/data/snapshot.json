@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-05T18:22:59.363Z",
+ "generatedAt": "2026-11-05T18:27:52.845Z",
  "sourceAsOf": "2026-11-05T18:00:04.288Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -975,7 +975,7 @@
    "title": "No prepared send queue",
    "detail": "No immutable send snapshot or queued messages exist yet.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-05T18:22:59.363Z",
+   "lastDetected": "2026-11-05T18:27:52.845Z",
    "state": "ACTIVE"
   },
   {
@@ -984,7 +984,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "6 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up, Other approved.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-05T18:22:59.363Z",
+   "lastDetected": "2026-11-05T18:27:52.845Z",
    "state": "ACTIVE"
   },
   {
@@ -993,7 +993,7 @@
    "title": "Reply requiring attention",
    "detail": "An inbound reply could not be read. Review it manually.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-05T18:22:59.363Z",
+   "lastDetected": "2026-11-05T18:27:52.845Z",
    "state": "ACTIVE"
   }
  ],

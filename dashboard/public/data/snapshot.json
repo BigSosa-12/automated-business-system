@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-05T04:57:58.065Z",
+ "generatedAt": "2026-11-05T05:02:52.636Z",
  "sourceAsOf": "2026-11-05T02:13:29.366Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -54,7 +54,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 2.7h ago",
+    "detail": "Last prepared 2.8h ago",
     "blocking": false
    },
    {
@@ -340,10 +340,6 @@
   "inboxDeliveryConfirmed": false,
   "daily": [
    {
-    "day": "2026-10-06",
-    "count": 0
-   },
-   {
     "day": "2026-10-07",
     "count": 0
    },
@@ -458,6 +454,10 @@
    {
     "day": "2026-11-04",
     "count": 0
+   },
+   {
+    "day": "2026-11-05",
+    "count": 0
    }
   ],
   "byCampaign": [
@@ -486,38 +486,38 @@
    {
     "id": "MORNING",
     "label": "9:30 AM ET Dispatch",
-    "scheduledAt": "2026-11-04T14:30:00.000Z",
+    "scheduledAt": "2026-11-05T14:30:00.000Z",
     "startedAt": null,
-    "finishedAt": "2026-11-04T14:33:44.819Z",
-    "sent": 0,
-    "errors": 4,
-    "runId": "outreach_run_report_2026-11-04_0930",
-    "evidence": "RUN_REPORT",
-    "state": "BLOCKED"
+    "finishedAt": null,
+    "sent": null,
+    "errors": null,
+    "runId": null,
+    "evidence": "NONE",
+    "state": "SCHEDULED"
    },
    {
     "id": "MIDDAY",
     "label": "1:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-04T18:00:00.000Z",
+    "scheduledAt": "2026-11-05T18:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
     "errors": null,
     "runId": null,
     "evidence": "NONE",
-    "state": "UNKNOWN"
+    "state": "SCHEDULED"
    },
    {
     "id": "AFTERNOON",
     "label": "4:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-04T21:00:00.000Z",
+    "scheduledAt": "2026-11-05T21:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
     "errors": null,
     "runId": null,
     "evidence": "NONE",
-    "state": "UNKNOWN"
+    "state": "SCHEDULED"
    }
   ],
   "lastDispatch": {
@@ -736,10 +736,6 @@
   ],
   "emailActivity": [
    {
-    "day": "2026-10-06",
-    "count": 0
-   },
-   {
     "day": "2026-10-07",
     "count": 0
    },
@@ -854,6 +850,10 @@
    {
     "day": "2026-11-04",
     "count": 0
+   },
+   {
+    "day": "2026-11-05",
+    "count": 0
    }
   ],
   "campaignPerformance": [
@@ -957,27 +957,25 @@
     "failed": 0,
     "blocked": 1,
     "unknown": 2
+   },
+   {
+    "day": "2026-11-05",
+    "completed": 0,
+    "failed": 0,
+    "blocked": 0,
+    "unknown": 0
    }
   ],
   "conversionTrend": []
  },
  "alerts": [
   {
-   "id": "DISPATCH_BLOCKED_MORNING",
-   "severity": "CRITICAL",
-   "title": "Dispatch blocked · 9:30 AM ET Dispatch",
-   "detail": "0 sent, 4 blocker(s). Evidence: RUN_REPORT.",
-   "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-05T04:57:58.065Z",
-   "state": "ACTIVE"
-  },
-  {
    "id": "QUEUE_SNAPSHOT_EMPTY",
    "severity": "WARNING",
    "title": "No prepared send queue",
    "detail": "No immutable send snapshot or queued messages exist yet.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-05T04:57:58.065Z",
+   "lastDetected": "2026-11-05T05:02:52.636Z",
    "state": "ACTIVE"
   },
   {
@@ -986,7 +984,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "6 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up, Other approved.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-05T04:57:58.065Z",
+   "lastDetected": "2026-11-05T05:02:52.636Z",
    "state": "ACTIVE"
   },
   {
@@ -995,7 +993,7 @@
    "title": "Reply requiring attention",
    "detail": "An inbound reply could not be read. Review it manually.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-05T04:57:58.065Z",
+   "lastDetected": "2026-11-05T05:02:52.636Z",
    "state": "ACTIVE"
   }
  ],
@@ -1014,6 +1012,20 @@
      "failed": 0,
      "blocked": 1,
      "unknown": 2
+    }
+   },
+   {
+    "day": "2026-11-05",
+    "total": 5704,
+    "qualified": 4171,
+    "ready": 1077,
+    "sent": 0,
+    "health": "BLOCKED",
+    "windows": {
+     "completed": 0,
+     "failed": 0,
+     "blocked": 0,
+     "unknown": 0
     }
    }
   ]

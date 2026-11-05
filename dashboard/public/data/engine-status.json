@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-05T04:57:58.065Z",
+ "generatedAt": "2026-11-05T05:02:52.636Z",
  "lastLogAt": "2026-11-04T18:00:03.517Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -19,24 +19,24 @@
   "minBaselineSamples": 5
  },
  "state": "BLOCKED",
- "stoppedKind": "FAILED",
+ "stoppedKind": "BLOCKED",
  "caution": false,
- "headline": "Dispatch window did not complete cleanly",
+ "headline": "Blocking health check failed",
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-05T04:57:58.065Z",
+   "lastSuccessAt": "2026-11-05T05:02:52.636Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "COMPLETED_TODAY",
+   "state": "NO_RUN_EVIDENCE_TODAY",
    "lastPreparationAt": "2026-11-05T02:13:29.000Z",
    "lock": "FREE"
   },
   "dispatch": {
-   "state": "FAILED",
+   "state": "GATES_OK",
    "gates": {
     "gmailAuthorization": "OK",
     "safetyAudit": "BLOCKED",
@@ -46,20 +46,23 @@
     {
      "id": "MORNING",
      "label": "9:30 AM ET Dispatch",
-     "state": "BLOCKED"
+     "state": "SCHEDULED"
     },
     {
      "id": "MIDDAY",
      "label": "1:00 PM ET Dispatch",
-     "state": "UNKNOWN"
+     "state": "SCHEDULED"
     },
     {
      "id": "AFTERNOON",
      "label": "4:00 PM ET Dispatch",
-     "state": "UNKNOWN"
+     "state": "SCHEDULED"
     }
    ],
-   "next": null
+   "next": {
+    "label": "9:30 AM ET Dispatch",
+    "at": "2026-11-05T14:30:00.000Z"
+   }
   }
  },
  "indicators": [
@@ -169,11 +172,11 @@
   {
    "id": "GMAIL_DISPATCH",
    "label": "Gmail Dispatch",
-   "state": "FAILED",
+   "state": "BLOCKED",
    "lastSuccess": null,
    "activity": null,
    "errors": 5,
-   "reason": "Window blocked today",
+   "reason": "Stage blocked",
    "items": 0,
    "detail": {
     "recent": [
@@ -190,7 +193,7 @@
     ],
     "durationSec": null,
     "baselineMedianSec": null,
-    "latestIssue": "Window blocked today"
+    "latestIssue": "Stage blocked"
    }
   },
   {
@@ -218,16 +221,6 @@
  ],
  "activePathways": [],
  "diagnostics": [
-  {
-   "id": "DISPATCH_ERRORS",
-   "rank": 90,
-   "severity": "CRITICAL",
-   "stage": "GMAIL_DISPATCH",
-   "title": "Dispatch window did not complete cleanly",
-   "evidence": [
-    "9:30 AM ET Dispatch: BLOCKED (0 sent, 4 blocker(s); run report)"
-   ]
-  },
   {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,

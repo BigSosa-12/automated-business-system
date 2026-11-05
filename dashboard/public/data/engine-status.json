@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-05T12:57:52.314Z",
+ "generatedAt": "2026-11-05T15:27:08.045Z",
  "lastLogAt": "2026-11-04T18:00:03.517Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,7 +25,7 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-05T12:57:52.314Z",
+   "lastSuccessAt": "2026-11-05T15:27:08.045Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
@@ -46,7 +46,7 @@
     {
      "id": "MORNING",
      "label": "9:30 AM ET Dispatch",
-     "state": "SCHEDULED"
+     "state": "UNKNOWN"
     },
     {
      "id": "MIDDAY",
@@ -60,8 +60,8 @@
     }
    ],
    "next": {
-    "label": "9:30 AM ET Dispatch",
-    "at": "2026-11-05T14:30:00.000Z"
+    "label": "1:00 PM ET Dispatch",
+    "at": "2026-11-05T18:00:00.000Z"
    }
   }
  },
@@ -221,6 +221,16 @@
  ],
  "activePathways": [],
  "diagnostics": [
+  {
+   "id": "MISSED_PREP",
+   "rank": 80,
+   "severity": "WARNING",
+   "stage": "QUEUE_PREPARATION",
+   "title": "No preparation report today",
+   "evidence": [
+    "Expected by 9:40 AM ET; latest report 2026-11-05T02:13:29.000Z"
+   ]
+  },
   {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,

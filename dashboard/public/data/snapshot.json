@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-05T19:02:53.547Z",
+ "generatedAt": "2026-11-05T19:07:56.814Z",
  "sourceAsOf": "2026-11-05T18:00:04.288Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -12,7 +12,8 @@
  "health": {
   "status": "BLOCKED",
   "reasons": [
-   "Send-safety audit: Status BLOCKED"
+   "Send-safety audit: Status BLOCKED",
+   "Dispatch schedule (3 windows): Windows 9:00 AM ET · 1:00 PM ET · 5:00 PM ET"
   ],
   "checks": [
    {
@@ -54,14 +55,14 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 16.8h ago",
+    "detail": "Last prepared 16.9h ago",
     "blocking": false
    },
    {
     "id": "dispatch_controls",
     "label": "Dispatch schedule (3 windows)",
-    "state": "OK",
-    "detail": "Windows 9:30 AM ET · 1:00 PM ET · 4:00 PM ET",
+    "state": "WARN",
+    "detail": "Windows 9:00 AM ET · 1:00 PM ET · 5:00 PM ET",
     "blocking": false
    },
    {
@@ -485,8 +486,8 @@
   "windows": [
    {
     "id": "MORNING",
-    "label": "9:30 AM ET Dispatch",
-    "scheduledAt": "2026-11-05T14:30:00.000Z",
+    "label": "9:00 AM ET Dispatch",
+    "scheduledAt": "2026-11-05T14:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
@@ -509,8 +510,8 @@
    },
    {
     "id": "AFTERNOON",
-    "label": "4:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-05T21:00:00.000Z",
+    "label": "5:00 PM ET Dispatch",
+    "scheduledAt": "2026-11-05T22:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
@@ -532,7 +533,7 @@
     "WEBSITE_WORLD count is inconsistent: post-controller log reports 530 READY, while current handoff contains 152 total (39 EMAIL, 113 FORM)."
    ]
   },
-  "nextDispatchAt": "2026-11-05T21:00:00.000Z",
+  "nextDispatchAt": "2026-11-05T22:00:00.000Z",
   "lastPreparation": {
    "at": "2026-11-05T02:13:29.000Z",
    "rows": 1077,
@@ -578,7 +579,9 @@
    "mode": "Prepare",
    "enabled": true,
    "times": [
-    "9:00 AM ET"
+    "8:00 AM ET",
+    "12:00 PM ET",
+    "4:00 PM ET"
    ],
    "lastRun": null,
    "lastResult": null,
@@ -588,11 +591,11 @@
   {
    "name": "BattleCreek_Prospect_Foundry_Dispatch",
    "mode": "Dispatch",
-   "enabled": true,
+   "enabled": false,
    "times": [
-    "9:30 AM ET",
+    "9:00 AM ET",
     "1:00 PM ET",
-    "4:00 PM ET"
+    "5:00 PM ET"
    ],
    "lastRun": null,
    "lastResult": null,
@@ -975,7 +978,7 @@
    "title": "No prepared send queue",
    "detail": "No immutable send snapshot or queued messages exist yet.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-05T19:02:53.547Z",
+   "lastDetected": "2026-11-05T19:07:56.814Z",
    "state": "ACTIVE"
   },
   {
@@ -984,7 +987,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "6 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up, Other approved.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-05T19:02:53.547Z",
+   "lastDetected": "2026-11-05T19:07:56.814Z",
    "state": "ACTIVE"
   },
   {
@@ -993,7 +996,7 @@
    "title": "Reply requiring attention",
    "detail": "An inbound reply could not be read. Review it manually.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-05T19:02:53.547Z",
+   "lastDetected": "2026-11-05T19:07:56.814Z",
    "state": "ACTIVE"
   }
  ],

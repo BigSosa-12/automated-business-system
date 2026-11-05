@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-05T19:02:53.547Z",
+ "generatedAt": "2026-11-05T19:07:56.814Z",
  "lastLogAt": "2026-11-05T18:00:04.968Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,7 +25,7 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-05T19:02:53.547Z",
+   "lastSuccessAt": "2026-11-05T19:07:56.814Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
@@ -45,7 +45,7 @@
    "windows": [
     {
      "id": "MORNING",
-     "label": "9:30 AM ET Dispatch",
+     "label": "9:00 AM ET Dispatch",
      "state": "UNKNOWN"
     },
     {
@@ -55,13 +55,13 @@
     },
     {
      "id": "AFTERNOON",
-     "label": "4:00 PM ET Dispatch",
+     "label": "5:00 PM ET Dispatch",
      "state": "SCHEDULED"
     }
    ],
    "next": {
-    "label": "4:00 PM ET Dispatch",
-    "at": "2026-11-05T21:00:00.000Z"
+    "label": "5:00 PM ET Dispatch",
+    "at": "2026-11-05T22:00:00.000Z"
    }
   }
  },

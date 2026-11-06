@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-06T14:32:52.307Z",
+ "generatedAt": "2026-11-06T14:37:52.135Z",
  "lastLogAt": "2026-11-06T13:09:05.947Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,7 +25,7 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-06T14:32:52.307Z",
+   "lastSuccessAt": "2026-11-06T14:37:52.135Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
@@ -263,6 +263,11 @@
    "detail": {
     "recent": [
      {
+      "at": "2026-11-06T14:33:47.543Z",
+      "text": "Report written (blocked)",
+      "ok": false
+     },
+     {
       "at": "2026-11-05T18:00:04.818Z",
       "text": "FoundrySend.js exit 1",
       "ok": false
@@ -270,11 +275,6 @@
      {
       "at": "2026-11-04T18:00:02.404Z",
       "text": "FoundrySend.js exit 1",
-      "ok": false
-     },
-     {
-      "at": "2026-11-04T14:33:44.819Z",
-      "text": "Report written (blocked)",
       "ok": false
      }
     ],
@@ -289,7 +289,7 @@
    "state": "OK",
    "lastSuccess": "2026-11-05T22:25:12.871Z",
    "activity": null,
-   "errors": 1,
+   "errors": 0,
    "reason": "Last run completed",
    "items": null,
    "detail": {

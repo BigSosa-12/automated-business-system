@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-06T14:32:52.307Z",
+ "generatedAt": "2026-11-06T14:37:52.135Z",
  "sourceAsOf": "2026-11-06T13:09:05.719Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -62,7 +62,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 1.4h ago",
+    "detail": "Last prepared 1.5h ago",
     "blocking": false
    },
    {
@@ -525,15 +525,15 @@
    }
   ],
   "lastDispatch": {
-   "at": "2026-11-04T14:33:44.819Z",
-   "runId": "outreach_run_report_2026-11-04_0930",
-   "sent": 0,
+   "at": "2026-11-06T14:33:47.543Z",
+   "runId": "outreach_run_report_2026-11-06_0930",
+   "sent": null,
    "state": "BLOCKED",
    "blockers": [
-    "Final prior-contact and suppression checks across both Gmail accounts could not be completed after explicit Gmail connector quota error.",
-    "Handoff overstates EMAIL-ready inventory: 1277 EMAIL rows contain NOT_RESEARCHED/blank contact.",
-    "At least 27 syntactically plausible contacts are obvious extraction artifacts; many other rows are unrelated or outside approved local territory.",
-    "WEBSITE_WORLD count is inconsistent: post-controller log reports 530 READY, while current handoff contains 152 total (39 EMAIL, 113 FORM)."
+    "Dispatch task disabled",
+    "Safety hold CONTACT_VERIFICATION_REQUIRED",
+    "Zero contact evidence records for 410 EMAIL routes",
+    "Handoff/export counts disagree with production report"
    ]
   },
   "nextDispatchAt": "2026-11-06T18:00:00.000Z",
@@ -562,13 +562,8 @@
    "conversion": null,
    "denominator": "confirmed sends (unavailable until reply coverage is complete)"
   },
-  "pendingUnreadable": 1,
-  "needsAttention": [
-   {
-    "kind": "UNREADABLE_REPLY",
-    "note": "An inbound reply could not be read (Gmail quota error). Review it manually."
-   }
-  ],
+  "pendingUnreadable": 0,
+  "needsAttention": [],
   "revenue": {
    "tracked": false
   },
@@ -696,7 +691,7 @@
   {
    "id": "DISPATCH",
    "label": "Dispatch",
-   "lastRun": "2026-11-04T14:33:44.819Z",
+   "lastRun": "2026-11-06T14:33:47.543Z",
    "lastSuccess": null,
    "durationSec": null,
    "status": "BLOCKED",
@@ -712,7 +707,7 @@
    "durationSec": null,
    "status": "OK",
    "items": null,
-   "errors": 1,
+   "errors": 0,
    "note": null
   },
   {
@@ -998,7 +993,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-06T14:32:52.307Z",
+   "lastDetected": "2026-11-06T14:37:52.135Z",
    "state": "ACTIVE"
   },
   {
@@ -1007,7 +1002,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-06T14:32:52.307Z",
+   "lastDetected": "2026-11-06T14:37:52.135Z",
    "state": "ACTIVE"
   },
   {
@@ -1016,7 +1011,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-06T14:32:52.307Z",
+   "lastDetected": "2026-11-06T14:37:52.135Z",
    "state": "ACTIVE"
   },
   {
@@ -1025,16 +1020,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "6 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up, Other approved.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-06T14:32:52.307Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "REPLY_NEEDS_ATTENTION",
-   "severity": "WARNING",
-   "title": "Reply requiring attention",
-   "detail": "An inbound reply could not be read. Review it manually.",
-   "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-06T14:32:52.307Z",
+   "lastDetected": "2026-11-06T14:37:52.135Z",
    "state": "ACTIVE"
   }
  ],

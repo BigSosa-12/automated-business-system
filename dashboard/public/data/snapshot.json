@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-06T18:38:17.250Z",
+ "generatedAt": "2026-11-06T18:43:01.044Z",
  "sourceAsOf": "2026-11-06T17:07:40.567Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -13,8 +13,7 @@
   "status": "BLOCKED",
   "reasons": [
    "Verified email routes: 0 of 427 routes pass the contact evidence check",
-   "Send-safety audit: Status BLOCKED",
-   "Dashboard exporter: Last publish problem: warning: in the working copy of 'dashboard/public/data/engine-status.json', LF will be replaced by CRLF the next time G…"
+   "Send-safety audit: Status BLOCKED"
   ],
   "checks": [
    {
@@ -63,7 +62,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 1.5h ago",
+    "detail": "Last prepared 1.6h ago",
     "blocking": false
    },
    {
@@ -104,8 +103,8 @@
    {
     "id": "exporter_last_run",
     "label": "Dashboard exporter",
-    "state": "WARN",
-    "detail": "Last publish problem: warning: in the working copy of 'dashboard/public/data/engine-status.json', LF will be replaced by CRLF the next time G…",
+    "state": "OK",
+    "detail": "Last export succeeded",
     "blocking": false
    }
   ],
@@ -994,7 +993,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-06T18:38:17.250Z",
+   "lastDetected": "2026-11-06T18:43:01.044Z",
    "state": "ACTIVE"
   },
   {
@@ -1003,7 +1002,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-06T18:38:17.250Z",
+   "lastDetected": "2026-11-06T18:43:01.044Z",
    "state": "ACTIVE"
   },
   {
@@ -1012,7 +1011,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-06T18:38:17.250Z",
+   "lastDetected": "2026-11-06T18:43:01.044Z",
    "state": "ACTIVE"
   },
   {
@@ -1021,16 +1020,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "6 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up, Other approved.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-06T18:38:17.250Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "EXPORT_PUBLISH_FAILURE",
-   "severity": "WARNING",
-   "title": "GitHub publish failure",
-   "detail": "warning: in the working copy of 'dashboard/public/data/engine-status.json', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'dashboard/public/data/snapshot.js…",
-   "firstDetected": "2026-11-06T18:38:17.250Z",
-   "lastDetected": "2026-11-06T18:38:17.250Z",
+   "lastDetected": "2026-11-06T18:43:01.044Z",
    "state": "ACTIVE"
   }
  ],

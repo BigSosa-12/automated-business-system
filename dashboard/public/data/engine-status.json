@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-06T03:09:55.670Z",
+ "generatedAt": "2026-11-06T03:18:36.962Z",
  "lastLogAt": "2026-11-05T21:04:50.320Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,8 +25,8 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-06T03:09:55.670Z",
-   "lastError": "From https://github.com/BigSosa-12/automated-business-system * branch main -> FETCH_HEAD",
+   "lastSuccessAt": "2026-11-06T03:18:36.962Z",
+   "lastError": "spawnSync git ETIMEDOUT",
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
@@ -307,7 +307,7 @@
    "stage": null,
    "title": "Snapshot publishing failed",
    "evidence": [
-    "From https://github.com/BigSosa-12/automated-business-system * branch main -> FETCH_HEAD"
+    "spawnSync git ETIMEDOUT"
    ]
   },
   {

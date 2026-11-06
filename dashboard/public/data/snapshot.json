@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-06T03:09:55.670Z",
+ "generatedAt": "2026-11-06T03:18:36.962Z",
  "sourceAsOf": "2026-11-05T22:25:12.871Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -14,7 +14,7 @@
   "reasons": [
    "Verified email routes: 0 of 408 routes pass the contact evidence check",
    "Send-safety audit: Status BLOCKED",
-   "Dashboard exporter: Last publish problem: From https://github.com/BigSosa-12/automated-business-system * branch main -> FETCH_HEAD"
+   "Dashboard exporter: Last publish problem: spawnSync git ETIMEDOUT"
   ],
   "checks": [
    {
@@ -63,7 +63,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 4.7h ago",
+    "detail": "Last prepared 4.9h ago",
     "blocking": false
    },
    {
@@ -105,7 +105,7 @@
     "id": "exporter_last_run",
     "label": "Dashboard exporter",
     "state": "WARN",
-    "detail": "Last publish problem: From https://github.com/BigSosa-12/automated-business-system * branch main -> FETCH_HEAD",
+    "detail": "Last publish problem: spawnSync git ETIMEDOUT",
     "blocking": false
    }
   ],
@@ -987,7 +987,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-06T03:09:55.670Z",
+   "lastDetected": "2026-11-06T03:18:36.962Z",
    "state": "ACTIVE"
   },
   {
@@ -996,7 +996,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-06T03:09:55.670Z",
+   "lastDetected": "2026-11-06T03:18:36.962Z",
    "state": "ACTIVE"
   },
   {
@@ -1005,7 +1005,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-06T03:09:55.670Z",
+   "lastDetected": "2026-11-06T03:18:36.962Z",
    "state": "ACTIVE"
   },
   {
@@ -1014,7 +1014,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "6 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up, Other approved.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-06T03:09:55.670Z",
+   "lastDetected": "2026-11-06T03:18:36.962Z",
    "state": "ACTIVE"
   },
   {
@@ -1023,16 +1023,16 @@
    "title": "Reply requiring attention",
    "detail": "An inbound reply could not be read. Review it manually.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-06T03:09:55.670Z",
+   "lastDetected": "2026-11-06T03:18:36.962Z",
    "state": "ACTIVE"
   },
   {
    "id": "EXPORT_PUBLISH_FAILURE",
    "severity": "WARNING",
    "title": "GitHub publish failure",
-   "detail": "From https://github.com/BigSosa-12/automated-business-system * branch main -> FETCH_HEAD",
-   "firstDetected": "2026-11-06T03:09:55.670Z",
-   "lastDetected": "2026-11-06T03:09:55.670Z",
+   "detail": "spawnSync git ETIMEDOUT",
+   "firstDetected": "2026-11-06T03:18:36.962Z",
+   "lastDetected": "2026-11-06T03:18:36.962Z",
    "state": "ACTIVE"
   }
  ],

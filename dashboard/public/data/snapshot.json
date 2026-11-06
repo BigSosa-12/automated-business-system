@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-06T20:57:55.007Z",
- "sourceAsOf": "2026-11-06T17:07:40.567Z",
+ "generatedAt": "2026-11-06T21:02:52.234Z",
+ "sourceAsOf": "2026-11-06T21:01:52.700Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -13,7 +13,8 @@
   "status": "BLOCKED",
   "reasons": [
    "Verified email routes: 0 of 427 routes pass the contact evidence check",
-   "Send-safety audit: Status BLOCKED"
+   "Send-safety audit: Status BLOCKED",
+   "READY vs handoff export: CRM 0 · export 1534"
   ],
   "checks": [
    {
@@ -62,7 +63,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 3.8h ago",
+    "detail": "Last prepared 3.9h ago",
     "blocking": false
    },
    {
@@ -76,7 +77,7 @@
     "id": "production_lock",
     "label": "Execution lock",
     "state": "OK",
-    "detail": "Lock free",
+    "detail": "Held by an active run",
     "blocking": false
    },
    {
@@ -96,8 +97,8 @@
    {
     "id": "handoff_consistency",
     "label": "READY vs handoff export",
-    "state": "OK",
-    "detail": "CRM 1534 · export 1534",
+    "state": "WARN",
+    "detail": "CRM 0 · export 1534",
     "blocking": false
    },
    {
@@ -111,17 +112,17 @@
   "rule": "BLOCKED: a blocking check fails. UNKNOWN: critical evidence missing. DEGRADED: any warning. HEALTHY: all checks pass."
  },
  "leads": {
-  "total": 5815,
-  "classified": 5815,
+  "total": 5836,
+  "classified": 5836,
   "byQualification": {
-   "QUALIFIED": 2747,
-   "READY": 1534,
-   "UNRESOLVED": 1531,
+   "QUALIFIED": 4220,
+   "READY": 0,
+   "UNRESOLVED": 1613,
    "SUPPRESSED": 3
   },
   "readyByRoute": {
-   "EMAIL": 427,
-   "FORM": 1107
+   "EMAIL": 0,
+   "FORM": 0
   },
   "contactChannels": [
    {
@@ -137,7 +138,7 @@
    {
     "channel": "FORM",
     "verification": "PUBLIC_OFFICIAL_SITE",
-    "n": 2650
+    "n": 2653
    },
    {
     "channel": "PHONE",
@@ -183,11 +184,11 @@
     "territory": "BATTLE_CREEK_30MI",
     "target": 300,
     "total": 440,
-    "qualified": 427,
-    "ready": 280,
-    "readyEmail": 116,
-    "readyForm": 164,
-    "unresolved": 13,
+    "qualified": 431,
+    "ready": 0,
+    "readyEmail": 0,
+    "readyForm": 0,
+    "unresolved": 9,
     "suppressed": 0,
     "inventoryState": "CRITICAL"
    },
@@ -197,12 +198,12 @@
     "short": "Property services",
     "territory": "LOCAL_APPROVED",
     "target": 300,
-    "total": 311,
-    "qualified": 299,
-    "ready": 214,
-    "readyEmail": 83,
-    "readyForm": 131,
-    "unresolved": 12,
+    "total": 317,
+    "qualified": 315,
+    "ready": 0,
+    "readyEmail": 0,
+    "readyForm": 0,
+    "unresolved": 2,
     "suppressed": 0,
     "inventoryState": "CRITICAL"
    },
@@ -212,12 +213,12 @@
     "short": "Website design",
     "territory": "WORLDWIDE",
     "target": 300,
-    "total": 1292,
-    "qualified": 1277,
-    "ready": 540,
-    "readyEmail": 128,
-    "readyForm": 412,
-    "unresolved": 12,
+    "total": 1228,
+    "qualified": 1201,
+    "ready": 0,
+    "readyEmail": 0,
+    "readyForm": 0,
+    "unresolved": 24,
     "suppressed": 3,
     "inventoryState": "CRITICAL"
    },
@@ -227,12 +228,12 @@
     "short": "Inquiry follow-up",
     "territory": "APPROVED_REMOTE",
     "target": 300,
-    "total": 1276,
+    "total": 1316,
     "qualified": 1275,
-    "ready": 191,
-    "readyEmail": 32,
-    "readyForm": 159,
-    "unresolved": 1,
+    "ready": 0,
+    "readyEmail": 0,
+    "readyForm": 0,
+    "unresolved": 41,
     "suppressed": 0,
     "inventoryState": "CRITICAL"
    },
@@ -242,12 +243,12 @@
     "short": "Estimate follow-up",
     "territory": "APPROVED_REMOTE",
     "target": 300,
-    "total": 785,
-    "qualified": 784,
-    "ready": 189,
-    "readyEmail": 49,
-    "readyForm": 140,
-    "unresolved": 1,
+    "total": 820,
+    "qualified": 775,
+    "ready": 0,
+    "readyEmail": 0,
+    "readyForm": 0,
+    "unresolved": 45,
     "suppressed": 0,
     "inventoryState": "CRITICAL"
    },
@@ -257,11 +258,11 @@
     "short": "Other approved",
     "territory": "APPROVED_REMOTE",
     "target": 300,
-    "total": 221,
-    "qualified": 219,
-    "ready": 120,
-    "readyEmail": 19,
-    "readyForm": 101,
+    "total": 225,
+    "qualified": 223,
+    "ready": 0,
+    "readyEmail": 0,
+    "readyForm": 0,
     "unresolved": 2,
     "suppressed": 0,
     "inventoryState": "CRITICAL"
@@ -286,19 +287,19 @@
    {
     "id": "DISCOVERED",
     "label": "Discovered",
-    "count": 5815,
+    "count": 5836,
     "note": "Business identities in the CRM"
    },
    {
     "id": "QUALIFIED",
     "label": "Qualified",
-    "count": 4281,
+    "count": 4220,
     "note": "QUALIFIED + READY classification"
    },
    {
     "id": "ROUTE_READY",
     "label": "Route-ready",
-    "count": 1534,
+    "count": 0,
     "note": "READY = handoff eligible, not safe to email yet"
    },
    {
@@ -618,18 +619,18 @@
   "reason": null
  },
  "locks": {
-  "production": "FREE",
+  "production": "HELD",
   "protectedWindowNow": false
  },
  "pipeline": [
   {
    "id": "DISCOVERY",
    "label": "Discovery",
-   "lastRun": "2026-11-06T17:01:21.512Z",
+   "lastRun": "2026-11-06T21:00:24.561Z",
    "lastSuccess": null,
    "durationSec": null,
    "status": "DEGRADED",
-   "items": 3046,
+   "items": 3075,
    "errors": 1,
    "note": "1 source job(s) unavailable"
   },
@@ -647,19 +648,19 @@
   {
    "id": "CLASSIFICATION",
    "label": "Classification",
-   "lastRun": "2026-11-06T17:06:25.356Z",
-   "lastSuccess": "2026-11-06T17:06:25.356Z",
+   "lastRun": "2026-11-06T21:01:04.458Z",
+   "lastSuccess": "2026-11-06T21:01:04.458Z",
    "durationSec": null,
    "status": "OK",
-   "items": 5815,
+   "items": 5836,
    "errors": 0,
    "note": null
   },
   {
    "id": "VALIDATION",
    "label": "Validation",
-   "lastRun": "2026-11-06T17:07:35.419Z",
-   "lastSuccess": "2026-11-06T17:07:35.419Z",
+   "lastRun": "2026-11-06T21:00:20.970Z",
+   "lastSuccess": "2026-11-06T21:00:20.970Z",
    "durationSec": null,
    "status": "OK",
    "items": 1534,
@@ -669,8 +670,8 @@
   {
    "id": "RECONCILIATION",
    "label": "Reconciliation",
-   "lastRun": "2026-11-06T17:00:07.054Z",
-   "lastSuccess": "2026-11-06T17:00:07.054Z",
+   "lastRun": "2026-11-06T21:00:06.215Z",
+   "lastSuccess": "2026-11-06T21:00:06.215Z",
    "durationSec": null,
    "status": "OK",
    "items": 3,
@@ -741,8 +742,8 @@
    },
    {
     "day": "2026-11-06",
-    "new": 70,
-    "cumulative": 5815
+    "new": 91,
+    "cumulative": 5836
    }
   ],
   "emailActivity": [
@@ -872,7 +873,7 @@
     "id": "LOCAL_DETAILING",
     "label": "Interior detailing",
     "sent": 0,
-    "ready": 280,
+    "ready": 0,
     "replies": null,
     "positive": null,
     "converted": null
@@ -881,7 +882,7 @@
     "id": "LOCAL_PROPERTY",
     "label": "Property services",
     "sent": 0,
-    "ready": 214,
+    "ready": 0,
     "replies": null,
     "positive": null,
     "converted": null
@@ -890,7 +891,7 @@
     "id": "WEBSITE_WORLD",
     "label": "Website design",
     "sent": 0,
-    "ready": 540,
+    "ready": 0,
     "replies": null,
     "positive": null,
     "converted": null
@@ -899,7 +900,7 @@
     "id": "DIGITAL_INQUIRY",
     "label": "Inquiry follow-up",
     "sent": 0,
-    "ready": 191,
+    "ready": 0,
     "replies": null,
     "positive": null,
     "converted": null
@@ -908,7 +909,7 @@
     "id": "DIGITAL_ESTIMATES",
     "label": "Estimate follow-up",
     "sent": 0,
-    "ready": 189,
+    "ready": 0,
     "replies": null,
     "positive": null,
     "converted": null
@@ -917,7 +918,7 @@
     "id": "OTHER_APPROVED",
     "label": "Other approved",
     "sent": 0,
-    "ready": 120,
+    "ready": 0,
     "replies": null,
     "positive": null,
     "converted": null
@@ -927,37 +928,37 @@
    {
     "id": "LOCAL_DETAILING",
     "label": "Interior detailing",
-    "ready": 280,
+    "ready": 0,
     "blocked": 74
    },
    {
     "id": "LOCAL_PROPERTY",
     "label": "Property services",
-    "ready": 214,
+    "ready": 0,
     "blocked": 30
    },
    {
     "id": "WEBSITE_WORLD",
     "label": "Website design",
-    "ready": 540,
+    "ready": 0,
     "blocked": 31
    },
    {
     "id": "DIGITAL_INQUIRY",
     "label": "Inquiry follow-up",
-    "ready": 191,
+    "ready": 0,
     "blocked": 1011
    },
    {
     "id": "DIGITAL_ESTIMATES",
     "label": "Estimate follow-up",
-    "ready": 189,
+    "ready": 0,
     "blocked": 335
    },
    {
     "id": "OTHER_APPROVED",
     "label": "Other approved",
-    "ready": 120,
+    "ready": 0,
     "blocked": 27
    }
   ],
@@ -993,7 +994,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-06T20:57:55.007Z",
+   "lastDetected": "2026-11-06T21:02:52.234Z",
    "state": "ACTIVE"
   },
   {
@@ -1002,7 +1003,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-06T20:57:55.007Z",
+   "lastDetected": "2026-11-06T21:02:52.234Z",
    "state": "ACTIVE"
   },
   {
@@ -1011,7 +1012,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-06T20:57:55.007Z",
+   "lastDetected": "2026-11-06T21:02:52.234Z",
    "state": "ACTIVE"
   },
   {
@@ -1020,7 +1021,16 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "6 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up, Other approved.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-06T20:57:55.007Z",
+   "lastDetected": "2026-11-06T21:02:52.234Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "CRM_HANDOFF_MISMATCH",
+   "severity": "WARNING",
+   "title": "CRM / handoff mismatch",
+   "detail": "READY count differs from the latest handoff export.",
+   "firstDetected": "2026-11-06T21:02:52.234Z",
+   "lastDetected": "2026-11-06T21:02:52.234Z",
    "state": "ACTIVE"
   }
  ],
@@ -1057,9 +1067,9 @@
    },
    {
     "day": "2026-11-06",
-    "total": 5815,
-    "qualified": 4281,
-    "ready": 1534,
+    "total": 5836,
+    "qualified": 4220,
+    "ready": 0,
     "sent": 0,
     "health": "BLOCKED",
     "windows": {
@@ -1105,23 +1115,23 @@
   "crossChecks": [
    {
     "id": "crm_vs_handoff",
-    "ok": true,
-    "detail": "CRM READY 1534 · handoff 1534"
+    "ok": false,
+    "detail": "CRM READY undefined · handoff 1534"
    },
    {
     "id": "crm_vs_audit",
-    "ok": true,
-    "detail": "CRM READY 1534 · audit 1534"
+    "ok": false,
+    "detail": "CRM READY undefined · audit 1534"
    },
    {
     "id": "crm_vs_production_report",
     "ok": false,
-    "detail": "CRM READY 1534 · older production report 1166 (report predates latest cleanup)"
+    "detail": "CRM READY undefined · older production report 1166 (report predates latest cleanup)"
    },
    {
     "id": "all_classified",
     "ok": true,
-    "detail": "5815 of 5815 businesses classified"
+    "detail": "5836 of 5836 businesses classified"
    }
   ],
   "sources": [
@@ -1138,7 +1148,7 @@
    {
     "name": "foundry_daily_audit",
     "present": true,
-    "asOf": "2026-11-06T17:07:35.419Z"
+    "asOf": "2026-11-06T21:00:20.970Z"
    },
    {
     "name": "foundry_day_review",
@@ -1173,12 +1183,12 @@
    {
     "name": "foundry_targeted_discovery_report",
     "present": true,
-    "asOf": "2026-11-06T17:01:21.512Z"
+    "asOf": "2026-11-06T21:00:24.561Z"
    },
    {
     "name": "foundry_contact_enrichment_report",
     "present": true,
-    "asOf": "2026-11-06T17:03:28.205Z"
+    "asOf": "2026-11-06T21:01:52.700Z"
    },
    {
     "name": "foundry_local_digital_enrichment_report",
@@ -1188,17 +1198,17 @@
    {
     "name": "foundry_full_classification_report",
     "present": true,
-    "asOf": "2026-11-06T17:06:25.356Z"
+    "asOf": "2026-11-06T21:01:04.458Z"
    },
    {
     "name": "suppression_reconcile_report",
     "present": true,
-    "asOf": "2026-11-06T17:00:07.054Z"
+    "asOf": "2026-11-06T21:00:06.215Z"
    },
    {
     "name": "foundry_discovery_import_report",
     "present": true,
-    "asOf": "2026-11-06T17:01:34.105Z"
+    "asOf": "2026-11-06T21:00:29.945Z"
    },
    {
     "name": "foundry_quarantine_report",

@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-06T12:57:52.748Z",
- "lastLogAt": "2026-11-05T21:04:50.320Z",
+ "generatedAt": "2026-11-06T13:02:59.138Z",
+ "lastLogAt": "2026-11-06T13:00:40.427Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -22,18 +22,26 @@
  "stoppedKind": "FAILED",
  "caution": false,
  "headline": "Dispatch window did not complete cleanly",
- "process": null,
+ "process": {
+  "mode": "Prepare",
+  "jobId": "prepare-2026-11-06-0480",
+  "stage": "VERIFICATION",
+  "startedAtLowerBound": "2026-11-06T13:00:40.427Z",
+  "elapsedSecAtLeast": 139,
+  "items": null,
+  "evidence": "foundry_execution.lock held inside a scheduled window"
+ },
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-06T12:57:52.748Z",
+   "lastSuccessAt": "2026-11-06T13:02:59.138Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "NO_RUN_EVIDENCE_TODAY",
+   "state": "RUNNING",
    "lastPreparationAt": "2026-11-05T22:25:12.554Z",
-   "lock": "FREE"
+   "lock": "HELD"
   },
   "dispatch": {
    "state": "BLOCKED",
@@ -150,14 +158,19 @@
   {
    "id": "VERIFICATION",
    "label": "Verification",
-   "state": "OK",
-   "lastSuccess": "2026-11-05T22:25:12.691Z",
-   "activity": null,
+   "state": "ACTIVE",
+   "lastSuccess": "2026-11-06T13:00:40.427Z",
+   "activity": "Preparation run holds the execution lock",
    "errors": 1,
    "reason": "Last run completed",
    "items": 1488,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-06T13:00:40.427Z",
+      "text": "ReconcileSuppression.js completed",
+      "ok": true
+     },
      {
       "at": "2026-11-05T22:25:12.691Z",
       "text": "Report written (ok)",
@@ -182,14 +195,9 @@
       "at": "2026-11-05T21:04:42.504Z",
       "text": "FoundryFinalReconcile.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-05T21:00:12.521Z",
-      "text": "FoundryDailyAudit.js completed",
-      "ok": true
      }
     ],
-    "durationSec": 0.496,
+    "durationSec": null,
     "baselineMedianSec": null,
     "latestIssue": null
    }
@@ -286,7 +294,9 @@
    }
   }
  ],
- "activePathways": [],
+ "activePathways": [
+  "VERIFICATION"
+ ],
  "diagnostics": [
   {
    "id": "DISPATCH_ERRORS",

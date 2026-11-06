@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-06T04:57:53.000Z",
+ "generatedAt": "2026-11-06T05:02:53.005Z",
  "sourceAsOf": "2026-11-05T22:25:12.871Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -62,7 +62,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 6.5h ago",
+    "detail": "Last prepared 6.6h ago",
     "blocking": false
    },
    {
@@ -344,10 +344,6 @@
   "inboxDeliveryConfirmed": false,
   "daily": [
    {
-    "day": "2026-10-07",
-    "count": 0
-   },
-   {
     "day": "2026-10-08",
     "count": 0
    },
@@ -462,6 +458,10 @@
    {
     "day": "2026-11-05",
     "count": 0
+   },
+   {
+    "day": "2026-11-06",
+    "count": 0
    }
   ],
   "byCampaign": [
@@ -490,7 +490,7 @@
    {
     "id": "MORNING",
     "label": "9:00 AM ET Dispatch",
-    "scheduledAt": "2026-11-05T14:00:00.000Z",
+    "scheduledAt": "2026-11-06T14:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
@@ -502,7 +502,7 @@
    {
     "id": "MIDDAY",
     "label": "1:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-05T18:00:00.000Z",
+    "scheduledAt": "2026-11-06T18:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
@@ -514,7 +514,7 @@
    {
     "id": "AFTERNOON",
     "label": "5:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-05T22:00:00.000Z",
+    "scheduledAt": "2026-11-06T22:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
@@ -619,8 +619,8 @@
   }
  ],
  "schedulerEvidence": {
-  "available": true,
-  "reason": null
+  "available": false,
+  "reason": "ETIMEDOUT"
  },
  "locks": {
   "production": "FREE",
@@ -747,10 +747,6 @@
   ],
   "emailActivity": [
    {
-    "day": "2026-10-07",
-    "count": 0
-   },
-   {
     "day": "2026-10-08",
     "count": 0
    },
@@ -865,6 +861,10 @@
    {
     "day": "2026-11-05",
     "count": 0
+   },
+   {
+    "day": "2026-11-06",
+    "count": 0
    }
   ],
   "campaignPerformance": [
@@ -975,6 +975,13 @@
     "failed": 0,
     "blocked": 3,
     "unknown": 0
+   },
+   {
+    "day": "2026-11-06",
+    "completed": 0,
+    "failed": 0,
+    "blocked": 3,
+    "unknown": 0
    }
   ],
   "conversionTrend": []
@@ -986,7 +993,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-06T04:57:53.000Z",
+   "lastDetected": "2026-11-06T05:02:53.005Z",
    "state": "ACTIVE"
   },
   {
@@ -995,7 +1002,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-06T04:57:53.000Z",
+   "lastDetected": "2026-11-06T05:02:53.005Z",
    "state": "ACTIVE"
   },
   {
@@ -1004,7 +1011,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-06T04:57:53.000Z",
+   "lastDetected": "2026-11-06T05:02:53.005Z",
    "state": "ACTIVE"
   },
   {
@@ -1013,7 +1020,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "6 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up, Other approved.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-06T04:57:53.000Z",
+   "lastDetected": "2026-11-06T05:02:53.005Z",
    "state": "ACTIVE"
   },
   {
@@ -1022,7 +1029,7 @@
    "title": "Reply requiring attention",
    "detail": "An inbound reply could not be read. Review it manually.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-06T04:57:53.000Z",
+   "lastDetected": "2026-11-06T05:02:53.005Z",
    "state": "ACTIVE"
   }
  ],
@@ -1045,6 +1052,20 @@
    },
    {
     "day": "2026-11-05",
+    "total": 5745,
+    "qualified": 4212,
+    "ready": 1488,
+    "sent": 0,
+    "health": "BLOCKED",
+    "windows": {
+     "completed": 0,
+     "failed": 0,
+     "blocked": 3,
+     "unknown": 0
+    }
+   },
+   {
+    "day": "2026-11-06",
     "total": 5745,
     "qualified": 4212,
     "ready": 1488,
@@ -1086,8 +1107,8 @@
     "note": "Sales/revenue not recorded"
    },
    "taskScheduler": {
-    "state": "AVAILABLE",
-    "note": "schtasks query"
+    "state": "UNAVAILABLE",
+    "note": "Task definitions only (no run results)"
    }
   },
   "crossChecks": [

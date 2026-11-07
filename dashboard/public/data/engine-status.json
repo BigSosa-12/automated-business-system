@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-07T17:12:51.844Z",
+ "generatedAt": "2026-11-07T17:17:51.730Z",
  "lastLogAt": "2026-11-07T17:01:39.895Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,14 +25,14 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-07T17:12:51.844Z",
+   "lastSuccessAt": "2026-11-07T17:17:51.730Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
    "state": "COMPLETED_TODAY",
-   "lastPreparationAt": "2026-11-07T17:09:21.760Z",
+   "lastPreparationAt": "2026-11-07T17:13:25.782Z",
    "lock": "FREE"
   },
   "dispatch": {
@@ -161,15 +161,15 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-07T17:10:05.518Z",
+   "lastSuccess": "2026-11-07T17:13:26.016Z",
    "activity": null,
    "errors": 2,
    "reason": "Last run completed",
-   "items": 1143,
+   "items": 1144,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-07T17:10:05.518Z",
+      "at": "2026-11-07T17:13:26.016Z",
       "text": "Report written (ok)",
       "ok": true
      },
@@ -208,15 +208,15 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-07T17:09:21.760Z",
+   "lastSuccess": "2026-11-07T17:13:25.782Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 1143,
+   "items": 1144,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-07T17:09:21.760Z",
+      "at": "2026-11-07T17:13:25.782Z",
       "text": "Report written (ok)",
       "ok": true
      },
@@ -327,11 +327,11 @@
    "stage": "QUEUE_PREPARATION",
    "title": "Send queue shortage",
    "evidence": [
-    "Interior detailing: 8 EMAIL-ready (CRITICAL < 150)",
-    "Property services: 0 EMAIL-ready (CRITICAL < 150)",
+    "Interior detailing: 29 EMAIL-ready (CRITICAL < 150)",
+    "Property services: 13 EMAIL-ready (CRITICAL < 150)",
     "Website design: 19 EMAIL-ready (CRITICAL < 150)",
     "Inquiry follow-up: 14 EMAIL-ready (CRITICAL < 150)",
-    "Estimate follow-up: 30 EMAIL-ready (CRITICAL < 150)",
+    "Estimate follow-up: 32 EMAIL-ready (CRITICAL < 150)",
     "Other approved: 0 EMAIL-ready (CRITICAL < 150)"
    ]
   },
@@ -347,7 +347,7 @@
   }
  ],
  "metrics": {
-  "ready": 1143,
+  "ready": 1144,
   "sentToday": 0,
   "dailyCap": 50,
   "preparedSnapshots": 6,

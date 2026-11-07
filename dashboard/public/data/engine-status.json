@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-07T09:02:52.721Z",
+ "generatedAt": "2026-11-07T15:58:44.201Z",
  "lastLogAt": "2026-11-06T21:04:45.618Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,8 +25,8 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-07T09:02:52.721Z",
-   "lastError": null,
+   "lastSuccessAt": "2026-11-07T15:58:44.201Z",
+   "lastError": "spawnSync git ETIMEDOUT",
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
@@ -163,7 +163,7 @@
    "state": "OK",
    "lastSuccess": "2026-11-06T22:25:20.117Z",
    "activity": null,
-   "errors": 3,
+   "errors": 2,
    "reason": "Last run completed",
    "items": 1540,
    "detail": {
@@ -318,6 +318,26 @@
     "9:00 AM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)",
     "1:00 PM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)",
     "5:00 PM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)"
+   ]
+  },
+  {
+   "id": "PUBLISH_FAILURE",
+   "rank": 85,
+   "severity": "WARNING",
+   "stage": null,
+   "title": "Snapshot publishing failed",
+   "evidence": [
+    "spawnSync git ETIMEDOUT"
+   ]
+  },
+  {
+   "id": "MISSED_PREP",
+   "rank": 80,
+   "severity": "WARNING",
+   "stage": "QUEUE_PREPARATION",
+   "title": "No preparation report today",
+   "evidence": [
+    "Expected by 8:40 AM ET; latest report 2026-11-07T03:12:36.955Z"
    ]
   },
   {

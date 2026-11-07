@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-07T03:13:20.943Z",
+ "generatedAt": "2026-11-07T05:02:35.910Z",
  "sourceAsOf": "2026-11-07T03:12:37.142Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -62,7 +62,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.0h ago",
+    "detail": "Last prepared 1.8h ago",
     "blocking": false
    },
    {
@@ -356,10 +356,6 @@
   "inboxDeliveryConfirmed": false,
   "daily": [
    {
-    "day": "2026-10-08",
-    "count": 0
-   },
-   {
     "day": "2026-10-09",
     "count": 0
    },
@@ -474,6 +470,10 @@
    {
     "day": "2026-11-06",
     "count": 0
+   },
+   {
+    "day": "2026-11-07",
+    "count": 0
    }
   ],
   "byCampaign": [
@@ -502,7 +502,7 @@
    {
     "id": "MORNING",
     "label": "9:00 AM ET Dispatch",
-    "scheduledAt": "2026-11-06T14:00:00.000Z",
+    "scheduledAt": "2026-11-07T14:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
@@ -514,7 +514,7 @@
    {
     "id": "MIDDAY",
     "label": "1:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-06T18:00:00.000Z",
+    "scheduledAt": "2026-11-07T18:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
@@ -526,7 +526,7 @@
    {
     "id": "AFTERNOON",
     "label": "5:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-06T22:00:00.000Z",
+    "scheduledAt": "2026-11-07T22:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
@@ -759,10 +759,6 @@
   ],
   "emailActivity": [
    {
-    "day": "2026-10-08",
-    "count": 0
-   },
-   {
     "day": "2026-10-09",
     "count": 0
    },
@@ -876,6 +872,10 @@
    },
    {
     "day": "2026-11-06",
+    "count": 0
+   },
+   {
+    "day": "2026-11-07",
     "count": 0
    }
   ],
@@ -994,6 +994,13 @@
     "failed": 0,
     "blocked": 3,
     "unknown": 0
+   },
+   {
+    "day": "2026-11-07",
+    "completed": 0,
+    "failed": 0,
+    "blocked": 3,
+    "unknown": 0
    }
   ],
   "conversionTrend": []
@@ -1005,7 +1012,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-07T03:13:20.943Z",
+   "lastDetected": "2026-11-07T05:02:35.910Z",
    "state": "ACTIVE"
   },
   {
@@ -1014,7 +1021,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-07T03:13:20.943Z",
+   "lastDetected": "2026-11-07T05:02:35.910Z",
    "state": "ACTIVE"
   },
   {
@@ -1023,7 +1030,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-07T03:13:20.943Z",
+   "lastDetected": "2026-11-07T05:02:35.910Z",
    "state": "ACTIVE"
   },
   {
@@ -1032,7 +1039,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "6 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up, Other approved.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-07T03:13:20.943Z",
+   "lastDetected": "2026-11-07T05:02:35.910Z",
    "state": "ACTIVE"
   }
  ],
@@ -1069,6 +1076,20 @@
    },
    {
     "day": "2026-11-06",
+    "total": 5836,
+    "qualified": 4278,
+    "ready": 1516,
+    "sent": 0,
+    "health": "BLOCKED",
+    "windows": {
+     "completed": 0,
+     "failed": 0,
+     "blocked": 3,
+     "unknown": 0
+    }
+   },
+   {
+    "day": "2026-11-07",
     "total": 5836,
     "qualified": 4278,
     "ready": 1516,

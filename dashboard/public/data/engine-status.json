@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-07T22:22:53.717Z",
+ "generatedAt": "2026-11-07T22:27:53.957Z",
  "lastLogAt": "2026-11-07T21:04:09.482Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,14 +25,14 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-07T22:22:53.717Z",
+   "lastSuccessAt": "2026-11-07T22:27:53.957Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
    "state": "COMPLETED_TODAY",
-   "lastPreparationAt": "2026-11-07T21:03:48.672Z",
+   "lastPreparationAt": "2026-11-07T22:26:11.531Z",
    "lock": "FREE"
   },
   "dispatch": {
@@ -161,7 +161,7 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-07T21:03:49.292Z",
+   "lastSuccess": "2026-11-07T22:26:11.996Z",
    "activity": null,
    "errors": 1,
    "reason": "Last run completed",
@@ -169,13 +169,13 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-07T21:03:49.292Z",
-      "text": "FoundryDailyAudit.js completed",
+      "at": "2026-11-07T22:26:11.996Z",
+      "text": "Report written (ok)",
       "ok": true
      },
      {
-      "at": "2026-11-07T21:03:49.227Z",
-      "text": "Report written (ok)",
+      "at": "2026-11-07T21:03:49.292Z",
+      "text": "FoundryDailyAudit.js completed",
       "ok": true
      },
      {
@@ -208,13 +208,18 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-07T21:04:04.013Z",
+   "lastSuccess": "2026-11-07T22:26:11.531Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
    "items": 1235,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-07T22:26:11.531Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
      {
       "at": "2026-11-07T21:04:04.013Z",
       "text": "FoundryReady.js completed",
@@ -223,11 +228,6 @@
      {
       "at": "2026-11-07T21:03:48.746Z",
       "text": "FoundryFinalHandoffExport.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-07T21:03:48.672Z",
-      "text": "Report written (ok)",
       "ok": true
      },
      {
@@ -287,7 +287,7 @@
    "id": "REPLY_PROCESSING",
    "label": "Reply Processing",
    "state": "OK",
-   "lastSuccess": "2026-11-06T22:25:20.348Z",
+   "lastSuccess": "2026-11-07T22:26:12.492Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
@@ -295,7 +295,7 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-06T22:25:20.348Z",
+      "at": "2026-11-07T22:26:12.492Z",
       "text": "Report written (ok)",
       "ok": true
      }

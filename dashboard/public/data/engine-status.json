@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-07T17:07:51.746Z",
+ "generatedAt": "2026-11-07T17:12:51.844Z",
  "lastLogAt": "2026-11-07T17:01:39.895Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,14 +25,14 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-07T17:07:51.746Z",
+   "lastSuccessAt": "2026-11-07T17:12:51.844Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
    "state": "COMPLETED_TODAY",
-   "lastPreparationAt": "2026-11-07T17:02:48.476Z",
+   "lastPreparationAt": "2026-11-07T17:09:21.760Z",
    "lock": "FREE"
   },
   "dispatch": {
@@ -161,13 +161,18 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-07T17:01:36.748Z",
+   "lastSuccess": "2026-11-07T17:10:05.518Z",
    "activity": null,
    "errors": 2,
    "reason": "Last run completed",
-   "items": 1523,
+   "items": 1143,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-07T17:10:05.518Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
      {
       "at": "2026-11-07T17:01:39.879Z",
       "text": "FoundrySafetyAudit.js exit 1",
@@ -176,11 +181,6 @@
      {
       "at": "2026-11-07T17:01:36.748Z",
       "text": "FoundryDailyAudit.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-07T17:01:36.725Z",
-      "text": "Report written (ok)",
       "ok": true
      },
      {
@@ -208,15 +208,15 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-07T17:02:48.476Z",
+   "lastSuccess": "2026-11-07T17:09:21.760Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 1137,
+   "items": 1143,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-07T17:02:48.476Z",
+      "at": "2026-11-07T17:09:21.760Z",
       "text": "Report written (ok)",
       "ok": true
      },
@@ -327,22 +327,12 @@
    "stage": "QUEUE_PREPARATION",
    "title": "Send queue shortage",
    "evidence": [
-    "Interior detailing: 0 EMAIL-ready (CRITICAL < 150)",
+    "Interior detailing: 8 EMAIL-ready (CRITICAL < 150)",
     "Property services: 0 EMAIL-ready (CRITICAL < 150)",
-    "Website design: 0 EMAIL-ready (CRITICAL < 150)",
-    "Inquiry follow-up: 0 EMAIL-ready (CRITICAL < 150)",
-    "Estimate follow-up: 0 EMAIL-ready (CRITICAL < 150)",
+    "Website design: 19 EMAIL-ready (CRITICAL < 150)",
+    "Inquiry follow-up: 14 EMAIL-ready (CRITICAL < 150)",
+    "Estimate follow-up: 30 EMAIL-ready (CRITICAL < 150)",
     "Other approved: 0 EMAIL-ready (CRITICAL < 150)"
-   ]
-  },
-  {
-   "id": "CRM_LEDGER_MISMATCH",
-   "rank": 50,
-   "severity": "WARNING",
-   "stage": "VERIFICATION",
-   "title": "CRM and Gmail ledger not reconciled",
-   "evidence": [
-    "CRM READY 1137 · audit 1523"
    ]
   },
   {
@@ -357,10 +347,10 @@
   }
  ],
  "metrics": {
-  "ready": 1137,
+  "ready": 1143,
   "sentToday": 0,
   "dailyCap": 50,
-  "preparedSnapshots": 5,
+  "preparedSnapshots": 6,
   "total": 5851
  },
  "baselines": {

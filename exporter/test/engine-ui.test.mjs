@@ -10,7 +10,7 @@ const T = { snapshotStaleMin: 75, processingTtlMin: 6, prepDeadlineMin: 25, disp
 const mk = (state, minAgo, extra = {}) => ({ schemaVersion: 1, generatedAt: new Date(NOW - minAgo * 60000).toISOString(), thresholds: T, state, stoppedKind: null, caution: false, headline: 'h', ...extra });
 
 test('null telemetry is UNKNOWN and stopped', () => { const v = engineView(null, NOW); assert.equal(v.state, 'UNKNOWN'); assert.equal(v.spin, 'stopped'); });
-test('IDLE fresh turns gently and is not stale', () => { const v = engineView(mk('IDLE', 20), NOW); assert.equal(v.state, 'IDLE'); assert.equal(v.spin, 'idle'); });
+test('IDLE fresh turns gently and is labeled smooth', () => { const v = engineView(mk('IDLE', 20), NOW); assert.equal(v.state, 'IDLE'); assert.equal(v.spin, 'idle'); assert.equal(v.label, 'SMOOTH'); });
 test('idle engine is not marked stale while telemetry is fresh', () => assert.notEqual(engineView(mk('IDLE', 74), NOW).state, 'STALE'));
 test('old telemetry is STALE: rings stop, shows age', () => { const v = engineView(mk('IDLE', 76), NOW); assert.equal(v.state, 'STALE'); assert.equal(v.spin, 'stopped'); assert.ok(v.ageMin > 75); });
 test('PROCESSING fresh spins fast', () => { const v = engineView(mk('PROCESSING', 2), NOW); assert.equal(v.state, 'PROCESSING'); assert.equal(v.spin, 'fast'); });

@@ -19,6 +19,6 @@ export function engineView(e: EngineStatus | null, now: number): EngineView {
       // "Processing" is only asserted while the observation is fresh. After that, live status is paused, never extrapolated.
       if (age > t.processingTtlMin) return { ...base, state: 'UNKNOWN', spin: 'stopped', label: 'LIVE VIEW PAUSED', detail: 'Last confirmed processing; live status is paused between snapshots.', stopped: true, amber: false };
       return { ...base, state: 'PROCESSING', spin: 'fast', label: 'PROCESSING', detail: e.headline, stopped: false, amber: false };
-    default: return { ...base, state: 'IDLE', spin: 'idle', label: e.caution ? 'IDLE · ATTENTION' : 'HEALTHY · IDLE', detail: e.headline, stopped: false, amber: e.caution };
+    default: return { ...base, state: 'IDLE', spin: 'idle', label: e.caution ? 'IDLE · ATTENTION' : 'SMOOTH', detail: e.headline, stopped: false, amber: e.caution };
   }
 }

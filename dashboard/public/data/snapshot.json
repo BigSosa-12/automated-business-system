@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-08T01:47:53.910Z",
- "sourceAsOf": "2026-11-08T01:47:20.245Z",
+ "generatedAt": "2026-11-08T01:52:57.308Z",
+ "sourceAsOf": "2026-11-08T01:49:41.704Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -61,7 +61,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.0h ago",
+    "detail": "Last prepared 0.1h ago",
     "blocking": false
    },
    {
@@ -650,8 +650,8 @@
   {
    "id": "VALIDATION",
    "label": "Validation",
-   "lastRun": "2026-11-08T01:47:20.059Z",
-   "lastSuccess": "2026-11-08T01:47:20.059Z",
+   "lastRun": "2026-11-08T01:49:41.563Z",
+   "lastSuccess": "2026-11-08T01:49:41.563Z",
    "durationSec": null,
    "status": "OK",
    "items": 530,
@@ -661,8 +661,8 @@
   {
    "id": "RECONCILIATION",
    "label": "Reconciliation",
-   "lastRun": "2026-11-07T21:00:06.759Z",
-   "lastSuccess": "2026-11-07T21:00:06.759Z",
+   "lastRun": "2026-11-08T01:48:36.599Z",
+   "lastSuccess": "2026-11-08T01:48:36.599Z",
    "durationSec": null,
    "status": "OK",
    "items": 3,
@@ -982,7 +982,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-08T01:47:53.910Z",
+   "lastDetected": "2026-11-08T01:52:57.308Z",
    "state": "ACTIVE"
   },
   {
@@ -991,7 +991,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-08T01:47:53.910Z",
+   "lastDetected": "2026-11-08T01:52:57.308Z",
    "state": "ACTIVE"
   },
   {
@@ -1000,7 +1000,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-08T01:47:53.910Z",
+   "lastDetected": "2026-11-08T01:52:57.308Z",
    "state": "ACTIVE"
   },
   {
@@ -1009,7 +1009,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-08T01:47:53.910Z",
+   "lastDetected": "2026-11-08T01:52:57.308Z",
    "state": "ACTIVE"
   }
  ],
@@ -1131,7 +1131,7 @@
    {
     "name": "foundry_contact_evidence_audit",
     "present": true,
-    "asOf": "2026-11-08T01:47:20.245Z"
+    "asOf": "2026-11-08T01:49:41.704Z"
    },
    {
     "name": "foundry_health_report",
@@ -1141,7 +1141,7 @@
    {
     "name": "foundry_daily_audit",
     "present": true,
-    "asOf": "2026-11-08T01:47:20.059Z"
+    "asOf": "2026-11-08T01:49:41.563Z"
    },
    {
     "name": "foundry_day_review",
@@ -1196,7 +1196,7 @@
    {
     "name": "suppression_reconcile_report",
     "present": true,
-    "asOf": "2026-11-07T21:00:06.759Z"
+    "asOf": "2026-11-08T01:48:36.599Z"
    },
    {
     "name": "foundry_discovery_import_report",

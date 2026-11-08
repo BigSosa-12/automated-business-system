@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-08T01:42:52.207Z",
+ "generatedAt": "2026-11-08T01:47:53.910Z",
  "lastLogAt": "2026-11-07T21:04:09.482Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,14 +25,14 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-08T01:42:52.207Z",
+   "lastSuccessAt": "2026-11-08T01:47:53.910Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
    "state": "COMPLETED_TODAY",
-   "lastPreparationAt": "2026-11-08T01:42:50.952Z",
+   "lastPreparationAt": "2026-11-08T01:47:19.901Z",
    "lock": "FREE"
   },
   "dispatch": {
@@ -114,7 +114,7 @@
    "id": "CLASSIFICATION",
    "label": "Classification",
    "state": "OK",
-   "lastSuccess": "2026-11-08T01:42:24.214Z",
+   "lastSuccess": "2026-11-08T01:46:48.858Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
@@ -122,7 +122,7 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-08T01:42:24.214Z",
+      "at": "2026-11-08T01:46:48.858Z",
       "text": "Report written (ok)",
       "ok": true
      },
@@ -161,15 +161,15 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-08T01:42:51.079Z",
+   "lastSuccess": "2026-11-08T01:47:20.059Z",
    "activity": null,
    "errors": 1,
    "reason": "Last run completed",
-   "items": 531,
+   "items": 530,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-08T01:42:51.079Z",
+      "at": "2026-11-08T01:47:20.059Z",
       "text": "Report written (ok)",
       "ok": true
      },
@@ -208,15 +208,15 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-08T01:42:50.952Z",
+   "lastSuccess": "2026-11-08T01:47:19.901Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 531,
+   "items": 530,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-08T01:42:50.952Z",
+      "at": "2026-11-08T01:47:19.901Z",
       "text": "Report written (ok)",
       "ok": true
      },
@@ -331,7 +331,7 @@
     "Property services: 0 EMAIL-ready (CRITICAL < 150)",
     "Website design: 61 EMAIL-ready (CRITICAL < 150)",
     "Inquiry follow-up: 51 EMAIL-ready (CRITICAL < 150)",
-    "Estimate follow-up: 103 EMAIL-ready (CRITICAL < 150)"
+    "Estimate follow-up: 102 EMAIL-ready (CRITICAL < 150)"
    ]
   },
   {
@@ -346,7 +346,7 @@
   }
  ],
  "metrics": {
-  "ready": 531,
+  "ready": 530,
   "sentToday": 0,
   "dailyCap": 50,
   "preparedSnapshots": 7,

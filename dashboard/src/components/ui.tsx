@@ -1,3 +1,4 @@
+import { CountUp } from './fx';
 import type { ReactNode } from 'react';
 import type { CheckState, Health, StageStatus, WindowState } from '../types';
 
@@ -34,7 +35,7 @@ export function Kpi({ label, icon, value, unit, foot, na, accent, progress }: {
     <div className={`glass lift kpi ${accent ? 'accent' : ''}`}>
       <div className="label">{icon}{label}</div>
       <div>
-        {na ? <div className="na">{na}</div> : <div className="value">{value}{unit != null && <small> {unit}</small>}</div>}
+        {na ? <div className="na">{na}</div> : <div className="value"><CountUp text={value} />{unit != null && <small> {unit}</small>}</div>}
         {progress != null && <div className="bar" aria-hidden><b style={{ width: `${Math.min(100, Math.max(0, progress * 100))}%` }} /></div>}
       </div>
       <div className="foot">{foot}</div>

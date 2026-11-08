@@ -15,7 +15,6 @@ export const CAMPAIGNS = {
   WEBSITE_WORLD: { label: 'Website Design', short: 'Website design' },
   DIGITAL_INQUIRY: { label: 'Digital Inquiry Follow-Up', short: 'Inquiry follow-up' },
   DIGITAL_ESTIMATES: { label: 'Outstanding Estimate Follow-Up', short: 'Estimate follow-up' },
-  OTHER_APPROVED: { label: 'Other Approved Campaigns', short: 'Other approved' },
 };
 const CAMPAIGN_ORDER = Object.keys(CAMPAIGNS);
 
@@ -170,7 +169,7 @@ export function buildSnapshot(ctx) {
   const add = (id, label, state, detail, blocking = false) => checks.push({ id, label, state, detail, blocking });
   add('sqlite_read', 'CRM database readable', db ? 'OK' : 'FAIL', db ? 'Read-only snapshot taken' : `Read failed (${scrub(dbError, 60)})`, true);
   const evidence = src.foundry_contact_evidence_audit.data;
-  if (evidence) add('contact_evidence','Verified email routes',evidence.evidence_pass ? 'OK' : 'FAIL',evidence.evidence_pass+' of '+evidence.routes+' routes pass the contact evidence check',true);
+  if (evidence) add('contact_evidence','Evidence-backed email routes',evidence.routes > 0 && evidence.evidence_pass === evidence.routes && !Object.keys(evidence.issues ?? {}).length ? 'OK' : 'FAIL',evidence.evidence_pass+' of '+evidence.routes+' routes pass the contact source check',true);
   add('gmail_authorization', 'Gmail authorization', gmailBlocked ? 'FAIL' : safety ? 'OK' : 'UNKNOWN', gmailBlocked ? 'Configuration / authorization incomplete; sender is gated' : safety ? 'No blocking safety failures' : 'Safety audit missing', true);
   add('safety_audit', 'Send-safety audit', safety ? (safety.status === 'BLOCKED' ? 'FAIL' : 'OK') : 'UNKNOWN', safety ? `Status ${safety.status}` : 'foundry_safety_audit.json missing', true);
   add('quality_audit', 'Daily quality audit', audit ? (audit.status === 'PASS' ? 'OK' : 'WARN') : 'UNKNOWN', audit ? (auditFailures.length ? auditFailures.join(', ') : 'Passed') : 'foundry_daily_audit.json missing');
@@ -239,7 +238,7 @@ export function buildSnapshot(ctx) {
     { id: 'DISCOVERED', label: 'Discovered', count: db?.total ?? null, note: 'Business identities in the CRM' },
     { id: 'QUALIFIED', label: 'Qualified', count: db ? stateN('QUALIFIED') + stateN('READY') : null, note: 'QUALIFIED + READY classification' },
     { id: 'ROUTE_READY', label: 'Route-ready', count: readyTotal, note: 'READY = handoff eligible, not safe to email yet' },
-    { id: 'VERIFIED_READY', label: 'Verified send-ready', count: db?.verifiedContactEvidence ?? null, note: 'Mailbox + identity verified for send' },
+    { id: 'VERIFIED_READY', label: 'Evidence-backed email routes', count: db?.verifiedContactEvidence ?? null, note: 'Current official-site or provider evidence; delivery is confirmed only after Gmail accepts a send' },
     { id: 'CONTACTED', label: 'Confirmed sends', count: sends.length, note: 'Gmail API accepted (ledger); coverage partial' },
     { id: 'REPLIED', label: 'Replied', count: null, note: 'Not tracked until reply coverage is complete' },
     { id: 'CONVERTED', label: 'Converted', count: null, note: 'Not tracked: no confirmed conversion events' },

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-08T07:32:52.481Z",
+ "generatedAt": "2026-11-08T07:37:51.755Z",
  "sourceAsOf": "2026-11-08T01:49:41.704Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -989,7 +989,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-08T07:32:52.481Z",
+   "lastDetected": "2026-11-08T07:37:51.755Z",
    "state": "ACTIVE"
   },
   {
@@ -998,7 +998,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-08T07:32:52.481Z",
+   "lastDetected": "2026-11-08T07:37:51.755Z",
    "state": "ACTIVE"
   },
   {
@@ -1007,7 +1007,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-08T07:32:52.481Z",
+   "lastDetected": "2026-11-08T07:37:51.755Z",
    "state": "ACTIVE"
   },
   {
@@ -1016,7 +1016,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-08T07:32:52.481Z",
+   "lastDetected": "2026-11-08T07:37:51.755Z",
    "state": "ACTIVE"
   }
  ],

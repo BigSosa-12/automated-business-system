@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-09T08:07:12.586Z",
- "sourceAsOf": "2026-11-08T17:05:24.415Z",
+ "generatedAt": "2026-11-09T08:12:52.979Z",
+ "sourceAsOf": "2026-11-09T08:09:38.530Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -13,7 +13,8 @@
   "status": "BLOCKED",
   "reasons": [
    "Send-safety audit: Status BLOCKED",
-   "Execution lock: Held outside a scheduled window; possible overlap or stuck run"
+   "Daily quality audit: SENT_HISTORY_NOT_RECONCILED_WITH_GMAIL",
+   "Gmail ↔ CRM ledger reconciliation: Historical Gmail sends not reconciled; zero local sends is not proof of zero sent"
   ],
   "checks": [
    {
@@ -47,22 +48,22 @@
    {
     "id": "quality_audit",
     "label": "Daily quality audit",
-    "state": "OK",
-    "detail": "Passed",
+    "state": "WARN",
+    "detail": "SENT_HISTORY_NOT_RECONCILED_WITH_GMAIL",
     "blocking": false
    },
    {
     "id": "ledger_reconciliation",
     "label": "Gmail ↔ CRM ledger reconciliation",
-    "state": "OK",
-    "detail": "Reconciled",
+    "state": "WARN",
+    "detail": "Historical Gmail sends not reconciled; zero local sends is not proof of zero sent",
     "blocking": false
    },
    {
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 15.0h ago",
+    "detail": "Last prepared 0.1h ago",
     "blocking": false
    },
    {
@@ -75,8 +76,8 @@
    {
     "id": "production_lock",
     "label": "Execution lock",
-    "state": "WARN",
-    "detail": "Held outside a scheduled window; possible overlap or stuck run",
+    "state": "OK",
+    "detail": "Lock free",
     "blocking": false
    },
    {
@@ -330,8 +331,8 @@
   "sent30d": 4,
   "capacityNote": "50 total across all three windows.",
   "coverage": {
-   "status": "FULL",
-   "note": "Gmail history reconciled."
+   "status": "PARTIAL",
+   "note": "Counts come from send ledgers and CRM events. Gmail history is not fully reconciled, so zero here is not proof of zero sent."
   },
   "evidence": "GMAIL_API_ACCEPTED",
   "inboxDeliveryConfirmed": false,
@@ -531,7 +532,7 @@
   },
   "nextDispatchAt": "2026-11-09T14:00:00.000Z",
   "lastPreparation": {
-   "at": "2026-11-08T17:05:10.974Z",
+   "at": "2026-11-09T08:09:32.263Z",
    "rows": 592,
    "state": "COMPLETED"
   }
@@ -611,7 +612,7 @@
   "reason": "ETIMEDOUT"
  },
  "locks": {
-  "production": "HELD",
+  "production": "FREE",
   "protectedWindowNow": false
  },
  "pipeline": [
@@ -651,30 +652,30 @@
   {
    "id": "VALIDATION",
    "label": "Validation",
-   "lastRun": "2026-11-08T17:05:11.272Z",
-   "lastSuccess": "2026-11-08T17:05:11.272Z",
+   "lastRun": "2026-11-09T08:09:36.260Z",
+   "lastSuccess": null,
    "durationSec": null,
-   "status": "OK",
+   "status": "FAILED",
    "items": 592,
-   "errors": 0,
-   "note": null
+   "errors": 1,
+   "note": "sent history not reconciled with gmail"
   },
   {
    "id": "RECONCILIATION",
    "label": "Reconciliation",
    "lastRun": "2026-11-08T17:00:08.943Z",
-   "lastSuccess": "2026-11-08T17:00:08.943Z",
+   "lastSuccess": null,
    "durationSec": null,
-   "status": "OK",
+   "status": "DEGRADED",
    "items": 3,
-   "errors": 0,
-   "note": null
+   "errors": 1,
+   "note": "Gmail send history not reconciled"
   },
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "lastRun": "2026-11-08T17:05:10.974Z",
-   "lastSuccess": "2026-11-08T17:05:10.974Z",
+   "lastRun": "2026-11-09T08:09:32.263Z",
+   "lastSuccess": "2026-11-09T08:09:32.263Z",
    "durationSec": null,
    "status": "OK",
    "items": 592,
@@ -695,8 +696,8 @@
   {
    "id": "REPLY_PROCESSING",
    "label": "Replies",
-   "lastRun": "2026-11-07T22:26:12.492Z",
-   "lastSuccess": "2026-11-07T22:26:12.492Z",
+   "lastRun": "2026-11-09T08:09:38.530Z",
+   "lastSuccess": "2026-11-09T08:09:38.530Z",
    "durationSec": null,
    "status": "OK",
    "items": null,
@@ -997,7 +998,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-09T08:07:12.586Z",
+   "lastDetected": "2026-11-09T08:12:52.979Z",
    "state": "ACTIVE"
   },
   {
@@ -1006,7 +1007,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-09T08:07:12.586Z",
+   "lastDetected": "2026-11-09T08:12:52.979Z",
    "state": "ACTIVE"
   },
   {
@@ -1015,7 +1016,16 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-09T08:07:12.586Z",
+   "lastDetected": "2026-11-09T08:12:52.979Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "QUALITY_AUDIT_FAIL",
+   "severity": "WARNING",
+   "title": "Daily audit failing",
+   "detail": "sent history not reconciled with gmail",
+   "firstDetected": "2026-11-09T08:12:52.979Z",
+   "lastDetected": "2026-11-09T08:12:52.979Z",
    "state": "ACTIVE"
   },
   {
@@ -1024,16 +1034,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-09T08:07:12.586Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "LOCK_OUTSIDE_WINDOW",
-   "severity": "WARNING",
-   "title": "Execution lock held outside a window",
-   "detail": "Possible overlap or a stuck run. Not cleared automatically.",
-   "firstDetected": "2026-11-09T08:07:12.586Z",
-   "lastDetected": "2026-11-09T08:07:12.586Z",
+   "lastDetected": "2026-11-09T08:12:52.979Z",
    "state": "ACTIVE"
   }
  ],
@@ -1193,17 +1194,17 @@
    {
     "name": "foundry_daily_audit",
     "present": true,
-    "asOf": "2026-11-08T17:05:11.272Z"
+    "asOf": "2026-11-09T08:09:36.260Z"
    },
    {
     "name": "foundry_day_review",
     "present": true,
-    "asOf": "2026-11-07T22:26:12.492Z"
+    "asOf": "2026-11-09T08:09:38.530Z"
    },
    {
     "name": "foundry_safety_audit",
     "present": true,
-    "asOf": "2026-11-08T17:05:24.415Z"
+    "asOf": "2026-11-09T08:09:36.953Z"
    },
    {
     "name": "foundry_safe_dispatch_report",
@@ -1213,7 +1214,7 @@
    {
     "name": "foundry_final_handoff_report",
     "present": true,
-    "asOf": "2026-11-08T17:05:10.974Z"
+    "asOf": "2026-11-09T08:09:32.263Z"
    },
    {
     "name": "foundry_production_report",

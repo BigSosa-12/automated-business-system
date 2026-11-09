@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-09T08:07:12.586Z",
+ "generatedAt": "2026-11-09T08:12:52.979Z",
  "lastLogAt": "2026-11-08T17:05:32.605Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,15 +25,15 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-09T08:07:12.586Z",
+   "lastSuccessAt": "2026-11-09T08:12:52.979Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "LOCK_ANOMALY",
-   "lastPreparationAt": "2026-11-08T17:05:10.974Z",
-   "lock": "HELD"
+   "state": "COMPLETED_TODAY",
+   "lastPreparationAt": "2026-11-09T08:09:32.263Z",
+   "lock": "FREE"
   },
   "dispatch": {
    "state": "BLOCKED",
@@ -160,22 +160,22 @@
   {
    "id": "VERIFICATION",
    "label": "Verification",
-   "state": "OK",
+   "state": "FAILED",
    "lastSuccess": "2026-11-08T17:05:11.373Z",
    "activity": null,
-   "errors": 0,
-   "reason": "Last run completed",
+   "errors": 1,
+   "reason": "Audit failing: sent history not reconciled with gmail",
    "items": 592,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-08T17:05:11.373Z",
-      "text": "FoundryDailyAudit.js completed",
-      "ok": true
+      "at": "2026-11-09T08:09:36.260Z",
+      "text": "Report written (failed)",
+      "ok": false
      },
      {
-      "at": "2026-11-08T17:05:11.272Z",
-      "text": "Report written (ok)",
+      "at": "2026-11-08T17:05:11.373Z",
+      "text": "FoundryDailyAudit.js completed",
       "ok": true
      },
      {
@@ -201,20 +201,25 @@
     ],
     "durationSec": 0.232,
     "baselineMedianSec": 0,
-    "latestIssue": null
+    "latestIssue": "Audit failing: sent history not reconciled with gmail"
    }
   },
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-08T17:05:24.205Z",
+   "lastSuccess": "2026-11-09T08:09:32.263Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
    "items": 592,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-09T08:09:32.263Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
      {
       "at": "2026-11-08T17:05:24.205Z",
       "text": "FoundryReady.js completed",
@@ -223,11 +228,6 @@
      {
       "at": "2026-11-08T17:05:11.006Z",
       "text": "FoundryFinalHandoffExport.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-08T17:05:10.974Z",
-      "text": "Report written (ok)",
       "ok": true
      },
      {
@@ -287,7 +287,7 @@
    "id": "REPLY_PROCESSING",
    "label": "Reply Processing",
    "state": "OK",
-   "lastSuccess": "2026-11-07T22:26:12.492Z",
+   "lastSuccess": "2026-11-09T08:09:38.530Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
@@ -295,7 +295,7 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-07T22:26:12.492Z",
+      "at": "2026-11-09T08:09:38.530Z",
       "text": "Report written (ok)",
       "ok": true
      }
@@ -331,13 +331,13 @@
    ]
   },
   {
-   "id": "STALE_LOCK",
-   "rank": 70,
+   "id": "VALIDATION_FAILED",
+   "rank": 65,
    "severity": "WARNING",
-   "stage": null,
-   "title": "Execution lock held outside any scheduled window",
+   "stage": "VERIFICATION",
+   "title": "Daily audit failing",
    "evidence": [
-    "foundry_execution.lock is held with no preparation or dispatch window active. Not cleared automatically."
+    "foundry_daily_audit: SENT_HISTORY_NOT_RECONCILED_WITH_GMAIL"
    ]
   },
   {
@@ -352,6 +352,16 @@
     "Website design: 83 EMAIL-ready (CRITICAL < 150)",
     "Inquiry follow-up: 46 EMAIL-ready (CRITICAL < 150)",
     "Estimate follow-up: 97 EMAIL-ready (CRITICAL < 150)"
+   ]
+  },
+  {
+   "id": "CRM_LEDGER_MISMATCH",
+   "rank": 50,
+   "severity": "WARNING",
+   "stage": "VERIFICATION",
+   "title": "CRM and Gmail ledger not reconciled",
+   "evidence": [
+    "Gmail send history not reconciled; local zero sends is not proof of zero sent"
    ]
   },
   {

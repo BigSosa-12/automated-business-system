@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-08T17:27:53.158Z",
+ "generatedAt": "2026-11-09T08:07:12.586Z",
  "lastLogAt": "2026-11-08T17:05:32.605Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,15 +25,15 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-08T17:27:53.158Z",
+   "lastSuccessAt": "2026-11-09T08:07:12.586Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "COMPLETED_TODAY",
+   "state": "LOCK_ANOMALY",
    "lastPreparationAt": "2026-11-08T17:05:10.974Z",
-   "lock": "FREE"
+   "lock": "HELD"
   },
   "dispatch": {
    "state": "BLOCKED",
@@ -328,6 +328,16 @@
    "evidence": [
     "FoundryGmailReconcile.js: 57s vs median 14s (7 samples, threshold 2×)",
     "FoundryProductionPipeline.js: 98s vs median 24s (7 samples, threshold 2×)"
+   ]
+  },
+  {
+   "id": "STALE_LOCK",
+   "rank": 70,
+   "severity": "WARNING",
+   "stage": null,
+   "title": "Execution lock held outside any scheduled window",
+   "evidence": [
+    "foundry_execution.lock is held with no preparation or dispatch window active. Not cleared automatically."
    ]
   },
   {

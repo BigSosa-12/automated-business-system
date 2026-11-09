@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-08T17:27:53.158Z",
+ "generatedAt": "2026-11-09T08:07:12.586Z",
  "sourceAsOf": "2026-11-08T17:05:24.415Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -12,7 +12,8 @@
  "health": {
   "status": "BLOCKED",
   "reasons": [
-   "Send-safety audit: Status BLOCKED"
+   "Send-safety audit: Status BLOCKED",
+   "Execution lock: Held outside a scheduled window; possible overlap or stuck run"
   ],
   "checks": [
    {
@@ -61,7 +62,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.4h ago",
+    "detail": "Last prepared 15.0h ago",
     "blocking": false
    },
    {
@@ -74,8 +75,8 @@
    {
     "id": "production_lock",
     "label": "Execution lock",
-    "state": "OK",
-    "detail": "Lock free",
+    "state": "WARN",
+    "detail": "Held outside a scheduled window; possible overlap or stuck run",
     "blocking": false
    },
    {
@@ -336,10 +337,6 @@
   "inboxDeliveryConfirmed": false,
   "daily": [
    {
-    "day": "2026-10-10",
-    "count": 0
-   },
-   {
     "day": "2026-10-11",
     "count": 0
    },
@@ -454,6 +451,10 @@
    {
     "day": "2026-11-08",
     "count": 0
+   },
+   {
+    "day": "2026-11-09",
+    "count": 0
    }
   ],
   "byCampaign": [
@@ -482,7 +483,7 @@
    {
     "id": "MORNING",
     "label": "9:00 AM ET Dispatch",
-    "scheduledAt": "2026-11-08T14:00:00.000Z",
+    "scheduledAt": "2026-11-09T14:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
@@ -494,7 +495,7 @@
    {
     "id": "MIDDAY",
     "label": "1:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-08T18:00:00.000Z",
+    "scheduledAt": "2026-11-09T18:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
@@ -506,7 +507,7 @@
    {
     "id": "AFTERNOON",
     "label": "5:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-08T22:00:00.000Z",
+    "scheduledAt": "2026-11-09T22:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
@@ -528,7 +529,7 @@
     "Handoff/export counts disagree with production report"
    ]
   },
-  "nextDispatchAt": "2026-11-08T18:00:00.000Z",
+  "nextDispatchAt": "2026-11-09T14:00:00.000Z",
   "lastPreparation": {
    "at": "2026-11-08T17:05:10.974Z",
    "rows": 592,
@@ -606,11 +607,11 @@
   }
  ],
  "schedulerEvidence": {
-  "available": true,
-  "reason": null
+  "available": false,
+  "reason": "ETIMEDOUT"
  },
  "locks": {
-  "production": "FREE",
+  "production": "HELD",
   "protectedWindowNow": false
  },
  "pipeline": [
@@ -744,10 +745,6 @@
   ],
   "emailActivity": [
    {
-    "day": "2026-10-10",
-    "count": 0
-   },
-   {
     "day": "2026-10-11",
     "count": 0
    },
@@ -861,6 +858,10 @@
    },
    {
     "day": "2026-11-08",
+    "count": 0
+   },
+   {
+    "day": "2026-11-09",
     "count": 0
    }
   ],
@@ -978,6 +979,13 @@
     "failed": 0,
     "blocked": 3,
     "unknown": 0
+   },
+   {
+    "day": "2026-11-09",
+    "completed": 0,
+    "failed": 0,
+    "blocked": 3,
+    "unknown": 0
    }
   ],
   "conversionTrend": []
@@ -989,7 +997,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-08T17:27:53.158Z",
+   "lastDetected": "2026-11-09T08:07:12.586Z",
    "state": "ACTIVE"
   },
   {
@@ -998,7 +1006,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-08T17:27:53.158Z",
+   "lastDetected": "2026-11-09T08:07:12.586Z",
    "state": "ACTIVE"
   },
   {
@@ -1007,7 +1015,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-08T17:27:53.158Z",
+   "lastDetected": "2026-11-09T08:07:12.586Z",
    "state": "ACTIVE"
   },
   {
@@ -1016,7 +1024,16 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-08T17:27:53.158Z",
+   "lastDetected": "2026-11-09T08:07:12.586Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "LOCK_OUTSIDE_WINDOW",
+   "severity": "WARNING",
+   "title": "Execution lock held outside a window",
+   "detail": "Possible overlap or a stuck run. Not cleared automatically.",
+   "firstDetected": "2026-11-09T08:07:12.586Z",
+   "lastDetected": "2026-11-09T08:07:12.586Z",
    "state": "ACTIVE"
   }
  ],
@@ -1092,6 +1109,20 @@
      "blocked": 3,
      "unknown": 0
     }
+   },
+   {
+    "day": "2026-11-09",
+    "total": 5860,
+    "qualified": 3166,
+    "ready": 592,
+    "sent": 0,
+    "health": "BLOCKED",
+    "windows": {
+     "completed": 0,
+     "failed": 0,
+     "blocked": 3,
+     "unknown": 0
+    }
    }
   ]
  },
@@ -1122,8 +1153,8 @@
     "note": "Sales/revenue not recorded"
    },
    "taskScheduler": {
-    "state": "AVAILABLE",
-    "note": "schtasks query"
+    "state": "UNAVAILABLE",
+    "note": "Task definitions only (no run results)"
    }
   },
   "crossChecks": [

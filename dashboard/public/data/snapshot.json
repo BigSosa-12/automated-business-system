@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-09T21:52:53.006Z",
+ "generatedAt": "2026-11-09T22:17:52.678Z",
  "sourceAsOf": "2026-11-09T21:05:03.245Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -61,7 +61,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.8h ago",
+    "detail": "Last prepared 1.2h ago",
     "blocking": false
    },
    {
@@ -528,7 +528,7 @@
     "Handoff/export counts disagree with production report"
    ]
   },
-  "nextDispatchAt": "2026-11-09T22:00:00.000Z",
+  "nextDispatchAt": "2026-11-10T14:00:00.000Z",
   "lastPreparation": {
    "at": "2026-11-09T21:04:36.606Z",
    "rows": 627,
@@ -996,7 +996,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-09T21:52:53.006Z",
+   "lastDetected": "2026-11-09T22:17:52.678Z",
    "state": "ACTIVE"
   },
   {
@@ -1005,7 +1005,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-09T21:52:53.006Z",
+   "lastDetected": "2026-11-09T22:17:52.678Z",
    "state": "ACTIVE"
   },
   {
@@ -1014,7 +1014,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-09T21:52:53.006Z",
+   "lastDetected": "2026-11-09T22:17:52.678Z",
    "state": "ACTIVE"
   },
   {
@@ -1023,7 +1023,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-09T21:52:53.006Z",
+   "lastDetected": "2026-11-09T22:17:52.678Z",
    "state": "ACTIVE"
   }
  ],

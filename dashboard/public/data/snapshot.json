@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-09T08:12:52.979Z",
- "sourceAsOf": "2026-11-09T08:09:38.530Z",
+ "generatedAt": "2026-11-09T18:17:52.201Z",
+ "sourceAsOf": "2026-11-09T18:03:55.980Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -63,7 +63,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.1h ago",
+    "detail": "Last prepared 10.1h ago",
     "blocking": false
    },
    {
@@ -530,7 +530,7 @@
     "Handoff/export counts disagree with production report"
    ]
   },
-  "nextDispatchAt": "2026-11-09T14:00:00.000Z",
+  "nextDispatchAt": "2026-11-09T22:00:00.000Z",
   "lastPreparation": {
    "at": "2026-11-09T08:09:32.263Z",
    "rows": 592,
@@ -608,8 +608,8 @@
   }
  ],
  "schedulerEvidence": {
-  "available": false,
-  "reason": "ETIMEDOUT"
+  "available": true,
+  "reason": null
  },
  "locks": {
   "production": "FREE",
@@ -998,7 +998,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-09T08:12:52.979Z",
+   "lastDetected": "2026-11-09T18:17:52.201Z",
    "state": "ACTIVE"
   },
   {
@@ -1007,7 +1007,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-09T08:12:52.979Z",
+   "lastDetected": "2026-11-09T18:17:52.201Z",
    "state": "ACTIVE"
   },
   {
@@ -1016,7 +1016,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-09T08:12:52.979Z",
+   "lastDetected": "2026-11-09T18:17:52.201Z",
    "state": "ACTIVE"
   },
   {
@@ -1025,7 +1025,7 @@
    "title": "Daily audit failing",
    "detail": "sent history not reconciled with gmail",
    "firstDetected": "2026-11-09T08:12:52.979Z",
-   "lastDetected": "2026-11-09T08:12:52.979Z",
+   "lastDetected": "2026-11-09T18:17:52.201Z",
    "state": "ACTIVE"
   },
   {
@@ -1034,7 +1034,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-09T08:12:52.979Z",
+   "lastDetected": "2026-11-09T18:17:52.201Z",
    "state": "ACTIVE"
   }
  ],
@@ -1154,8 +1154,8 @@
     "note": "Sales/revenue not recorded"
    },
    "taskScheduler": {
-    "state": "UNAVAILABLE",
-    "note": "Task definitions only (no run results)"
+    "state": "AVAILABLE",
+    "note": "schtasks query"
    }
   },
   "crossChecks": [
@@ -1184,7 +1184,7 @@
    {
     "name": "foundry_contact_evidence_audit",
     "present": true,
-    "asOf": "2026-11-08T17:05:11.672Z"
+    "asOf": "2026-11-09T18:03:55.980Z"
    },
    {
     "name": "foundry_health_report",

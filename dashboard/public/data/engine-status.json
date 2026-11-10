@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-10T17:02:58.312Z",
- "lastLogAt": "2026-11-10T17:02:25.126Z",
+ "generatedAt": "2026-11-10T17:07:52.849Z",
+ "lastLogAt": "2026-11-10T17:04:30.817Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -22,26 +22,18 @@
  "stoppedKind": "FAILED",
  "caution": false,
  "headline": "Dispatch window did not complete cleanly",
- "process": {
-  "mode": "Prepare",
-  "jobId": "prepare-2026-11-10-0720",
-  "stage": "QUEUE_PREPARATION",
-  "startedAtLowerBound": "2026-11-10T17:00:10.420Z",
-  "elapsedSecAtLeast": 168,
-  "items": null,
-  "evidence": "foundry_execution.lock held inside a scheduled window"
- },
+ "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-10T17:02:58.312Z",
+   "lastSuccessAt": "2026-11-10T17:07:52.849Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "RUNNING",
-   "lastPreparationAt": "2026-11-09T22:25:18.814Z",
-   "lock": "HELD"
+   "state": "COMPLETED_TODAY",
+   "lastPreparationAt": "2026-11-10T17:04:15.351Z",
+   "lock": "FREE"
   },
   "dispatch": {
    "state": "BLOCKED",
@@ -169,45 +161,45 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-10T17:00:28.359Z",
+   "lastSuccess": "2026-11-10T17:04:16.145Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 627,
+   "items": 656,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-10T17:04:16.145Z",
+      "text": "FoundryDailyAudit.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-10T17:04:16.097Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
+     {
+      "at": "2026-11-10T17:04:15.220Z",
+      "text": "FoundryQuarantine.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-10T17:04:14.490Z",
+      "text": "FoundryFinalReconcile.js completed",
+      "ok": true
+     },
      {
       "at": "2026-11-10T17:00:28.359Z",
       "text": "FoundryDailyAudit.js completed",
       "ok": true
      },
      {
-      "at": "2026-11-10T17:00:28.205Z",
-      "text": "Report written (ok)",
-      "ok": true
-     },
-     {
       "at": "2026-11-10T17:00:10.420Z",
       "text": "ReconcileSuppression.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-09T21:04:39.738Z",
-      "text": "FoundryDailyAudit.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-09T21:04:36.137Z",
-      "text": "FoundryQuarantine.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-09T21:04:35.727Z",
-      "text": "FoundryFinalReconcile.js completed",
-      "ok": true
      }
     ],
-    "durationSec": 1,
+    "durationSec": 0.606,
     "baselineMedianSec": 1,
     "latestIssue": null
    }
@@ -215,17 +207,32 @@
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "state": "ACTIVE",
-   "lastSuccess": "2026-11-09T22:25:18.814Z",
-   "activity": "Preparation run holds the execution lock",
+   "state": "OK",
+   "lastSuccess": "2026-11-10T17:04:26.133Z",
+   "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 627,
+   "items": 656,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-09T22:25:18.814Z",
+      "at": "2026-11-10T17:04:26.133Z",
+      "text": "FoundryReady.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-10T17:04:15.381Z",
+      "text": "FoundryFinalHandoffExport.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-10T17:04:15.351Z",
       "text": "Report written (ok)",
+      "ok": true
+     },
+     {
+      "at": "2026-11-10T17:04:12.504Z",
+      "text": "FoundryProductionPipeline.js completed",
       "ok": true
      },
      {
@@ -237,25 +244,10 @@
       "at": "2026-11-09T21:04:36.730Z",
       "text": "FoundryFinalHandoffExport.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-09T21:04:32.225Z",
-      "text": "FoundryProductionPipeline.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-08T17:05:24.205Z",
-      "text": "FoundryReady.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-08T17:05:11.006Z",
-      "text": "FoundryFinalHandoffExport.js completed",
-      "ok": true
      }
     ],
-    "durationSec": 20.582,
-    "baselineMedianSec": 6.5,
+    "durationSec": 9.367,
+    "baselineMedianSec": 7,
     "latestIssue": null
    }
   },
@@ -314,9 +306,7 @@
    }
   }
  ],
- "activePathways": [
-  "QUEUE_PREPARATION"
- ],
+ "activePathways": [],
  "diagnostics": [
   {
    "id": "DISPATCH_ERRORS",
@@ -337,7 +327,7 @@
    "stage": "QUEUE_PREPARATION",
    "title": "Step slower than its baseline",
    "evidence": [
-    "FoundryProductionPipeline.js: 60s vs median 29s (8 samples, threshold 2×)"
+    "FoundryProductionPipeline.js: 107s vs median 34s (9 samples, threshold 2×)"
    ]
   },
   {
@@ -347,22 +337,11 @@
    "stage": "QUEUE_PREPARATION",
    "title": "Send queue shortage",
    "evidence": [
-    "Interior detailing: 0 EMAIL-ready (CRITICAL < 150)",
+    "Interior detailing: 1 EMAIL-ready (CRITICAL < 150)",
     "Property services: 0 EMAIL-ready (CRITICAL < 150)",
-    "Website design: 1 EMAIL-ready (CRITICAL < 150)",
-    "Inquiry follow-up: 0 EMAIL-ready (CRITICAL < 150)",
-    "Estimate follow-up: 0 EMAIL-ready (CRITICAL < 150)"
-   ]
-  },
-  {
-   "id": "CRM_LEDGER_MISMATCH",
-   "rank": 50,
-   "severity": "WARNING",
-   "stage": "VERIFICATION",
-   "title": "CRM and Gmail ledger not reconciled",
-   "evidence": [
-    "CRM READY 4 · handoff 627",
-    "CRM READY 4 · audit 627"
+    "Website design: 83 EMAIL-ready (CRITICAL < 150)",
+    "Inquiry follow-up: 46 EMAIL-ready (CRITICAL < 150)",
+    "Estimate follow-up: 97 EMAIL-ready (CRITICAL < 150)"
    ]
   },
   {
@@ -377,10 +356,10 @@
   }
  ],
  "metrics": {
-  "ready": 4,
+  "ready": 656,
   "sentToday": 0,
   "dailyCap": 50,
-  "preparedSnapshots": 9,
+  "preparedSnapshots": 10,
   "total": 5860
  },
  "baselines": {
@@ -402,6 +381,7 @@
    0,
    3,
    2,
+   1,
    1
   ],
   "FoundrySafetyAudit.js": [
@@ -579,7 +559,8 @@
    22,
    34,
    98,
-   60
+   60,
+   107
   ],
   "WebsiteFallbackReady.js": [
    3,
@@ -596,6 +577,7 @@
    0,
    1,
    0,
+   1,
    1
   ],
   "FoundryQuarantine.js": [
@@ -606,7 +588,8 @@
    0,
    1,
    0,
-   0
+   0,
+   1
   ],
   "FoundryFinalHandoffExport.js": [
    0,
@@ -616,7 +599,8 @@
    0,
    0,
    0,
-   1
+   1,
+   0
   ],
   "FoundryLearningReport.js": [
    0,
@@ -626,7 +610,8 @@
    0,
    0,
    0,
-   1
+   1,
+   0
   ],
   "FoundryContactAudit.js": [
    0,
@@ -636,7 +621,8 @@
    0,
    0,
    0,
-   1
+   1,
+   0
   ],
   "FoundryReady.js": [
    6,
@@ -646,7 +632,8 @@
    3,
    13,
    12,
-   21
+   21,
+   9
   ],
   "FoundryBounceReview.js": [
    2,
@@ -678,7 +665,8 @@
   "FoundryLeadReconciliation.js": [
    1,
    1,
-   1
+   1,
+   0
   ],
   "FoundryValidateDiscovery.js": [
    6,
@@ -692,7 +680,8 @@
   ],
   "FoundryAuditReadyIdentity.js": [
    1,
-   2
+   2,
+   1
   ]
  }
 }

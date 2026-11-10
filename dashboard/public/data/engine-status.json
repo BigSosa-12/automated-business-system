@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-10T17:07:52.849Z",
+ "generatedAt": "2026-11-10T17:12:52.770Z",
  "lastLogAt": "2026-11-10T17:04:30.817Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,7 +25,7 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-10T17:07:52.849Z",
+   "lastSuccessAt": "2026-11-10T17:12:52.770Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"

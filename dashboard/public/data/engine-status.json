@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-10T08:23:10.047Z",
+ "generatedAt": "2026-11-10T15:53:28.615Z",
  "lastLogAt": "2026-11-09T21:05:15.781Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,7 +25,7 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-10T08:23:10.047Z",
+   "lastSuccessAt": "2026-11-10T15:53:28.615Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
@@ -318,6 +318,16 @@
     "9:00 AM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)",
     "1:00 PM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)",
     "5:00 PM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)"
+   ]
+  },
+  {
+   "id": "MISSED_PREP",
+   "rank": 80,
+   "severity": "WARNING",
+   "stage": "QUEUE_PREPARATION",
+   "title": "No preparation report today",
+   "evidence": [
+    "Expected by 8:40 AM ET; latest report 2026-11-09T22:25:18.814Z"
    ]
   },
   {

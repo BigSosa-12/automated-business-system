@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-11T06:42:53.699Z",
- "sourceAsOf": "2026-11-10T17:04:26.339Z",
+ "generatedAt": "2026-11-11T17:10:52.004Z",
+ "sourceAsOf": "2026-11-11T17:11:09.466Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -12,7 +12,8 @@
  "health": {
   "status": "BLOCKED",
   "reasons": [
-   "Send-safety audit: Status BLOCKED"
+   "Send-safety audit: Status BLOCKED",
+   "Dashboard exporter: Last publish problem: spawnSync git ETIMEDOUT"
   ],
   "checks": [
    {
@@ -61,7 +62,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 13.6h ago",
+    "detail": "Last prepared 24.1h ago",
     "blocking": false
    },
    {
@@ -75,7 +76,7 @@
     "id": "production_lock",
     "label": "Execution lock",
     "state": "OK",
-    "detail": "Lock free",
+    "detail": "Held by an active run",
     "blocking": false
    },
    {
@@ -102,8 +103,8 @@
    {
     "id": "exporter_last_run",
     "label": "Dashboard exporter",
-    "state": "OK",
-    "detail": "Last export succeeded",
+    "state": "WARN",
+    "detail": "Last publish problem: spawnSync git ETIMEDOUT",
     "blocking": false
    }
   ],
@@ -532,7 +533,7 @@
     "Handoff/export counts disagree with production report"
    ]
   },
-  "nextDispatchAt": "2026-11-11T14:00:00.000Z",
+  "nextDispatchAt": "2026-11-11T18:00:00.000Z",
   "lastPreparation": {
    "at": "2026-11-10T17:04:15.351Z",
    "rows": 656,
@@ -610,22 +611,22 @@
   }
  ],
  "schedulerEvidence": {
-  "available": true,
-  "reason": null
+  "available": false,
+  "reason": "ETIMEDOUT"
  },
  "locks": {
-  "production": "FREE",
+  "production": "HELD",
   "protectedWindowNow": false
  },
  "pipeline": [
   {
    "id": "DISCOVERY",
    "label": "Discovery",
-   "lastRun": "2026-11-10T17:00:32.535Z",
+   "lastRun": "2026-11-11T17:11:09.466Z",
    "lastSuccess": null,
    "durationSec": null,
    "status": "DEGRADED",
-   "items": 3186,
+   "items": 3226,
    "errors": 1,
    "note": "1 source job(s) unavailable"
   },
@@ -654,8 +655,8 @@
   {
    "id": "VALIDATION",
    "label": "Validation",
-   "lastRun": "2026-11-10T17:04:16.097Z",
-   "lastSuccess": "2026-11-10T17:04:16.097Z",
+   "lastRun": "2026-11-11T17:11:06.585Z",
+   "lastSuccess": "2026-11-11T17:11:06.585Z",
    "durationSec": null,
    "status": "OK",
    "items": 656,
@@ -665,8 +666,8 @@
   {
    "id": "RECONCILIATION",
    "label": "Reconciliation",
-   "lastRun": "2026-11-10T17:00:10.287Z",
-   "lastSuccess": "2026-11-10T17:00:10.287Z",
+   "lastRun": "2026-11-11T17:10:47.538Z",
+   "lastSuccess": "2026-11-11T17:10:47.538Z",
    "durationSec": null,
    "status": "OK",
    "items": 3,
@@ -701,7 +702,7 @@
    "lastRun": "2026-11-09T22:25:19.424Z",
    "lastSuccess": "2026-11-09T22:25:19.424Z",
    "durationSec": null,
-   "status": "OK",
+   "status": "STALE",
    "items": null,
    "errors": 0,
    "note": null
@@ -1014,7 +1015,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-11T06:42:53.699Z",
+   "lastDetected": "2026-11-11T17:10:52.004Z",
    "state": "ACTIVE"
   },
   {
@@ -1023,7 +1024,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-11T06:42:53.699Z",
+   "lastDetected": "2026-11-11T17:10:52.004Z",
    "state": "ACTIVE"
   },
   {
@@ -1032,7 +1033,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-11T06:42:53.699Z",
+   "lastDetected": "2026-11-11T17:10:52.004Z",
    "state": "ACTIVE"
   },
   {
@@ -1041,7 +1042,16 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-11T06:42:53.699Z",
+   "lastDetected": "2026-11-11T17:10:52.004Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "EXPORT_PUBLISH_FAILURE",
+   "severity": "WARNING",
+   "title": "GitHub publish failure",
+   "detail": "spawnSync git ETIMEDOUT",
+   "firstDetected": "2026-11-11T17:10:52.004Z",
+   "lastDetected": "2026-11-11T17:10:52.004Z",
    "state": "ACTIVE"
   }
  ],
@@ -1189,8 +1199,8 @@
     "note": "Sales/revenue not recorded"
    },
    "taskScheduler": {
-    "state": "AVAILABLE",
-    "note": "schtasks query"
+    "state": "UNAVAILABLE",
+    "note": "Task definitions only (no run results)"
    }
   },
   "crossChecks": [
@@ -1229,7 +1239,7 @@
    {
     "name": "foundry_daily_audit",
     "present": true,
-    "asOf": "2026-11-10T17:04:16.097Z"
+    "asOf": "2026-11-11T17:11:06.585Z"
    },
    {
     "name": "foundry_day_review",
@@ -1264,7 +1274,7 @@
    {
     "name": "foundry_targeted_discovery_report",
     "present": true,
-    "asOf": "2026-11-10T17:00:32.535Z"
+    "asOf": "2026-11-11T17:11:09.466Z"
    },
    {
     "name": "foundry_contact_enrichment_report",
@@ -1284,7 +1294,7 @@
    {
     "name": "suppression_reconcile_report",
     "present": true,
-    "asOf": "2026-11-10T17:00:10.287Z"
+    "asOf": "2026-11-11T17:10:47.538Z"
    },
    {
     "name": "foundry_discovery_import_report",

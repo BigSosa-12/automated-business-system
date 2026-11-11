@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-11T06:42:53.699Z",
- "lastLogAt": "2026-11-10T17:04:30.817Z",
+ "generatedAt": "2026-11-11T17:10:52.004Z",
+ "lastLogAt": "2026-11-11T17:11:40.425Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -22,18 +22,26 @@
  "stoppedKind": "FAILED",
  "caution": false,
  "headline": "Dispatch window did not complete cleanly",
- "process": null,
+ "process": {
+  "mode": "Prepare",
+  "jobId": "prepare-2026-11-11-0720",
+  "stage": "QUEUE_PREPARATION",
+  "startedAtLowerBound": "2026-11-11T17:10:47.631Z",
+  "elapsedSecAtLeast": 4,
+  "items": null,
+  "evidence": "foundry_execution.lock held inside a scheduled window"
+ },
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-11T06:42:53.699Z",
-   "lastError": null,
+   "lastSuccessAt": "2026-11-11T17:10:52.004Z",
+   "lastError": "spawnSync git ETIMEDOUT",
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "NO_RUN_EVIDENCE_TODAY",
+   "state": "RUNNING",
    "lastPreparationAt": "2026-11-10T17:04:15.351Z",
-   "lock": "FREE"
+   "lock": "HELD"
   },
   "dispatch": {
    "state": "BLOCKED",
@@ -67,13 +75,33 @@
    "id": "DISCOVERY",
    "label": "Discovery",
    "state": "WARN",
-   "lastSuccess": "2026-11-10T17:01:17.706Z",
+   "lastSuccess": "2026-11-11T17:11:35.298Z",
    "activity": null,
    "errors": 1,
    "reason": "1 source job(s) unavailable",
-   "items": 3186,
+   "items": 3226,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-11T17:11:35.298Z",
+      "text": "ImportDiscovery.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-11T17:11:12.328Z",
+      "text": "DiscoverNationwide.ps1 completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-11T17:11:09.591Z",
+      "text": "FastTargetedDiscovery.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-11T17:11:09.466Z",
+      "text": "Report written (degraded)",
+      "ok": false
+     },
      {
       "at": "2026-11-10T17:01:17.706Z",
       "text": "ImportDiscovery.js completed",
@@ -83,30 +111,10 @@
       "at": "2026-11-10T17:00:34.871Z",
       "text": "DiscoverNationwide.ps1 completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-10T17:00:32.645Z",
-      "text": "FastTargetedDiscovery.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-10T17:00:32.535Z",
-      "text": "Report written (degraded)",
-      "ok": false
-     },
-     {
-      "at": "2026-11-09T21:01:24.164Z",
-      "text": "ImportDiscovery.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-09T21:00:43.170Z",
-      "text": "DiscoverNationwide.ps1 completed",
-      "ok": true
      }
     ],
-    "durationSec": 29.236,
-    "baselineMedianSec": 29,
+    "durationSec": 5.365,
+    "baselineMedianSec": 26.5,
     "latestIssue": "1 source job(s) unavailable"
    }
   },
@@ -114,13 +122,28 @@
    "id": "CLASSIFICATION",
    "label": "Classification",
    "state": "OK",
-   "lastSuccess": "2026-11-10T17:02:24.027Z",
+   "lastSuccess": "2026-11-11T17:11:39.443Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
    "items": 5860,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-11T17:11:39.443Z",
+      "text": "ApplyCampaignTargets.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-11T17:11:36.548Z",
+      "text": "CategorizeAllBusinesses.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-11T17:11:35.802Z",
+      "text": "ApplyLocalTargetLocations.js completed",
+      "ok": true
+     },
      {
       "at": "2026-11-10T17:02:24.027Z",
       "text": "ApplyCampaignTargets.js completed",
@@ -135,24 +158,9 @@
       "at": "2026-11-10T17:02:15.989Z",
       "text": "Report written (ok)",
       "ok": true
-     },
-     {
-      "at": "2026-11-10T17:01:26.770Z",
-      "text": "ApplyCampaignTargets.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-10T17:01:19.796Z",
-      "text": "CategorizeAllBusinesses.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-10T17:01:18.340Z",
-      "text": "ApplyLocalTargetLocations.js completed",
-      "ok": true
      }
     ],
-    "durationSec": 7.941,
+    "durationSec": 2.895,
     "baselineMedianSec": 7,
     "latestIssue": null
    }
@@ -161,7 +169,7 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-10T17:04:16.145Z",
+   "lastSuccess": "2026-11-11T17:11:06.623Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
@@ -169,13 +177,23 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-10T17:04:16.145Z",
+      "at": "2026-11-11T17:11:06.623Z",
       "text": "FoundryDailyAudit.js completed",
       "ok": true
      },
      {
-      "at": "2026-11-10T17:04:16.097Z",
+      "at": "2026-11-11T17:11:06.585Z",
       "text": "Report written (ok)",
+      "ok": true
+     },
+     {
+      "at": "2026-11-11T17:10:47.631Z",
+      "text": "ReconcileSuppression.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-10T17:04:16.145Z",
+      "text": "FoundryDailyAudit.js completed",
       "ok": true
      },
      {
@@ -187,19 +205,9 @@
       "at": "2026-11-10T17:04:14.490Z",
       "text": "FoundryFinalReconcile.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-10T17:00:28.359Z",
-      "text": "FoundryDailyAudit.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-10T17:00:10.420Z",
-      "text": "ReconcileSuppression.js completed",
-      "ok": true
      }
     ],
-    "durationSec": 0.606,
+    "durationSec": 0.381,
     "baselineMedianSec": 1,
     "latestIssue": null
    }
@@ -207,9 +215,9 @@
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "state": "OK",
+   "state": "ACTIVE",
    "lastSuccess": "2026-11-10T17:04:26.133Z",
-   "activity": null,
+   "activity": "Preparation run holds the execution lock",
    "errors": 0,
    "reason": "Last run completed",
    "items": 656,
@@ -286,27 +294,29 @@
   {
    "id": "REPLY_PROCESSING",
    "label": "Reply Processing",
-   "state": "OK",
+   "state": "WARN",
    "lastSuccess": "2026-11-09T22:25:19.424Z",
    "activity": null,
    "errors": 0,
-   "reason": "Last run completed",
+   "reason": "Stage stale",
    "items": null,
    "detail": {
     "recent": [
      {
       "at": "2026-11-09T22:25:19.424Z",
-      "text": "Report written (ok)",
-      "ok": true
+      "text": "Report written (stale)",
+      "ok": false
      }
     ],
     "durationSec": null,
     "baselineMedianSec": null,
-    "latestIssue": null
+    "latestIssue": "Stage stale"
    }
   }
  ],
- "activePathways": [],
+ "activePathways": [
+  "QUEUE_PREPARATION"
+ ],
  "diagnostics": [
   {
    "id": "DISPATCH_ERRORS",
@@ -318,6 +328,16 @@
     "9:00 AM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)",
     "1:00 PM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)",
     "5:00 PM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)"
+   ]
+  },
+  {
+   "id": "PUBLISH_FAILURE",
+   "rank": 85,
+   "severity": "WARNING",
+   "stage": null,
+   "title": "Snapshot publishing failed",
+   "evidence": [
+    "spawnSync git ETIMEDOUT"
    ]
   },
   {
@@ -382,7 +402,8 @@
    3,
    2,
    1,
-   1
+   1,
+   0
   ],
   "FoundrySafetyAudit.js": [
    0,
@@ -401,7 +422,8 @@
    9,
    57,
    15,
-   13
+   13,
+   14
   ],
   "FoundryRefillPlan.js": [
    1,
@@ -412,7 +434,8 @@
    0,
    1,
    2,
-   1
+   1,
+   0
   ],
   "FastTargetedDiscovery.js": [
    5,
@@ -423,7 +446,8 @@
    2,
    8,
    4,
-   4
+   4,
+   3
   ],
   "DiscoverNationwide.ps1": [
    2,
@@ -434,7 +458,8 @@
    1,
    5,
    4,
-   2
+   2,
+   3
   ],
   "ImportDiscovery.js": [
    10,
@@ -445,7 +470,8 @@
    35,
    23,
    24,
-   29
+   29,
+   5
   ],
   "ApplyLocalTargetLocations.js": [
    1,
@@ -454,6 +480,7 @@
    2,
    2,
    2,
+   0,
    0,
    0,
    0
@@ -476,6 +503,7 @@
    7,
    3,
    1,
+   1,
    1
   ],
   "ApplyCampaignTargets.js": [
@@ -496,7 +524,8 @@
    23,
    11,
    7,
-   8
+   8,
+   3
   ],
   "AuditWebsiteOpportunities.js": [
    35,
@@ -507,6 +536,7 @@
    2,
    1,
    1,
+   0,
    0
   ],
   "AuditWebsiteExpansion.js": [
@@ -517,6 +547,7 @@
    0,
    2,
    1,
+   0,
    0,
    0
   ],
@@ -639,7 +670,8 @@
    2,
    9,
    5,
-   4
+   4,
+   5
   ],
   "FoundryRecoverDomains.js": [
    5
@@ -648,7 +680,8 @@
    11,
    0,
    2,
-   1
+   1,
+   0
   ],
   "FoundryVerifyOfficialContacts.js": [
    0,
@@ -671,11 +704,13 @@
   "FoundryValidateDiscovery.js": [
    6,
    17,
-   14
+   14,
+   18
   ],
   "FoundryRepairFalseLocal.js": [
    0,
    2,
+   0,
    0
   ],
   "FoundryAuditReadyIdentity.js": [

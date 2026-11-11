@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-11T17:10:52.004Z",
- "lastLogAt": "2026-11-11T17:11:40.425Z",
+ "generatedAt": "2026-11-11T17:17:52.308Z",
+ "lastLogAt": "2026-11-11T17:13:39.297Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -22,26 +22,18 @@
  "stoppedKind": "FAILED",
  "caution": false,
  "headline": "Dispatch window did not complete cleanly",
- "process": {
-  "mode": "Prepare",
-  "jobId": "prepare-2026-11-11-0720",
-  "stage": "QUEUE_PREPARATION",
-  "startedAtLowerBound": "2026-11-11T17:10:47.631Z",
-  "elapsedSecAtLeast": 4,
-  "items": null,
-  "evidence": "foundry_execution.lock held inside a scheduled window"
- },
+ "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-11T17:10:52.004Z",
-   "lastError": "spawnSync git ETIMEDOUT",
+   "lastSuccessAt": "2026-11-11T17:17:52.308Z",
+   "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "RUNNING",
-   "lastPreparationAt": "2026-11-10T17:04:15.351Z",
-   "lock": "HELD"
+   "state": "COMPLETED_TODAY",
+   "lastPreparationAt": "2026-11-11T17:17:28.170Z",
+   "lock": "FREE"
   },
   "dispatch": {
    "state": "BLOCKED",
@@ -122,13 +114,28 @@
    "id": "CLASSIFICATION",
    "label": "Classification",
    "state": "OK",
-   "lastSuccess": "2026-11-11T17:11:39.443Z",
+   "lastSuccess": "2026-11-11T17:16:43.355Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 5860,
+   "items": 5863,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-11T17:16:43.355Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
+     {
+      "at": "2026-11-11T17:12:44.890Z",
+      "text": "ApplyCampaignTargets.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-11T17:12:40.680Z",
+      "text": "CategorizeAllBusinesses.js completed",
+      "ok": true
+     },
      {
       "at": "2026-11-11T17:11:39.443Z",
       "text": "ApplyCampaignTargets.js completed",
@@ -143,24 +150,9 @@
       "at": "2026-11-11T17:11:35.802Z",
       "text": "ApplyLocalTargetLocations.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-10T17:02:24.027Z",
-      "text": "ApplyCampaignTargets.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-10T17:02:16.086Z",
-      "text": "CategorizeAllBusinesses.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-10T17:02:15.989Z",
-      "text": "Report written (ok)",
-      "ok": true
      }
     ],
-    "durationSec": 2.895,
+    "durationSec": 4.21,
     "baselineMedianSec": 7,
     "latestIssue": null
    }
@@ -169,45 +161,45 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-11T17:11:06.623Z",
+   "lastSuccess": "2026-11-11T17:17:28.326Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 656,
+   "items": 740,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-11T17:17:28.326Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
+     {
+      "at": "2026-11-11T17:13:26.059Z",
+      "text": "FoundryDailyAudit.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-11T17:13:25.164Z",
+      "text": "FoundryQuarantine.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-11T17:13:24.827Z",
+      "text": "FoundryFinalReconcile.js completed",
+      "ok": true
+     },
      {
       "at": "2026-11-11T17:11:06.623Z",
       "text": "FoundryDailyAudit.js completed",
       "ok": true
      },
      {
-      "at": "2026-11-11T17:11:06.585Z",
-      "text": "Report written (ok)",
-      "ok": true
-     },
-     {
       "at": "2026-11-11T17:10:47.631Z",
       "text": "ReconcileSuppression.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-10T17:04:16.145Z",
-      "text": "FoundryDailyAudit.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-10T17:04:15.220Z",
-      "text": "FoundryQuarantine.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-10T17:04:14.490Z",
-      "text": "FoundryFinalReconcile.js completed",
-      "ok": true
      }
     ],
-    "durationSec": 0.381,
+    "durationSec": 0.308,
     "baselineMedianSec": 1,
     "latestIssue": null
    }
@@ -215,14 +207,34 @@
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "state": "ACTIVE",
-   "lastSuccess": "2026-11-10T17:04:26.133Z",
-   "activity": "Preparation run holds the execution lock",
+   "state": "OK",
+   "lastSuccess": "2026-11-11T17:17:28.170Z",
+   "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 656,
+   "items": 740,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-11T17:17:28.170Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
+     {
+      "at": "2026-11-11T17:13:34.398Z",
+      "text": "FoundryReady.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-11T17:13:25.503Z",
+      "text": "FoundryFinalHandoffExport.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-11T17:13:22.436Z",
+      "text": "FoundryProductionPipeline.js completed",
+      "ok": true
+     },
      {
       "at": "2026-11-10T17:04:26.133Z",
       "text": "FoundryReady.js completed",
@@ -232,29 +244,9 @@
       "at": "2026-11-10T17:04:15.381Z",
       "text": "FoundryFinalHandoffExport.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-10T17:04:15.351Z",
-      "text": "Report written (ok)",
-      "ok": true
-     },
-     {
-      "at": "2026-11-10T17:04:12.504Z",
-      "text": "FoundryProductionPipeline.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-09T21:05:02.933Z",
-      "text": "FoundryReady.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-09T21:04:36.730Z",
-      "text": "FoundryFinalHandoffExport.js completed",
-      "ok": true
      }
     ],
-    "durationSec": 9.367,
+    "durationSec": 7.491,
     "baselineMedianSec": 7,
     "latestIssue": null
    }
@@ -314,9 +306,7 @@
    }
   }
  ],
- "activePathways": [
-  "QUEUE_PREPARATION"
- ],
+ "activePathways": [],
  "diagnostics": [
   {
    "id": "DISPATCH_ERRORS",
@@ -331,26 +321,6 @@
    ]
   },
   {
-   "id": "PUBLISH_FAILURE",
-   "rank": 85,
-   "severity": "WARNING",
-   "stage": null,
-   "title": "Snapshot publishing failed",
-   "evidence": [
-    "spawnSync git ETIMEDOUT"
-   ]
-  },
-  {
-   "id": "SLOW_VS_BASELINE",
-   "rank": 72,
-   "severity": "WARNING",
-   "stage": "QUEUE_PREPARATION",
-   "title": "Step slower than its baseline",
-   "evidence": [
-    "FoundryProductionPipeline.js: 107s vs median 34s (9 samples, threshold 2×)"
-   ]
-  },
-  {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,
    "severity": "WARNING",
@@ -358,10 +328,10 @@
    "title": "Send queue shortage",
    "evidence": [
     "Interior detailing: 1 EMAIL-ready (CRITICAL < 150)",
-    "Property services: 0 EMAIL-ready (CRITICAL < 150)",
-    "Website design: 83 EMAIL-ready (CRITICAL < 150)",
+    "Property services: 3 EMAIL-ready (CRITICAL < 150)",
+    "Website design: 61 EMAIL-ready (CRITICAL < 150)",
     "Inquiry follow-up: 46 EMAIL-ready (CRITICAL < 150)",
-    "Estimate follow-up: 97 EMAIL-ready (CRITICAL < 150)"
+    "Estimate follow-up: 99 EMAIL-ready (CRITICAL < 150)"
    ]
   },
   {
@@ -376,11 +346,11 @@
   }
  ],
  "metrics": {
-  "ready": 656,
+  "ready": 740,
   "sentToday": 0,
   "dailyCap": 50,
-  "preparedSnapshots": 10,
-  "total": 5860
+  "preparedSnapshots": 11,
+  "total": 5863
  },
  "baselines": {
   "FoundryDailyAudit.js": [
@@ -403,6 +373,7 @@
    2,
    1,
    1,
+   0,
    0
   ],
   "FoundrySafetyAudit.js": [
@@ -504,6 +475,7 @@
    3,
    1,
    1,
+   1,
    1
   ],
   "ApplyCampaignTargets.js": [
@@ -525,7 +497,8 @@
    11,
    7,
    8,
-   3
+   3,
+   4
   ],
   "AuditWebsiteOpportunities.js": [
    35,
@@ -559,7 +532,8 @@
    40,
    52,
    76,
-   47
+   47,
+   59
   ],
   "LocalDigitalEnrich.js": [
    129,
@@ -569,7 +543,8 @@
    60,
    0,
    1,
-   0
+   0,
+   1
   ],
   "PromoteWebsiteOpportunities.js": [
    1,
@@ -580,6 +555,7 @@
    1,
    2,
    2,
+   1,
    1
   ],
   "FoundryProductionPipeline.js": [
@@ -591,7 +567,8 @@
    34,
    98,
    60,
-   107
+   107,
+   36
   ],
   "WebsiteFallbackReady.js": [
    3,
@@ -609,6 +586,7 @@
    1,
    0,
    1,
+   1,
    1
   ],
   "FoundryQuarantine.js": [
@@ -620,7 +598,8 @@
    1,
    0,
    0,
-   1
+   1,
+   0
   ],
   "FoundryFinalHandoffExport.js": [
    0,
@@ -631,6 +610,7 @@
    0,
    0,
    1,
+   0,
    0
   ],
   "FoundryLearningReport.js": [
@@ -642,6 +622,7 @@
    0,
    0,
    1,
+   0,
    0
   ],
   "FoundryContactAudit.js": [
@@ -653,6 +634,7 @@
    0,
    0,
    1,
+   0,
    0
   ],
   "FoundryReady.js": [
@@ -664,7 +646,8 @@
    13,
    12,
    21,
-   9
+   9,
+   7
   ],
   "FoundryBounceReview.js": [
    2,
@@ -687,9 +670,11 @@
    0,
    4,
    0,
+   0,
    0
   ],
   "FoundryArchivePlaceholders.js": [
+   0,
    0,
    0,
    0,
@@ -699,6 +684,7 @@
    1,
    1,
    1,
+   0,
    0
   ],
   "FoundryValidateDiscovery.js": [
@@ -716,7 +702,8 @@
   "FoundryAuditReadyIdentity.js": [
    1,
    2,
-   1
+   1,
+   2
   ]
  }
 }

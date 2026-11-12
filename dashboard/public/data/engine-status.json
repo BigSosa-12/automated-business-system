@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-12T19:16:32.078Z",
+ "generatedAt": "2026-11-12T19:20:13.401Z",
  "lastLogAt": "2026-11-12T17:00:18.494Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,8 +25,8 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-12T19:16:32.078Z",
-   "lastError": "spawnSync git ETIMEDOUT",
+   "lastSuccessAt": "2026-11-12T19:20:13.401Z",
+   "lastError": "warning: in the working copy of 'dashboard/public/data/engine-status.json', LF will be replaced by CRLF the next time Git touches it warning: in the working co…",
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
@@ -327,7 +327,7 @@
    "stage": null,
    "title": "Snapshot publishing failed",
    "evidence": [
-    "spawnSync git ETIMEDOUT"
+    "warning: in the working copy of 'dashboard/public/data/engine-status.json', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'dashboard/public/data/snapshot.js…"
    ]
   },
   {

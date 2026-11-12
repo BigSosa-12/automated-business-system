@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-12T16:22:51.981Z",
+ "generatedAt": "2026-11-12T16:27:51.931Z",
  "lastLogAt": "2026-11-11T21:02:07.562Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,14 +25,14 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-12T16:22:51.981Z",
+   "lastSuccessAt": "2026-11-12T16:27:51.931Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
    "state": "COMPLETED_TODAY",
-   "lastPreparationAt": "2026-11-12T16:21:56.435Z",
+   "lastPreparationAt": "2026-11-12T16:24:14.050Z",
    "lock": "FREE"
   },
   "dispatch": {
@@ -114,7 +114,7 @@
    "id": "CLASSIFICATION",
    "label": "Classification",
    "state": "OK",
-   "lastSuccess": "2026-11-12T16:20:57.757Z",
+   "lastSuccess": "2026-11-12T16:23:23.151Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
@@ -122,7 +122,7 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-12T16:20:57.757Z",
+      "at": "2026-11-12T16:23:23.151Z",
       "text": "Report written (ok)",
       "ok": true
      },
@@ -169,7 +169,7 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-12T16:21:58.378Z",
+      "at": "2026-11-12T16:24:14.263Z",
       "text": "Report written (failed)",
       "ok": false
      },
@@ -208,7 +208,7 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-12T16:21:56.435Z",
+   "lastSuccess": "2026-11-12T16:24:14.050Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
@@ -216,7 +216,7 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-12T16:21:56.435Z",
+      "at": "2026-11-12T16:24:14.050Z",
       "text": "Report written (ok)",
       "ok": true
      },

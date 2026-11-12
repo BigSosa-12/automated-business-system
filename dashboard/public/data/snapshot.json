@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-12T16:22:51.981Z",
- "sourceAsOf": "2026-11-12T16:21:59.259Z",
+ "generatedAt": "2026-11-12T16:27:51.931Z",
+ "sourceAsOf": "2026-11-12T16:24:14.480Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -63,7 +63,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.0h ago",
+    "detail": "Last prepared 0.1h ago",
     "blocking": false
    },
    {
@@ -183,7 +183,7 @@
     "n": 1
    }
   ],
-  "quarantined": 498,
+  "quarantined": 502,
   "byCampaign": [
    {
     "id": "LOCAL_DETAILING",
@@ -532,7 +532,7 @@
   },
   "nextDispatchAt": "2026-11-12T18:00:00.000Z",
   "lastPreparation": {
-   "at": "2026-11-12T16:21:56.435Z",
+   "at": "2026-11-12T16:24:14.050Z",
    "rows": 743,
    "state": "COMPLETED"
   }
@@ -641,8 +641,8 @@
   {
    "id": "CLASSIFICATION",
    "label": "Classification",
-   "lastRun": "2026-11-12T16:20:57.757Z",
-   "lastSuccess": "2026-11-12T16:20:57.757Z",
+   "lastRun": "2026-11-12T16:23:23.151Z",
+   "lastSuccess": "2026-11-12T16:23:23.151Z",
    "durationSec": null,
    "status": "OK",
    "items": 5866,
@@ -652,7 +652,7 @@
   {
    "id": "VALIDATION",
    "label": "Validation",
-   "lastRun": "2026-11-12T16:21:58.378Z",
+   "lastRun": "2026-11-12T16:24:14.263Z",
    "lastSuccess": null,
    "durationSec": null,
    "status": "FAILED",
@@ -674,8 +674,8 @@
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "lastRun": "2026-11-12T16:21:56.435Z",
-   "lastSuccess": "2026-11-12T16:21:56.435Z",
+   "lastRun": "2026-11-12T16:24:14.050Z",
+   "lastSuccess": "2026-11-12T16:24:14.050Z",
    "durationSec": null,
    "status": "OK",
    "items": 743,
@@ -1029,7 +1029,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-12T16:22:51.981Z",
+   "lastDetected": "2026-11-12T16:27:51.931Z",
    "state": "ACTIVE"
   },
   {
@@ -1038,7 +1038,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-12T16:22:51.981Z",
+   "lastDetected": "2026-11-12T16:27:51.931Z",
    "state": "ACTIVE"
   },
   {
@@ -1047,7 +1047,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-12T16:22:51.981Z",
+   "lastDetected": "2026-11-12T16:27:51.931Z",
    "state": "ACTIVE"
   },
   {
@@ -1056,7 +1056,7 @@
    "title": "Daily audit failing",
    "detail": "sent history not reconciled with gmail",
    "firstDetected": "2026-11-12T16:17:52.006Z",
-   "lastDetected": "2026-11-12T16:22:51.981Z",
+   "lastDetected": "2026-11-12T16:27:51.931Z",
    "state": "ACTIVE"
   },
   {
@@ -1065,7 +1065,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-12T16:22:51.981Z",
+   "lastDetected": "2026-11-12T16:27:51.931Z",
    "state": "ACTIVE"
   }
  ],
@@ -1257,17 +1257,17 @@
    {
     "name": "foundry_contact_evidence_audit",
     "present": true,
-    "asOf": "2026-11-12T16:21:59.259Z"
+    "asOf": "2026-11-12T16:24:14.480Z"
    },
    {
     "name": "foundry_health_report",
     "present": true,
-    "asOf": "2026-11-12T16:21:55.512Z"
+    "asOf": "2026-11-12T16:24:13.589Z"
    },
    {
     "name": "foundry_daily_audit",
     "present": true,
-    "asOf": "2026-11-12T16:21:58.378Z"
+    "asOf": "2026-11-12T16:24:14.263Z"
    },
    {
     "name": "foundry_day_review",
@@ -1287,12 +1287,12 @@
    {
     "name": "foundry_final_handoff_report",
     "present": true,
-    "asOf": "2026-11-12T16:21:56.435Z"
+    "asOf": "2026-11-12T16:24:14.050Z"
    },
    {
     "name": "foundry_production_report",
     "present": true,
-    "asOf": "2026-11-12T16:21:53.039Z"
+    "asOf": "2026-11-12T16:24:09.369Z"
    },
    {
     "name": "foundry_learning_report",
@@ -1317,7 +1317,7 @@
    {
     "name": "foundry_full_classification_report",
     "present": true,
-    "asOf": "2026-11-12T16:20:57.757Z"
+    "asOf": "2026-11-12T16:23:23.151Z"
    },
    {
     "name": "suppression_reconcile_report",
@@ -1332,7 +1332,7 @@
    {
     "name": "foundry_quarantine_report",
     "present": true,
-    "asOf": "2026-11-12T16:21:55.941Z"
+    "asOf": "2026-11-12T16:24:13.833Z"
    }
   ]
  }

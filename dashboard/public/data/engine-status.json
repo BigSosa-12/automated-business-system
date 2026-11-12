@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-12T20:57:51.861Z",
- "lastLogAt": "2026-11-12T17:00:18.494Z",
+ "generatedAt": "2026-11-12T21:02:51.834Z",
+ "lastLogAt": "2026-11-12T21:00:09.550Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -25,7 +25,7 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-12T20:57:51.861Z",
+   "lastSuccessAt": "2026-11-12T21:02:51.834Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
@@ -161,13 +161,18 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "FAILED",
-   "lastSuccess": "2026-11-12T17:00:09.450Z",
+   "lastSuccess": "2026-11-12T21:00:06.414Z",
    "activity": null,
    "errors": 1,
    "reason": "Audit failing: sent history not reconciled with gmail",
    "items": 743,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-12T21:00:06.414Z",
+      "text": "ReconcileSuppression.js completed",
+      "ok": true
+     },
      {
       "at": "2026-11-12T17:00:09.450Z",
       "text": "ReconcileSuppression.js completed",
@@ -191,11 +196,6 @@
      {
       "at": "2026-11-11T21:01:48.296Z",
       "text": "FoundryFinalReconcile.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-11T21:00:33.868Z",
-      "text": "FoundryDailyAudit.js completed",
       "ok": true
      }
     ],
@@ -418,7 +418,8 @@
    13,
    14,
    14,
-   8
+   8,
+   3
   ],
   "FoundryRefillPlan.js": [
    1,

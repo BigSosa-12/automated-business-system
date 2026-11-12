@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-12T22:22:52.079Z",
+ "generatedAt": "2026-11-12T22:27:51.531Z",
  "lastLogAt": "2026-11-12T21:00:09.550Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,14 +25,14 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-12T22:22:52.079Z",
+   "lastSuccessAt": "2026-11-12T22:27:51.531Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
    "state": "COMPLETED_TODAY",
-   "lastPreparationAt": "2026-11-12T16:24:14.050Z",
+   "lastPreparationAt": "2026-11-12T22:25:13.238Z",
    "lock": "FREE"
   },
   "dispatch": {
@@ -169,6 +169,11 @@
    "detail": {
     "recent": [
      {
+      "at": "2026-11-12T22:25:13.553Z",
+      "text": "Report written (failed)",
+      "ok": false
+     },
+     {
       "at": "2026-11-12T21:00:06.414Z",
       "text": "ReconcileSuppression.js completed",
       "ok": true
@@ -177,11 +182,6 @@
       "at": "2026-11-12T17:00:09.450Z",
       "text": "ReconcileSuppression.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-12T16:24:14.263Z",
-      "text": "Report written (failed)",
-      "ok": false
      },
      {
       "at": "2026-11-11T21:01:49.913Z",
@@ -208,7 +208,7 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-12T16:24:14.050Z",
+   "lastSuccess": "2026-11-12T22:25:13.238Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
@@ -216,7 +216,7 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-12T16:24:14.050Z",
+      "at": "2026-11-12T22:25:13.238Z",
       "text": "Report written (ok)",
       "ok": true
      },
@@ -286,23 +286,23 @@
   {
    "id": "REPLY_PROCESSING",
    "label": "Reply Processing",
-   "state": "WARN",
-   "lastSuccess": "2026-11-09T22:25:19.424Z",
+   "state": "UNKNOWN",
+   "lastSuccess": null,
    "activity": null,
    "errors": 0,
-   "reason": "Stage stale",
+   "reason": "Reply coverage unknown",
    "items": null,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-09T22:25:19.424Z",
-      "text": "Report written (stale)",
+      "at": "2026-11-12T22:25:14.195Z",
+      "text": "Report written (unknown)",
       "ok": false
      }
     ],
     "durationSec": null,
     "baselineMedianSec": null,
-    "latestIssue": "Stage stale"
+    "latestIssue": "Reply coverage unknown"
    }
   }
  ],

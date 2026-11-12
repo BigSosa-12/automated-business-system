@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-12T23:17:52.123Z",
+ "generatedAt": "2026-11-12T23:22:52.006Z",
  "sourceAsOf": "2026-11-12T22:25:14.195Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -63,7 +63,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.9h ago",
+    "detail": "Last prepared 1.0h ago",
     "blocking": false
    },
    {
@@ -1029,7 +1029,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-12T23:17:52.123Z",
+   "lastDetected": "2026-11-12T23:22:52.006Z",
    "state": "ACTIVE"
   },
   {
@@ -1038,7 +1038,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-12T23:17:52.123Z",
+   "lastDetected": "2026-11-12T23:22:52.006Z",
    "state": "ACTIVE"
   },
   {
@@ -1047,7 +1047,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-12T23:17:52.123Z",
+   "lastDetected": "2026-11-12T23:22:52.006Z",
    "state": "ACTIVE"
   },
   {
@@ -1056,7 +1056,7 @@
    "title": "Daily audit failing",
    "detail": "sent history not reconciled with gmail",
    "firstDetected": "2026-11-12T16:17:52.006Z",
-   "lastDetected": "2026-11-12T23:17:52.123Z",
+   "lastDetected": "2026-11-12T23:22:52.006Z",
    "state": "ACTIVE"
   },
   {
@@ -1065,7 +1065,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-12T23:17:52.123Z",
+   "lastDetected": "2026-11-12T23:22:52.006Z",
    "state": "ACTIVE"
   }
  ],

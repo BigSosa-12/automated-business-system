@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-13T08:10:51.424Z",
+ "generatedAt": "2026-11-13T08:12:52.900Z",
  "lastLogAt": "2026-11-12T21:00:09.550Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,8 +25,8 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-13T08:10:51.424Z",
-   "lastError": "spawnSync git ETIMEDOUT",
+   "lastSuccessAt": "2026-11-13T08:12:52.900Z",
+   "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
@@ -318,16 +318,6 @@
     "9:00 AM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)",
     "1:00 PM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)",
     "5:00 PM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)"
-   ]
-  },
-  {
-   "id": "PUBLISH_FAILURE",
-   "rank": 85,
-   "severity": "WARNING",
-   "stage": null,
-   "title": "Snapshot publishing failed",
-   "evidence": [
-    "spawnSync git ETIMEDOUT"
    ]
   },
   {

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-13T07:57:53.190Z",
+ "generatedAt": "2026-11-13T08:10:51.424Z",
  "sourceAsOf": "2026-11-12T22:25:14.195Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -14,7 +14,8 @@
   "reasons": [
    "Send-safety audit: Status BLOCKED",
    "Daily quality audit: SENT_HISTORY_NOT_RECONCILED_WITH_GMAIL",
-   "Gmail ↔ CRM ledger reconciliation: Historical Gmail sends not reconciled; zero local sends is not proof of zero sent"
+   "Gmail ↔ CRM ledger reconciliation: Historical Gmail sends not reconciled; zero local sends is not proof of zero sent",
+   "Dashboard exporter: Last publish problem: spawnSync git ETIMEDOUT"
   ],
   "checks": [
    {
@@ -63,7 +64,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 9.5h ago",
+    "detail": "Last prepared 9.8h ago",
     "blocking": false
    },
    {
@@ -104,8 +105,8 @@
    {
     "id": "exporter_last_run",
     "label": "Dashboard exporter",
-    "state": "OK",
-    "detail": "Last export succeeded",
+    "state": "WARN",
+    "detail": "Last publish problem: spawnSync git ETIMEDOUT",
     "blocking": false
    }
   ],
@@ -608,8 +609,8 @@
   }
  ],
  "schedulerEvidence": {
-  "available": true,
-  "reason": null
+  "available": false,
+  "reason": "ETIMEDOUT"
  },
  "locks": {
   "production": "FREE",
@@ -1036,7 +1037,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-13T07:57:53.190Z",
+   "lastDetected": "2026-11-13T08:10:51.424Z",
    "state": "ACTIVE"
   },
   {
@@ -1045,7 +1046,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-13T07:57:53.190Z",
+   "lastDetected": "2026-11-13T08:10:51.424Z",
    "state": "ACTIVE"
   },
   {
@@ -1054,7 +1055,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-13T07:57:53.190Z",
+   "lastDetected": "2026-11-13T08:10:51.424Z",
    "state": "ACTIVE"
   },
   {
@@ -1063,7 +1064,7 @@
    "title": "Daily audit failing",
    "detail": "sent history not reconciled with gmail",
    "firstDetected": "2026-11-12T16:17:52.006Z",
-   "lastDetected": "2026-11-13T07:57:53.190Z",
+   "lastDetected": "2026-11-13T08:10:51.424Z",
    "state": "ACTIVE"
   },
   {
@@ -1072,7 +1073,16 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-13T07:57:53.190Z",
+   "lastDetected": "2026-11-13T08:10:51.424Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "EXPORT_PUBLISH_FAILURE",
+   "severity": "WARNING",
+   "title": "GitHub publish failure",
+   "detail": "spawnSync git ETIMEDOUT",
+   "firstDetected": "2026-11-13T08:10:51.424Z",
+   "lastDetected": "2026-11-13T08:10:51.424Z",
    "state": "ACTIVE"
   }
  ],
@@ -1248,8 +1258,8 @@
     "note": "Sales/revenue not recorded"
    },
    "taskScheduler": {
-    "state": "AVAILABLE",
-    "note": "schtasks query"
+    "state": "UNAVAILABLE",
+    "note": "Task definitions only (no run results)"
    }
   },
   "crossChecks": [

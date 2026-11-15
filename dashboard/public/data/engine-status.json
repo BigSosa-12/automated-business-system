@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-13T09:02:51.925Z",
+ "generatedAt": "2026-11-14T23:58:57.010Z",
  "lastLogAt": "2026-11-12T21:00:09.550Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,8 +25,8 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-13T09:02:51.925Z",
-   "lastError": "To https://github.com/BigSosa-12/automated-business-system.git ! [remote rejected] HEAD -> main (cannot lock ref 'refs/heads/main': is at 0ef41ec59dfc6d4ccd604…",
+   "lastSuccessAt": "2026-11-14T23:58:57.010Z",
+   "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
@@ -113,18 +113,18 @@
   {
    "id": "CLASSIFICATION",
    "label": "Classification",
-   "state": "OK",
+   "state": "WARN",
    "lastSuccess": "2026-11-12T16:23:23.151Z",
    "activity": null,
    "errors": 0,
-   "reason": "Last run completed",
+   "reason": "Stage stale",
    "items": 5866,
    "detail": {
     "recent": [
      {
       "at": "2026-11-12T16:23:23.151Z",
-      "text": "Report written (ok)",
-      "ok": true
+      "text": "Report written (stale)",
+      "ok": false
      },
      {
       "at": "2026-11-11T21:01:20.500Z",
@@ -154,7 +154,7 @@
     ],
     "durationSec": 2.627,
     "baselineMedianSec": 6.5,
-    "latestIssue": null
+    "latestIssue": "Stage stale"
    }
   },
   {
@@ -207,18 +207,18 @@
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "state": "OK",
+   "state": "WARN",
    "lastSuccess": "2026-11-12T22:25:13.238Z",
    "activity": null,
    "errors": 0,
-   "reason": "Last run completed",
+   "reason": "Stage stale",
    "items": 743,
    "detail": {
     "recent": [
      {
       "at": "2026-11-12T22:25:13.238Z",
-      "text": "Report written (ok)",
-      "ok": true
+      "text": "Report written (stale)",
+      "ok": false
      },
      {
       "at": "2026-11-11T21:02:01.581Z",
@@ -248,7 +248,7 @@
     ],
     "durationSec": 10.408,
     "baselineMedianSec": 7,
-    "latestIssue": null
+    "latestIssue": "Stage stale"
    }
   },
   {
@@ -321,13 +321,13 @@
    ]
   },
   {
-   "id": "PUBLISH_FAILURE",
-   "rank": 85,
+   "id": "MISSED_PREP",
+   "rank": 80,
    "severity": "WARNING",
-   "stage": null,
-   "title": "Snapshot publishing failed",
+   "stage": "QUEUE_PREPARATION",
+   "title": "No preparation report today",
    "evidence": [
-    "To https://github.com/BigSosa-12/automated-business-system.git ! [remote rejected] HEAD -> main (cannot lock ref 'refs/heads/main': is at 0ef41ec59dfc6d4ccd604183b4fa091d20065849 but expected 44b4b66…"
+    "Expected by 8:40 AM ET; latest report 2026-11-12T22:25:13.238Z"
    ]
   },
   {

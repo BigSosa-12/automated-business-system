@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-15T01:17:51.819Z",
+ "generatedAt": "2026-11-15T01:22:51.687Z",
  "sourceAsOf": "2026-11-12T22:25:14.195Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -15,7 +15,7 @@
    "Send-safety audit: Status BLOCKED",
    "Daily quality audit: SENT_HISTORY_NOT_RECONCILED_WITH_GMAIL",
    "Gmail ↔ CRM ledger reconciliation: Historical Gmail sends not reconciled; zero local sends is not proof of zero sent",
-   "Preparation freshness: Last prepared 50.9h ago"
+   "Preparation freshness: Last prepared 51.0h ago"
   ],
   "checks": [
    {
@@ -64,7 +64,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "WARN",
-    "detail": "Last prepared 50.9h ago",
+    "detail": "Last prepared 51.0h ago",
     "blocking": false
    },
    {
@@ -1044,7 +1044,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-15T01:17:51.819Z",
+   "lastDetected": "2026-11-15T01:22:51.687Z",
    "state": "ACTIVE"
   },
   {
@@ -1053,7 +1053,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-15T01:17:51.819Z",
+   "lastDetected": "2026-11-15T01:22:51.687Z",
    "state": "ACTIVE"
   },
   {
@@ -1062,7 +1062,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-15T01:17:51.819Z",
+   "lastDetected": "2026-11-15T01:22:51.687Z",
    "state": "ACTIVE"
   },
   {
@@ -1071,7 +1071,7 @@
    "title": "Daily audit failing",
    "detail": "sent history not reconciled with gmail",
    "firstDetected": "2026-11-12T16:17:52.006Z",
-   "lastDetected": "2026-11-15T01:17:51.819Z",
+   "lastDetected": "2026-11-15T01:22:51.687Z",
    "state": "ACTIVE"
   },
   {
@@ -1080,7 +1080,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-15T01:17:51.819Z",
+   "lastDetected": "2026-11-15T01:22:51.687Z",
    "state": "ACTIVE"
   },
   {
@@ -1089,7 +1089,7 @@
    "title": "Preparation stale",
    "detail": "No preparation report in the last 26 hours.",
    "firstDetected": "2026-11-14T23:58:57.006Z",
-   "lastDetected": "2026-11-15T01:17:51.819Z",
+   "lastDetected": "2026-11-15T01:22:51.687Z",
    "state": "ACTIVE"
   }
  ],

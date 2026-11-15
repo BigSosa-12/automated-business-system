@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-15T22:22:52.166Z",
+ "generatedAt": "2026-11-15T22:27:52.109Z",
  "lastLogAt": "2026-11-15T21:01:18.533Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,14 +25,14 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-15T22:22:52.166Z",
+   "lastSuccessAt": "2026-11-15T22:27:52.109Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "NO_RUN_EVIDENCE_TODAY",
-   "lastPreparationAt": "2026-11-12T22:25:13.238Z",
+   "state": "COMPLETED_TODAY",
+   "lastPreparationAt": "2026-11-15T22:25:14.801Z",
    "lock": "FREE"
   },
   "dispatch": {
@@ -169,6 +169,11 @@
    "detail": {
     "recent": [
      {
+      "at": "2026-11-15T22:25:15.042Z",
+      "text": "Report written (failed)",
+      "ok": false
+     },
+     {
       "at": "2026-11-15T21:00:05.169Z",
       "text": "ReconcileSuppression.js completed",
       "ok": true
@@ -182,11 +187,6 @@
       "at": "2026-11-15T15:23:00.971Z",
       "text": "ReconcileSuppression.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-12T22:25:13.553Z",
-      "text": "Report written (failed)",
-      "ok": false
      },
      {
       "at": "2026-11-12T21:00:06.414Z",
@@ -207,18 +207,18 @@
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "state": "WARN",
-   "lastSuccess": "2026-11-12T22:25:13.238Z",
+   "state": "OK",
+   "lastSuccess": "2026-11-15T22:25:14.801Z",
    "activity": null,
    "errors": 0,
-   "reason": "Stage stale",
+   "reason": "Last run completed",
    "items": 743,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-12T22:25:13.238Z",
-      "text": "Report written (stale)",
-      "ok": false
+      "at": "2026-11-15T22:25:14.801Z",
+      "text": "Report written (ok)",
+      "ok": true
      },
      {
       "at": "2026-11-11T21:02:01.581Z",
@@ -248,7 +248,7 @@
     ],
     "durationSec": 10.408,
     "baselineMedianSec": 7,
-    "latestIssue": "Stage stale"
+    "latestIssue": null
    }
   },
   {
@@ -295,7 +295,7 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-12T22:25:14.195Z",
+      "at": "2026-11-15T22:25:15.976Z",
       "text": "Report written (unknown)",
       "ok": false
      }
@@ -318,16 +318,6 @@
     "9:00 AM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)",
     "1:00 PM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)",
     "5:00 PM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)"
-   ]
-  },
-  {
-   "id": "MISSED_PREP",
-   "rank": 80,
-   "severity": "WARNING",
-   "stage": "QUEUE_PREPARATION",
-   "title": "No preparation report today",
-   "evidence": [
-    "Expected by 8:40 AM ET; latest report 2026-11-12T22:25:13.238Z"
    ]
   },
   {

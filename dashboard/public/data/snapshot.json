@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-15T15:32:52.222Z",
- "sourceAsOf": "2026-11-15T15:30:16.304Z",
+ "generatedAt": "2026-11-15T15:37:52.845Z",
+ "sourceAsOf": "2026-11-15T15:33:52.549Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -15,7 +15,7 @@
    "Send-safety audit: Status BLOCKED",
    "Daily quality audit: SENT_HISTORY_NOT_RECONCILED_WITH_GMAIL",
    "Gmail ↔ CRM ledger reconciliation: Historical Gmail sends not reconciled; zero local sends is not proof of zero sent",
-   "Preparation freshness: Last prepared 65.1h ago",
+   "Preparation freshness: Last prepared 65.2h ago",
    "READY vs handoff export: CRM 0 · export 743"
   ],
   "checks": [
@@ -65,7 +65,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "WARN",
-    "detail": "Last prepared 65.1h ago",
+    "detail": "Last prepared 65.2h ago",
     "blocking": false
    },
    {
@@ -154,7 +154,7 @@
    }
   ],
   "potentialDuplicates": 29,
-  "unassigned": 2682,
+  "unassigned": 2683,
   "routeQueue": {
    "ready": 743,
    "blocked": 2737
@@ -193,12 +193,12 @@
     "short": "Interior detailing",
     "territory": "BATTLE_CREEK_30MI",
     "target": 300,
-    "total": 51,
+    "total": 50,
     "qualified": 46,
     "ready": 0,
     "readyEmail": 0,
     "readyForm": 0,
-    "unresolved": 5,
+    "unresolved": 4,
     "suppressed": 0,
     "inventoryState": "CRITICAL"
    },
@@ -268,12 +268,12 @@
     "short": "Needs evidence",
     "territory": null,
     "target": null,
-    "total": 2682,
+    "total": 2683,
     "qualified": 0,
     "ready": 0,
     "readyEmail": 0,
     "readyForm": 0,
-    "unresolved": 2682,
+    "unresolved": 2683,
     "suppressed": 0,
     "inventoryState": null
    }
@@ -643,8 +643,8 @@
   {
    "id": "CLASSIFICATION",
    "label": "Classification",
-   "lastRun": "2026-11-15T15:30:16.304Z",
-   "lastSuccess": "2026-11-15T15:30:16.304Z",
+   "lastRun": "2026-11-15T15:33:52.549Z",
+   "lastSuccess": "2026-11-15T15:33:52.549Z",
    "durationSec": null,
    "status": "OK",
    "items": 5870,
@@ -1057,7 +1057,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-15T15:32:52.222Z",
+   "lastDetected": "2026-11-15T15:37:52.845Z",
    "state": "ACTIVE"
   },
   {
@@ -1066,7 +1066,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-15T15:32:52.222Z",
+   "lastDetected": "2026-11-15T15:37:52.845Z",
    "state": "ACTIVE"
   },
   {
@@ -1075,7 +1075,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-15T15:32:52.222Z",
+   "lastDetected": "2026-11-15T15:37:52.845Z",
    "state": "ACTIVE"
   },
   {
@@ -1084,7 +1084,7 @@
    "title": "Daily audit failing",
    "detail": "sent history not reconciled with gmail",
    "firstDetected": "2026-11-12T16:17:52.006Z",
-   "lastDetected": "2026-11-15T15:32:52.222Z",
+   "lastDetected": "2026-11-15T15:37:52.845Z",
    "state": "ACTIVE"
   },
   {
@@ -1093,7 +1093,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-15T15:32:52.222Z",
+   "lastDetected": "2026-11-15T15:37:52.845Z",
    "state": "ACTIVE"
   },
   {
@@ -1102,7 +1102,7 @@
    "title": "Preparation stale",
    "detail": "No preparation report in the last 26 hours.",
    "firstDetected": "2026-11-14T23:58:57.006Z",
-   "lastDetected": "2026-11-15T15:32:52.222Z",
+   "lastDetected": "2026-11-15T15:37:52.845Z",
    "state": "ACTIVE"
   },
   {
@@ -1111,7 +1111,7 @@
    "title": "CRM / handoff mismatch",
    "detail": "READY count differs from the latest handoff export.",
    "firstDetected": "2026-11-15T15:23:10.798Z",
-   "lastDetected": "2026-11-15T15:32:52.222Z",
+   "lastDetected": "2026-11-15T15:37:52.845Z",
    "state": "ACTIVE"
   }
  ],
@@ -1405,7 +1405,7 @@
    {
     "name": "foundry_full_classification_report",
     "present": true,
-    "asOf": "2026-11-15T15:30:16.304Z"
+    "asOf": "2026-11-15T15:33:52.549Z"
    },
    {
     "name": "suppression_reconcile_report",

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-16T22:32:51.658Z",
+ "generatedAt": "2026-11-16T22:37:51.706Z",
  "sourceAsOf": "2026-11-16T22:28:26.048Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -61,7 +61,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.1h ago",
+    "detail": "Last prepared 0.2h ago",
     "blocking": false
    },
    {
@@ -519,25 +519,22 @@
     "id": "AFTERNOON",
     "label": "5:00 PM ET Dispatch",
     "scheduledAt": "2026-11-16T22:00:00.000Z",
-    "startedAt": null,
+    "startedAt": "2026-11-16T22:00:03.723Z",
     "finishedAt": null,
-    "sent": null,
-    "errors": null,
-    "runId": null,
-    "evidence": "TASK_SCHEDULER",
-    "state": "BLOCKED"
+    "sent": 49,
+    "errors": 1,
+    "runId": "foundry_safe_dispatch",
+    "evidence": "GMAIL_API_AND_CRM_PARTIAL",
+    "state": "FAILED"
    }
   ],
   "lastDispatch": {
-   "at": "2026-11-06T14:33:47.543Z",
-   "runId": "outreach_run_report_2026-11-06_0930",
-   "sent": null,
-   "state": "BLOCKED",
+   "at": "2026-11-16T22:00:03.723Z",
+   "runId": "foundry_safe_dispatch",
+   "sent": 49,
+   "state": "FAILED",
    "blockers": [
-    "Dispatch task disabled",
-    "Safety hold CONTACT_VERIFICATION_REQUIRED",
-    "Zero contact evidence records for 410 EMAIL routes",
-    "Handoff/export counts disagree with production report"
+    "Gmail send stopped after partial acceptance"
    ]
   },
   "nextDispatchAt": "2026-11-17T14:00:00.000Z",
@@ -695,12 +692,12 @@
   {
    "id": "DISPATCH",
    "label": "Dispatch",
-   "lastRun": "2026-11-06T14:33:47.543Z",
+   "lastRun": "2026-11-16T22:00:03.723Z",
    "lastSuccess": null,
    "durationSec": null,
    "status": "BLOCKED",
-   "items": 0,
-   "errors": 4,
+   "items": 49,
+   "errors": 1,
    "note": null
   },
   {
@@ -1058,8 +1055,8 @@
    {
     "day": "2026-11-16",
     "completed": 0,
-    "failed": 0,
-    "blocked": 3,
+    "failed": 1,
+    "blocked": 2,
     "unknown": 0
    }
   ],
@@ -1072,7 +1069,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-16T22:32:51.658Z",
+   "lastDetected": "2026-11-16T22:37:51.706Z",
    "state": "ACTIVE"
   },
   {
@@ -1081,16 +1078,16 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-16T22:32:51.658Z",
+   "lastDetected": "2026-11-16T22:37:51.706Z",
    "state": "ACTIVE"
   },
   {
-   "id": "DISPATCH_BLOCKED_AFTERNOON",
+   "id": "DISPATCH_FAILED_AFTERNOON",
    "severity": "CRITICAL",
-   "title": "Dispatch blocked · 5:00 PM ET Dispatch",
-   "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
-   "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-16T22:32:51.658Z",
+   "title": "Dispatch failed · 5:00 PM ET Dispatch",
+   "detail": "49 sent, 1 blocker(s). Evidence: GMAIL_API_AND_CRM_PARTIAL.",
+   "firstDetected": "2026-11-16T22:37:51.706Z",
+   "lastDetected": "2026-11-16T22:37:51.706Z",
    "state": "ACTIVE"
   },
   {
@@ -1099,7 +1096,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-16T22:32:51.658Z",
+   "lastDetected": "2026-11-16T22:37:51.706Z",
    "state": "ACTIVE"
   }
  ],
@@ -1283,8 +1280,8 @@
     "health": "BLOCKED",
     "windows": {
      "completed": 0,
-     "failed": 0,
-     "blocked": 3,
+     "failed": 1,
+     "blocked": 2,
      "unknown": 0
     }
    }

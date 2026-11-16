@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-16T17:47:52.439Z",
+ "generatedAt": "2026-11-16T17:52:52.260Z",
  "lastLogAt": "2026-11-16T17:01:41.749Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,7 +25,7 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-16T17:47:52.439Z",
+   "lastSuccessAt": "2026-11-16T17:52:52.260Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
@@ -160,14 +160,19 @@
   {
    "id": "VERIFICATION",
    "label": "Verification",
-   "state": "FAILED",
-   "lastSuccess": "2026-11-16T17:00:07.741Z",
+   "state": "OK",
+   "lastSuccess": "2026-11-16T17:51:47.424Z",
    "activity": null,
-   "errors": 1,
-   "reason": "Audit failing: sent history not reconciled with gmail",
-   "items": 743,
+   "errors": 0,
+   "reason": "Last run completed",
+   "items": 255,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-16T17:51:47.424Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
      {
       "at": "2026-11-16T17:00:07.741Z",
       "text": "ReconcileSuppression.js completed",
@@ -177,11 +182,6 @@
       "at": "2026-11-16T16:39:36.487Z",
       "text": "ReconcileSuppression.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-15T22:25:15.042Z",
-      "text": "Report written (failed)",
-      "ok": false
      },
      {
       "at": "2026-11-15T21:00:05.169Z",
@@ -201,7 +201,7 @@
     ],
     "durationSec": 1029.641,
     "baselineMedianSec": null,
-    "latestIssue": "Audit failing: sent history not reconciled with gmail"
+    "latestIssue": null
    }
   },
   {
@@ -330,16 +330,6 @@
    ]
   },
   {
-   "id": "VALIDATION_FAILED",
-   "rank": 65,
-   "severity": "WARNING",
-   "stage": "VERIFICATION",
-   "title": "Daily audit failing",
-   "evidence": [
-    "foundry_daily_audit: SENT_HISTORY_NOT_RECONCILED_WITH_GMAIL"
-   ]
-  },
-  {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,
    "severity": "WARNING",
@@ -351,17 +341,6 @@
     "Website design: 91 EMAIL-ready (CRITICAL < 150)",
     "Inquiry follow-up: 52 EMAIL-ready (CRITICAL < 150)",
     "Estimate follow-up: 101 EMAIL-ready (CRITICAL < 150)"
-   ]
-  },
-  {
-   "id": "CRM_LEDGER_MISMATCH",
-   "rank": 50,
-   "severity": "WARNING",
-   "stage": "VERIFICATION",
-   "title": "CRM and Gmail ledger not reconciled",
-   "evidence": [
-    "CRM READY 255 · audit 743",
-    "Gmail send history not reconciled; local zero sends is not proof of zero sent"
    ]
   },
   {

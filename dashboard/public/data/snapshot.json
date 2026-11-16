@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-16T17:47:52.439Z",
- "sourceAsOf": "2026-11-16T17:41:45.193Z",
+ "generatedAt": "2026-11-16T17:52:52.260Z",
+ "sourceAsOf": "2026-11-16T17:52:06.835Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -12,9 +12,7 @@
  "health": {
   "status": "BLOCKED",
   "reasons": [
-   "Send-safety audit: Status BLOCKED",
-   "Daily quality audit: SENT_HISTORY_NOT_RECONCILED_WITH_GMAIL",
-   "Gmail ↔ CRM ledger reconciliation: Historical Gmail sends not reconciled; zero local sends is not proof of zero sent"
+   "Send-safety audit: Status BLOCKED"
   ],
   "checks": [
    {
@@ -48,22 +46,22 @@
    {
     "id": "quality_audit",
     "label": "Daily quality audit",
-    "state": "WARN",
-    "detail": "SENT_HISTORY_NOT_RECONCILED_WITH_GMAIL",
+    "state": "OK",
+    "detail": "Passed",
     "blocking": false
    },
    {
     "id": "ledger_reconciliation",
     "label": "Gmail ↔ CRM ledger reconciliation",
-    "state": "WARN",
-    "detail": "Historical Gmail sends not reconciled; zero local sends is not proof of zero sent",
+    "state": "OK",
+    "detail": "Reconciled",
     "blocking": false
    },
    {
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.1h ago",
+    "detail": "Last prepared 0.2h ago",
     "blocking": false
    },
    {
@@ -323,8 +321,8 @@
   "sent30d": 0,
   "capacityNote": "50 total across all three windows.",
   "coverage": {
-   "status": "PARTIAL",
-   "note": "Counts come from send ledgers and CRM events. Gmail history is not fully reconciled, so zero here is not proof of zero sent."
+   "status": "FULL",
+   "note": "Gmail history reconciled."
   },
   "evidence": "GMAIL_API_ACCEPTED",
   "inboxDeliveryConfirmed": false,
@@ -644,24 +642,24 @@
   {
    "id": "VALIDATION",
    "label": "Validation",
-   "lastRun": "2026-11-15T22:25:15.042Z",
-   "lastSuccess": null,
+   "lastRun": "2026-11-16T17:51:47.424Z",
+   "lastSuccess": "2026-11-16T17:51:47.424Z",
    "durationSec": null,
-   "status": "FAILED",
-   "items": 743,
-   "errors": 1,
-   "note": "sent history not reconciled with gmail"
+   "status": "OK",
+   "items": 255,
+   "errors": 0,
+   "note": null
   },
   {
    "id": "RECONCILIATION",
    "label": "Reconciliation",
    "lastRun": "2026-11-16T17:00:07.627Z",
-   "lastSuccess": null,
+   "lastSuccess": "2026-11-16T17:00:07.627Z",
    "durationSec": null,
-   "status": "DEGRADED",
+   "status": "OK",
    "items": 3,
-   "errors": 1,
-   "note": "Gmail send history not reconciled"
+   "errors": 0,
+   "note": null
   },
   {
    "id": "QUEUE_PREPARATION",
@@ -1054,7 +1052,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-16T17:47:52.439Z",
+   "lastDetected": "2026-11-16T17:52:52.260Z",
    "state": "ACTIVE"
   },
   {
@@ -1063,7 +1061,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-16T17:47:52.439Z",
+   "lastDetected": "2026-11-16T17:52:52.260Z",
    "state": "ACTIVE"
   },
   {
@@ -1072,16 +1070,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-16T17:47:52.439Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "QUALITY_AUDIT_FAIL",
-   "severity": "WARNING",
-   "title": "Daily audit failing",
-   "detail": "sent history not reconciled with gmail",
-   "firstDetected": "2026-11-12T16:17:52.006Z",
-   "lastDetected": "2026-11-16T17:47:52.439Z",
+   "lastDetected": "2026-11-16T17:52:52.260Z",
    "state": "ACTIVE"
   },
   {
@@ -1090,7 +1079,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-16T17:47:52.439Z",
+   "lastDetected": "2026-11-16T17:52:52.260Z",
    "state": "ACTIVE"
   }
  ],
@@ -1320,8 +1309,8 @@
    },
    {
     "id": "crm_vs_audit",
-    "ok": false,
-    "detail": "CRM READY 255 · audit 743"
+    "ok": true,
+    "detail": "CRM READY 255 · audit 255"
    },
    {
     "id": "crm_vs_production_report",
@@ -1348,7 +1337,7 @@
    {
     "name": "foundry_daily_audit",
     "present": true,
-    "asOf": "2026-11-15T22:25:15.042Z"
+    "asOf": "2026-11-16T17:51:47.424Z"
    },
    {
     "name": "foundry_day_review",
@@ -1373,7 +1362,7 @@
    {
     "name": "foundry_production_report",
     "present": true,
-    "asOf": "2026-11-16T17:40:43.456Z"
+    "asOf": "2026-11-16T17:52:06.835Z"
    },
    {
     "name": "foundry_learning_report",

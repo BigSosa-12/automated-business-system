@@ -116,6 +116,11 @@ test('send report without matching CRM receipts cannot clear a blocked window', 
   const s=build(dir,new Date('2026-11-04T22:20:00Z'));
   assert.notEqual(s.outreach.windows[2].state,'COMPLETED');
 });
+test('handoff reconciliation subtracts confirmed sends after the export', () => {
+  const dir=fixture({gmailBlocked:false,ready:1,confirmedDbSends:2,reports:{'foundry_final_handoff_report.json':{at:'2026-11-04T21:00:00Z',exported:3,excluded_invalid:0}}});
+  const s=build(dir,new Date('2026-11-04T22:20:00Z'));
+  assert.equal(s.health.checks.find(c=>c.id==='handoff_consistency').state,'OK');
+});
 test('alerts dedupe and keep firstDetected across runs', () => {
   const dir = fixture();
   const a = build(dir);

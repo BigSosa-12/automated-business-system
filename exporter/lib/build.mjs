@@ -189,7 +189,9 @@ export function buildSnapshot(ctx) {
   add('production_lock', 'Execution lock', lock.state === 'HELD' && !lockExpected ? 'WARN' : lock.state === 'UNKNOWN' ? 'UNKNOWN' : 'OK', lock.state === 'HELD' ? (lockExpected ? 'Held by an active run' : 'Held outside a scheduled window; possible overlap or stuck run') : `Lock ${lock.state.toLowerCase()}`);
   add('duplicate_risk', 'One READY campaign per business', db ? (db.readyMultiService ? 'WARN' : 'OK') : 'UNKNOWN', db ? `${db.readyMultiService} business(es) READY in more than one campaign` : 'Unavailable');
   add('suppression_integrity', 'Suppression integrity', db ? (db.readySuppressed ? 'FAIL' : 'OK') : 'UNKNOWN', db ? `${db.readySuppressed} suppressed contact(s) in READY routes` : 'Unavailable', true);
-  add('handoff_consistency', 'READY vs handoff export', db && src.foundry_final_handoff_report.ok ? (db.byState.find((r) => r.k === 'READY')?.n === src.foundry_final_handoff_report.data.exported ? 'OK' : 'WARN') : 'UNKNOWN', db && src.foundry_final_handoff_report.ok ? `CRM ${readyTotal} · export ${src.foundry_final_handoff_report.data.exported}` : 'Unavailable');
+  const sentAfterHandoff = prepAt && db ? new Set(db.outreachSends.filter((e) => { const at=parseTime(e.at); return at && at > prepAt && at <= now; }).map((e) => e.id).filter(Boolean)).size : 0;
+  const handoffExpected = src.foundry_final_handoff_report.ok ? Math.max(0,src.foundry_final_handoff_report.data.exported - sentAfterHandoff) : null;
+  add('handoff_consistency', 'READY vs handoff export', db && handoffExpected !== null ? (readyTotal === handoffExpected ? 'OK' : 'WARN') : 'UNKNOWN', db && handoffExpected !== null ? `CRM ${readyTotal} · exported ${src.foundry_final_handoff_report.data.exported} · confirmed since export ${sentAfterHandoff}` : 'Unavailable');
   add('exporter_last_run', 'Dashboard exporter', exporterRun?.lastError ? 'WARN' : 'OK', exporterRun?.lastError ? `Last publish problem: ${scrub(exporterRun.lastError, 120)}` : 'Last export succeeded');
   const states = checks.map((c) => c.state);
   const blockingFail = checks.some((c) => c.blocking && c.state === 'FAIL');

@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-16T16:39:22.881Z",
- "sourceAsOf": "2026-11-16T16:39:35.749Z",
+ "generatedAt": "2026-11-16T16:42:54.487Z",
+ "sourceAsOf": "2026-11-16T16:42:32.367Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -15,7 +15,6 @@
    "Send-safety audit: Status BLOCKED",
    "Daily quality audit: SENT_HISTORY_NOT_RECONCILED_WITH_GMAIL",
    "Gmail ↔ CRM ledger reconciliation: Historical Gmail sends not reconciled; zero local sends is not proof of zero sent",
-   "Execution lock: Held outside a scheduled window; possible overlap or stuck run",
    "READY vs handoff export: CRM 0 · export 743"
   ],
   "checks": [
@@ -65,7 +64,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 18.2h ago",
+    "detail": "Last prepared 18.3h ago",
     "blocking": false
    },
    {
@@ -78,8 +77,8 @@
    {
     "id": "production_lock",
     "label": "Execution lock",
-    "state": "WARN",
-    "detail": "Held outside a scheduled window; possible overlap or stuck run",
+    "state": "OK",
+    "detail": "Lock free",
     "blocking": false
    },
    {
@@ -135,7 +134,7 @@
    {
     "channel": "EMAIL",
     "verification": "PUBLISHED_OFFICIAL_SITE",
-    "n": 457
+    "n": 462
    },
    {
     "channel": "FORM",
@@ -300,7 +299,7 @@
    {
     "id": "VERIFIED_READY",
     "label": "Evidence-backed email routes",
-    "count": 906,
+    "count": 911,
     "note": "Current official-site or provider evidence; delivery is confirmed only after Gmail accepts a send"
    },
    {
@@ -614,26 +613,26 @@
   "reason": null
  },
  "locks": {
-  "production": "HELD",
+  "production": "FREE",
   "protectedWindowNow": false
  },
  "pipeline": [
   {
    "id": "DISCOVERY",
    "label": "Discovery",
-   "lastRun": "2026-11-15T21:00:07.143Z",
+   "lastRun": "2026-11-16T16:39:46.054Z",
    "lastSuccess": null,
    "durationSec": null,
    "status": "DEGRADED",
-   "items": 3289,
+   "items": 3311,
    "errors": 1,
    "note": "1 source job(s) unavailable"
   },
   {
    "id": "ENRICHMENT",
    "label": "Enrichment",
-   "lastRun": "2026-11-15T21:01:11.100Z",
-   "lastSuccess": "2026-11-15T21:01:11.100Z",
+   "lastRun": "2026-11-16T16:42:31.367Z",
+   "lastSuccess": "2026-11-16T16:42:31.367Z",
    "durationSec": null,
    "status": "OK",
    "items": 0,
@@ -643,8 +642,8 @@
   {
    "id": "CLASSIFICATION",
    "label": "Classification",
-   "lastRun": "2026-11-15T21:01:11.837Z",
-   "lastSuccess": "2026-11-15T21:01:11.837Z",
+   "lastRun": "2026-11-16T16:42:32.367Z",
+   "lastSuccess": "2026-11-16T16:42:32.367Z",
    "durationSec": null,
    "status": "OK",
    "items": 5870,
@@ -1064,7 +1063,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-16T16:39:22.881Z",
+   "lastDetected": "2026-11-16T16:42:54.487Z",
    "state": "ACTIVE"
   },
   {
@@ -1073,7 +1072,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-16T16:39:22.881Z",
+   "lastDetected": "2026-11-16T16:42:54.487Z",
    "state": "ACTIVE"
   },
   {
@@ -1082,7 +1081,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-16T16:39:22.881Z",
+   "lastDetected": "2026-11-16T16:42:54.487Z",
    "state": "ACTIVE"
   },
   {
@@ -1091,7 +1090,7 @@
    "title": "Daily audit failing",
    "detail": "sent history not reconciled with gmail",
    "firstDetected": "2026-11-12T16:17:52.006Z",
-   "lastDetected": "2026-11-16T16:39:22.881Z",
+   "lastDetected": "2026-11-16T16:42:54.487Z",
    "state": "ACTIVE"
   },
   {
@@ -1100,16 +1099,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-16T16:39:22.881Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "LOCK_OUTSIDE_WINDOW",
-   "severity": "WARNING",
-   "title": "Execution lock held outside a window",
-   "detail": "Possible overlap or a stuck run. Not cleared automatically.",
-   "firstDetected": "2026-11-16T16:39:22.881Z",
-   "lastDetected": "2026-11-16T16:39:22.881Z",
+   "lastDetected": "2026-11-16T16:42:54.487Z",
    "state": "ACTIVE"
   },
   {
@@ -1118,7 +1108,7 @@
    "title": "CRM / handoff mismatch",
    "detail": "READY count differs from the latest handoff export.",
    "firstDetected": "2026-11-15T15:23:10.798Z",
-   "lastDetected": "2026-11-16T16:39:22.881Z",
+   "lastDetected": "2026-11-16T16:42:54.487Z",
    "state": "ACTIVE"
   }
  ],
@@ -1411,22 +1401,22 @@
    {
     "name": "foundry_targeted_discovery_report",
     "present": true,
-    "asOf": "2026-11-15T21:00:07.143Z"
+    "asOf": "2026-11-16T16:39:46.054Z"
    },
    {
     "name": "foundry_contact_enrichment_report",
     "present": true,
-    "asOf": "2026-11-15T21:01:10.887Z"
+    "asOf": "2026-11-16T16:42:29.044Z"
    },
    {
     "name": "foundry_local_digital_enrichment_report",
     "present": true,
-    "asOf": "2026-11-15T21:01:11.100Z"
+    "asOf": "2026-11-16T16:42:31.367Z"
    },
    {
     "name": "foundry_full_classification_report",
     "present": true,
-    "asOf": "2026-11-15T21:01:11.837Z"
+    "asOf": "2026-11-16T16:42:32.367Z"
    },
    {
     "name": "suppression_reconcile_report",
@@ -1436,7 +1426,7 @@
    {
     "name": "foundry_discovery_import_report",
     "present": true,
-    "asOf": "2026-11-15T21:00:16.173Z"
+    "asOf": "2026-11-16T16:40:31.362Z"
    },
    {
     "name": "foundry_quarantine_report",

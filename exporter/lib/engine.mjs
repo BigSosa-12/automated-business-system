@@ -51,7 +51,11 @@ export function buildEngine({ now, snap, c, dir, prevEngine, exporterRun, thresh
   const pipe = Object.fromEntries(snap.pipeline.map((p) => [p.id, p]));
   const db = c.db, lock = c.lock, gmailBlocked = c.gmailBlocked;
   const latestCleanSuccess = c.windows.filter((w) => w.state === 'COMPLETED' && w.sent > 0 && !w.errors).map((w) => w.scheduledAt).sort().at(-1);
-  const badWin = c.windows.filter((w) => ['BLOCKED', 'FAILED', 'MISSED'].includes(w.state) && (!latestCleanSuccess || w.scheduledAt > latestCleanSuccess));
+  const futureReady = !gmailBlocked && c.src.foundry_safety_audit.data?.status === 'PASS' &&
+    c.defs.some((d) => d.mode === 'Dispatch' && d.enabled) &&
+    c.windows.some((w) => w.state === 'SCHEDULED' && w.scheduledAt > nowIso);
+  const badWin = c.windows.filter((w) => ['BLOCKED', 'FAILED', 'MISSED'].includes(w.state) &&
+    (!latestCleanSuccess || w.scheduledAt > latestCleanSuccess) && !futureReady);
   const sourcesPresent = snap.dataQuality.sources.filter((s) => s.present).length;
   const insufficient = !db && sourcesPresent < Math.ceil(snap.dataQuality.sources.length / 2);
 

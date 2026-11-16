@@ -207,7 +207,8 @@ export function buildSnapshot(ctx) {
   if (db?.readySuppressed) A('SUPPRESSED_IN_READY', 'CRITICAL', 'Suppressed contacts in READY routes', `${db.readySuppressed} suppressed contact(s) appear in READY.`);
   const todayBlocked = windows.filter((w) => ['BLOCKED', 'FAILED', 'MISSED'].includes(w.state));
   const latestCleanSuccess = windows.filter((w) => w.state === 'COMPLETED' && w.sent > 0 && !w.errors).map((w) => w.scheduledAt).sort().at(-1);
-  for (const w of todayBlocked) A(`DISPATCH_${w.state}_${w.id}`, latestCleanSuccess && w.scheduledAt < latestCleanSuccess ? 'WARNING' : 'CRITICAL', `Dispatch ${w.state.toLowerCase()} · ${w.label}`, `${w.sent ?? 0} sent, ${w.errors ?? 0} blocker(s). Evidence: ${w.evidence}.`);
+  const futureReady = !gmailBlocked && safety?.status === 'PASS' && defs.some((d) => d.mode === 'Dispatch' && d.enabled) && windows.some((w) => w.state === 'SCHEDULED' && w.scheduledAt > toIso(now));
+  for (const w of todayBlocked) A(`DISPATCH_${w.state}_${w.id}`, (latestCleanSuccess && w.scheduledAt < latestCleanSuccess) || futureReady ? 'WARNING' : 'CRITICAL', `Dispatch ${w.state.toLowerCase()} · ${w.label}`, `${w.sent ?? 0} sent, ${w.errors ?? 0} blocker(s). Evidence: ${w.evidence}.`);
   if (db && (db.preparedSnapshots ?? 0) === 0 && (db.queueRows ?? 0) === 0) A('QUEUE_SNAPSHOT_EMPTY', 'WARNING', 'No prepared send queue', 'No immutable send snapshot or queued messages exist yet.');
   if (auditFailures.length) A('QUALITY_AUDIT_FAIL', 'WARNING', 'Daily audit failing', auditFailures.join(', ').replace(/_/g, ' ').toLowerCase());
   const crit = campaigns.filter((c) => c.inventoryState === 'CRITICAL');

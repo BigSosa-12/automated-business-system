@@ -110,6 +110,18 @@ test('confirmed later Gmail dispatch clears an old window blocker on the site', 
   assert.equal(s.alerts.find(a=>a.id==='DISPATCH_BLOCKED_MORNING')?.severity,'WARNING');
   assert.notEqual(e.state,'BLOCKED');
 });
+test('old missed window is history while a later dispatch is safely scheduled', () => {
+  const taskXml='<Task><Triggers>'+['09:00','13:00','17:00'].map(t=>`<CalendarTrigger><StartBoundary>2026-11-04T${t}:00</StartBoundary></CalendarTrigger>`).join('')+'</Triggers><Actions><Exec><Arguments>-File x.ps1 -Mode Dispatch</Arguments></Exec></Actions></Task>';
+  const dir=fixture({gmailBlocked:false,taskXml,reports:{
+    'outreach_run_report_2026-11-04_0900.json':{at:'2026-11-04T14:05:00Z',execution:{emails_sent:0},blockers:['hold']}
+  }});
+  const now=new Date('2026-11-04T21:30:00Z');
+  const s=build(dir,now),{e}=eng(dir,now,{lockOverride:{state:'ABSENT'}});
+  assert.deepEqual(s.outreach.windows.map(w=>w.state),['BLOCKED','UNKNOWN','SCHEDULED']);
+  assert.equal(s.alerts.find(a=>a.id==='DISPATCH_BLOCKED_MORNING')?.severity,'WARNING');
+  assert.notEqual(e.state,'BLOCKED');
+  assert.equal(e.heartbeats.dispatch.state,'GATES_OK');
+});
 test('send report without matching CRM receipts cannot clear a blocked window', () => {
   const taskXml='<Task><Triggers>'+['09:00','13:00','17:00'].map(t=>`<CalendarTrigger><StartBoundary>2026-11-04T${t}:00</StartBoundary></CalendarTrigger>`).join('')+'</Triggers><Actions><Exec><Arguments>-File x.ps1 -Mode Dispatch</Arguments></Exec></Actions></Task>';
   const dir=fixture({gmailBlocked:false,taskXml,reports:{'foundry_safe_dispatch_report.json':{at:'2026-11-04T22:05:00Z',status:'COMPLETE',confirmed:2}}});

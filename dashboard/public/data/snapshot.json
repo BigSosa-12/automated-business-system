@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-16T21:27:51.896Z",
- "sourceAsOf": "2026-11-16T21:03:35.880Z",
+ "generatedAt": "2026-11-16T21:32:51.550Z",
+ "sourceAsOf": "2026-11-16T21:30:35.999Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -10,10 +10,8 @@
   "staleAfterMinutes": 75
  },
  "health": {
-  "status": "BLOCKED",
-  "reasons": [
-   "Send-safety audit: Status BLOCKED"
-  ],
+  "status": "HEALTHY",
+  "reasons": [],
   "checks": [
    {
     "id": "sqlite_read",
@@ -39,8 +37,8 @@
    {
     "id": "safety_audit",
     "label": "Send-safety audit",
-    "state": "FAIL",
-    "detail": "Status BLOCKED",
+    "state": "OK",
+    "detail": "Status PASS",
     "blocking": true
    },
    {
@@ -61,7 +59,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.4h ago",
+    "detail": "Last prepared 0.5h ago",
     "blocking": false
    },
    {
@@ -1064,7 +1062,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-16T21:27:51.896Z",
+   "lastDetected": "2026-11-16T21:32:51.550Z",
    "state": "ACTIVE"
   },
   {
@@ -1073,7 +1071,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-16T21:27:51.896Z",
+   "lastDetected": "2026-11-16T21:32:51.550Z",
    "state": "ACTIVE"
   },
   {
@@ -1082,7 +1080,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-16T21:27:51.896Z",
+   "lastDetected": "2026-11-16T21:32:51.550Z",
    "state": "ACTIVE"
   },
   {
@@ -1091,7 +1089,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-16T21:27:51.896Z",
+   "lastDetected": "2026-11-16T21:32:51.550Z",
    "state": "ACTIVE"
   }
  ],
@@ -1272,7 +1270,7 @@
     "qualified": 3159,
     "ready": 244,
     "sent": 0,
-    "health": "BLOCKED",
+    "health": "HEALTHY",
     "windows": {
      "completed": 0,
      "failed": 0,
@@ -1359,7 +1357,7 @@
    {
     "name": "foundry_safety_audit",
     "present": true,
-    "asOf": "2026-11-16T21:03:35.880Z"
+    "asOf": "2026-11-16T21:30:35.999Z"
    },
    {
     "name": "foundry_safe_dispatch_report",

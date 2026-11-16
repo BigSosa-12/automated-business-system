@@ -8,10 +8,7 @@ export function publish(repo, stamp) {
   git(repo, ['add', '--', ...PATHS]);
   try { git(repo, ['diff', '--cached', '--quiet', '--', ...PATHS]); return { published: false, reason: 'NO_CHANGES' }; } catch { /* exit 1 = staged changes */ }
   git(repo, ['commit', '-m', `chore(data): dashboard snapshot ${stamp}`, '--only', '--', ...PATHS]);
-  try { git(repo, ['push', 'origin', 'HEAD']); }
-  catch {
-    git(repo, ['pull', '--rebase', '--autostash', 'origin', 'main']);
-    git(repo, ['push', 'origin', 'HEAD']);
-  }
+  // A conflict requires review. Never ingest remote repository code on this laptop.
+  git(repo, ['push', 'origin', 'HEAD']);
   return { published: true, reason: 'PUSHED' };
 }

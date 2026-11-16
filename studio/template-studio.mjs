@@ -13,15 +13,15 @@ const SRC = arg('--src', process.env.FOUNDRY_DIR || 'C:\\Users\\hahak\\OneDrive\
 const PORT = Number(arg('--port', 4478));
 const STATE = path.resolve(arg('--state', path.join(HERE, 'state', 'studio.json')));
 
-export const ALLOWED_ORIGINS = ['https://bigsosa-12.github.io'];
+export const ALLOWED_ORIGINS = [];
 const ok = (h) => /^(127\.0\.0\.1|localhost):\d+$/.test(h || '');
-const send = (res, code, body, type = 'application/json') => { res.writeHead(code, { ...(res.corsOrigin ? { 'access-control-allow-origin': res.corsOrigin, vary: 'Origin' } : {}), 'content-type': type + '; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', 'content-security-policy': "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'" }); res.end(typeof body === 'string' ? body : JSON.stringify(body)); };
+const send = (res, code, body, type = 'application/json') => { res.writeHead(code, { ...(res.corsOrigin ? { 'access-control-allow-origin': res.corsOrigin, vary: 'Origin' } : {}), 'content-type': type + '; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', 'cross-origin-resource-policy': 'same-origin', 'referrer-policy': 'no-referrer', 'x-frame-options': 'DENY', 'content-security-policy': "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'" }); res.end(typeof body === 'string' ? body : JSON.stringify(body)); };
 export function makeServer(studio) {
   const view = () => ({ min: MIN_ACTIVE, services: studio.summary(), templates: studio.state.templates.filter((x) => x.status !== 'pool'), exportFile: path.join(path.dirname(studio.file), 'template-decisions.json') });
   return http.createServer(async (req, res) => {
   if (!ok(req.headers.host)) return send(res, 403, { error: 'forbidden host' });
   const url = new URL(req.url, 'http://x');
-  // Cross-origin access: only the published dashboard (exact origin) or this page itself. Anything else is refused.
+  // Only this local page may call the Studio. The public dashboard has no API access.
   const origin = req.headers.origin;
   const self = /^http:\/\/(127\.0\.0\.1|localhost):\d+$/.test(origin || '');
   if (origin && !self && !ALLOWED_ORIGINS.includes(origin)) return send(res, 403, { error: 'origin not allowed' });

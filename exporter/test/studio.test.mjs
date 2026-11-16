@@ -108,13 +108,15 @@ test('reserve pool never leaks into the list the UI shows', async () => {
   try { const j = await (await fetch(`http://127.0.0.1:${srv.address().port}/api/state`)).json(); assert.ok(j.templates.every((t) => t.status !== 'pool')); assert.ok(j.services.every((x) => x.reserve > 0)); }
   finally { srv.closeAllConnections(); srv.close(); }
 });
-test('CORS: the published dashboard origin is allowed (with private-network preflight); every other origin is refused', async () => {
+test('CORS: the public dashboard cannot access local Studio', async () => {
   const s = mk(); const srv = makeServer(s); await new Promise((r) => srv.listen(0, '127.0.0.1', r));
-  const base = `http://127.0.0.1:${srv.address().port}`; const good = ALLOWED_ORIGINS[0];
+  const base = `http://127.0.0.1:${srv.address().port}`; const good = 'https://bigsosa-12.github.io';
   try {
     const pre = await fetch(base + '/api/like', { method: 'OPTIONS', headers: { origin: good, 'access-control-request-method': 'POST', 'access-control-request-headers': 'x-studio,content-type', 'access-control-request-private-network': 'true' } });
-    assert.equal(pre.status, 204); assert.equal(pre.headers.get('access-control-allow-origin'), good); assert.equal(pre.headers.get('access-control-allow-private-network'), 'true');
-    const ok = await fetch(base + '/api/state', { headers: { origin: good } }); assert.equal(ok.status, 200); assert.equal(ok.headers.get('access-control-allow-origin'), good);
+    assert.equal(pre.status, 403);
+    const ok = await fetch(base + '/api/state', { headers: { origin: good } }); assert.equal(ok.status, 403);
+    const local = await fetch(base + '/api/state', { headers: { origin: base } }); assert.equal(local.status, 200);
+    assert.equal(local.headers.get('cross-origin-resource-policy'), 'same-origin');
     for (const evil of ['https://evil.example', 'https://bigsosa-12.github.io.evil.example', 'http://bigsosa-12.github.io']) {
       assert.equal((await fetch(base + '/api/state', { headers: { origin: evil } })).status, 403, evil);
       assert.equal((await fetch(base + '/api/like', { method: 'POST', headers: { origin: evil, 'x-studio': '1' }, body: JSON.stringify({ id: 'x' }) })).status, 403, evil);

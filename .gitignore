@@ -4,3 +4,17 @@ exporter/state/
 *.tmp
 .DS_Store
 studio/state/
+.env
+.env.*
+*.sqlite*
+*.db
+*.dpapi
+*.csv
+*.pem
+*.p12
+*.pfx
+*.key
+*credential*.json
+*token*.json
+*.log
+safety_backups/

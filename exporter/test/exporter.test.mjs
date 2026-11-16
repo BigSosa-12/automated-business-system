@@ -128,6 +128,17 @@ test('send report without matching CRM receipts cannot clear a blocked window', 
   const s=build(dir,new Date('2026-11-04T22:20:00Z'));
   assert.notEqual(s.outreach.windows[2].state,'COMPLETED');
 });
+test('partially accepted Gmail dispatch shows confirmed count and failed window', () => {
+  const taskXml='<Task><Triggers>'+['09:00','13:00','17:00'].map(t=>`<CalendarTrigger><StartBoundary>2026-11-04T${t}:00</StartBoundary></CalendarTrigger>`).join('')+'</Triggers><Actions><Exec><Arguments>-File x.ps1 -Mode Dispatch</Arguments></Exec></Actions></Task>';
+  const dir=fixture({gmailBlocked:false,confirmedDbSends:49,taskXml,reports:{'foundry_safe_dispatch_report.json':{at:'2026-11-04T22:00:03Z',status:'BLOCKED',confirmed:49,reason:'GMAIL_API_403_rateLimitExceeded'}}});
+  const s=build(dir,new Date('2026-11-04T22:20:00Z'));
+  assert.equal(s.outreach.windows[2].state,'FAILED');
+  assert.equal(s.outreach.windows[2].sent,49);
+  assert.equal(s.outreach.windows[2].evidence,'GMAIL_API_AND_CRM_PARTIAL');
+  assert.equal(s.outreach.lastDispatch?.state,'FAILED');
+  assert.equal(s.outreach.lastDispatch?.sent,49);
+  assert.deepEqual(validateSnapshot(s),[]);
+});
 test('handoff reconciliation subtracts confirmed sends after the export', () => {
   const dir=fixture({gmailBlocked:false,ready:1,confirmedDbSends:2,reports:{'foundry_final_handoff_report.json':{at:'2026-11-04T21:00:00Z',exported:3,excluded_invalid:0}}});
   const s=build(dir,new Date('2026-11-04T22:20:00Z'));

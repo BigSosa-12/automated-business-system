@@ -103,12 +103,14 @@ export function buildSnapshot(ctx) {
   const safeAt = parseTime(safeReport?.at);
   const crmSendsToday = new Set((db?.outreachSends ?? []).filter((e) => { const at = parseTime(e.at); return at && etDay(at) === today; }).map((e) => e.id).filter(Boolean)).size;
   const safeConfirmed = safeReport?.status === 'COMPLETE' && Number.isInteger(safeReport.confirmed) && safeReport.confirmed > 0 && safeAt && etDay(safeAt) === today && crmSendsToday >= safeReport.confirmed;
+  const safePartial = safeReport?.status === 'BLOCKED' && Number.isInteger(safeReport.confirmed) && safeReport.confirmed > 0 && safeAt && etDay(safeAt) === today && crmSendsToday >= safeReport.confirmed;
   const taskFor = (mode, min) => scheduler?.tasks?.find((tk) => tk.name === defs.find((d) => d.mode === mode && d.minutes.includes(min))?.name);
   const windows = slots.map((slot) => {
     const sched = etWallToUtc(today, slot);
     const rep = runReports.find((x) => x.day === today && x.minutes >= slot && x.minutes < slot + 30);
     const base = { id: slotId(slot), label: `${fmtHm(slot)} Dispatch`, scheduledAt: toIso(sched), startedAt: null, finishedAt: null, sent: null, errors: null, runId: null, evidence: 'NONE' };
     if (safeConfirmed && etMinutes(safeAt) >= slot && etMinutes(safeAt) < slot + 15) return { ...base, state: 'COMPLETED', finishedAt: toIso(safeAt), sent: safeReport.confirmed, errors: 0, runId: 'foundry_safe_dispatch', evidence: 'GMAIL_API_AND_CRM' };
+    if (safePartial && etMinutes(safeAt) >= slot && etMinutes(safeAt) < slot + 15) return { ...base, state: 'FAILED', startedAt: toIso(safeAt), sent: safeReport.confirmed, errors: 1, runId: 'foundry_safe_dispatch', evidence: 'GMAIL_API_AND_CRM_PARTIAL' };
     if (rep) {
       const ex = rep.r.data.execution ?? {}, blockers = rep.r.data.blockers ?? [];
       const sentN = Number.isFinite(ex.emails_sent) ? ex.emails_sent : null;
@@ -131,7 +133,7 @@ export function buildSnapshot(ctx) {
     state: (lastReport.r.data.blockers?.length && !lastReport.r.data.execution?.emails_sent) ? 'BLOCKED' : 'COMPLETED',
     blockers: (lastReport.r.data.blockers ?? []).slice(0, 4).map((b) => scrub(b, 200)),
   } : null;
-  const safeDispatch = safeConfirmed ? { at: toIso(safeAt), runId: 'foundry_safe_dispatch', sent: safeReport.confirmed, state: 'COMPLETED', blockers: [] } : null;
+  const safeDispatch = safeConfirmed ? { at: toIso(safeAt), runId: 'foundry_safe_dispatch', sent: safeReport.confirmed, state: 'COMPLETED', blockers: [] } : safePartial ? { at: toIso(safeAt), runId: 'foundry_safe_dispatch', sent: safeReport.confirmed, state: 'FAILED', blockers: ['Gmail send stopped after partial acceptance'] } : null;
   const lastDispatch = safeDispatch && (!legacyDispatch || safeDispatch.at >= legacyDispatch.at) ? safeDispatch : legacyDispatch;
 
   // ---- replies ---------------------------------------------------------------------------------

@@ -12,7 +12,7 @@ import { parseCsv } from '../lib/sources.mjs';
 import { acquire } from '../lib/lock.mjs';
 
 // ---- fixture factory: fake data only, never production values ---------------------------------
-function fixture({ gmailBlocked = true, ready = 3, sendRows = [], withDb = true, reports = {} } = {}) {
+function fixture({ gmailBlocked = true, ready = 3, sendRows = [], confirmedDbSends = 0, withDb = true, reports = {}, taskXml = null } = {}) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'pf-'));
   const w = (n, o) => fs.writeFileSync(path.join(dir, n), typeof o === 'string' ? o : JSON.stringify(o));
   if (withDb) {
@@ -24,6 +24,10 @@ function fixture({ gmailBlocked = true, ready = 3, sendRows = [], withDb = true,
       CREATE TABLE source_jobs(id INTEGER PRIMARY KEY, source TEXT, status TEXT, attempts INT);
       CREATE TABLE audit_events(id INTEGER PRIMARY KEY, event TEXT);
       CREATE TABLE suppression(id INTEGER PRIMARY KEY);`);
+    if (confirmedDbSends) {
+      db.exec('CREATE TABLE outreach_events(message_id TEXT,at TEXT,campaign TEXT,event TEXT)');
+      for (let i=0;i<confirmedDbSends;i++) db.prepare('INSERT INTO outreach_events VALUES (?,?,?,?)').run('gmail-'+i,'2026-11-04T22:04:00Z','WEBSITE_WORLD','SENT');
+    }
     for (let i = 1; i <= 6; i++) {
       const st = i <= ready ? 'READY' : i === 6 ? 'UNRESOLVED' : 'QUALIFIED';
       db.prepare('INSERT INTO businesses VALUES (?,?,?)').run(i, `Biz ${i}`, '2026-11-03 10:00:00');
@@ -37,7 +41,7 @@ function fixture({ gmailBlocked = true, ready = 3, sendRows = [], withDb = true,
   w('foundry_day_review.json', { reply_coverage: gmailBlocked ? 'UNKNOWN' : 'COMPLETE', as_of: '2026-11-04T16:00:00Z' });
   w('foundry_final_handoff_report.json', { at: '2026-11-04T16:00:00Z', exported: ready, excluded_invalid: 0 });
   w('FoundryCampaigns.csv', 'campaign_id,service,territory,target_count,target_type,state\nWEBSITE_WORLD,Website,WORLDWIDE,300,X,REFILLING\n');
-  w('BattleCreek_Prospect_Foundry_Dispatch.installed.xml', '<Task><Triggers><CalendarTrigger><StartBoundary>2026-11-04T09:30:00</StartBoundary></CalendarTrigger><CalendarTrigger><StartBoundary>2026-11-04T13:00:00</StartBoundary></CalendarTrigger><CalendarTrigger><StartBoundary>2026-11-04T16:00:00</StartBoundary></CalendarTrigger></Triggers><Actions><Exec><Arguments>-File x.ps1 -Mode Dispatch</Arguments></Exec></Actions></Task>');
+  w('BattleCreek_Prospect_Foundry_Dispatch.installed.xml', taskXml ?? '<Task><Triggers><CalendarTrigger><StartBoundary>2026-11-04T09:30:00</StartBoundary></CalendarTrigger><CalendarTrigger><StartBoundary>2026-11-04T13:00:00</StartBoundary></CalendarTrigger><CalendarTrigger><StartBoundary>2026-11-04T16:00:00</StartBoundary></CalendarTrigger></Triggers><Actions><Exec><Arguments>-File x.ps1 -Mode Dispatch</Arguments></Exec></Actions></Task>');
   if (sendRows.length) w('send_ledger_2026-11-04.csv', 'sent_at,campaign,business,email,origin_account,gmail_message_id,thread_id,status\n' + sendRows.join('\n') + '\n');
   for (const [n, o] of Object.entries(reports)) w(n, o);
   return dir;
@@ -92,6 +96,25 @@ test('run report => window BLOCKED when blockers and zero sent', () => {
   const s = build(fixture({ reports: { 'outreach_run_report_2026-11-04_0930.json': { at: '2026-11-04T09:33:00-05:00', execution: { emails_sent: 0 }, blockers: ['quota'] } } }));
   assert.equal(s.outreach.windows[0].state, 'BLOCKED');
   assert.equal(s.outreach.windows[1].state, 'SCHEDULED');
+});
+test('confirmed later Gmail dispatch clears an old window blocker on the site', () => {
+  const taskXml='<Task><Triggers>'+['09:00','13:00','17:00'].map(t=>`<CalendarTrigger><StartBoundary>2026-11-04T${t}:00</StartBoundary></CalendarTrigger>`).join('')+'</Triggers><Actions><Exec><Arguments>-File x.ps1 -Mode Dispatch</Arguments></Exec></Actions></Task>';
+  const dir=fixture({gmailBlocked:false,confirmedDbSends:2,taskXml,reports:{
+    'outreach_run_report_2026-11-04_0900.json':{at:'2026-11-04T14:05:00Z',execution:{emails_sent:0},blockers:['hold']},
+    'foundry_safe_dispatch_report.json':{at:'2026-11-04T22:05:00Z',status:'COMPLETE',confirmed:2}
+  }});
+  const now=new Date('2026-11-04T22:20:00Z');
+  const s=build(dir,now),{e}=eng(dir,now,{lockOverride:{state:'ABSENT'}});
+  assert.deepEqual(s.outreach.windows.map(w=>w.state),['BLOCKED','UNKNOWN','COMPLETED']);
+  assert.equal(s.outreach.lastDispatch?.state,'COMPLETED');
+  assert.equal(s.alerts.find(a=>a.id==='DISPATCH_BLOCKED_MORNING')?.severity,'WARNING');
+  assert.notEqual(e.state,'BLOCKED');
+});
+test('send report without matching CRM receipts cannot clear a blocked window', () => {
+  const taskXml='<Task><Triggers>'+['09:00','13:00','17:00'].map(t=>`<CalendarTrigger><StartBoundary>2026-11-04T${t}:00</StartBoundary></CalendarTrigger>`).join('')+'</Triggers><Actions><Exec><Arguments>-File x.ps1 -Mode Dispatch</Arguments></Exec></Actions></Task>';
+  const dir=fixture({gmailBlocked:false,taskXml,reports:{'foundry_safe_dispatch_report.json':{at:'2026-11-04T22:05:00Z',status:'COMPLETE',confirmed:2}}});
+  const s=build(dir,new Date('2026-11-04T22:20:00Z'));
+  assert.notEqual(s.outreach.windows[2].state,'COMPLETED');
 });
 test('alerts dedupe and keep firstDetected across runs', () => {
   const dir = fixture();

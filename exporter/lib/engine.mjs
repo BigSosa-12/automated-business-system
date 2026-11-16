@@ -50,6 +50,8 @@ export function buildEngine({ now, snap, c, dir, prevEngine, exporterRun, thresh
   const log = readSafetyLog(dir);
   const pipe = Object.fromEntries(snap.pipeline.map((p) => [p.id, p]));
   const db = c.db, lock = c.lock, gmailBlocked = c.gmailBlocked;
+  const latestCleanSuccess = c.windows.filter((w) => w.state === 'COMPLETED' && w.sent > 0 && !w.errors).map((w) => w.scheduledAt).sort().at(-1);
+  const badWin = c.windows.filter((w) => ['BLOCKED', 'FAILED', 'MISSED'].includes(w.state) && (!latestCleanSuccess || w.scheduledAt > latestCleanSuccess));
   const sourcesPresent = snap.dataQuality.sources.filter((s) => s.present).length;
   const insufficient = !db && sourcesPresent < Math.ceil(snap.dataQuality.sources.length / 2);
 
@@ -96,7 +98,7 @@ export function buildEngine({ now, snap, c, dir, prevEngine, exporterRun, thresh
     }
     if (st.id === 'GMAIL_DISPATCH') {
       if (gmailBlocked) { state = 'BLOCKED'; reason = 'Gmail authorization incomplete. Sender is gated.'; }
-      else if (c.windows.some((w) => ['BLOCKED', 'FAILED', 'MISSED'].includes(w.state))) { state = 'FAILED'; reason = `Window ${c.windows.find((w) => ['BLOCKED', 'FAILED', 'MISSED'].includes(w.state)).state.toLowerCase()} today`; }
+      else if (badWin.length) { state = 'FAILED'; reason = `Window ${badWin[0].state.toLowerCase()} today`; }
     }
     if (st.id === 'REPLY_PROCESSING' && c.replyCoverage === 'UNKNOWN') {
       const gm = (c.src.foundry_day_review.data?.blockers ?? []).some((b) => /GMAIL_CONFIGURATION_MISSING/.test(b));
@@ -121,7 +123,6 @@ export function buildEngine({ now, snap, c, dir, prevEngine, exporterRun, thresh
   if (!db) R('SQLITE_UNREADABLE', 100, 'CRITICAL', 'VERIFICATION', 'CRM database unreadable', [`Read-only open failed: ${scrub(c.dbError, 80)}`]);
   if (gmailBlocked) R('GMAIL_AUTH', 95, 'CRITICAL', 'GMAIL_DISPATCH', 'Gmail authorization incomplete', [...(c.src.foundry_safety_audit.data?.failures ?? []).map((f) => `foundry_safety_audit: ${f}`), ...(db?.safetyControl ?? []).map((r) => `safety_control: ${r.reason}`)]);
   if (db?.readySuppressed) R('SUPPRESSION_CONFLICT', 94, 'CRITICAL', 'VERIFICATION', 'Suppressed contacts present in READY routes', [`${db.readySuppressed} READY route(s) matched suppression`]);
-  const badWin = c.windows.filter((w) => ['BLOCKED', 'FAILED', 'MISSED'].includes(w.state));
   if (badWin.length) R('DISPATCH_ERRORS', 90, 'CRITICAL', 'GMAIL_DISPATCH', 'Dispatch window did not complete cleanly', badWin.map((w) => `${w.label}: ${w.state} (${w.sent ?? 0} sent, ${w.errors ?? 0} blocker(s); ${w.evidence.toLowerCase().replace(/_/g, ' ')})`));
   if (exporterRun?.lastError) R('PUBLISH_FAILURE', 85, 'WARNING', null, 'Snapshot publishing failed', [exporterRun.lastError]);
   const prepToday = c.prepAt && etDay(c.prepAt) === day;

@@ -99,11 +99,16 @@ export function buildSnapshot(ctx) {
   }).filter((x) => x.r.ok);
   const lock = ctx.lockOverride ?? probeProductionLock(dir);
   const nowMin = etMinutes(now);
+  const safeReport = src.foundry_safe_dispatch_report.data;
+  const safeAt = parseTime(safeReport?.at);
+  const crmSendsToday = new Set((db?.outreachSends ?? []).filter((e) => { const at = parseTime(e.at); return at && etDay(at) === today; }).map((e) => e.id).filter(Boolean)).size;
+  const safeConfirmed = safeReport?.status === 'COMPLETE' && Number.isInteger(safeReport.confirmed) && safeReport.confirmed > 0 && safeAt && etDay(safeAt) === today && crmSendsToday >= safeReport.confirmed;
   const taskFor = (mode, min) => scheduler?.tasks?.find((tk) => tk.name === defs.find((d) => d.mode === mode && d.minutes.includes(min))?.name);
   const windows = slots.map((slot) => {
     const sched = etWallToUtc(today, slot);
     const rep = runReports.find((x) => x.day === today && x.minutes >= slot && x.minutes < slot + 30);
     const base = { id: slotId(slot), label: `${fmtHm(slot)} Dispatch`, scheduledAt: toIso(sched), startedAt: null, finishedAt: null, sent: null, errors: null, runId: null, evidence: 'NONE' };
+    if (safeConfirmed && etMinutes(safeAt) >= slot && etMinutes(safeAt) < slot + 15) return { ...base, state: 'COMPLETED', finishedAt: toIso(safeAt), sent: safeReport.confirmed, errors: 0, runId: 'foundry_safe_dispatch', evidence: 'GMAIL_API_AND_CRM' };
     if (rep) {
       const ex = rep.r.data.execution ?? {}, blockers = rep.r.data.blockers ?? [];
       const sentN = Number.isFinite(ex.emails_sent) ? ex.emails_sent : null;
@@ -121,11 +126,13 @@ export function buildSnapshot(ctx) {
   const nextSlot = slots.find((s) => nowMin < s);
   const nextDispatchAt = toIso(nextSlot != null ? etWallToUtc(today, nextSlot) : etWallToUtc(nextDay(today), slots[0]));
   const lastReport = runReports.slice().sort((a, b) => (a.day + a.minutes).localeCompare(b.day + b.minutes)).at(-1);
-  const lastDispatch = lastReport ? {
+  const legacyDispatch = lastReport ? {
     at: toIso(parseTime(lastReport.r.data.at)), runId: lastReport.file.replace(/\.json$/, ''), sent: lastReport.r.data.execution?.emails_sent ?? null,
     state: (lastReport.r.data.blockers?.length && !lastReport.r.data.execution?.emails_sent) ? 'BLOCKED' : 'COMPLETED',
     blockers: (lastReport.r.data.blockers ?? []).slice(0, 4).map((b) => scrub(b, 200)),
   } : null;
+  const safeDispatch = safeConfirmed ? { at: toIso(safeAt), runId: 'foundry_safe_dispatch', sent: safeReport.confirmed, state: 'COMPLETED', blockers: [] } : null;
+  const lastDispatch = safeDispatch && (!legacyDispatch || safeDispatch.at >= legacyDispatch.at) ? safeDispatch : legacyDispatch;
 
   // ---- replies ---------------------------------------------------------------------------------
   const CLASSES = ['POSITIVE', 'QUESTION', 'NOT_NOW', 'DECLINE', 'STOP', 'AUTO_REPLY', 'BOUNCE', 'UNKNOWN'];
@@ -197,7 +204,8 @@ export function buildSnapshot(ctx) {
   if (gmailBlocked) A('GMAIL_AUTH_MISSING', 'CRITICAL', 'Gmail authorization missing', 'Sending is gated until both Gmail accounts are authorized and history is reconciled.');
   if (db?.readySuppressed) A('SUPPRESSED_IN_READY', 'CRITICAL', 'Suppressed contacts in READY routes', `${db.readySuppressed} suppressed contact(s) appear in READY.`);
   const todayBlocked = windows.filter((w) => ['BLOCKED', 'FAILED', 'MISSED'].includes(w.state));
-  for (const w of todayBlocked) A(`DISPATCH_${w.state}_${w.id}`, w.state === 'BLOCKED' ? 'CRITICAL' : 'CRITICAL', `Dispatch ${w.state.toLowerCase()} · ${w.label}`, `${w.sent ?? 0} sent, ${w.errors ?? 0} blocker(s). Evidence: ${w.evidence}.`);
+  const latestCleanSuccess = windows.filter((w) => w.state === 'COMPLETED' && w.sent > 0 && !w.errors).map((w) => w.scheduledAt).sort().at(-1);
+  for (const w of todayBlocked) A(`DISPATCH_${w.state}_${w.id}`, latestCleanSuccess && w.scheduledAt < latestCleanSuccess ? 'WARNING' : 'CRITICAL', `Dispatch ${w.state.toLowerCase()} · ${w.label}`, `${w.sent ?? 0} sent, ${w.errors ?? 0} blocker(s). Evidence: ${w.evidence}.`);
   if (db && (db.preparedSnapshots ?? 0) === 0 && (db.queueRows ?? 0) === 0) A('QUEUE_SNAPSHOT_EMPTY', 'WARNING', 'No prepared send queue', 'No immutable send snapshot or queued messages exist yet.');
   if (auditFailures.length) A('QUALITY_AUDIT_FAIL', 'WARNING', 'Daily audit failing', auditFailures.join(', ').replace(/_/g, ' ').toLowerCase());
   const crit = campaigns.filter((c) => c.inventoryState === 'CRITICAL');

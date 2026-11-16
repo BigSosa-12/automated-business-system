@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-16T21:52:52.101Z",
- "lastLogAt": "2026-11-16T21:03:39.278Z",
+ "generatedAt": "2026-11-16T22:17:51.705Z",
+ "lastLogAt": "2026-11-16T22:01:08.581Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -25,21 +25,21 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-16T21:52:52.101Z",
+   "lastSuccessAt": "2026-11-16T22:17:51.705Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
    "state": "COMPLETED_TODAY",
-   "lastPreparationAt": "2026-11-16T21:03:29.316Z",
+   "lastPreparationAt": "2026-11-16T22:17:23.571Z",
    "lock": "FREE"
   },
   "dispatch": {
    "state": "BLOCKED",
    "gates": {
     "gmailAuthorization": "OK",
-    "safetyAudit": "PASS",
+    "safetyAudit": "BLOCKED",
     "dailyCap": 50
    },
    "windows": [
@@ -114,13 +114,18 @@
    "id": "CLASSIFICATION",
    "label": "Classification",
    "state": "OK",
-   "lastSuccess": "2026-11-16T21:02:29.613Z",
+   "lastSuccess": "2026-11-16T22:17:02.833Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
    "items": 5870,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-16T22:17:02.833Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
      {
       "at": "2026-11-16T21:02:29.613Z",
       "text": "ApplyCampaignTargets.js completed",
@@ -129,11 +134,6 @@
      {
       "at": "2026-11-16T21:02:22.680Z",
       "text": "CategorizeAllBusinesses.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-16T21:02:22.605Z",
-      "text": "Report written (ok)",
       "ok": true
      },
      {
@@ -161,21 +161,21 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-16T21:03:29.646Z",
+   "lastSuccess": "2026-11-16T22:17:23.343Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 244,
+   "items": 180,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-16T21:03:29.646Z",
-      "text": "FoundryDailyAudit.js completed",
+      "at": "2026-11-16T22:17:23.343Z",
+      "text": "Report written (ok)",
       "ok": true
      },
      {
-      "at": "2026-11-16T21:03:29.626Z",
-      "text": "Report written (ok)",
+      "at": "2026-11-16T21:03:29.646Z",
+      "text": "FoundryDailyAudit.js completed",
       "ok": true
      },
      {
@@ -208,13 +208,18 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-16T21:03:35.693Z",
+   "lastSuccess": "2026-11-16T22:17:23.571Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 244,
+   "items": 180,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-16T22:17:23.571Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
      {
       "at": "2026-11-16T21:03:35.693Z",
       "text": "FoundryReady.js completed",
@@ -223,11 +228,6 @@
      {
       "at": "2026-11-16T21:03:29.344Z",
       "text": "FoundryFinalHandoffExport.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-16T21:03:29.316Z",
-      "text": "Report written (ok)",
       "ok": true
      },
      {
@@ -257,11 +257,16 @@
    "state": "FAILED",
    "lastSuccess": null,
    "activity": null,
-   "errors": 4,
+   "errors": 5,
    "reason": "Window blocked today",
    "items": 0,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-16T22:00:59.938Z",
+      "text": "FoundrySend.js exit 1",
+      "ok": false
+     },
      {
       "at": "2026-11-06T14:33:47.543Z",
       "text": "Report written (blocked)",
@@ -286,23 +291,28 @@
   {
    "id": "REPLY_PROCESSING",
    "label": "Reply Processing",
-   "state": "UNKNOWN",
-   "lastSuccess": null,
+   "state": "OK",
+   "lastSuccess": "2026-11-16T22:01:08.531Z",
    "activity": null,
-   "errors": 0,
-   "reason": "Reply coverage unknown",
+   "errors": 1,
+   "reason": "Last run completed",
    "items": null,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-15T22:25:15.976Z",
-      "text": "Report written (unknown)",
+      "at": "2026-11-16T22:01:08.570Z",
+      "text": "FoundryDayReview.js exit 1",
       "ok": false
+     },
+     {
+      "at": "2026-11-16T22:01:08.531Z",
+      "text": "Report written (ok)",
+      "ok": true
      }
     ],
-    "durationSec": null,
+    "durationSec": 8.632,
     "baselineMedianSec": null,
-    "latestIssue": "Reply coverage unknown"
+    "latestIssue": null
    }
   }
  ],
@@ -327,11 +337,11 @@
    "stage": "QUEUE_PREPARATION",
    "title": "Send queue shortage",
    "evidence": [
-    "Interior detailing: 5 EMAIL-ready (CRITICAL < 150)",
-    "Property services: 6 EMAIL-ready (CRITICAL < 150)",
-    "Website design: 87 EMAIL-ready (CRITICAL < 150)",
-    "Inquiry follow-up: 48 EMAIL-ready (CRITICAL < 150)",
-    "Estimate follow-up: 98 EMAIL-ready (CRITICAL < 150)"
+    "Interior detailing: 3 EMAIL-ready (CRITICAL < 150)",
+    "Property services: 0 EMAIL-ready (CRITICAL < 150)",
+    "Website design: 59 EMAIL-ready (CRITICAL < 150)",
+    "Inquiry follow-up: 35 EMAIL-ready (CRITICAL < 150)",
+    "Estimate follow-up: 83 EMAIL-ready (CRITICAL < 150)"
    ]
   },
   {
@@ -346,8 +356,8 @@
   }
  ],
  "metrics": {
-  "ready": 244,
-  "sentToday": 0,
+  "ready": 180,
+  "sentToday": 49,
   "dailyCap": 50,
   "preparedSnapshots": 13,
   "total": 5870
@@ -863,6 +873,9 @@
   ],
   "ReconcileSuppression.js": [
    1030
+  ],
+  "FoundryDayReview.js": [
+   9
   ]
  }
 }

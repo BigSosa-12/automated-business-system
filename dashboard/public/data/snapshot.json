@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-16T22:27:51.642Z",
- "sourceAsOf": "2026-11-16T22:25:13.037Z",
+ "generatedAt": "2026-11-16T22:32:51.658Z",
+ "sourceAsOf": "2026-11-16T22:28:26.048Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -26,7 +26,7 @@
     "id": "contact_evidence",
     "label": "Evidence-backed email routes",
     "state": "OK",
-    "detail": "180 of 180 routes pass the contact source check",
+    "detail": "179 of 179 routes pass the contact source check",
     "blocking": true
    },
    {
@@ -61,7 +61,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.0h ago",
+    "detail": "Last prepared 0.1h ago",
     "blocking": false
    },
    {
@@ -96,7 +96,7 @@
     "id": "handoff_consistency",
     "label": "READY vs handoff export",
     "state": "OK",
-    "detail": "CRM 175 · exported 175 · confirmed since export 0",
+    "detail": "CRM 179 · exported 179 · confirmed since export 0",
     "blocking": false
    },
    {
@@ -114,12 +114,12 @@
   "classified": 5870,
   "byQualification": {
    "QUALIFIED": 2924,
-   "READY": 175,
-   "UNRESOLVED": 2718,
+   "READY": 179,
+   "UNRESOLVED": 2714,
    "SUPPRESSED": 53
   },
   "readyByRoute": {
-   "EMAIL": 175,
+   "EMAIL": 179,
    "FORM": 0
   },
   "contactChannels": [
@@ -152,8 +152,8 @@
   "potentialDuplicates": 29,
   "unassigned": 2696,
   "routeQueue": {
-   "ready": 175,
-   "blocked": 3310
+   "ready": 179,
+   "blocked": 3306
   },
   "blockedReasons": [
    {
@@ -170,23 +170,7 @@
    },
    {
     "reason": "Matched local suppression index",
-    "n": 49
-   },
-   {
-    "reason": "Duplicate email recipient requires review",
-    "n": 3
-   },
-   {
-    "reason": "Delivery failure",
-    "n": 3
-   },
-   {
-    "reason": "Unsafe business name for final message",
-    "n": 1
-   },
-   {
-    "reason": "Rate-limited attempt set aside; review before future outreach",
-    "n": 1
+    "n": 53
    }
   ],
   "quarantined": 514,
@@ -228,11 +212,11 @@
     "territory": "WORLDWIDE",
     "target": 300,
     "total": 1104,
-    "qualified": 1075,
-    "ready": 55,
-    "readyEmail": 55,
+    "qualified": 1078,
+    "ready": 58,
+    "readyEmail": 58,
     "readyForm": 0,
-    "unresolved": 15,
+    "unresolved": 12,
     "suppressed": 14,
     "inventoryState": "CRITICAL"
    },
@@ -243,11 +227,11 @@
     "territory": "APPROVED_REMOTE",
     "target": 300,
     "total": 1279,
-    "qualified": 1263,
-    "ready": 34,
-    "readyEmail": 34,
+    "qualified": 1264,
+    "ready": 35,
+    "readyEmail": 35,
     "readyForm": 0,
-    "unresolved": 2,
+    "unresolved": 1,
     "suppressed": 14,
     "inventoryState": "CRITICAL"
    },
@@ -292,13 +276,13 @@
    {
     "id": "QUALIFIED",
     "label": "Qualified",
-    "count": 3099,
+    "count": 3103,
     "note": "QUALIFIED + READY classification"
    },
    {
     "id": "ROUTE_READY",
     "label": "Route-ready",
-    "count": 175,
+    "count": 179,
     "note": "READY = handoff eligible, not safe to email yet"
    },
    {
@@ -501,7 +485,7 @@
   "bounces": null,
   "duplicatesPrevented": null,
   "queued": {
-   "routeReady": 175,
+   "routeReady": 179,
    "preparedSnapshots": 13,
    "queueRows": 0,
    "agingHours": null
@@ -558,8 +542,8 @@
   },
   "nextDispatchAt": "2026-11-17T14:00:00.000Z",
   "lastPreparation": {
-   "at": "2026-11-16T22:25:12.161Z",
-   "rows": 175,
+   "at": "2026-11-16T22:28:25.798Z",
+   "rows": 179,
    "state": "COMPLETED"
   }
  },
@@ -678,11 +662,11 @@
   {
    "id": "VALIDATION",
    "label": "Validation",
-   "lastRun": "2026-11-16T22:25:12.532Z",
-   "lastSuccess": "2026-11-16T22:25:12.532Z",
+   "lastRun": "2026-11-16T22:28:25.556Z",
+   "lastSuccess": "2026-11-16T22:28:25.556Z",
    "durationSec": null,
    "status": "OK",
-   "items": 175,
+   "items": 179,
    "errors": 0,
    "note": null
   },
@@ -700,11 +684,11 @@
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "lastRun": "2026-11-16T22:25:12.161Z",
-   "lastSuccess": "2026-11-16T22:25:12.161Z",
+   "lastRun": "2026-11-16T22:28:25.798Z",
+   "lastSuccess": "2026-11-16T22:28:25.798Z",
    "durationSec": null,
    "status": "OK",
-   "items": 175,
+   "items": 179,
    "errors": 0,
    "note": null
   },
@@ -930,7 +914,7 @@
     "id": "WEBSITE_WORLD",
     "label": "Website design",
     "sent": 12,
-    "ready": 55,
+    "ready": 58,
     "replies": null,
     "positive": null,
     "converted": null
@@ -939,7 +923,7 @@
     "id": "DIGITAL_INQUIRY",
     "label": "Inquiry follow-up",
     "sent": 14,
-    "ready": 34,
+    "ready": 35,
     "replies": null,
     "positive": null,
     "converted": null
@@ -970,14 +954,14 @@
    {
     "id": "WEBSITE_WORLD",
     "label": "Website design",
-    "ready": 55,
-    "blocked": 637
+    "ready": 58,
+    "blocked": 634
    },
    {
     "id": "DIGITAL_INQUIRY",
     "label": "Inquiry follow-up",
-    "ready": 34,
-    "blocked": 1212
+    "ready": 35,
+    "blocked": 1211
    },
    {
     "id": "DIGITAL_ESTIMATES",
@@ -1088,7 +1072,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-16T22:27:51.642Z",
+   "lastDetected": "2026-11-16T22:32:51.658Z",
    "state": "ACTIVE"
   },
   {
@@ -1097,7 +1081,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-16T22:27:51.642Z",
+   "lastDetected": "2026-11-16T22:32:51.658Z",
    "state": "ACTIVE"
   },
   {
@@ -1106,7 +1090,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-16T22:27:51.642Z",
+   "lastDetected": "2026-11-16T22:32:51.658Z",
    "state": "ACTIVE"
   },
   {
@@ -1115,7 +1099,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-16T22:27:51.642Z",
+   "lastDetected": "2026-11-16T22:32:51.658Z",
    "state": "ACTIVE"
   }
  ],
@@ -1293,8 +1277,8 @@
    {
     "day": "2026-11-16",
     "total": 5870,
-    "qualified": 3099,
-    "ready": 175,
+    "qualified": 3103,
+    "ready": 179,
     "sent": 49,
     "health": "BLOCKED",
     "windows": {
@@ -1341,17 +1325,17 @@
    {
     "id": "crm_vs_handoff",
     "ok": true,
-    "detail": "CRM READY 175 · handoff 175"
+    "detail": "CRM READY 179 · handoff 179"
    },
    {
     "id": "crm_vs_audit",
     "ok": true,
-    "detail": "CRM READY 175 · audit 175"
+    "detail": "CRM READY 179 · audit 179"
    },
    {
     "id": "crm_vs_production_report",
-    "ok": false,
-    "detail": "CRM READY 175 · older production report 180 (report predates latest cleanup)"
+    "ok": true,
+    "detail": "CRM READY 179 · older production report 179 (report predates latest cleanup)"
    },
    {
     "id": "all_classified",
@@ -1363,7 +1347,7 @@
    {
     "name": "foundry_contact_evidence_audit",
     "present": true,
-    "asOf": "2026-11-16T22:17:23.456Z"
+    "asOf": "2026-11-16T22:28:25.666Z"
    },
    {
     "name": "foundry_health_report",
@@ -1373,7 +1357,7 @@
    {
     "name": "foundry_daily_audit",
     "present": true,
-    "asOf": "2026-11-16T22:25:12.532Z"
+    "asOf": "2026-11-16T22:28:25.556Z"
    },
    {
     "name": "foundry_day_review",
@@ -1383,7 +1367,7 @@
    {
     "name": "foundry_safety_audit",
     "present": true,
-    "asOf": "2026-11-16T22:25:12.736Z"
+    "asOf": "2026-11-16T22:28:26.048Z"
    },
    {
     "name": "foundry_safe_dispatch_report",
@@ -1393,12 +1377,12 @@
    {
     "name": "foundry_final_handoff_report",
     "present": true,
-    "asOf": "2026-11-16T22:25:12.161Z"
+    "asOf": "2026-11-16T22:28:25.798Z"
    },
    {
     "name": "foundry_production_report",
     "present": true,
-    "asOf": "2026-11-16T22:17:23.188Z"
+    "asOf": "2026-11-16T22:28:25.334Z"
    },
    {
     "name": "foundry_learning_report",

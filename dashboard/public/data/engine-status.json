@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-16T05:17:52.254Z",
- "lastLogAt": "2026-11-15T21:01:18.533Z",
+ "generatedAt": "2026-11-16T16:39:22.881Z",
+ "lastLogAt": "2026-11-16T16:39:46.552Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -25,15 +25,15 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-16T05:17:52.254Z",
+   "lastSuccessAt": "2026-11-16T16:39:22.881Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "NO_RUN_EVIDENCE_TODAY",
+   "state": "LOCK_ANOMALY",
    "lastPreparationAt": "2026-11-15T22:25:14.801Z",
-   "lock": "FREE"
+   "lock": "HELD"
   },
   "dispatch": {
    "state": "BLOCKED",
@@ -67,13 +67,18 @@
    "id": "DISCOVERY",
    "label": "Discovery",
    "state": "WARN",
-   "lastSuccess": "2026-11-15T21:00:21.079Z",
+   "lastSuccess": "2026-11-16T16:39:46.552Z",
    "activity": null,
    "errors": 1,
    "reason": "1 source job(s) unavailable",
    "items": 3289,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-16T16:39:46.552Z",
+      "text": "FastTargetedDiscovery.js completed",
+      "ok": true
+     },
      {
       "at": "2026-11-15T21:00:21.079Z",
       "text": "ImportDiscovery.js completed",
@@ -98,15 +103,10 @@
       "at": "2026-11-15T17:00:35.351Z",
       "text": "ImportDiscovery.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-15T17:00:13.541Z",
-      "text": "DiscoverNationwide.ps1 completed",
-      "ok": true
      }
     ],
-    "durationSec": 5.557,
-    "baselineMedianSec": 19,
+    "durationSec": 8.021,
+    "baselineMedianSec": 4,
     "latestIssue": "1 source job(s) unavailable"
    }
   },
@@ -161,13 +161,18 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "FAILED",
-   "lastSuccess": "2026-11-15T21:00:05.169Z",
+   "lastSuccess": "2026-11-16T16:39:36.487Z",
    "activity": null,
    "errors": 1,
    "reason": "Audit failing: sent history not reconciled with gmail",
    "items": 743,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-16T16:39:36.487Z",
+      "text": "ReconcileSuppression.js completed",
+      "ok": true
+     },
      {
       "at": "2026-11-15T22:25:15.042Z",
       "text": "Report written (failed)",
@@ -190,11 +195,6 @@
      },
      {
       "at": "2026-11-12T21:00:06.414Z",
-      "text": "ReconcileSuppression.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-12T17:00:09.450Z",
       "text": "ReconcileSuppression.js completed",
       "ok": true
      }
@@ -321,12 +321,32 @@
    ]
   },
   {
+   "id": "MISSED_PREP",
+   "rank": 80,
+   "severity": "WARNING",
+   "stage": "QUEUE_PREPARATION",
+   "title": "No preparation report today",
+   "evidence": [
+    "Expected by 8:40 AM ET; latest report 2026-11-15T22:25:14.801Z"
+   ]
+  },
+  {
    "id": "SLOW_VS_BASELINE",
    "rank": 72,
    "severity": "WARNING",
    "title": "Step slower than its baseline",
    "evidence": [
     "FoundryOfficialSiteDiscovery.js: 46s vs median 2s (9 samples, threshold 2×)"
+   ]
+  },
+  {
+   "id": "STALE_LOCK",
+   "rank": 70,
+   "severity": "WARNING",
+   "stage": null,
+   "title": "Execution lock held outside any scheduled window",
+   "evidence": [
+    "foundry_execution.lock is held with no preparation or dispatch window active. Not cleared automatically."
    ]
   },
   {
@@ -448,7 +468,8 @@
    0,
    0,
    1,
-   0
+   0,
+   2
   ],
   "FastTargetedDiscovery.js": [
    5,
@@ -464,7 +485,8 @@
    5,
    2,
    2,
-   2
+   2,
+   8
   ],
   "DiscoverNationwide.ps1": [
    2,

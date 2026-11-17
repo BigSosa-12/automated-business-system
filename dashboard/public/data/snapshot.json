@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T20:17:53.215Z",
+ "generatedAt": "2026-11-17T20:22:53.238Z",
  "sourceAsOf": "2026-11-17T18:00:14.455Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -61,7 +61,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 5.5h ago",
+    "detail": "Last prepared 5.6h ago",
     "blocking": false
    },
    {
@@ -1079,7 +1079,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-17T20:17:53.215Z",
+   "lastDetected": "2026-11-17T20:22:53.238Z",
    "state": "ACTIVE"
   },
   {
@@ -1088,7 +1088,7 @@
    "title": "CRM / handoff mismatch",
    "detail": "READY count differs from the latest handoff export.",
    "firstDetected": "2026-11-17T14:47:51.928Z",
-   "lastDetected": "2026-11-17T20:17:53.215Z",
+   "lastDetected": "2026-11-17T20:22:53.238Z",
    "state": "ACTIVE"
   },
   {
@@ -1097,7 +1097,7 @@
    "title": "Daily limit reached",
    "detail": "50/50 confirmed sends today.",
    "firstDetected": "2026-11-17T14:17:52.027Z",
-   "lastDetected": "2026-11-17T20:17:53.215Z",
+   "lastDetected": "2026-11-17T20:22:53.238Z",
    "state": "ACTIVE"
   }
  ],

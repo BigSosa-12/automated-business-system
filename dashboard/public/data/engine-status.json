@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T13:52:52.468Z",
- "lastLogAt": "2026-11-17T13:04:51.435Z",
+ "generatedAt": "2026-11-17T14:17:52.027Z",
+ "lastLogAt": "2026-11-17T14:06:14.328Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -25,7 +25,7 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-17T13:52:52.468Z",
+   "lastSuccessAt": "2026-11-17T14:17:52.027Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
@@ -46,7 +46,7 @@
     {
      "id": "MORNING",
      "label": "9:00 AM ET Dispatch",
-     "state": "SCHEDULED"
+     "state": "COMPLETED"
     },
     {
      "id": "MIDDAY",
@@ -60,8 +60,8 @@
     }
    ],
    "next": {
-    "label": "9:00 AM ET Dispatch",
-    "at": "2026-11-17T14:00:00.000Z"
+    "label": "1:00 PM ET Dispatch",
+    "at": "2026-11-17T18:00:00.000Z"
    }
   }
  },
@@ -257,22 +257,27 @@
   {
    "id": "GMAIL_DISPATCH",
    "label": "Gmail Dispatch",
-   "state": "BLOCKED",
-   "lastSuccess": null,
+   "state": "OK",
+   "lastSuccess": "2026-11-17T14:06:14.328Z",
    "activity": null,
-   "errors": 5,
-   "reason": "Stage blocked",
-   "items": 0,
+   "errors": 1,
+   "reason": "Last run completed",
+   "items": 50,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-16T22:00:59.938Z",
-      "text": "FoundrySend.js exit 1",
-      "ok": false
+      "at": "2026-11-17T14:06:14.328Z",
+      "text": "FoundrySend.js completed",
+      "ok": true
      },
      {
-      "at": "2026-11-06T14:33:47.543Z",
-      "text": "Report written (blocked)",
+      "at": "2026-11-17T14:00:08.058Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
+     {
+      "at": "2026-11-16T22:00:59.938Z",
+      "text": "FoundrySend.js exit 1",
       "ok": false
      },
      {
@@ -288,7 +293,7 @@
     ],
     "durationSec": null,
     "baselineMedianSec": null,
-    "latestIssue": "Stage blocked"
+    "latestIssue": null
    }
   },
   {
@@ -328,11 +333,22 @@
    "stage": "QUEUE_PREPARATION",
    "title": "Send queue shortage",
    "evidence": [
-    "Interior detailing: 8 EMAIL-ready (CRITICAL < 150)",
-    "Property services: 4 EMAIL-ready (CRITICAL < 150)",
-    "Website design: 74 EMAIL-ready (CRITICAL < 150)",
-    "Inquiry follow-up: 34 EMAIL-ready (CRITICAL < 150)",
-    "Estimate follow-up: 83 EMAIL-ready (CRITICAL < 150)"
+    "Interior detailing: 3 EMAIL-ready (CRITICAL < 150)",
+    "Property services: 0 EMAIL-ready (CRITICAL < 150)",
+    "Website design: 62 EMAIL-ready (CRITICAL < 150)",
+    "Inquiry follow-up: 20 EMAIL-ready (CRITICAL < 150)",
+    "Estimate follow-up: 68 EMAIL-ready (CRITICAL < 150)"
+   ]
+  },
+  {
+   "id": "CRM_LEDGER_MISMATCH",
+   "rank": 50,
+   "severity": "WARNING",
+   "stage": "VERIFICATION",
+   "title": "CRM and Gmail ledger not reconciled",
+   "evidence": [
+    "CRM READY 153 · handoff 203",
+    "CRM READY 153 · audit 203"
    ]
   },
   {
@@ -347,8 +363,8 @@
   }
  ],
  "metrics": {
-  "ready": 203,
-  "sentToday": 0,
+  "ready": 153,
+  "sentToday": 50,
   "dailyCap": 50,
   "preparedSnapshots": 14,
   "total": 5881

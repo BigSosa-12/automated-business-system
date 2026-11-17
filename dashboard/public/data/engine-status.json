@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T04:57:58.582Z",
+ "generatedAt": "2026-11-17T05:02:57.034Z",
  "lastLogAt": "2026-11-16T22:01:08.581Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,13 +25,13 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-17T04:57:58.582Z",
+   "lastSuccessAt": "2026-11-17T05:02:57.034Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "COMPLETED_TODAY",
+   "state": "NO_RUN_EVIDENCE_TODAY",
    "lastPreparationAt": "2026-11-16T22:56:57.029Z",
    "lock": "FREE"
   },
@@ -56,7 +56,7 @@
     {
      "id": "AFTERNOON",
      "label": "5:00 PM ET Dispatch",
-     "state": "FAILED"
+     "state": "BLOCKED"
     }
    ],
    "next": null
@@ -257,9 +257,9 @@
    "state": "FAILED",
    "lastSuccess": null,
    "activity": null,
-   "errors": 2,
+   "errors": 5,
    "reason": "Window blocked today",
-   "items": 49,
+   "items": 0,
    "detail": {
     "recent": [
      {
@@ -268,7 +268,7 @@
       "ok": false
      },
      {
-      "at": "2026-11-16T22:00:03.723Z",
+      "at": "2026-11-06T14:33:47.543Z",
       "text": "Report written (blocked)",
       "ok": false
      },
@@ -327,7 +327,7 @@
    "evidence": [
     "9:00 AM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)",
     "1:00 PM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)",
-    "5:00 PM ET Dispatch: FAILED (49 sent, 1 blocker(s); gmail api and crm partial)"
+    "5:00 PM ET Dispatch: BLOCKED (0 sent, 0 blocker(s); task scheduler)"
    ]
   },
   {
@@ -357,7 +357,7 @@
  ],
  "metrics": {
   "ready": 188,
-  "sentToday": 49,
+  "sentToday": 0,
   "dailyCap": 50,
   "preparedSnapshots": 13,
   "total": 5881

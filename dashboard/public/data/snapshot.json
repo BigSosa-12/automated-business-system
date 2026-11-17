@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T04:57:58.582Z",
+ "generatedAt": "2026-11-17T05:02:57.034Z",
  "sourceAsOf": "2026-11-16T22:59:13.948Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -62,7 +62,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 6.0h ago",
+    "detail": "Last prepared 6.1h ago",
     "blocking": false
    },
    {
@@ -314,8 +314,8 @@
  },
  "outreach": {
   "dailyCap": 50,
-  "sentToday": 49,
-  "remainingToday": 1,
+  "sentToday": 0,
+  "remainingToday": 50,
   "sentThisWeek": 49,
   "sentThisMonth": 49,
   "sent7d": 49,
@@ -328,10 +328,6 @@
   "evidence": "GMAIL_API_ACCEPTED",
   "inboxDeliveryConfirmed": false,
   "daily": [
-   {
-    "day": "2026-10-18",
-    "count": 0
-   },
    {
     "day": "2026-10-19",
     "count": 0
@@ -447,6 +443,10 @@
    {
     "day": "2026-11-16",
     "count": 49
+   },
+   {
+    "day": "2026-11-17",
+    "count": 0
    }
   ],
   "byCampaign": [
@@ -495,7 +495,7 @@
    {
     "id": "MORNING",
     "label": "9:00 AM ET Dispatch",
-    "scheduledAt": "2026-11-16T14:00:00.000Z",
+    "scheduledAt": "2026-11-17T14:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
@@ -507,7 +507,7 @@
    {
     "id": "MIDDAY",
     "label": "1:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-16T18:00:00.000Z",
+    "scheduledAt": "2026-11-17T18:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
@@ -519,23 +519,26 @@
    {
     "id": "AFTERNOON",
     "label": "5:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-16T22:00:00.000Z",
-    "startedAt": "2026-11-16T22:00:03.723Z",
+    "scheduledAt": "2026-11-17T22:00:00.000Z",
+    "startedAt": null,
     "finishedAt": null,
-    "sent": 49,
-    "errors": 1,
-    "runId": "foundry_safe_dispatch",
-    "evidence": "GMAIL_API_AND_CRM_PARTIAL",
-    "state": "FAILED"
+    "sent": null,
+    "errors": null,
+    "runId": null,
+    "evidence": "TASK_SCHEDULER",
+    "state": "BLOCKED"
    }
   ],
   "lastDispatch": {
-   "at": "2026-11-16T22:00:03.723Z",
-   "runId": "foundry_safe_dispatch",
-   "sent": 49,
-   "state": "FAILED",
+   "at": "2026-11-06T14:33:47.543Z",
+   "runId": "outreach_run_report_2026-11-06_0930",
+   "sent": null,
+   "state": "BLOCKED",
    "blockers": [
-    "Gmail send stopped after partial acceptance"
+    "Dispatch task disabled",
+    "Safety hold CONTACT_VERIFICATION_REQUIRED",
+    "Zero contact evidence records for 410 EMAIL routes",
+    "Handoff/export counts disagree with production report"
    ]
   },
   "nextDispatchAt": "2026-11-17T14:00:00.000Z",
@@ -693,12 +696,12 @@
   {
    "id": "DISPATCH",
    "label": "Dispatch",
-   "lastRun": "2026-11-16T22:00:03.723Z",
+   "lastRun": "2026-11-06T14:33:47.543Z",
    "lastSuccess": null,
    "durationSec": null,
    "status": "BLOCKED",
-   "items": 49,
-   "errors": 1,
+   "items": 0,
+   "errors": 4,
    "note": null
   },
   {
@@ -773,10 +776,6 @@
    }
   ],
   "emailActivity": [
-   {
-    "day": "2026-10-18",
-    "count": 0
-   },
    {
     "day": "2026-10-19",
     "count": 0
@@ -892,6 +891,10 @@
    {
     "day": "2026-11-16",
     "count": 49
+   },
+   {
+    "day": "2026-11-17",
+    "count": 0
    }
   ],
   "campaignPerformance": [
@@ -1064,6 +1067,13 @@
     "failed": 1,
     "blocked": 2,
     "unknown": 0
+   },
+   {
+    "day": "2026-11-17",
+    "completed": 0,
+    "failed": 0,
+    "blocked": 3,
+    "unknown": 0
    }
   ],
   "conversionTrend": []
@@ -1075,7 +1085,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-17T04:57:58.582Z",
+   "lastDetected": "2026-11-17T05:02:57.034Z",
    "state": "ACTIVE"
   },
   {
@@ -1084,16 +1094,16 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-17T04:57:58.582Z",
+   "lastDetected": "2026-11-17T05:02:57.034Z",
    "state": "ACTIVE"
   },
   {
-   "id": "DISPATCH_FAILED_AFTERNOON",
+   "id": "DISPATCH_BLOCKED_AFTERNOON",
    "severity": "CRITICAL",
-   "title": "Dispatch failed · 5:00 PM ET Dispatch",
-   "detail": "49 sent, 1 blocker(s). Evidence: GMAIL_API_AND_CRM_PARTIAL.",
-   "firstDetected": "2026-11-16T22:37:51.706Z",
-   "lastDetected": "2026-11-17T04:57:58.582Z",
+   "title": "Dispatch blocked · 5:00 PM ET Dispatch",
+   "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
+   "firstDetected": "2026-11-17T05:02:57.034Z",
+   "lastDetected": "2026-11-17T05:02:57.034Z",
    "state": "ACTIVE"
   },
   {
@@ -1102,7 +1112,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-17T04:57:58.582Z",
+   "lastDetected": "2026-11-17T05:02:57.034Z",
    "state": "ACTIVE"
   },
   {
@@ -1111,7 +1121,7 @@
    "title": "CRM / handoff mismatch",
    "detail": "READY count differs from the latest handoff export.",
    "firstDetected": "2026-11-17T03:02:52.360Z",
-   "lastDetected": "2026-11-17T04:57:58.582Z",
+   "lastDetected": "2026-11-17T05:02:57.034Z",
    "state": "ACTIVE"
   }
  ],
@@ -1297,6 +1307,20 @@
      "completed": 0,
      "failed": 1,
      "blocked": 2,
+     "unknown": 0
+    }
+   },
+   {
+    "day": "2026-11-17",
+    "total": 5881,
+    "qualified": 3112,
+    "ready": 188,
+    "sent": 0,
+    "health": "BLOCKED",
+    "windows": {
+     "completed": 0,
+     "failed": 0,
+     "blocked": 3,
      "unknown": 0
     }
    }

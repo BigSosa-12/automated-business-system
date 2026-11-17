@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T13:32:51.957Z",
+ "generatedAt": "2026-11-17T13:37:53.923Z",
  "lastLogAt": "2026-11-17T13:04:51.435Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -18,14 +18,14 @@
   "slowMinExtraSec": 30,
   "minBaselineSamples": 5
  },
- "state": "SLOW",
+ "state": "IDLE",
  "stoppedKind": null,
- "caution": false,
- "headline": "Step slower than its baseline",
+ "caution": true,
+ "headline": "Send queue shortage",
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-17T13:32:51.957Z",
+   "lastSuccessAt": "2026-11-17T13:37:53.923Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
@@ -321,15 +321,6 @@
  ],
  "activePathways": [],
  "diagnostics": [
-  {
-   "id": "SLOW_VS_BASELINE",
-   "rank": 72,
-   "severity": "WARNING",
-   "title": "Step slower than its baseline",
-   "evidence": [
-    "FoundryGmailReconcile.js: 43s vs median 12s (18 samples, threshold 2×)"
-   ]
-  },
   {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,

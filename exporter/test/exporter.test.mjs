@@ -244,6 +244,13 @@ test('engine: lock held long past dispatch deadline => SLOW or worse', () => {
   const { e } = eng(fixture({ gmailBlocked: false }), at(13, 14), { lockOverride: { state: 'HELD' } });
   assert.notEqual(e.state, 'IDLE');
 });
+test('engine: completed slow step stops slowing the rotor after telemetry TTL', () => {
+  const times = ['13:00:00','13:00:10','13:00:20','13:00:30','13:00:40','13:00:50','13:02:30'];
+  const log = times.map(t => `2026-11-04T${t}Z Prepare ImportDiscovery.js EXIT=0`).join('\n');
+  const dir = fixture({ gmailBlocked: false, reports: { 'foundry_safety.log': log } });
+  assert.ok(eng(dir, new Date('2026-11-04T13:04:00Z')).e.diagnostics.some(x => x.id === 'SLOW_VS_BASELINE'));
+  assert.ok(!eng(dir, new Date('2026-11-04T13:30:00Z')).e.diagnostics.some(x => x.id === 'SLOW_VS_BASELINE'));
+});
 test('engine: missing database => UNKNOWN/BLOCKED with SQLITE_UNREADABLE, not healthy', () => {
   const { e } = eng(fixture({ withDb: false }), NOON_ET);
   assert.ok(['UNKNOWN', 'BLOCKED'].includes(e.state));

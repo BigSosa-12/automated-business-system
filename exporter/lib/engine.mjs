@@ -62,13 +62,14 @@ export function buildEngine({ now, snap, c, dir, prevEngine, exporterRun, thresh
   // ---- run baselines: approximate step durations from consecutive log lines (same mode, same ET day) ----
   const baselines = { ...(prevEngine?.baselines ?? {}) };
   const lastTs = prevEngine?.lastLogAt ? new Date(prevEngine.lastLogAt) : new Date(0);
-  const latestDur = {};
+  const latestDur = {}, latestDurAt = {};
   for (let i = 1; i < log.length; i++) {
     const a = log[i - 1], b = log[i];
     if (b.kind !== 'STEP' || a.mode !== b.mode || etDay(a.at) !== etDay(b.at)) continue;
     const sec = (b.at - a.at) / 1000;
     if (sec <= 0 || sec > 1800) continue;
     latestDur[b.file] = sec;
+    latestDurAt[b.file] = b.at;
     if (b.at > lastTs) baselines[b.file] = [...(baselines[b.file] ?? []), Math.round(sec)].slice(-30);
   }
 
@@ -102,7 +103,7 @@ export function buildEngine({ now, snap, c, dir, prevEngine, exporterRun, thresh
     }
     if (st.id === 'GMAIL_DISPATCH') {
       if (gmailBlocked) { state = 'BLOCKED'; reason = 'Gmail authorization incomplete. Sender is gated.'; }
-      else if (badWin.length) { state = 'FAILED'; reason = `Window ${badWin[0].state.toLowerCase()} today`; }
+      else if (badWin.length) { state = 'FAILED'; reason = `Most recent window ${badWin.at(-1).state.toLowerCase()} today`; }
     }
     if (st.id === 'REPLY_PROCESSING' && c.replyCoverage === 'UNKNOWN') {
       const gm = (c.src.foundry_day_review.data?.blockers ?? []).some((b) => /GMAIL_CONFIGURATION_MISSING/.test(b));
@@ -127,12 +128,12 @@ export function buildEngine({ now, snap, c, dir, prevEngine, exporterRun, thresh
   if (!db) R('SQLITE_UNREADABLE', 100, 'CRITICAL', 'VERIFICATION', 'CRM database unreadable', [`Read-only open failed: ${scrub(c.dbError, 80)}`]);
   if (gmailBlocked) R('GMAIL_AUTH', 95, 'CRITICAL', 'GMAIL_DISPATCH', 'Gmail authorization incomplete', [...(c.src.foundry_safety_audit.data?.failures ?? []).map((f) => `foundry_safety_audit: ${f}`), ...(db?.safetyControl ?? []).map((r) => `safety_control: ${r.reason}`)]);
   if (db?.readySuppressed) R('SUPPRESSION_CONFLICT', 94, 'CRITICAL', 'VERIFICATION', 'Suppressed contacts present in READY routes', [`${db.readySuppressed} READY route(s) matched suppression`]);
-  if (badWin.length) R('DISPATCH_ERRORS', 90, 'CRITICAL', 'GMAIL_DISPATCH', 'Dispatch window did not complete cleanly', badWin.map((w) => `${w.label}: ${w.state} (${w.sent ?? 0} sent, ${w.errors ?? 0} blocker(s); ${w.evidence.toLowerCase().replace(/_/g, ' ')})`));
+  if (badWin.length) R('DISPATCH_ERRORS', 90, 'CRITICAL', 'GMAIL_DISPATCH', 'Dispatch window did not complete cleanly', badWin.slice().reverse().map((w) => `${w.label}: ${w.state} (${w.sent ?? 0} sent, ${w.errors ?? 0} blocker(s); ${w.evidence.toLowerCase().replace(/_/g, ' ')})`));
   if (exporterRun?.lastError) R('PUBLISH_FAILURE', 85, 'WARNING', null, 'Snapshot publishing failed', [exporterRun.lastError]);
   const prepToday = c.prepAt && etDay(c.prepAt) === day;
   if (!prepToday && !running && nowMin >= T.prepWindowMin[0] + T.prepDeadlineMin + T.prepGraceMin) R('MISSED_PREP', 80, 'WARNING', 'QUEUE_PREPARATION', 'No preparation report today', [`Expected by ${fmtHm(T.prepWindowMin[0] + T.prepDeadlineMin + T.prepGraceMin)}; latest report ${c.prepAt ? c.prepAt.toISOString() : 'none'}`]);
   if (overdue) R('PREP_DELAY', 78, 'WARNING', activeStage, `${mode} run exceeded its time limit`, [`Lock held at ${fmtHm(nowMin)}, limit ${fmtHm(deadlineMin)}`]);
-  const slow = Object.entries(latestDur).filter(([f, sec]) => { const b = baselines[f]; return b?.length >= T.minBaselineSamples && sec > T.slowFactor * median(b) && sec - median(b) > T.slowMinExtraSec; });
+  const slow = Object.entries(latestDur).filter(([f, sec]) => { const b = baselines[f]; return now - latestDurAt[f] <= T.processingTtlMin * 60000 && b?.length >= T.minBaselineSamples && sec > T.slowFactor * median(b) && sec - median(b) > T.slowMinExtraSec; });
   if (slow.length) R('SLOW_VS_BASELINE', 72, 'WARNING', FILE_STAGE[slow[0][0]], 'Step slower than its baseline', slow.map(([f, s]) => `${f}: ${Math.round(s)}s vs median ${Math.round(median(baselines[f]))}s (${baselines[f].length} samples, threshold ${T.slowFactor}×)`));
   if (staleLock) R('STALE_LOCK', 70, 'WARNING', null, 'Execution lock held outside any scheduled window', ['foundry_execution.lock is held with no preparation or dispatch window active. Not cleared automatically.']);
   if (c.auditFailures.length) R('VALIDATION_FAILED', 65, 'WARNING', 'VERIFICATION', 'Daily audit failing', c.auditFailures.map((f) => `foundry_daily_audit: ${f}`));

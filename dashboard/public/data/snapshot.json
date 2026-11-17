@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T14:37:51.813Z",
- "sourceAsOf": "2026-11-17T14:00:08.058Z",
+ "generatedAt": "2026-11-17T14:42:52.044Z",
+ "sourceAsOf": "2026-11-17T14:42:04.252Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -10,10 +10,8 @@
   "staleAfterMinutes": 75
  },
  "health": {
-  "status": "DEGRADED",
-  "reasons": [
-   "READY vs handoff export: CRM 153 · exported 203 · confirmed since export 0"
-  ],
+  "status": "HEALTHY",
+  "reasons": [],
   "checks": [
    {
     "id": "sqlite_read",
@@ -61,7 +59,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 1.6h ago",
+    "detail": "Last prepared 0.0h ago",
     "blocking": false
    },
    {
@@ -95,8 +93,8 @@
    {
     "id": "handoff_consistency",
     "label": "READY vs handoff export",
-    "state": "WARN",
-    "detail": "CRM 153 · exported 203 · confirmed since export 0",
+    "state": "OK",
+    "detail": "CRM 153 · exported 153 · confirmed since export 0",
     "blocking": false
    },
    {
@@ -170,7 +168,7 @@
    },
    {
     "reason": "Confirmed Gmail send",
-    "n": 60
+    "n": 57
    },
    {
     "reason": "Matched local suppression index",
@@ -179,6 +177,10 @@
    {
     "reason": "Duplicate email recipient requires review",
     "n": 3
+   },
+   {
+    "reason": "Delivery failure",
+    "n": 2
    },
    {
     "reason": "Unsafe business name for final message",
@@ -493,7 +495,7 @@
    }
   ],
   "failedAttempts": 0,
-  "suppressedContacts": 107,
+  "suppressedContacts": 110,
   "bounces": null,
   "duplicatesPrevented": null,
   "queued": {
@@ -549,8 +551,8 @@
   },
   "nextDispatchAt": "2026-11-17T18:00:00.000Z",
   "lastPreparation": {
-   "at": "2026-11-17T13:04:39.279Z",
-   "rows": 203,
+   "at": "2026-11-17T14:42:03.660Z",
+   "rows": 153,
    "state": "COMPLETED"
   }
  },
@@ -562,8 +564,8 @@
    "NOT_NOW": 0,
    "DECLINE": 0,
    "STOP": 0,
-   "AUTO_REPLY": 0,
-   "BOUNCE": 3,
+   "AUTO_REPLY": 1,
+   "BOUNCE": 5,
    "UNKNOWN": 0
   },
   "converted": null,
@@ -669,11 +671,11 @@
   {
    "id": "VALIDATION",
    "label": "Validation",
-   "lastRun": "2026-11-17T13:04:39.707Z",
-   "lastSuccess": "2026-11-17T13:04:39.707Z",
+   "lastRun": "2026-11-17T14:42:03.845Z",
+   "lastSuccess": "2026-11-17T14:42:03.845Z",
    "durationSec": null,
    "status": "OK",
-   "items": 203,
+   "items": 153,
    "errors": 0,
    "note": null
   },
@@ -691,11 +693,11 @@
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "lastRun": "2026-11-17T13:04:39.279Z",
-   "lastSuccess": "2026-11-17T13:04:39.279Z",
+   "lastRun": "2026-11-17T14:42:03.660Z",
+   "lastSuccess": "2026-11-17T14:42:03.660Z",
    "durationSec": null,
    "status": "OK",
-   "items": 203,
+   "items": 153,
    "errors": 0,
    "note": null
   },
@@ -713,8 +715,8 @@
   {
    "id": "REPLY_PROCESSING",
    "label": "Replies",
-   "lastRun": "2026-11-16T22:25:13.037Z",
-   "lastSuccess": "2026-11-16T22:25:13.037Z",
+   "lastRun": "2026-11-17T14:42:04.252Z",
+   "lastSuccess": "2026-11-17T14:42:04.252Z",
    "durationSec": null,
    "status": "OK",
    "items": null,
@@ -724,8 +726,8 @@
   {
    "id": "LEARNING",
    "label": "Learning",
-   "lastRun": "2026-11-17T13:04:39.477Z",
-   "lastSuccess": "2026-11-17T13:04:39.477Z",
+   "lastRun": "2026-11-17T14:41:47.188Z",
+   "lastSuccess": "2026-11-17T14:41:47.188Z",
    "durationSec": null,
    "status": "OK",
    "items": 6,
@@ -1091,16 +1093,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-17T14:37:51.813Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "CRM_HANDOFF_MISMATCH",
-   "severity": "WARNING",
-   "title": "CRM / handoff mismatch",
-   "detail": "READY count differs from the latest handoff export.",
-   "firstDetected": "2026-11-17T14:17:52.027Z",
-   "lastDetected": "2026-11-17T14:37:51.813Z",
+   "lastDetected": "2026-11-17T14:42:52.044Z",
    "state": "ACTIVE"
   },
   {
@@ -1109,7 +1102,7 @@
    "title": "Daily limit reached",
    "detail": "50/50 confirmed sends today.",
    "firstDetected": "2026-11-17T14:17:52.027Z",
-   "lastDetected": "2026-11-17T14:37:51.813Z",
+   "lastDetected": "2026-11-17T14:42:52.044Z",
    "state": "ACTIVE"
   }
  ],
@@ -1304,7 +1297,7 @@
     "qualified": 3069,
     "ready": 153,
     "sent": 50,
-    "health": "DEGRADED",
+    "health": "HEALTHY",
     "windows": {
      "completed": 1,
      "failed": 0,
@@ -1348,13 +1341,13 @@
   "crossChecks": [
    {
     "id": "crm_vs_handoff",
-    "ok": false,
-    "detail": "CRM READY 153 · handoff 203"
+    "ok": true,
+    "detail": "CRM READY 153 · handoff 153"
    },
    {
     "id": "crm_vs_audit",
-    "ok": false,
-    "detail": "CRM READY 153 · audit 203"
+    "ok": true,
+    "detail": "CRM READY 153 · audit 153"
    },
    {
     "id": "crm_vs_production_report",
@@ -1381,17 +1374,17 @@
    {
     "name": "foundry_daily_audit",
     "present": true,
-    "asOf": "2026-11-17T13:04:39.707Z"
+    "asOf": "2026-11-17T14:42:03.845Z"
    },
    {
     "name": "foundry_day_review",
     "present": true,
-    "asOf": "2026-11-16T22:25:13.037Z"
+    "asOf": "2026-11-17T14:42:04.252Z"
    },
    {
     "name": "foundry_safety_audit",
     "present": true,
-    "asOf": "2026-11-17T13:30:40.898Z"
+    "asOf": "2026-11-17T14:42:04.046Z"
    },
    {
     "name": "foundry_safe_dispatch_report",
@@ -1401,7 +1394,7 @@
    {
     "name": "foundry_final_handoff_report",
     "present": true,
-    "asOf": "2026-11-17T13:04:39.279Z"
+    "asOf": "2026-11-17T14:42:03.660Z"
    },
    {
     "name": "foundry_production_report",
@@ -1411,7 +1404,7 @@
    {
     "name": "foundry_learning_report",
     "present": true,
-    "asOf": "2026-11-17T13:04:39.477Z"
+    "asOf": "2026-11-17T14:41:47.188Z"
    },
    {
     "name": "foundry_targeted_discovery_report",

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T14:37:51.813Z",
+ "generatedAt": "2026-11-17T14:42:52.044Z",
  "lastLogAt": "2026-11-17T14:06:14.328Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,14 +25,14 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-17T14:37:51.813Z",
+   "lastSuccessAt": "2026-11-17T14:42:52.044Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
    "state": "COMPLETED_TODAY",
-   "lastPreparationAt": "2026-11-17T13:04:39.279Z",
+   "lastPreparationAt": "2026-11-17T14:42:03.660Z",
    "lock": "FREE"
   },
   "dispatch": {
@@ -164,21 +164,21 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-17T13:04:39.744Z",
+   "lastSuccess": "2026-11-17T14:42:03.845Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 203,
+   "items": 153,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-17T13:04:39.744Z",
-      "text": "FoundryDailyAudit.js completed",
+      "at": "2026-11-17T14:42:03.845Z",
+      "text": "Report written (ok)",
       "ok": true
      },
      {
-      "at": "2026-11-17T13:04:39.707Z",
-      "text": "Report written (ok)",
+      "at": "2026-11-17T13:04:39.744Z",
+      "text": "FoundryDailyAudit.js completed",
       "ok": true
      },
      {
@@ -211,13 +211,18 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-17T13:04:45.838Z",
+   "lastSuccess": "2026-11-17T14:42:03.660Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 203,
+   "items": 153,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-17T14:42:03.660Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
      {
       "at": "2026-11-17T13:04:45.838Z",
       "text": "FoundryReady.js completed",
@@ -226,11 +231,6 @@
      {
       "at": "2026-11-17T13:04:39.310Z",
       "text": "FoundryFinalHandoffExport.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-17T13:04:39.279Z",
-      "text": "Report written (ok)",
       "ok": true
      },
      {
@@ -300,7 +300,7 @@
    "id": "REPLY_PROCESSING",
    "label": "Reply Processing",
    "state": "OK",
-   "lastSuccess": "2026-11-16T22:25:13.037Z",
+   "lastSuccess": "2026-11-17T14:42:04.252Z",
    "activity": null,
    "errors": 1,
    "reason": "Last run completed",
@@ -308,7 +308,7 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-16T22:25:13.037Z",
+      "at": "2026-11-17T14:42:04.252Z",
       "text": "Report written (ok)",
       "ok": true
      },
@@ -338,17 +338,6 @@
     "Website design: 62 EMAIL-ready (CRITICAL < 150)",
     "Inquiry follow-up: 20 EMAIL-ready (CRITICAL < 150)",
     "Estimate follow-up: 68 EMAIL-ready (CRITICAL < 150)"
-   ]
-  },
-  {
-   "id": "CRM_LEDGER_MISMATCH",
-   "rank": 50,
-   "severity": "WARNING",
-   "stage": "VERIFICATION",
-   "title": "CRM and Gmail ledger not reconciled",
-   "evidence": [
-    "CRM READY 153 · handoff 203",
-    "CRM READY 153 · audit 203"
    ]
   },
   {

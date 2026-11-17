@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T21:22:53.275Z",
+ "generatedAt": "2026-11-17T21:27:53.047Z",
  "lastLogAt": "2026-11-17T21:03:51.350Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -21,12 +21,12 @@
  "state": "IDLE",
  "stoppedKind": null,
  "caution": true,
- "headline": "Send queue shortage",
+ "headline": "Snapshot publishing failed",
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-17T21:22:53.275Z",
-   "lastError": null,
+   "lastSuccessAt": "2026-11-17T21:27:53.047Z",
+   "lastError": "fatal: unable to access 'https://github.com/BigSosa-12/automated-business-system.git/': Could not resolve host: github.com",
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
@@ -331,6 +331,16 @@
  ],
  "activePathways": [],
  "diagnostics": [
+  {
+   "id": "PUBLISH_FAILURE",
+   "rank": 85,
+   "severity": "WARNING",
+   "stage": null,
+   "title": "Snapshot publishing failed",
+   "evidence": [
+    "fatal: unable to access 'https://github.com/BigSosa-12/automated-business-system.git/': Could not resolve host: github.com"
+   ]
+  },
   {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,

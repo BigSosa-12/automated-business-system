@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T17:52:52.783Z",
- "sourceAsOf": "2026-11-17T17:04:33.535Z",
+ "generatedAt": "2026-11-17T18:17:52.839Z",
+ "sourceAsOf": "2026-11-17T18:00:14.455Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -61,7 +61,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 3.1h ago",
+    "detail": "Last prepared 3.5h ago",
     "blocking": false
    },
    {
@@ -496,12 +496,12 @@
     "label": "9:00 AM ET Dispatch",
     "scheduledAt": "2026-11-17T14:00:00.000Z",
     "startedAt": null,
-    "finishedAt": "2026-11-17T14:00:08.058Z",
-    "sent": 50,
-    "errors": 0,
-    "runId": "foundry_safe_dispatch",
-    "evidence": "GMAIL_API_AND_CRM",
-    "state": "COMPLETED"
+    "finishedAt": null,
+    "sent": null,
+    "errors": null,
+    "runId": null,
+    "evidence": "NONE",
+    "state": "UNKNOWN"
    },
    {
     "id": "MIDDAY",
@@ -513,7 +513,7 @@
     "errors": null,
     "runId": null,
     "evidence": "NONE",
-    "state": "SCHEDULED"
+    "state": "UNKNOWN"
    },
    {
     "id": "AFTERNOON",
@@ -535,7 +535,7 @@
    "state": "COMPLETED",
    "blockers": []
   },
-  "nextDispatchAt": "2026-11-17T18:00:00.000Z",
+  "nextDispatchAt": "2026-11-17T22:00:00.000Z",
   "lastPreparation": {
    "at": "2026-11-17T14:47:12.055Z",
    "rows": 97,
@@ -690,8 +690,8 @@
   {
    "id": "DISPATCH",
    "label": "Dispatch",
-   "lastRun": "2026-11-17T14:00:08.058Z",
-   "lastSuccess": "2026-11-17T14:00:08.058Z",
+   "lastRun": "2026-11-17T18:00:14.455Z",
+   "lastSuccess": "2026-11-17T18:00:14.455Z",
    "durationSec": null,
    "status": "OK",
    "items": 0,
@@ -1064,10 +1064,10 @@
    },
    {
     "day": "2026-11-17",
-    "completed": 1,
+    "completed": 0,
     "failed": 0,
     "blocked": 0,
-    "unknown": 0
+    "unknown": 2
    }
   ],
   "conversionTrend": []
@@ -1079,7 +1079,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-17T17:52:52.783Z",
+   "lastDetected": "2026-11-17T18:17:52.839Z",
    "state": "ACTIVE"
   },
   {
@@ -1088,7 +1088,7 @@
    "title": "CRM / handoff mismatch",
    "detail": "READY count differs from the latest handoff export.",
    "firstDetected": "2026-11-17T14:47:51.928Z",
-   "lastDetected": "2026-11-17T17:52:52.783Z",
+   "lastDetected": "2026-11-17T18:17:52.839Z",
    "state": "ACTIVE"
   },
   {
@@ -1097,7 +1097,7 @@
    "title": "Daily limit reached",
    "detail": "50/50 confirmed sends today.",
    "firstDetected": "2026-11-17T14:17:52.027Z",
-   "lastDetected": "2026-11-17T17:52:52.783Z",
+   "lastDetected": "2026-11-17T18:17:52.839Z",
    "state": "ACTIVE"
   }
  ],
@@ -1294,10 +1294,10 @@
     "sent": 50,
     "health": "DEGRADED",
     "windows": {
-     "completed": 1,
+     "completed": 0,
      "failed": 0,
      "blocked": 0,
-     "unknown": 0
+     "unknown": 2
     }
    }
   ]
@@ -1384,7 +1384,7 @@
    {
     "name": "foundry_safe_dispatch_report",
     "present": true,
-    "asOf": "2026-11-17T14:00:08.058Z"
+    "asOf": "2026-11-17T18:00:14.455Z"
    },
    {
     "name": "foundry_final_handoff_report",

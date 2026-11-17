@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T17:52:52.783Z",
- "lastLogAt": "2026-11-17T17:04:35.106Z",
+ "generatedAt": "2026-11-17T18:17:52.839Z",
+ "lastLogAt": "2026-11-17T18:00:20.157Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -25,7 +25,7 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-17T17:52:52.783Z",
+   "lastSuccessAt": "2026-11-17T18:17:52.839Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
@@ -46,12 +46,12 @@
     {
      "id": "MORNING",
      "label": "9:00 AM ET Dispatch",
-     "state": "COMPLETED"
+     "state": "UNKNOWN"
     },
     {
      "id": "MIDDAY",
      "label": "1:00 PM ET Dispatch",
-     "state": "SCHEDULED"
+     "state": "UNKNOWN"
     },
     {
      "id": "AFTERNOON",
@@ -60,8 +60,8 @@
     }
    ],
    "next": {
-    "label": "1:00 PM ET Dispatch",
-    "at": "2026-11-17T18:00:00.000Z"
+    "label": "5:00 PM ET Dispatch",
+    "at": "2026-11-17T22:00:00.000Z"
    }
   }
  },
@@ -258,21 +258,26 @@
    "id": "GMAIL_DISPATCH",
    "label": "Gmail Dispatch",
    "state": "OK",
-   "lastSuccess": "2026-11-17T14:06:14.328Z",
+   "lastSuccess": "2026-11-17T18:00:14.455Z",
    "activity": null,
-   "errors": 1,
+   "errors": 2,
    "reason": "Last run completed",
    "items": 0,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-17T14:06:14.328Z",
-      "text": "FoundrySend.js completed",
+      "at": "2026-11-17T18:00:20.040Z",
+      "text": "FoundrySend.js exit 1",
+      "ok": false
+     },
+     {
+      "at": "2026-11-17T18:00:14.455Z",
+      "text": "Report written (ok)",
       "ok": true
      },
      {
-      "at": "2026-11-17T14:00:08.058Z",
-      "text": "Report written (ok)",
+      "at": "2026-11-17T14:06:14.328Z",
+      "text": "FoundrySend.js completed",
       "ok": true
      },
      {

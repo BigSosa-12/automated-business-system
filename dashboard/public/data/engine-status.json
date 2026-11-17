@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T17:07:52.330Z",
+ "generatedAt": "2026-11-17T17:12:52.317Z",
  "lastLogAt": "2026-11-17T17:04:35.106Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -18,14 +18,14 @@
   "slowMinExtraSec": 30,
   "minBaselineSamples": 5
  },
- "state": "SLOW",
+ "state": "IDLE",
  "stoppedKind": null,
- "caution": false,
- "headline": "Step slower than its baseline",
+ "caution": true,
+ "headline": "Send queue shortage",
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-17T17:07:52.330Z",
+   "lastSuccessAt": "2026-11-17T17:12:52.317Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
@@ -326,16 +326,6 @@
  ],
  "activePathways": [],
  "diagnostics": [
-  {
-   "id": "SLOW_VS_BASELINE",
-   "rank": 72,
-   "severity": "WARNING",
-   "stage": "QUEUE_PREPARATION",
-   "title": "Step slower than its baseline",
-   "evidence": [
-    "FoundryProductionPipeline.js: 95s vs median 35s (14 samples, threshold 2×)"
-   ]
-  },
   {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,

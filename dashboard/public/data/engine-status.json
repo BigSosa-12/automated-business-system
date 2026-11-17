@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T17:02:52.266Z",
- "lastLogAt": "2026-11-17T17:02:52.263Z",
+ "generatedAt": "2026-11-17T17:07:52.330Z",
+ "lastLogAt": "2026-11-17T17:04:35.106Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -18,30 +18,22 @@
   "slowMinExtraSec": 30,
   "minBaselineSamples": 5
  },
- "state": "PROCESSING",
+ "state": "SLOW",
  "stoppedKind": null,
  "caution": false,
- "headline": "Verification in progress",
- "process": {
-  "mode": "Prepare",
-  "jobId": "prepare-2026-11-17-0720",
-  "stage": "VERIFICATION",
-  "startedAtLowerBound": "2026-11-17T17:00:10.580Z",
-  "elapsedSecAtLeast": 162,
-  "items": null,
-  "evidence": "foundry_execution.lock held inside a scheduled window"
- },
+ "headline": "Step slower than its baseline",
+ "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-17T17:02:52.266Z",
+   "lastSuccessAt": "2026-11-17T17:07:52.330Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "RUNNING",
+   "state": "COMPLETED_TODAY",
    "lastPreparationAt": "2026-11-17T14:47:12.055Z",
-   "lock": "HELD"
+   "lock": "FREE"
   },
   "dispatch": {
    "state": "GATES_OK",
@@ -171,14 +163,24 @@
   {
    "id": "VERIFICATION",
    "label": "Verification",
-   "state": "ACTIVE",
-   "lastSuccess": "2026-11-17T17:02:52.263Z",
-   "activity": "Preparation run holds the execution lock",
-   "errors": 0,
+   "state": "OK",
+   "lastSuccess": "2026-11-17T17:04:33.598Z",
+   "activity": null,
+   "errors": 1,
    "reason": "Last run completed",
    "items": 97,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-17T17:04:34.222Z",
+      "text": "FoundryQuarantine.js exit 1",
+      "ok": false
+     },
+     {
+      "at": "2026-11-17T17:04:33.598Z",
+      "text": "FoundryFinalReconcile.js completed",
+      "ok": true
+     },
      {
       "at": "2026-11-17T17:02:52.263Z",
       "text": "FoundryDailyAudit.js completed",
@@ -198,19 +200,9 @@
       "at": "2026-11-17T13:04:39.744Z",
       "text": "FoundryDailyAudit.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-17T13:04:39.137Z",
-      "text": "FoundryQuarantine.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-17T13:04:38.932Z",
-      "text": "FoundryFinalReconcile.js completed",
-      "ok": true
      }
     ],
-    "durationSec": 0.456,
+    "durationSec": 0.624,
     "baselineMedianSec": 0,
     "latestIssue": null
    }
@@ -219,13 +211,18 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-17T14:47:12.055Z",
+   "lastSuccess": "2026-11-17T17:04:27.535Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
    "items": 97,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-17T17:04:27.535Z",
+      "text": "FoundryProductionPipeline.js completed",
+      "ok": true
+     },
      {
       "at": "2026-11-17T14:47:12.055Z",
       "text": "Report written (ok)",
@@ -250,15 +247,10 @@
       "at": "2026-11-16T21:03:35.693Z",
       "text": "FoundryReady.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-16T21:03:29.344Z",
-      "text": "FoundryFinalHandoffExport.js completed",
-      "ok": true
      }
     ],
-    "durationSec": 5.534,
-    "baselineMedianSec": 7,
+    "durationSec": 95.272,
+    "baselineMedianSec": 35,
     "latestIssue": null
    }
   },
@@ -332,10 +324,18 @@
    }
   }
  ],
- "activePathways": [
-  "VERIFICATION"
- ],
+ "activePathways": [],
  "diagnostics": [
+  {
+   "id": "SLOW_VS_BASELINE",
+   "rank": 72,
+   "severity": "WARNING",
+   "stage": "QUEUE_PREPARATION",
+   "title": "Step slower than its baseline",
+   "evidence": [
+    "FoundryProductionPipeline.js: 95s vs median 35s (14 samples, threshold 2×)"
+   ]
+  },
   {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,
@@ -343,11 +343,11 @@
    "stage": "QUEUE_PREPARATION",
    "title": "Send queue shortage",
    "evidence": [
-    "Interior detailing: 0 EMAIL-ready (CRITICAL < 150)",
+    "Interior detailing: 3 EMAIL-ready (CRITICAL < 150)",
     "Property services: 0 EMAIL-ready (CRITICAL < 150)",
-    "Website design: 1 EMAIL-ready (CRITICAL < 150)",
-    "Inquiry follow-up: 0 EMAIL-ready (CRITICAL < 150)",
-    "Estimate follow-up: 0 EMAIL-ready (CRITICAL < 150)"
+    "Website design: 65 EMAIL-ready (CRITICAL < 150)",
+    "Inquiry follow-up: 21 EMAIL-ready (CRITICAL < 150)",
+    "Estimate follow-up: 68 EMAIL-ready (CRITICAL < 150)"
    ]
   },
   {
@@ -357,8 +357,8 @@
    "stage": "VERIFICATION",
    "title": "CRM and Gmail ledger not reconciled",
    "evidence": [
-    "CRM READY 1 · handoff 97",
-    "CRM READY 1 · audit 97"
+    "CRM READY 157 · handoff 97",
+    "CRM READY 157 · audit 97"
    ]
   },
   {
@@ -373,7 +373,7 @@
   }
  ],
  "metrics": {
-  "ready": 1,
+  "ready": 157,
   "sentToday": 50,
   "dailyCap": 50,
   "preparedSnapshots": 14,
@@ -724,7 +724,8 @@
    36,
    24,
    40,
-   22
+   22,
+   95
   ],
   "WebsiteFallbackReady.js": [
    3,
@@ -746,7 +747,8 @@
    1,
    1,
    1,
-   0
+   0,
+   1
   ],
   "FoundryQuarantine.js": [
    0,
@@ -761,7 +763,8 @@
    0,
    0,
    0,
-   0
+   0,
+   1
   ],
   "FoundryFinalHandoffExport.js": [
    0,
@@ -932,7 +935,8 @@
    2,
    1,
    2,
-   2
+   2,
+   5
   ],
   "ReconcileSuppression.js": [
    1030

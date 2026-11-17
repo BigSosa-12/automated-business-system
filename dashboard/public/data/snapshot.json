@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T13:03:41.235Z",
- "sourceAsOf": "2026-11-17T13:03:18.870Z",
+ "generatedAt": "2026-11-17T13:07:51.594Z",
+ "sourceAsOf": "2026-11-17T13:04:46.097Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -12,9 +12,7 @@
  "health": {
   "status": "BLOCKED",
   "reasons": [
-   "Send-safety audit: Status BLOCKED",
-   "Gmail ↔ CRM ledger reconciliation: Historical Gmail sends not reconciled; zero local sends is not proof of zero sent",
-   "READY vs handoff export: CRM 0 · exported 188 · confirmed since export 49"
+   "Send-safety audit: Status BLOCKED"
   ],
   "checks": [
    {
@@ -28,7 +26,7 @@
     "id": "contact_evidence",
     "label": "Evidence-backed email routes",
     "state": "OK",
-    "detail": "188 of 188 routes pass the contact source check",
+    "detail": "203 of 203 routes pass the contact source check",
     "blocking": true
    },
    {
@@ -55,15 +53,15 @@
    {
     "id": "ledger_reconciliation",
     "label": "Gmail ↔ CRM ledger reconciliation",
-    "state": "WARN",
-    "detail": "Historical Gmail sends not reconciled; zero local sends is not proof of zero sent",
+    "state": "OK",
+    "detail": "Reconciled",
     "blocking": false
    },
    {
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 14.1h ago",
+    "detail": "Last prepared 0.1h ago",
     "blocking": false
    },
    {
@@ -77,7 +75,7 @@
     "id": "production_lock",
     "label": "Execution lock",
     "state": "OK",
-    "detail": "Held by an active run",
+    "detail": "Lock free",
     "blocking": false
    },
    {
@@ -97,8 +95,8 @@
    {
     "id": "handoff_consistency",
     "label": "READY vs handoff export",
-    "state": "WARN",
-    "detail": "CRM 0 · exported 188 · confirmed since export 49",
+    "state": "OK",
+    "detail": "CRM 203 · exported 203 · confirmed since export 0",
     "blocking": false
    },
    {
@@ -115,13 +113,13 @@
   "total": 5881,
   "classified": 5881,
   "byQualification": {
-   "QUALIFIED": 3041,
-   "READY": 0,
-   "UNRESOLVED": 2794,
-   "SUPPRESSED": 46
+   "QUALIFIED": 2916,
+   "READY": 203,
+   "UNRESOLVED": 2708,
+   "SUPPRESSED": 54
   },
   "readyByRoute": {
-   "EMAIL": 0,
+   "EMAIL": 203,
    "FORM": 0
   },
   "contactChannels": [
@@ -154,17 +152,17 @@
   "potentialDuplicates": 29,
   "unassigned": 2686,
   "routeQueue": {
-   "ready": 188,
-   "blocked": 3306
+   "ready": 203,
+   "blocked": 3291
   },
   "blockedReasons": [
    {
     "reason": "Qualified; verified EMAIL route still needed. Phone and FORM routes are excluded from outreach.",
-    "n": 2107
+    "n": 2096
    },
    {
     "reason": "Superseded campaign assignment",
-    "n": 1072
+    "n": 1063
    },
    {
     "reason": "No material automated website opportunity detected",
@@ -172,10 +170,18 @@
    },
    {
     "reason": "Matched local suppression index",
-    "n": 53
+    "n": 54
+   },
+   {
+    "reason": "Duplicate email recipient requires review",
+    "n": 3
+   },
+   {
+    "reason": "Unsafe business name for final message",
+    "n": 1
    }
   ],
-  "quarantined": 514,
+  "quarantined": 518,
   "byCampaign": [
    {
     "id": "LOCAL_DETAILING",
@@ -184,12 +190,12 @@
     "territory": "BATTLE_CREEK_30MI",
     "target": 300,
     "total": 55,
-    "qualified": 51,
-    "ready": 0,
-    "readyEmail": 0,
+    "qualified": 49,
+    "ready": 8,
+    "readyEmail": 8,
     "readyForm": 0,
     "unresolved": 4,
-    "suppressed": 0,
+    "suppressed": 2,
     "inventoryState": "CRITICAL"
    },
    {
@@ -199,12 +205,12 @@
     "territory": "LOCAL_APPROVED",
     "target": 300,
     "total": 10,
-    "qualified": 10,
-    "ready": 0,
-    "readyEmail": 0,
+    "qualified": 4,
+    "ready": 4,
+    "readyEmail": 4,
     "readyForm": 0,
     "unresolved": 0,
-    "suppressed": 0,
+    "suppressed": 6,
     "inventoryState": "CRITICAL"
    },
    {
@@ -214,11 +220,11 @@
     "territory": "WORLDWIDE",
     "target": 300,
     "total": 1181,
-    "qualified": 1139,
-    "ready": 0,
-    "readyEmail": 0,
+    "qualified": 1149,
+    "ready": 74,
+    "readyEmail": 74,
     "readyForm": 0,
-    "unresolved": 25,
+    "unresolved": 15,
     "suppressed": 17,
     "inventoryState": "CRITICAL"
    },
@@ -229,11 +235,11 @@
     "territory": "APPROVED_REMOTE",
     "target": 300,
     "total": 1239,
-    "qualified": 1189,
-    "ready": 0,
-    "readyEmail": 0,
+    "qualified": 1223,
+    "ready": 34,
+    "readyEmail": 34,
     "readyForm": 0,
-    "unresolved": 36,
+    "unresolved": 2,
     "suppressed": 14,
     "inventoryState": "CRITICAL"
    },
@@ -244,11 +250,11 @@
     "territory": "APPROVED_REMOTE",
     "target": 300,
     "total": 710,
-    "qualified": 652,
-    "ready": 0,
-    "readyEmail": 0,
+    "qualified": 694,
+    "ready": 83,
+    "readyEmail": 83,
     "readyForm": 0,
-    "unresolved": 43,
+    "unresolved": 1,
     "suppressed": 15,
     "inventoryState": "CRITICAL"
    },
@@ -278,13 +284,13 @@
    {
     "id": "QUALIFIED",
     "label": "Qualified",
-    "count": 3041,
+    "count": 3119,
     "note": "QUALIFIED + READY classification"
    },
    {
     "id": "ROUTE_READY",
     "label": "Route-ready",
-    "count": 0,
+    "count": 203,
     "note": "READY = handoff eligible, not safe to email yet"
    },
    {
@@ -323,8 +329,8 @@
   "sent30d": 49,
   "capacityNote": "50 total across all three windows.",
   "coverage": {
-   "status": "PARTIAL",
-   "note": "Counts come from send ledgers and CRM events. Gmail history is not fully reconciled, so zero here is not proof of zero sent."
+   "status": "FULL",
+   "note": "Gmail history reconciled."
   },
   "evidence": "GMAIL_API_ACCEPTED",
   "inboxDeliveryConfirmed": false,
@@ -487,8 +493,8 @@
   "bounces": null,
   "duplicatesPrevented": null,
   "queued": {
-   "routeReady": 188,
-   "preparedSnapshots": 13,
+   "routeReady": 203,
+   "preparedSnapshots": 14,
    "queueRows": 0,
    "agingHours": null
   },
@@ -544,8 +550,8 @@
   },
   "nextDispatchAt": "2026-11-17T14:00:00.000Z",
   "lastPreparation": {
-   "at": "2026-11-16T22:56:57.029Z",
-   "rows": 188,
+   "at": "2026-11-17T13:04:39.279Z",
+   "rows": 203,
    "state": "COMPLETED"
   }
  },
@@ -624,7 +630,7 @@
   "reason": null
  },
  "locks": {
-  "production": "HELD",
+  "production": "FREE",
   "protectedWindowNow": false
  },
  "pipeline": [
@@ -664,11 +670,11 @@
   {
    "id": "VALIDATION",
    "label": "Validation",
-   "lastRun": "2026-11-16T22:55:53.538Z",
-   "lastSuccess": "2026-11-16T22:55:53.538Z",
+   "lastRun": "2026-11-17T13:04:39.707Z",
+   "lastSuccess": "2026-11-17T13:04:39.707Z",
    "durationSec": null,
    "status": "OK",
-   "items": 188,
+   "items": 203,
    "errors": 0,
    "note": null
   },
@@ -676,21 +682,21 @@
    "id": "RECONCILIATION",
    "label": "Reconciliation",
    "lastRun": "2026-11-17T13:01:12.909Z",
-   "lastSuccess": null,
+   "lastSuccess": "2026-11-17T13:01:12.909Z",
    "durationSec": null,
-   "status": "DEGRADED",
+   "status": "OK",
    "items": 57,
-   "errors": 1,
-   "note": "Gmail send history not reconciled"
+   "errors": 0,
+   "note": null
   },
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "lastRun": "2026-11-16T22:56:57.029Z",
-   "lastSuccess": "2026-11-16T22:56:57.029Z",
+   "lastRun": "2026-11-17T13:04:39.279Z",
+   "lastSuccess": "2026-11-17T13:04:39.279Z",
    "durationSec": null,
    "status": "OK",
-   "items": 188,
+   "items": 203,
    "errors": 0,
    "note": null
   },
@@ -719,11 +725,11 @@
   {
    "id": "LEARNING",
    "label": "Learning",
-   "lastRun": "2026-11-16T21:03:29.444Z",
-   "lastSuccess": "2026-11-16T21:03:29.444Z",
+   "lastRun": "2026-11-17T13:04:39.477Z",
+   "lastSuccess": "2026-11-17T13:04:39.477Z",
    "durationSec": null,
    "status": "OK",
-   "items": 1,
+   "items": 6,
    "errors": 0,
    "note": null
   }
@@ -903,7 +909,7 @@
     "id": "LOCAL_DETAILING",
     "label": "Interior detailing",
     "sent": 2,
-    "ready": 0,
+    "ready": 8,
     "replies": null,
     "positive": null,
     "converted": null
@@ -912,7 +918,7 @@
     "id": "LOCAL_PROPERTY",
     "label": "Property services",
     "sent": 6,
-    "ready": 0,
+    "ready": 4,
     "replies": null,
     "positive": null,
     "converted": null
@@ -921,7 +927,7 @@
     "id": "WEBSITE_WORLD",
     "label": "Website design",
     "sent": 12,
-    "ready": 0,
+    "ready": 74,
     "replies": null,
     "positive": null,
     "converted": null
@@ -930,7 +936,7 @@
     "id": "DIGITAL_INQUIRY",
     "label": "Inquiry follow-up",
     "sent": 14,
-    "ready": 0,
+    "ready": 34,
     "replies": null,
     "positive": null,
     "converted": null
@@ -939,7 +945,7 @@
     "id": "DIGITAL_ESTIMATES",
     "label": "Estimate follow-up",
     "sent": 15,
-    "ready": 0,
+    "ready": 83,
     "replies": null,
     "positive": null,
     "converted": null
@@ -949,31 +955,31 @@
    {
     "id": "LOCAL_DETAILING",
     "label": "Interior detailing",
-    "ready": 0,
+    "ready": 8,
     "blocked": 359
    },
    {
     "id": "LOCAL_PROPERTY",
     "label": "Property services",
-    "ready": 0,
+    "ready": 4,
     "blocked": 256
    },
    {
     "id": "WEBSITE_WORLD",
     "label": "Website design",
-    "ready": 0,
-    "blocked": 634
+    "ready": 74,
+    "blocked": 618
    },
    {
     "id": "DIGITAL_INQUIRY",
     "label": "Inquiry follow-up",
-    "ready": 0,
-    "blocked": 1211
+    "ready": 34,
+    "blocked": 1212
    },
    {
     "id": "DIGITAL_ESTIMATES",
     "label": "Estimate follow-up",
-    "ready": 0,
+    "ready": 83,
     "blocked": 620
    }
   ],
@@ -1086,7 +1092,7 @@
    "title": "Dispatch blocked · 9:00 AM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-17T13:03:41.235Z",
+   "lastDetected": "2026-11-17T13:07:51.594Z",
    "state": "ACTIVE"
   },
   {
@@ -1095,7 +1101,7 @@
    "title": "Dispatch blocked · 1:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-17T13:03:41.235Z",
+   "lastDetected": "2026-11-17T13:07:51.594Z",
    "state": "ACTIVE"
   },
   {
@@ -1104,7 +1110,7 @@
    "title": "Dispatch blocked · 5:00 PM ET Dispatch",
    "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
    "firstDetected": "2026-11-17T05:02:57.034Z",
-   "lastDetected": "2026-11-17T13:03:41.235Z",
+   "lastDetected": "2026-11-17T13:07:51.594Z",
    "state": "ACTIVE"
   },
   {
@@ -1113,16 +1119,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-17T13:03:41.235Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "CRM_HANDOFF_MISMATCH",
-   "severity": "WARNING",
-   "title": "CRM / handoff mismatch",
-   "detail": "READY count differs from the latest handoff export.",
-   "firstDetected": "2026-11-17T03:02:52.360Z",
-   "lastDetected": "2026-11-17T13:03:41.235Z",
+   "lastDetected": "2026-11-17T13:07:51.594Z",
    "state": "ACTIVE"
   }
  ],
@@ -1314,8 +1311,8 @@
    {
     "day": "2026-11-17",
     "total": 5881,
-    "qualified": 3041,
-    "ready": 0,
+    "qualified": 3119,
+    "ready": 203,
     "sent": 0,
     "health": "BLOCKED",
     "windows": {
@@ -1361,18 +1358,18 @@
   "crossChecks": [
    {
     "id": "crm_vs_handoff",
-    "ok": false,
-    "detail": "CRM READY undefined · handoff 188"
+    "ok": true,
+    "detail": "CRM READY 203 · handoff 203"
    },
    {
     "id": "crm_vs_audit",
-    "ok": false,
-    "detail": "CRM READY undefined · audit 188"
+    "ok": true,
+    "detail": "CRM READY 203 · audit 203"
    },
    {
     "id": "crm_vs_production_report",
     "ok": false,
-    "detail": "CRM READY undefined · older production report 188 (report predates latest cleanup)"
+    "detail": "CRM READY 203 · older production report 207 (report predates latest cleanup)"
    },
    {
     "id": "all_classified",
@@ -1384,17 +1381,17 @@
    {
     "name": "foundry_contact_evidence_audit",
     "present": true,
-    "asOf": "2026-11-16T22:55:42.646Z"
+    "asOf": "2026-11-17T13:04:39.928Z"
    },
    {
     "name": "foundry_health_report",
     "present": true,
-    "asOf": "2026-11-16T21:03:28.903Z"
+    "asOf": "2026-11-17T13:04:38.870Z"
    },
    {
     "name": "foundry_daily_audit",
     "present": true,
-    "asOf": "2026-11-16T22:55:53.538Z"
+    "asOf": "2026-11-17T13:04:39.707Z"
    },
    {
     "name": "foundry_day_review",
@@ -1404,7 +1401,7 @@
    {
     "name": "foundry_safety_audit",
     "present": true,
-    "asOf": "2026-11-16T22:59:13.948Z"
+    "asOf": "2026-11-17T13:04:46.097Z"
    },
    {
     "name": "foundry_safe_dispatch_report",
@@ -1414,17 +1411,17 @@
    {
     "name": "foundry_final_handoff_report",
     "present": true,
-    "asOf": "2026-11-16T22:56:57.029Z"
+    "asOf": "2026-11-17T13:04:39.279Z"
    },
    {
     "name": "foundry_production_report",
     "present": true,
-    "asOf": "2026-11-16T22:55:08.130Z"
+    "asOf": "2026-11-17T13:04:36.766Z"
    },
    {
     "name": "foundry_learning_report",
     "present": true,
-    "asOf": "2026-11-16T21:03:29.444Z"
+    "asOf": "2026-11-17T13:04:39.477Z"
    },
    {
     "name": "foundry_targeted_discovery_report",
@@ -1459,7 +1456,7 @@
    {
     "name": "foundry_quarantine_report",
     "present": true,
-    "asOf": "2026-11-16T22:25:05.352Z"
+    "asOf": "2026-11-17T13:04:39.112Z"
    }
   ]
  }

@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T13:27:51.817Z",
- "sourceAsOf": "2026-11-17T13:04:46.097Z",
+ "generatedAt": "2026-11-17T13:32:51.957Z",
+ "sourceAsOf": "2026-11-17T13:30:40.898Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -10,10 +10,8 @@
   "staleAfterMinutes": 75
  },
  "health": {
-  "status": "BLOCKED",
-  "reasons": [
-   "Send-safety audit: Status BLOCKED"
-  ],
+  "status": "HEALTHY",
+  "reasons": [],
   "checks": [
    {
     "id": "sqlite_read",
@@ -39,8 +37,8 @@
    {
     "id": "safety_audit",
     "label": "Send-safety audit",
-    "state": "FAIL",
-    "detail": "Status BLOCKED",
+    "state": "OK",
+    "detail": "Status PASS",
     "blocking": true
    },
    {
@@ -61,7 +59,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.4h ago",
+    "detail": "Last prepared 0.5h ago",
     "blocking": false
    },
    {
@@ -508,8 +506,8 @@
     "sent": null,
     "errors": null,
     "runId": null,
-    "evidence": "TASK_SCHEDULER",
-    "state": "BLOCKED"
+    "evidence": "NONE",
+    "state": "SCHEDULED"
    },
    {
     "id": "MIDDAY",
@@ -520,8 +518,8 @@
     "sent": null,
     "errors": null,
     "runId": null,
-    "evidence": "TASK_SCHEDULER",
-    "state": "BLOCKED"
+    "evidence": "NONE",
+    "state": "SCHEDULED"
    },
    {
     "id": "AFTERNOON",
@@ -532,8 +530,8 @@
     "sent": null,
     "errors": null,
     "runId": null,
-    "evidence": "TASK_SCHEDULER",
-    "state": "BLOCKED"
+    "evidence": "NONE",
+    "state": "SCHEDULED"
    }
   ],
   "lastDispatch": {
@@ -601,7 +599,7 @@
   {
    "name": "BattleCreek_Prospect_Foundry_Dispatch",
    "mode": "Dispatch",
-   "enabled": false,
+   "enabled": true,
    "times": [
     "9:00 AM ET",
     "1:00 PM ET",
@@ -1079,7 +1077,7 @@
     "day": "2026-11-17",
     "completed": 0,
     "failed": 0,
-    "blocked": 3,
+    "blocked": 0,
     "unknown": 0
    }
   ],
@@ -1087,39 +1085,12 @@
  },
  "alerts": [
   {
-   "id": "DISPATCH_BLOCKED_MORNING",
-   "severity": "CRITICAL",
-   "title": "Dispatch blocked · 9:00 AM ET Dispatch",
-   "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
-   "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-17T13:27:51.817Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "DISPATCH_BLOCKED_MIDDAY",
-   "severity": "CRITICAL",
-   "title": "Dispatch blocked · 1:00 PM ET Dispatch",
-   "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
-   "firstDetected": "2026-11-05T19:18:26.499Z",
-   "lastDetected": "2026-11-17T13:27:51.817Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "DISPATCH_BLOCKED_AFTERNOON",
-   "severity": "CRITICAL",
-   "title": "Dispatch blocked · 5:00 PM ET Dispatch",
-   "detail": "0 sent, 0 blocker(s). Evidence: TASK_SCHEDULER.",
-   "firstDetected": "2026-11-17T05:02:57.034Z",
-   "lastDetected": "2026-11-17T13:27:51.817Z",
-   "state": "ACTIVE"
-  },
-  {
    "id": "INVENTORY_CRITICAL",
    "severity": "WARNING",
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-17T13:27:51.817Z",
+   "lastDetected": "2026-11-17T13:32:51.957Z",
    "state": "ACTIVE"
   }
  ],
@@ -1314,11 +1285,11 @@
     "qualified": 3119,
     "ready": 203,
     "sent": 0,
-    "health": "BLOCKED",
+    "health": "HEALTHY",
     "windows": {
      "completed": 0,
      "failed": 0,
-     "blocked": 3,
+     "blocked": 0,
      "unknown": 0
     }
    }
@@ -1401,7 +1372,7 @@
    {
     "name": "foundry_safety_audit",
     "present": true,
-    "asOf": "2026-11-17T13:04:46.097Z"
+    "asOf": "2026-11-17T13:30:40.898Z"
    },
    {
     "name": "foundry_safe_dispatch_report",

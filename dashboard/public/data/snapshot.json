@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T21:27:53.047Z",
+ "generatedAt": "2026-11-17T21:32:52.485Z",
  "sourceAsOf": "2026-11-17T21:03:50.682Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -12,8 +12,7 @@
  "health": {
   "status": "DEGRADED",
   "reasons": [
-   "READY vs handoff export: CRM 157 · exported 97 · confirmed since export 50",
-   "Dashboard exporter: Last publish problem: fatal: unable to access 'https://github.com/BigSosa-12/automated-business-system.git/': Could not resolve host: github.…"
+   "READY vs handoff export: CRM 157 · exported 97 · confirmed since export 50"
   ],
   "checks": [
    {
@@ -62,7 +61,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 6.7h ago",
+    "detail": "Last prepared 6.8h ago",
     "blocking": false
    },
    {
@@ -103,8 +102,8 @@
    {
     "id": "exporter_last_run",
     "label": "Dashboard exporter",
-    "state": "WARN",
-    "detail": "Last publish problem: fatal: unable to access 'https://github.com/BigSosa-12/automated-business-system.git/': Could not resolve host: github.…",
+    "state": "OK",
+    "detail": "Last export succeeded",
     "blocking": false
    }
   ],
@@ -1080,7 +1079,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-17T21:27:53.047Z",
+   "lastDetected": "2026-11-17T21:32:52.485Z",
    "state": "ACTIVE"
   },
   {
@@ -1089,16 +1088,7 @@
    "title": "CRM / handoff mismatch",
    "detail": "READY count differs from the latest handoff export.",
    "firstDetected": "2026-11-17T14:47:51.928Z",
-   "lastDetected": "2026-11-17T21:27:53.047Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "EXPORT_PUBLISH_FAILURE",
-   "severity": "WARNING",
-   "title": "GitHub publish failure",
-   "detail": "fatal: unable to access 'https://github.com/BigSosa-12/automated-business-system.git/': Could not resolve host: github.com",
-   "firstDetected": "2026-11-17T21:27:53.047Z",
-   "lastDetected": "2026-11-17T21:27:53.047Z",
+   "lastDetected": "2026-11-17T21:32:52.485Z",
    "state": "ACTIVE"
   },
   {
@@ -1107,7 +1097,7 @@
    "title": "Daily limit reached",
    "detail": "50/50 confirmed sends today.",
    "firstDetected": "2026-11-17T14:17:52.027Z",
-   "lastDetected": "2026-11-17T21:27:53.047Z",
+   "lastDetected": "2026-11-17T21:32:52.485Z",
    "state": "ACTIVE"
   }
  ],

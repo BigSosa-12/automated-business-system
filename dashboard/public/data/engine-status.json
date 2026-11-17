@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T14:42:52.044Z",
+ "generatedAt": "2026-11-17T14:47:51.928Z",
  "lastLogAt": "2026-11-17T14:06:14.328Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,14 +25,14 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-17T14:42:52.044Z",
+   "lastSuccessAt": "2026-11-17T14:47:51.928Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
    "state": "COMPLETED_TODAY",
-   "lastPreparationAt": "2026-11-17T14:42:03.660Z",
+   "lastPreparationAt": "2026-11-17T14:47:12.055Z",
    "lock": "FREE"
   },
   "dispatch": {
@@ -164,15 +164,15 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-17T14:42:03.845Z",
+   "lastSuccess": "2026-11-17T14:47:12.303Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 153,
+   "items": 97,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-17T14:42:03.845Z",
+      "at": "2026-11-17T14:47:12.303Z",
       "text": "Report written (ok)",
       "ok": true
      },
@@ -211,15 +211,15 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-17T14:42:03.660Z",
+   "lastSuccess": "2026-11-17T14:47:12.055Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 153,
+   "items": 97,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-17T14:42:03.660Z",
+      "at": "2026-11-17T14:47:12.055Z",
       "text": "Report written (ok)",
       "ok": true
      },
@@ -300,7 +300,7 @@
    "id": "REPLY_PROCESSING",
    "label": "Reply Processing",
    "state": "OK",
-   "lastSuccess": "2026-11-17T14:42:04.252Z",
+   "lastSuccess": "2026-11-17T14:47:12.764Z",
    "activity": null,
    "errors": 1,
    "reason": "Last run completed",
@@ -308,7 +308,7 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-17T14:42:04.252Z",
+      "at": "2026-11-17T14:47:12.764Z",
       "text": "Report written (ok)",
       "ok": true
      },
@@ -338,6 +338,17 @@
     "Website design: 62 EMAIL-ready (CRITICAL < 150)",
     "Inquiry follow-up: 20 EMAIL-ready (CRITICAL < 150)",
     "Estimate follow-up: 68 EMAIL-ready (CRITICAL < 150)"
+   ]
+  },
+  {
+   "id": "CRM_LEDGER_MISMATCH",
+   "rank": 50,
+   "severity": "WARNING",
+   "stage": "VERIFICATION",
+   "title": "CRM and Gmail ledger not reconciled",
+   "evidence": [
+    "CRM READY 153 · handoff 97",
+    "CRM READY 153 · audit 97"
    ]
   },
   {

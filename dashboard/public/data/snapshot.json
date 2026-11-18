@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-18T20:07:52.940Z",
- "sourceAsOf": "2026-11-18T18:00:10.851Z",
+ "generatedAt": "2026-11-18T21:16:04.848Z",
+ "sourceAsOf": "2026-11-18T21:16:09.494Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -61,7 +61,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 3.1h ago",
+    "detail": "Last prepared 4.2h ago",
     "blocking": false
    },
    {
@@ -75,7 +75,7 @@
     "id": "production_lock",
     "label": "Execution lock",
     "state": "OK",
-    "detail": "Lock free",
+    "detail": "Held by an active run",
     "blocking": false
    },
    {
@@ -629,7 +629,7 @@
   "reason": null
  },
  "locks": {
-  "production": "FREE",
+  "production": "HELD",
   "protectedWindowNow": false
  },
  "pipeline": [
@@ -680,11 +680,11 @@
   {
    "id": "RECONCILIATION",
    "label": "Reconciliation",
-   "lastRun": "2026-11-18T17:00:13.034Z",
-   "lastSuccess": "2026-11-18T17:00:13.034Z",
+   "lastRun": "2026-11-18T21:16:09.494Z",
+   "lastSuccess": "2026-11-18T21:16:09.494Z",
    "durationSec": null,
    "status": "OK",
-   "items": 160,
+   "items": 162,
    "errors": 0,
    "note": null
   },
@@ -1098,7 +1098,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-18T20:07:52.940Z",
+   "lastDetected": "2026-11-18T21:16:04.848Z",
    "state": "ACTIVE"
   },
   {
@@ -1107,7 +1107,7 @@
    "title": "CRM / handoff mismatch",
    "detail": "READY count differs from the latest handoff export.",
    "firstDetected": "2026-11-17T14:47:51.928Z",
-   "lastDetected": "2026-11-18T20:07:52.940Z",
+   "lastDetected": "2026-11-18T21:16:04.848Z",
    "state": "ACTIVE"
   },
   {
@@ -1116,7 +1116,7 @@
    "title": "Daily limit reached",
    "detail": "50/50 confirmed sends today.",
    "firstDetected": "2026-11-18T16:36:33.302Z",
-   "lastDetected": "2026-11-18T20:07:52.940Z",
+   "lastDetected": "2026-11-18T21:16:04.848Z",
    "state": "ACTIVE"
   }
  ],
@@ -1457,7 +1457,7 @@
    {
     "name": "suppression_reconcile_report",
     "present": true,
-    "asOf": "2026-11-18T17:00:13.034Z"
+    "asOf": "2026-11-18T21:16:09.494Z"
    },
    {
     "name": "foundry_discovery_import_report",

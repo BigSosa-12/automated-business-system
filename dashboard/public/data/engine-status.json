@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-18T20:07:52.940Z",
- "lastLogAt": "2026-11-18T18:00:44.424Z",
+ "generatedAt": "2026-11-18T21:16:04.848Z",
+ "lastLogAt": "2026-11-18T21:16:20.853Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -18,22 +18,30 @@
   "slowMinExtraSec": 30,
   "minBaselineSamples": 5
  },
- "state": "IDLE",
+ "state": "PROCESSING",
  "stoppedKind": null,
- "caution": true,
- "headline": "Send queue shortage",
- "process": null,
+ "caution": false,
+ "headline": "Discovery in progress",
+ "process": {
+  "mode": "Prepare",
+  "jobId": "prepare-2026-11-18-0960",
+  "stage": "DISCOVERY",
+  "startedAtLowerBound": "2026-11-18T21:16:09.783Z",
+  "elapsedSecAtLeast": 0,
+  "items": null,
+  "evidence": "foundry_execution.lock held inside a scheduled window"
+ },
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-18T20:07:52.940Z",
+   "lastSuccessAt": "2026-11-18T21:16:04.848Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "COMPLETED_TODAY",
+   "state": "RUNNING",
    "lastPreparationAt": "2026-11-18T17:04:32.283Z",
-   "lock": "FREE"
+   "lock": "HELD"
   },
   "dispatch": {
    "state": "GATES_OK",
@@ -69,14 +77,19 @@
   {
    "id": "DISCOVERY",
    "label": "Discovery",
-   "state": "WARN",
-   "lastSuccess": "2026-11-18T17:00:56.334Z",
-   "activity": null,
+   "state": "ACTIVE",
+   "lastSuccess": "2026-11-18T21:16:20.853Z",
+   "activity": "Preparation run holds the execution lock",
    "errors": 1,
    "reason": "1 source job(s) unavailable",
    "items": 3453,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-18T21:16:20.853Z",
+      "text": "FastTargetedDiscovery.js completed",
+      "ok": true
+     },
      {
       "at": "2026-11-18T17:00:56.334Z",
       "text": "ImportDiscovery.js completed",
@@ -101,16 +114,11 @@
       "at": "2026-11-18T13:34:31.961Z",
       "text": "ImportDiscovery.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-18T13:33:50.984Z",
-      "text": "DiscoverNationwide.ps1 completed",
-      "ok": true
      }
     ],
-    "durationSec": 14.92,
-    "baselineMedianSec": 15,
-    "latestIssue": "1 source job(s) unavailable"
+    "durationSec": 10.438,
+    "baselineMedianSec": 3,
+    "latestIssue": null
    }
   },
   {
@@ -164,13 +172,18 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-18T17:06:18.994Z",
+   "lastSuccess": "2026-11-18T21:16:09.783Z",
    "activity": null,
-   "errors": 1,
+   "errors": 0,
    "reason": "Last run completed",
    "items": 48,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-18T21:16:09.783Z",
+      "text": "ReconcileSuppression.js completed",
+      "ok": true
+     },
      {
       "at": "2026-11-18T17:06:18.994Z",
       "text": "FoundrySafetyAudit.js completed",
@@ -195,15 +208,10 @@
       "at": "2026-11-18T17:04:28.827Z",
       "text": "FoundryFinalReconcile.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-18T17:03:13.696Z",
-      "text": "FoundryDailyAudit.js completed",
-      "ok": true
      }
     ],
-    "durationSec": 7.061,
-    "baselineMedianSec": 0,
+    "durationSec": 1029.641,
+    "baselineMedianSec": null,
     "latestIssue": null
    }
   },
@@ -334,7 +342,9 @@
    }
   }
  ],
- "activePathways": [],
+ "activePathways": [
+  "DISCOVERY"
+ ],
  "diagnostics": [
   {
    "id": "QUEUE_SHORTAGE",
@@ -466,6 +476,7 @@
    0,
    1,
    1,
+   1,
    1
   ],
   "FastTargetedDiscovery.js": [
@@ -490,7 +501,8 @@
    2,
    3,
    3,
-   3
+   3,
+   10
   ],
   "DiscoverNationwide.ps1": [
    2,

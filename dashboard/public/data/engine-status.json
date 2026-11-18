@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T23:12:52.456Z",
- "lastLogAt": "2026-11-17T22:00:27.982Z",
+ "generatedAt": "2026-11-18T13:33:13.229Z",
+ "lastLogAt": "2026-11-18T13:33:40.500Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -21,19 +21,19 @@
  "state": "IDLE",
  "stoppedKind": null,
  "caution": true,
- "headline": "Send queue shortage",
+ "headline": "Execution lock held outside any scheduled window",
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-17T23:12:52.456Z",
+   "lastSuccessAt": "2026-11-18T13:33:13.229Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "COMPLETED_TODAY",
+   "state": "LOCK_ANOMALY",
    "lastPreparationAt": "2026-11-17T22:00:26.770Z",
-   "lock": "FREE"
+   "lock": "HELD"
   },
   "dispatch": {
    "state": "GATES_OK",
@@ -46,20 +46,23 @@
     {
      "id": "MORNING",
      "label": "9:00 AM ET Dispatch",
-     "state": "UNKNOWN"
+     "state": "SCHEDULED"
     },
     {
      "id": "MIDDAY",
      "label": "1:00 PM ET Dispatch",
-     "state": "UNKNOWN"
+     "state": "SCHEDULED"
     },
     {
      "id": "AFTERNOON",
      "label": "5:00 PM ET Dispatch",
-     "state": "UNKNOWN"
+     "state": "SCHEDULED"
     }
    ],
-   "next": null
+   "next": {
+    "label": "9:00 AM ET Dispatch",
+    "at": "2026-11-18T14:00:00.000Z"
+   }
   }
  },
  "indicators": [
@@ -161,13 +164,18 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-17T22:00:27.149Z",
+   "lastSuccess": "2026-11-18T13:33:39.392Z",
    "activity": null,
    "errors": 2,
    "reason": "Last run completed",
    "items": 98,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-18T13:33:39.392Z",
+      "text": "ReconcileSuppression.js completed",
+      "ok": true
+     },
      {
       "at": "2026-11-17T22:00:27.149Z",
       "text": "Report written (ok)",
@@ -192,15 +200,10 @@
       "at": "2026-11-17T21:00:15.546Z",
       "text": "ReconcileSuppression.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-17T17:04:34.222Z",
-      "text": "FoundryQuarantine.js exit 1",
-      "ok": false
      }
     ],
-    "durationSec": 0.194,
-    "baselineMedianSec": 0,
+    "durationSec": 1029.641,
+    "baselineMedianSec": null,
     "latestIssue": null
    }
   },
@@ -334,6 +337,16 @@
  "activePathways": [],
  "diagnostics": [
   {
+   "id": "STALE_LOCK",
+   "rank": 70,
+   "severity": "WARNING",
+   "stage": null,
+   "title": "Execution lock held outside any scheduled window",
+   "evidence": [
+    "foundry_execution.lock is held with no preparation or dispatch window active. Not cleared automatically."
+   ]
+  },
+  {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,
    "severity": "WARNING",
@@ -371,7 +384,7 @@
  ],
  "metrics": {
   "ready": 157,
-  "sentToday": 50,
+  "sentToday": 0,
   "dailyCap": 50,
   "preparedSnapshots": 14,
   "total": 5881
@@ -458,6 +471,7 @@
    1,
    6,
    0,
+   1,
    1
   ],
   "FastTargetedDiscovery.js": [

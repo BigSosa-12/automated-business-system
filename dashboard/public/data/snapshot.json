@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-17T23:12:52.456Z",
+ "generatedAt": "2026-11-18T13:33:13.229Z",
  "sourceAsOf": "2026-11-17T22:00:27.875Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -12,6 +12,7 @@
  "health": {
   "status": "DEGRADED",
   "reasons": [
+   "Execution lock: Held outside a scheduled window; possible overlap or stuck run",
    "READY vs handoff export: CRM 157 · exported 98 · confirmed since export 0"
   ],
   "checks": [
@@ -61,7 +62,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 1.2h ago",
+    "detail": "Last prepared 15.5h ago",
     "blocking": false
    },
    {
@@ -74,8 +75,8 @@
    {
     "id": "production_lock",
     "label": "Execution lock",
-    "state": "OK",
-    "detail": "Lock free",
+    "state": "WARN",
+    "detail": "Held outside a scheduled window; possible overlap or stuck run",
     "blocking": false
    },
    {
@@ -321,8 +322,8 @@
  },
  "outreach": {
   "dailyCap": 50,
-  "sentToday": 50,
-  "remainingToday": 0,
+  "sentToday": 0,
+  "remainingToday": 50,
   "sentThisWeek": 99,
   "sentThisMonth": 99,
   "sent7d": 99,
@@ -335,10 +336,6 @@
   "evidence": "GMAIL_API_ACCEPTED",
   "inboxDeliveryConfirmed": false,
   "daily": [
-   {
-    "day": "2026-10-19",
-    "count": 0
-   },
    {
     "day": "2026-10-20",
     "count": 0
@@ -454,6 +451,10 @@
    {
     "day": "2026-11-17",
     "count": 50
+   },
+   {
+    "day": "2026-11-18",
+    "count": 0
    }
   ],
   "byCampaign": [
@@ -502,38 +503,38 @@
    {
     "id": "MORNING",
     "label": "9:00 AM ET Dispatch",
-    "scheduledAt": "2026-11-17T14:00:00.000Z",
+    "scheduledAt": "2026-11-18T14:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
     "errors": null,
     "runId": null,
     "evidence": "NONE",
-    "state": "UNKNOWN"
+    "state": "SCHEDULED"
    },
    {
     "id": "MIDDAY",
     "label": "1:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-17T18:00:00.000Z",
+    "scheduledAt": "2026-11-18T18:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
     "errors": null,
     "runId": null,
     "evidence": "NONE",
-    "state": "UNKNOWN"
+    "state": "SCHEDULED"
    },
    {
     "id": "AFTERNOON",
     "label": "5:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-17T22:00:00.000Z",
+    "scheduledAt": "2026-11-18T22:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
     "errors": null,
     "runId": null,
     "evidence": "NONE",
-    "state": "UNKNOWN"
+    "state": "SCHEDULED"
    }
   ],
   "lastDispatch": {
@@ -621,11 +622,11 @@
   }
  ],
  "schedulerEvidence": {
-  "available": true,
-  "reason": null
+  "available": false,
+  "reason": "ETIMEDOUT"
  },
  "locks": {
-  "production": "FREE",
+  "production": "HELD",
   "protectedWindowNow": false
  },
  "pipeline": [
@@ -779,10 +780,6 @@
   ],
   "emailActivity": [
    {
-    "day": "2026-10-19",
-    "count": 0
-   },
-   {
     "day": "2026-10-20",
     "count": 0
    },
@@ -897,6 +894,10 @@
    {
     "day": "2026-11-17",
     "count": 50
+   },
+   {
+    "day": "2026-11-18",
+    "count": 0
    }
   ],
   "campaignPerformance": [
@@ -1076,6 +1077,13 @@
     "failed": 0,
     "blocked": 0,
     "unknown": 3
+   },
+   {
+    "day": "2026-11-18",
+    "completed": 0,
+    "failed": 0,
+    "blocked": 0,
+    "unknown": 0
    }
   ],
   "conversionTrend": []
@@ -1087,7 +1095,16 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-17T23:12:52.456Z",
+   "lastDetected": "2026-11-18T13:33:13.229Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "LOCK_OUTSIDE_WINDOW",
+   "severity": "WARNING",
+   "title": "Execution lock held outside a window",
+   "detail": "Possible overlap or a stuck run. Not cleared automatically.",
+   "firstDetected": "2026-11-18T13:33:13.229Z",
+   "lastDetected": "2026-11-18T13:33:13.229Z",
    "state": "ACTIVE"
   },
   {
@@ -1096,16 +1113,7 @@
    "title": "CRM / handoff mismatch",
    "detail": "READY count differs from the latest handoff export.",
    "firstDetected": "2026-11-17T14:47:51.928Z",
-   "lastDetected": "2026-11-17T23:12:52.456Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "DAILY_LIMIT",
-   "severity": "INFO",
-   "title": "Daily limit reached",
-   "detail": "50/50 confirmed sends today.",
-   "firstDetected": "2026-11-17T14:17:52.027Z",
-   "lastDetected": "2026-11-17T23:12:52.456Z",
+   "lastDetected": "2026-11-18T13:33:13.229Z",
    "state": "ACTIVE"
   }
  ],
@@ -1307,6 +1315,20 @@
      "blocked": 0,
      "unknown": 3
     }
+   },
+   {
+    "day": "2026-11-18",
+    "total": 5881,
+    "qualified": 3073,
+    "ready": 157,
+    "sent": 0,
+    "health": "DEGRADED",
+    "windows": {
+     "completed": 0,
+     "failed": 0,
+     "blocked": 0,
+     "unknown": 0
+    }
    }
   ]
  },
@@ -1337,8 +1359,8 @@
     "note": "Sales/revenue not recorded"
    },
    "taskScheduler": {
-    "state": "AVAILABLE",
-    "note": "schtasks query"
+    "state": "UNAVAILABLE",
+    "note": "Task definitions only (no run results)"
    }
   },
   "crossChecks": [

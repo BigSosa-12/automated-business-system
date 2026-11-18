@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-18T17:52:53.537Z",
- "lastLogAt": "2026-11-18T17:06:18.994Z",
+ "generatedAt": "2026-11-18T18:17:52.752Z",
+ "lastLogAt": "2026-11-18T18:00:44.424Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -25,7 +25,7 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-18T17:52:53.537Z",
+   "lastSuccessAt": "2026-11-18T18:17:52.752Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
@@ -51,7 +51,7 @@
     {
      "id": "MIDDAY",
      "label": "1:00 PM ET Dispatch",
-     "state": "SCHEDULED"
+     "state": "SKIPPED"
     },
     {
      "id": "AFTERNOON",
@@ -60,8 +60,8 @@
     }
    ],
    "next": {
-    "label": "1:00 PM ET Dispatch",
-    "at": "2026-11-18T18:00:00.000Z"
+    "label": "5:00 PM ET Dispatch",
+    "at": "2026-11-18T22:00:00.000Z"
    }
   }
  },
@@ -258,21 +258,26 @@
    "id": "GMAIL_DISPATCH",
    "label": "Gmail Dispatch",
    "state": "OK",
-   "lastSuccess": "2026-11-18T14:06:34.184Z",
+   "lastSuccess": "2026-11-18T18:00:44.424Z",
    "activity": null,
-   "errors": 2,
-   "reason": "Last run completed",
+   "errors": 1,
+   "reason": "Daily 50-email cap reached; later window skipped safely",
    "items": 0,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-18T14:06:34.184Z",
+      "at": "2026-11-18T18:00:44.424Z",
       "text": "FoundrySend.js completed",
       "ok": true
      },
      {
-      "at": "2026-11-18T14:00:13.487Z",
+      "at": "2026-11-18T18:00:10.851Z",
       "text": "Report written (ok)",
+      "ok": true
+     },
+     {
+      "at": "2026-11-18T14:06:34.184Z",
+      "text": "FoundrySend.js completed",
       "ok": true
      },
      {
@@ -289,11 +294,6 @@
       "at": "2026-11-17T14:06:14.328Z",
       "text": "FoundrySend.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-16T22:00:59.938Z",
-      "text": "FoundrySend.js exit 1",
-      "ok": false
      }
     ],
     "durationSec": null,

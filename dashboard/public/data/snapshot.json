@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-18T17:52:53.537Z",
- "sourceAsOf": "2026-11-18T17:06:18.510Z",
+ "generatedAt": "2026-11-18T18:17:52.752Z",
+ "sourceAsOf": "2026-11-18T18:00:10.851Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -61,7 +61,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.8h ago",
+    "detail": "Last prepared 1.2h ago",
     "blocking": false
    },
    {
@@ -520,12 +520,12 @@
     "label": "1:00 PM ET Dispatch",
     "scheduledAt": "2026-11-18T18:00:00.000Z",
     "startedAt": null,
-    "finishedAt": null,
-    "sent": null,
-    "errors": null,
-    "runId": null,
-    "evidence": "NONE",
-    "state": "SCHEDULED"
+    "finishedAt": "2026-11-18T18:00:10.851Z",
+    "sent": 0,
+    "errors": 0,
+    "runId": "foundry_safe_dispatch",
+    "evidence": "DAILY_CAP_REACHED",
+    "state": "SKIPPED"
    },
    {
     "id": "AFTERNOON",
@@ -547,7 +547,7 @@
    "state": "COMPLETED",
    "blockers": []
   },
-  "nextDispatchAt": "2026-11-18T18:00:00.000Z",
+  "nextDispatchAt": "2026-11-18T22:00:00.000Z",
   "lastPreparation": {
    "at": "2026-11-18T17:04:32.283Z",
    "rows": 48,
@@ -702,13 +702,13 @@
   {
    "id": "DISPATCH",
    "label": "Dispatch",
-   "lastRun": "2026-11-18T14:00:13.487Z",
-   "lastSuccess": "2026-11-18T14:00:13.487Z",
+   "lastRun": "2026-11-18T18:00:10.851Z",
+   "lastSuccess": "2026-11-18T18:00:10.851Z",
    "durationSec": null,
    "status": "OK",
    "items": 0,
    "errors": 0,
-   "note": null
+   "note": "Daily 50-email cap reached; later window skipped safely"
   },
   {
    "id": "REPLY_PROCESSING",
@@ -1098,7 +1098,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-18T17:52:53.537Z",
+   "lastDetected": "2026-11-18T18:17:52.752Z",
    "state": "ACTIVE"
   },
   {
@@ -1107,7 +1107,7 @@
    "title": "CRM / handoff mismatch",
    "detail": "READY count differs from the latest handoff export.",
    "firstDetected": "2026-11-17T14:47:51.928Z",
-   "lastDetected": "2026-11-18T17:52:53.537Z",
+   "lastDetected": "2026-11-18T18:17:52.752Z",
    "state": "ACTIVE"
   },
   {
@@ -1116,7 +1116,7 @@
    "title": "Daily limit reached",
    "detail": "50/50 confirmed sends today.",
    "firstDetected": "2026-11-18T16:36:33.302Z",
-   "lastDetected": "2026-11-18T17:52:53.537Z",
+   "lastDetected": "2026-11-18T18:17:52.752Z",
    "state": "ACTIVE"
   }
  ],
@@ -1417,7 +1417,7 @@
    {
     "name": "foundry_safe_dispatch_report",
     "present": true,
-    "asOf": "2026-11-18T14:00:13.487Z"
+    "asOf": "2026-11-18T18:00:10.851Z"
    },
    {
     "name": "foundry_final_handoff_report",

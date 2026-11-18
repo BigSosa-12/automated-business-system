@@ -101,6 +101,9 @@ export function buildSnapshot(ctx) {
   const nowMin = etMinutes(now);
   const safeReport = src.foundry_safe_dispatch_report.data;
   const safeAt = parseTime(safeReport?.at);
+  const safeArchives = listFiles(dir, /^foundry_safe_dispatch_\d{12}\.json$/).map(f => readJson(dir, f)).filter(r => r.ok && r.data?.slot?.startsWith(today + 'T')).map(r => r.data);
+  const verifiedFifty = readJson(dir, 'foundry_post_dispatch_50_report.json');
+  if (verifiedFifty.ok && verifiedFifty.data?.status === 'PASS' && verifiedFifty.data?.day === today && verifiedFifty.data?.slot?.startsWith(today + 'T') && verifiedFifty.data?.confirmed === 50 && verifiedFifty.data?.gmail_receipts === 50 && verifiedFifty.data?.crm_records === 50 && verifiedFifty.data?.suppressed === 50 && verifiedFifty.data?.excluded_from_ready === 50) safeArchives.push({slot: verifiedFifty.data.slot, at: verifiedFifty.data.at, status: 'COMPLETE', confirmed: 50});
   const crmSendsToday = new Set((db?.outreachSends ?? []).filter((e) => { const at = parseTime(e.at); return at && etDay(at) === today; }).map((e) => e.id).filter(Boolean)).size;
   const safeConfirmed = safeReport?.status === 'COMPLETE' && Number.isInteger(safeReport.confirmed) && safeReport.confirmed > 0 && safeAt && etDay(safeAt) === today && crmSendsToday >= safeReport.confirmed;
   const safePartial = safeReport?.status === 'BLOCKED' && Number.isInteger(safeReport.confirmed) && safeReport.confirmed > 0 && safeAt && etDay(safeAt) === today && crmSendsToday >= safeReport.confirmed;
@@ -109,8 +112,12 @@ export function buildSnapshot(ctx) {
     const sched = etWallToUtc(today, slot);
     const rep = runReports.find((x) => x.day === today && x.minutes >= slot && x.minutes < slot + 30);
     const base = { id: slotId(slot), label: `${fmtHm(slot)} Dispatch`, scheduledAt: toIso(sched), startedAt: null, finishedAt: null, sent: null, errors: null, runId: null, evidence: 'NONE' };
+    const slotKey = `${today}T${String(Math.floor(slot / 60)).padStart(2, '0')}:${String(slot % 60).padStart(2, '0')}`;
+    const archived = safeArchives.find(r => r.slot === slotKey);
+    if (archived) return { ...base, state: archived.status === 'COMPLETE' ? 'COMPLETED' : archived.status === 'SKIPPED_DAILY_CAP' ? 'SKIPPED' : archived.confirmed > 0 ? 'FAILED' : 'BLOCKED', finishedAt: archived.at, sent: archived.confirmed ?? 0, errors: archived.status === 'BLOCKED' ? 1 : 0, runId: 'foundry_safe_dispatch', evidence: archived.status === 'SKIPPED_DAILY_CAP' ? 'DAILY_CAP_REACHED' : archived.status === 'COMPLETE' ? 'GMAIL_API_AND_CRM' : 'GMAIL_API_AND_CRM_PARTIAL' };
     if (safeConfirmed && etMinutes(safeAt) >= slot && etMinutes(safeAt) < slot + 15) return { ...base, state: 'COMPLETED', finishedAt: toIso(safeAt), sent: safeReport.confirmed, errors: 0, runId: 'foundry_safe_dispatch', evidence: 'GMAIL_API_AND_CRM' };
     if (safePartial && etMinutes(safeAt) >= slot && etMinutes(safeAt) < slot + 15) return { ...base, state: 'FAILED', startedAt: toIso(safeAt), sent: safeReport.confirmed, errors: 1, runId: 'foundry_safe_dispatch', evidence: 'GMAIL_API_AND_CRM_PARTIAL' };
+    if (safeReport?.status === 'SKIPPED_DAILY_CAP' && safeAt && etDay(safeAt) === today && etMinutes(safeAt) >= slot && etMinutes(safeAt) < slot + 15) return { ...base, state: 'SKIPPED', finishedAt: toIso(safeAt), sent: 0, errors: 0, runId: 'foundry_safe_dispatch', evidence: 'DAILY_CAP_REACHED' };
     if (rep) {
       const ex = rep.r.data.execution ?? {}, blockers = rep.r.data.blockers ?? [];
       const sentN = Number.isFinite(ex.emails_sent) ? ex.emails_sent : null;
@@ -163,7 +170,7 @@ export function buildSnapshot(ctx) {
     stage('VALIDATION', 'Validation', t('foundry_daily_audit'), audit ? (audit.status === 'PASS' ? 'OK' : 'FAILED') : 'UNKNOWN', audit?.counts?.database_ready ?? null, auditFailures.length, auditFailures.length ? auditFailures.map((f) => f.replace(/_/g, ' ').toLowerCase()).join('; ') : null),
     stage('RECONCILIATION', 'Reconciliation', t('suppression_reconcile_report'), src.suppression_reconcile_report.ok ? (historyUnreconciled ? 'DEGRADED' : 'OK') : 'UNKNOWN', src.suppression_reconcile_report.data?.suppression_rows ?? null, historyUnreconciled ? 1 : 0, historyUnreconciled ? 'Gmail send history not reconciled' : null),
     stage('QUEUE_PREPARATION', 'Queue Prep', t('foundry_final_handoff_report'), src.foundry_final_handoff_report.ok ? 'OK' : 'UNKNOWN', src.foundry_final_handoff_report.data?.exported ?? null, src.foundry_final_handoff_report.data?.excluded_invalid ?? 0),
-    stage('DISPATCH', 'Dispatch', parseTime(lastDispatch?.at) ?? t('foundry_safe_dispatch_report'), lastDispatch ? (lastDispatch.state === 'COMPLETED' ? 'OK' : 'BLOCKED') : src.foundry_safe_dispatch_report.ok ? 'BLOCKED' : 'UNKNOWN', lastDispatch?.sent ?? 0, lastDispatch?.blockers?.length ?? 0, gmailBlocked ? 'Gmail authorization incomplete' : null),
+    stage('DISPATCH', 'Dispatch', parseTime(lastDispatch?.at) ?? t('foundry_safe_dispatch_report'), lastDispatch ? (lastDispatch.state === 'COMPLETED' ? 'OK' : 'BLOCKED') : safeReport?.status === 'SKIPPED_DAILY_CAP' ? 'OK' : src.foundry_safe_dispatch_report.ok ? 'BLOCKED' : 'UNKNOWN', lastDispatch?.sent ?? 0, lastDispatch?.blockers?.length ?? 0, gmailBlocked ? 'Gmail authorization incomplete' : safeReport?.status === 'SKIPPED_DAILY_CAP' ? 'Daily 50-email cap reached; later window skipped safely' : null),
     stage('REPLY_PROCESSING', 'Replies', t('foundry_day_review'), replyCoverage === 'UNKNOWN' ? 'UNKNOWN' : 'OK', null, pendingRep ? 1 : 0, replyCoverage === 'UNKNOWN' ? 'Reply coverage incomplete' : null),
     stage('LEARNING', 'Learning', t('foundry_learning_report'), src.foundry_learning_report.ok ? 'OK' : 'UNKNOWN', src.foundry_learning_report.data?.metrics?.length ?? null, 0, (src.foundry_learning_report.data?.metrics?.length ?? 0) === 0 ? 'Not enough samples yet' : null),
   ];

@@ -260,3 +260,25 @@ test('engine: telemetry carries no email addresses or paths', () => {
   const { e } = eng(fixture({ gmailBlocked: true }), NOON_ET);
   assert.doesNotThrow(() => assertPublicSafe(JSON.stringify(e)));
 });
+test('daily cap skip preserves the completed morning window and is not a dispatch failure', () => {
+  const taskXml='<Task><Triggers><CalendarTrigger><StartBoundary>2026-11-04T09:00:00</StartBoundary></CalendarTrigger><CalendarTrigger><StartBoundary>2026-11-04T13:00:00</StartBoundary></CalendarTrigger><CalendarTrigger><StartBoundary>2026-11-04T17:00:00</StartBoundary></CalendarTrigger></Triggers><Actions><Exec><Arguments>-File x.ps1 -Mode Dispatch</Arguments></Exec></Actions></Task>';
+  const reports={
+    'foundry_safe_dispatch_202611040900.json': {slot:'2026-11-04T09:00',at:'2026-11-04T14:05:00Z',status:'COMPLETE',confirmed:50},
+    'foundry_safe_dispatch_report.json': {at:'2026-11-04T18:01:00Z',status:'SKIPPED_DAILY_CAP',confirmed:0},
+  };
+  const s=build(fixture({gmailBlocked:false,confirmedDbSends:50,reports,taskXml}),new Date('2026-11-04T18:05:00Z'));
+  assert.equal(s.outreach.windows[0].state,'COMPLETED');
+  assert.equal(s.outreach.windows[1].state,'SKIPPED');
+  assert.equal(s.outreach.windows[1].evidence,'DAILY_CAP_REACHED');
+  assert.deepEqual(validateSnapshot(s),[]);
+});
+test('verified 50 receipts retain morning success when the latest send report is a cap skip', () => {
+  const taskXml='<Task><Triggers><CalendarTrigger><StartBoundary>2026-11-04T09:00:00</StartBoundary></CalendarTrigger><CalendarTrigger><StartBoundary>2026-11-04T13:00:00</StartBoundary></CalendarTrigger><CalendarTrigger><StartBoundary>2026-11-04T17:00:00</StartBoundary></CalendarTrigger></Triggers><Actions><Exec><Arguments>-File x.ps1 -Mode Dispatch</Arguments></Exec></Actions></Task>';
+  const reports={
+    'foundry_post_dispatch_50_report.json': {at:'2026-11-04T16:00:00Z',day:'2026-11-04',slot:'2026-11-04T09:00',status:'PASS',confirmed:50,gmail_receipts:50,crm_records:50,suppressed:50,excluded_from_ready:50},
+    'foundry_safe_dispatch_report.json': {at:'2026-11-04T18:01:00Z',status:'SKIPPED_DAILY_CAP',confirmed:0},
+  };
+  const s=build(fixture({gmailBlocked:false,confirmedDbSends:50,reports,taskXml}),new Date('2026-11-04T18:05:00Z'));
+  assert.equal(s.outreach.windows[0].state,'COMPLETED');
+  assert.equal(s.outreach.windows[1].state,'SKIPPED');
+});

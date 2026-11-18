@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-18T13:52:51.968Z",
- "lastLogAt": "2026-11-18T13:35:34.330Z",
+ "generatedAt": "2026-11-18T16:36:33.302Z",
+ "lastLogAt": "2026-11-18T14:06:34.184Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -25,7 +25,7 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-18T13:52:51.968Z",
+   "lastSuccessAt": "2026-11-18T16:36:33.302Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
@@ -46,7 +46,7 @@
     {
      "id": "MORNING",
      "label": "9:00 AM ET Dispatch",
-     "state": "SCHEDULED"
+     "state": "COMPLETED"
     },
     {
      "id": "MIDDAY",
@@ -60,8 +60,8 @@
     }
    ],
    "next": {
-    "label": "9:00 AM ET Dispatch",
-    "at": "2026-11-18T14:00:00.000Z"
+    "label": "1:00 PM ET Dispatch",
+    "at": "2026-11-18T18:00:00.000Z"
    }
   }
  },
@@ -258,7 +258,7 @@
    "id": "GMAIL_DISPATCH",
    "label": "Gmail Dispatch",
    "state": "OK",
-   "lastSuccess": "2026-11-17T22:00:06.714Z",
+   "lastSuccess": "2026-11-18T14:06:34.184Z",
    "activity": null,
    "errors": 2,
    "reason": "Last run completed",
@@ -266,14 +266,19 @@
    "detail": {
     "recent": [
      {
+      "at": "2026-11-18T14:06:34.184Z",
+      "text": "FoundrySend.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-18T14:00:13.487Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
+     {
       "at": "2026-11-17T22:00:13.858Z",
       "text": "FoundrySend.js exit 1",
       "ok": false
-     },
-     {
-      "at": "2026-11-17T22:00:06.714Z",
-      "text": "Report written (ok)",
-      "ok": true
      },
      {
       "at": "2026-11-17T18:00:20.040Z",
@@ -287,11 +292,6 @@
      },
      {
       "at": "2026-11-16T22:00:59.938Z",
-      "text": "FoundrySend.js exit 1",
-      "ok": false
-     },
-     {
-      "at": "2026-11-05T18:00:04.818Z",
       "text": "FoundrySend.js exit 1",
       "ok": false
      }
@@ -345,9 +345,9 @@
    "evidence": [
     "Interior detailing: 3 EMAIL-ready (CRITICAL < 150)",
     "Property services: 0 EMAIL-ready (CRITICAL < 150)",
-    "Website design: 63 EMAIL-ready (CRITICAL < 150)",
-    "Inquiry follow-up: 20 EMAIL-ready (CRITICAL < 150)",
-    "Estimate follow-up: 69 EMAIL-ready (CRITICAL < 150)"
+    "Website design: 41 EMAIL-ready (CRITICAL < 150)",
+    "Inquiry follow-up: 17 EMAIL-ready (CRITICAL < 150)",
+    "Estimate follow-up: 44 EMAIL-ready (CRITICAL < 150)"
    ]
   },
   {
@@ -357,8 +357,8 @@
    "stage": "VERIFICATION",
    "title": "CRM and Gmail ledger not reconciled",
    "evidence": [
-    "CRM READY 155 · handoff 98",
-    "CRM READY 155 · audit 98"
+    "CRM READY 105 · handoff 98",
+    "CRM READY 105 · audit 98"
    ]
   },
   {
@@ -373,8 +373,8 @@
   }
  ],
  "metrics": {
-  "ready": 155,
-  "sentToday": 0,
+  "ready": 105,
+  "sentToday": 50,
   "dailyCap": 50,
   "preparedSnapshots": 15,
   "total": 5881

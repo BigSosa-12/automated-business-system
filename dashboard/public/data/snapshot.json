@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-19T17:17:54.304Z",
- "sourceAsOf": "2026-11-19T17:18:04.214Z",
+ "generatedAt": "2026-11-19T17:22:51.875Z",
+ "sourceAsOf": "2026-11-19T17:19:17.524Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -12,7 +12,7 @@
  "health": {
   "status": "DEGRADED",
   "reasons": [
-   "READY vs handoff export: CRM 0 · exported 46 · confirmed since export 0"
+   "READY vs handoff export: CRM 103 · exported 46 · confirmed since export 0"
   ],
   "checks": [
    {
@@ -61,7 +61,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 19.3h ago",
+    "detail": "Last prepared 0.1h ago",
     "blocking": false
    },
    {
@@ -75,7 +75,7 @@
     "id": "production_lock",
     "label": "Execution lock",
     "state": "OK",
-    "detail": "Held by an active run",
+    "detail": "Lock free",
     "blocking": false
    },
    {
@@ -96,7 +96,7 @@
     "id": "handoff_consistency",
     "label": "READY vs handoff export",
     "state": "WARN",
-    "detail": "CRM 0 · exported 46 · confirmed since export 0",
+    "detail": "CRM 103 · exported 46 · confirmed since export 0",
     "blocking": false
    },
    {
@@ -113,13 +113,13 @@
   "total": 5881,
   "classified": 5881,
   "byQualification": {
-   "QUALIFIED": 2996,
-   "READY": 0,
-   "UNRESOLVED": 2793,
-   "SUPPRESSED": 92
+   "QUALIFIED": 2915,
+   "READY": 103,
+   "UNRESOLVED": 2709,
+   "SUPPRESSED": 154
   },
   "readyByRoute": {
-   "EMAIL": 0,
+   "EMAIL": 103,
    "FORM": 0
   },
   "contactChannels": [
@@ -150,7 +150,7 @@
    }
   ],
   "potentialDuplicates": 29,
-  "unassigned": 2697,
+  "unassigned": 2687,
   "routeQueue": {
    "ready": 46,
    "blocked": 3450
@@ -166,7 +166,7 @@
    },
    {
     "reason": "Matched local suppression index",
-    "n": 151
+    "n": 154
    },
    {
     "reason": "No material automated website opportunity detected",
@@ -177,10 +177,6 @@
     "n": 57
    },
    {
-    "reason": "Inbound correspondence: human follow-up required",
-    "n": 3
-   },
-   {
     "reason": "Duplicate email recipient requires review",
     "n": 3
    },
@@ -189,7 +185,7 @@
     "n": 1
    }
   ],
-  "quarantined": 530,
+  "quarantined": 534,
   "byCampaign": [
    {
     "id": "LOCAL_DETAILING",
@@ -198,12 +194,12 @@
     "territory": "BATTLE_CREEK_30MI",
     "target": 300,
     "total": 55,
-    "qualified": 51,
-    "ready": 0,
-    "readyEmail": 0,
+    "qualified": 44,
+    "ready": 3,
+    "readyEmail": 3,
     "readyForm": 0,
     "unresolved": 4,
-    "suppressed": 0,
+    "suppressed": 7,
     "inventoryState": "CRITICAL"
    },
    {
@@ -213,12 +209,12 @@
     "territory": "LOCAL_APPROVED",
     "target": 300,
     "total": 10,
-    "qualified": 10,
+    "qualified": 0,
     "ready": 0,
     "readyEmail": 0,
     "readyForm": 0,
     "unresolved": 0,
-    "suppressed": 0,
+    "suppressed": 10,
     "inventoryState": "CRITICAL"
    },
    {
@@ -227,13 +223,13 @@
     "short": "Website design",
     "territory": "WORLDWIDE",
     "target": 300,
-    "total": 1106,
-    "qualified": 1048,
-    "ready": 0,
-    "readyEmail": 0,
+    "total": 1181,
+    "qualified": 1115,
+    "ready": 41,
+    "readyEmail": 41,
     "readyForm": 0,
-    "unresolved": 25,
-    "suppressed": 33,
+    "unresolved": 15,
+    "suppressed": 51,
     "inventoryState": "CRITICAL"
    },
    {
@@ -242,13 +238,13 @@
     "short": "Inquiry follow-up",
     "territory": "APPROVED_REMOTE",
     "target": 300,
-    "total": 1279,
-    "qualified": 1225,
-    "ready": 0,
-    "readyEmail": 0,
+    "total": 1239,
+    "qualified": 1206,
+    "ready": 17,
+    "readyEmail": 17,
     "readyForm": 0,
-    "unresolved": 36,
-    "suppressed": 18,
+    "unresolved": 2,
+    "suppressed": 31,
     "inventoryState": "CRITICAL"
    },
    {
@@ -257,13 +253,13 @@
     "short": "Estimate follow-up",
     "territory": "APPROVED_REMOTE",
     "target": 300,
-    "total": 734,
-    "qualified": 662,
-    "ready": 0,
-    "readyEmail": 0,
+    "total": 709,
+    "qualified": 653,
+    "ready": 42,
+    "readyEmail": 42,
     "readyForm": 0,
-    "unresolved": 31,
-    "suppressed": 41,
+    "unresolved": 1,
+    "suppressed": 55,
     "inventoryState": "CRITICAL"
    },
    {
@@ -272,12 +268,12 @@
     "short": "Needs evidence",
     "territory": null,
     "target": null,
-    "total": 2697,
+    "total": 2687,
     "qualified": 0,
     "ready": 0,
     "readyEmail": 0,
     "readyForm": 0,
-    "unresolved": 2697,
+    "unresolved": 2687,
     "suppressed": 0,
     "inventoryState": null
    }
@@ -292,13 +288,13 @@
    {
     "id": "QUALIFIED",
     "label": "Qualified",
-    "count": 2996,
+    "count": 3018,
     "note": "QUALIFIED + READY classification"
    },
    {
     "id": "ROUTE_READY",
     "label": "Route-ready",
-    "count": 0,
+    "count": 103,
     "note": "READY = handoff eligible, not safe to email yet"
    },
    {
@@ -502,7 +498,7 @@
   "duplicatesPrevented": null,
   "queued": {
    "routeReady": 46,
-   "preparedSnapshots": 17,
+   "preparedSnapshots": 18,
    "queueRows": 0,
    "agingHours": null
   },
@@ -553,7 +549,7 @@
   },
   "nextDispatchAt": "2026-11-19T18:00:00.000Z",
   "lastPreparation": {
-   "at": "2026-11-18T22:00:46.127Z",
+   "at": "2026-11-19T17:19:06.762Z",
    "rows": 46,
    "state": "COMPLETED"
   }
@@ -633,7 +629,7 @@
   "reason": null
  },
  "locks": {
-  "production": "HELD",
+  "production": "FREE",
   "protectedWindowNow": false
  },
  "pipeline": [
@@ -673,8 +669,8 @@
   {
    "id": "VALIDATION",
    "label": "Validation",
-   "lastRun": "2026-11-18T22:00:46.831Z",
-   "lastSuccess": "2026-11-18T22:00:46.831Z",
+   "lastRun": "2026-11-19T17:19:08.527Z",
+   "lastSuccess": "2026-11-19T17:19:08.527Z",
    "durationSec": null,
    "status": "OK",
    "items": 46,
@@ -695,8 +691,8 @@
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "lastRun": "2026-11-18T22:00:46.127Z",
-   "lastSuccess": "2026-11-18T22:00:46.127Z",
+   "lastRun": "2026-11-19T17:19:06.762Z",
+   "lastSuccess": "2026-11-19T17:19:06.762Z",
    "durationSec": null,
    "status": "OK",
    "items": 46,
@@ -728,8 +724,8 @@
   {
    "id": "LEARNING",
    "label": "Learning",
-   "lastRun": "2026-11-18T21:18:25.325Z",
-   "lastSuccess": "2026-11-18T21:18:25.325Z",
+   "lastRun": "2026-11-19T17:19:07.194Z",
+   "lastSuccess": "2026-11-19T17:19:07.194Z",
    "durationSec": null,
    "status": "OK",
    "items": 6,
@@ -912,7 +908,7 @@
     "id": "LOCAL_DETAILING",
     "label": "Interior detailing",
     "sent": 7,
-    "ready": 0,
+    "ready": 3,
     "replies": null,
     "positive": null,
     "converted": null
@@ -930,7 +926,7 @@
     "id": "WEBSITE_WORLD",
     "label": "Website design",
     "sent": 46,
-    "ready": 0,
+    "ready": 41,
     "replies": null,
     "positive": null,
     "converted": null
@@ -939,7 +935,7 @@
     "id": "DIGITAL_INQUIRY",
     "label": "Inquiry follow-up",
     "sent": 31,
-    "ready": 0,
+    "ready": 17,
     "replies": null,
     "positive": null,
     "converted": null
@@ -948,7 +944,7 @@
     "id": "DIGITAL_ESTIMATES",
     "label": "Estimate follow-up",
     "sent": 55,
-    "ready": 0,
+    "ready": 42,
     "replies": null,
     "positive": null,
     "converted": null
@@ -958,7 +954,7 @@
    {
     "id": "LOCAL_DETAILING",
     "label": "Interior detailing",
-    "ready": 0,
+    "ready": 3,
     "blocked": 364
    },
    {
@@ -970,19 +966,19 @@
    {
     "id": "WEBSITE_WORLD",
     "label": "Website design",
-    "ready": 0,
+    "ready": 41,
     "blocked": 669
    },
    {
     "id": "DIGITAL_INQUIRY",
     "label": "Inquiry follow-up",
-    "ready": 0,
+    "ready": 17,
     "blocked": 1238
    },
    {
     "id": "DIGITAL_ESTIMATES",
     "label": "Estimate follow-up",
-    "ready": 0,
+    "ready": 42,
     "blocked": 693
    }
   ],
@@ -1109,7 +1105,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-19T17:17:54.304Z",
+   "lastDetected": "2026-11-19T17:22:51.875Z",
    "state": "ACTIVE"
   },
   {
@@ -1118,7 +1114,7 @@
    "title": "CRM / handoff mismatch",
    "detail": "READY count differs from the latest handoff export.",
    "firstDetected": "2026-11-17T14:47:51.928Z",
-   "lastDetected": "2026-11-19T17:17:54.304Z",
+   "lastDetected": "2026-11-19T17:22:51.875Z",
    "state": "ACTIVE"
   }
  ],
@@ -1338,8 +1334,8 @@
    {
     "day": "2026-11-19",
     "total": 5881,
-    "qualified": 2996,
-    "ready": 0,
+    "qualified": 3018,
+    "ready": 103,
     "sent": 0,
     "health": "DEGRADED",
     "windows": {
@@ -1386,17 +1382,17 @@
    {
     "id": "crm_vs_handoff",
     "ok": false,
-    "detail": "CRM READY undefined · handoff 46"
+    "detail": "CRM READY 103 · handoff 46"
    },
    {
     "id": "crm_vs_audit",
     "ok": false,
-    "detail": "CRM READY undefined · audit 46"
+    "detail": "CRM READY 103 · audit 46"
    },
    {
     "id": "crm_vs_production_report",
     "ok": false,
-    "detail": "CRM READY undefined · older production report 107 (report predates latest cleanup)"
+    "detail": "CRM READY 103 · older production report 107 (report predates latest cleanup)"
    },
    {
     "id": "all_classified",
@@ -1408,17 +1404,17 @@
    {
     "name": "foundry_contact_evidence_audit",
     "present": true,
-    "asOf": "2026-11-18T21:18:27.074Z"
+    "asOf": "2026-11-19T17:19:08.782Z"
    },
    {
     "name": "foundry_health_report",
     "present": true,
-    "asOf": "2026-11-18T21:18:23.088Z"
+    "asOf": "2026-11-19T17:19:05.279Z"
    },
    {
     "name": "foundry_daily_audit",
     "present": true,
-    "asOf": "2026-11-18T22:00:46.831Z"
+    "asOf": "2026-11-19T17:19:08.527Z"
    },
    {
     "name": "foundry_day_review",
@@ -1428,7 +1424,7 @@
    {
     "name": "foundry_safety_audit",
     "present": true,
-    "asOf": "2026-11-18T22:00:47.286Z"
+    "asOf": "2026-11-19T17:19:17.524Z"
    },
    {
     "name": "foundry_safe_dispatch_report",
@@ -1438,17 +1434,17 @@
    {
     "name": "foundry_final_handoff_report",
     "present": true,
-    "asOf": "2026-11-18T22:00:46.127Z"
+    "asOf": "2026-11-19T17:19:06.762Z"
    },
    {
     "name": "foundry_production_report",
     "present": true,
-    "asOf": "2026-11-18T21:18:17.262Z"
+    "asOf": "2026-11-19T17:19:01.936Z"
    },
    {
     "name": "foundry_learning_report",
     "present": true,
-    "asOf": "2026-11-18T21:18:25.325Z"
+    "asOf": "2026-11-19T17:19:07.194Z"
    },
    {
     "name": "foundry_targeted_discovery_report",
@@ -1483,7 +1479,7 @@
    {
     "name": "foundry_quarantine_report",
     "present": true,
-    "asOf": "2026-11-18T21:18:23.450Z"
+    "asOf": "2026-11-19T17:19:05.979Z"
    }
   ]
  }

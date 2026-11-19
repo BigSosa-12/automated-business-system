@@ -155,6 +155,17 @@ test('handoff reconciliation subtracts confirmed sends after the export', () => 
   const s=build(dir,new Date('2026-11-04T22:20:00Z'));
   assert.equal(s.health.checks.find(c=>c.id==='handoff_consistency').state,'OK');
 });
+test('SQLite UTC timestamps count post-prep sends on an Eastern laptop', () => {
+  const dir=fixture({gmailBlocked:false,ready:1,confirmedDbSends:2,reports:{'foundry_final_handoff_report.json':{at:'2026-11-04T21:00:00Z',exported:3,excluded_invalid:0}}});
+  const db=new DatabaseSync(path.join(dir,'prospect_foundry.sqlite'));
+  db.prepare("UPDATE outreach_events SET at='2026-11-04 22:04:00'").run();
+  db.close();
+  const s=build(dir,new Date('2026-11-04T22:20:00Z'));
+  assert.equal(s.outreach.sentToday,2);
+  assert.equal(s.health.checks.find(c=>c.id==='handoff_consistency').state,'OK');
+  assert.equal(s.dataQuality.crossChecks.find(c=>c.id==='crm_vs_handoff').ok,true);
+  assert.deepEqual(validateSnapshot(s),[]);
+});
 test('alerts dedupe and keep firstDetected across runs', () => {
   const dir = fixture();
   const a = build(dir);

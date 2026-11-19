@@ -8,6 +8,9 @@ import { scrub } from './sanitize.mjs';
 
 export const EXPORTER_VERSION = '1.0.0';
 const DAILY_CAP = 50;
+// SQLite CURRENT_TIMESTAMP is UTC without a timezone suffix; JavaScript otherwise treats it as local time.
+const parseDbTime = (v) => parseTime(typeof v === 'string' && /^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d$/.test(v) ? v.replace(' ', 'T') + 'Z' : v);
+const sentSince = (db, at, now) => at && db ? new Set(db.outreachSends.filter((e) => { const t = parseDbTime(e.at); return t && t > at && t <= now; }).map((e) => e.id).filter(Boolean)).size : 0;
 
 export const CAMPAIGNS = {
   LOCAL_DETAILING: { label: "B's Supa Clean Cars", short: 'Interior detailing' },
@@ -68,7 +71,7 @@ export function buildSnapshot(ctx) {
   // ---- sends (confirmed Gmail API acceptance only) ---------------------------------------------
   const seen = new Map();
   for (const s of readLedgerSends(dir)) seen.set(s.id, s);
-  for (const e of db?.outreachSends ?? []) { const at = parseTime(e.at); if (at && !seen.has(e.id ?? `${e.at}`)) seen.set(e.id ?? `${e.at}`, { id: e.id, at, campaign: e.campaign || 'UNKNOWN', account: '', source: 'SQLITE_EVENT' }); }
+  for (const e of db?.outreachSends ?? []) { const at = parseDbTime(e.at); if (at && !seen.has(e.id ?? `${e.at}`)) seen.set(e.id ?? `${e.at}`, { id: e.id, at, campaign: e.campaign || 'UNKNOWN', account: '', source: 'SQLITE_EVENT' }); }
   const sends = [...seen.values()];
   const day30 = daysBack(today, 30);
   const perDay = Object.fromEntries(day30.map((d) => [d, 0]));
@@ -106,7 +109,7 @@ export function buildSnapshot(ctx) {
   const safeArchives = listFiles(dir, /^foundry_safe_dispatch_\d{12}\.json$/).map(f => readJson(dir, f)).filter(r => r.ok && r.data?.slot?.startsWith(today + 'T')).map(r => r.data);
   const verifiedFifty = readJson(dir, 'foundry_post_dispatch_50_report.json');
   if (verifiedFifty.ok && verifiedFifty.data?.status === 'PASS' && verifiedFifty.data?.day === today && verifiedFifty.data?.slot?.startsWith(today + 'T') && verifiedFifty.data?.confirmed === 50 && verifiedFifty.data?.gmail_receipts === 50 && verifiedFifty.data?.crm_records === 50 && verifiedFifty.data?.suppressed === 50 && verifiedFifty.data?.excluded_from_ready === 50) safeArchives.push({slot: verifiedFifty.data.slot, at: verifiedFifty.data.at, status: 'COMPLETE', confirmed: 50});
-  const crmSendsToday = new Set((db?.outreachSends ?? []).filter((e) => { const at = parseTime(e.at); return at && etDay(at) === today; }).map((e) => e.id).filter(Boolean)).size;
+  const crmSendsToday = new Set((db?.outreachSends ?? []).filter((e) => { const at = parseDbTime(e.at); return at && etDay(at) === today; }).map((e) => e.id).filter(Boolean)).size;
   const safeConfirmed = safeReport?.status === 'COMPLETE' && Number.isInteger(safeReport.confirmed) && safeReport.confirmed > 0 && safeAt && etDay(safeAt) === today && crmSendsToday >= safeReport.confirmed;
   const safePartial = safeReport?.status === 'BLOCKED' && Number.isInteger(safeReport.confirmed) && safeReport.confirmed > 0 && safeAt && etDay(safeAt) === today && crmSendsToday >= safeReport.confirmed;
   const taskFor = (mode, min) => scheduler?.tasks?.find((tk) => tk.name === defs.find((d) => d.mode === mode && d.minutes.includes(min))?.name);
@@ -200,7 +203,7 @@ export function buildSnapshot(ctx) {
   add('production_lock', 'Execution lock', lock.state === 'HELD' && !lockExpected ? 'WARN' : lock.state === 'UNKNOWN' ? 'UNKNOWN' : 'OK', lock.state === 'HELD' ? (lockExpected ? 'Held by an active run' : 'Held outside a scheduled window; possible overlap or stuck run') : `Lock ${lock.state.toLowerCase()}`);
   add('duplicate_risk', 'One READY campaign per business', db ? (db.readyMultiService ? 'WARN' : 'OK') : 'UNKNOWN', db ? `${db.readyMultiService} business(es) READY in more than one campaign` : 'Unavailable');
   add('suppression_integrity', 'Suppression integrity', db ? (db.readySuppressed ? 'FAIL' : 'OK') : 'UNKNOWN', db ? `${db.readySuppressed} suppressed contact(s) in READY routes` : 'Unavailable', true);
-  const sentAfterHandoff = prepAt && db ? new Set(db.outreachSends.filter((e) => { const at=parseTime(e.at); return at && at > prepAt && at <= now; }).map((e) => e.id).filter(Boolean)).size : 0;
+  const sentAfterHandoff = sentSince(db, prepAt, now);
   const handoffExpected = src.foundry_final_handoff_report.ok ? Math.max(0,src.foundry_final_handoff_report.data.exported - sentAfterHandoff) : null;
   add('handoff_consistency', 'READY vs handoff export', db && handoffExpected !== null ? (readyTotal === handoffExpected ? 'OK' : 'WARN') : 'UNKNOWN', db && handoffExpected !== null ? `CRM ${readyTotal} · exported ${src.foundry_final_handoff_report.data.exported} · confirmed since export ${sentAfterHandoff}` : 'Unavailable');
   add('exporter_last_run', 'Dashboard exporter', exporterRun?.lastError ? 'WARN' : 'OK', exporterRun?.lastError ? `Last publish problem: ${scrub(exporterRun.lastError, 120)}` : 'Last export succeeded');
@@ -314,7 +317,7 @@ export function buildSnapshot(ctx) {
         revenue: { state: 'NOT_TRACKED', note: 'Sales/revenue not recorded' },
         taskScheduler: { state: scheduler?.available ? 'AVAILABLE' : 'UNAVAILABLE', note: scheduler?.available ? 'schtasks query' : 'Task definitions only (no run results)' },
       },
-      crossChecks: crossChecks(db, src),
+      crossChecks: crossChecks(db, src, now),
       sources: names.map((n) => ({ name: n, present: src[n].ok, asOf: toIso(t(n)) })),
     },
   };
@@ -329,12 +332,12 @@ function perCampaignSent(perCampaign, id) {
   return perCampaign[id] ?? 0;
 }
 
-function crossChecks(db, src) {
+function crossChecks(db, src, now) {
   const out = [];
   const ph = src.foundry_final_handoff_report.data, pr = src.foundry_production_report.data, au = src.foundry_daily_audit.data;
   const ready = db?.routeQueue.filter((r) => r.status === 'READY').reduce((a, r) => a + r.n, 0);
-  if (db && ph) out.push({ id: 'crm_vs_handoff', ok: ready === ph.exported, detail: `CRM READY ${ready} · handoff ${ph.exported}` });
-  if (db && au) out.push({ id: 'crm_vs_audit', ok: ready === au.counts?.database_ready, detail: `CRM READY ${ready} · audit ${au.counts?.database_ready}` });
+  if (db && ph) { const n=sentSince(db, parseTime(ph.at), now); out.push({ id: 'crm_vs_handoff', ok: ready === Math.max(0, ph.exported - n), detail: `CRM READY ${ready} · handoff ${ph.exported} · sent since ${n}` }); }
+  if (db && au) { const n=sentSince(db, parseTime(au.at), now); out.push({ id: 'crm_vs_audit', ok: ready === Math.max(0, au.counts?.database_ready - n), detail: `CRM READY ${ready} · audit ${au.counts?.database_ready} · sent since ${n}` }); }
   if (db && pr) out.push({ id: 'crm_vs_production_report', ok: ready === pr.counts?.ready, detail: `CRM READY ${ready} · older production report ${pr.counts?.ready} (report predates latest cleanup)` });
   if (db) out.push({ id: 'all_classified', ok: db.classified === db.total, detail: `${db.classified} of ${db.total} businesses classified` });
   return out;

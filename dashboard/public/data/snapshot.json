@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-19T21:52:52.342Z",
- "sourceAsOf": "2026-11-19T21:01:40.108Z",
+ "generatedAt": "2026-11-19T22:17:52.175Z",
+ "sourceAsOf": "2026-11-19T22:00:35.291Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -59,7 +59,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.9h ago",
+    "detail": "Last prepared 0.3h ago",
     "blocking": false
    },
    {
@@ -164,7 +164,7 @@
    },
    {
     "reason": "Matched local suppression index",
-    "n": 169
+    "n": 166
    },
    {
     "reason": "No material automated website opportunity detected",
@@ -173,6 +173,10 @@
    {
     "reason": "Business identity name requires normalization before outreach",
     "n": 57
+   },
+   {
+    "reason": "Inbound correspondence: human follow-up required",
+    "n": 3
    },
    {
     "reason": "Duplicate email recipient requires review",
@@ -491,7 +495,7 @@
    }
   ],
   "failedAttempts": 0,
-  "suppressedContacts": 180,
+  "suppressedContacts": 181,
   "bounces": null,
   "duplicatesPrevented": null,
   "queued": {
@@ -530,12 +534,12 @@
     "label": "5:00 PM ET Dispatch",
     "scheduledAt": "2026-11-19T22:00:00.000Z",
     "startedAt": null,
-    "finishedAt": null,
-    "sent": null,
-    "errors": null,
-    "runId": null,
-    "evidence": "NONE",
-    "state": "SCHEDULED"
+    "finishedAt": "2026-11-19T22:00:09.365Z",
+    "sent": 0,
+    "errors": 0,
+    "runId": "foundry_safe_dispatch",
+    "evidence": "GMAIL_API_AND_CRM",
+    "state": "COMPLETED"
    }
   ],
   "lastDispatch": {
@@ -545,9 +549,9 @@
    "state": "COMPLETED",
    "blockers": []
   },
-  "nextDispatchAt": "2026-11-19T22:00:00.000Z",
+  "nextDispatchAt": "2026-11-20T14:00:00.000Z",
   "lastPreparation": {
-   "at": "2026-11-19T21:01:32.698Z",
+   "at": "2026-11-19T22:00:34.030Z",
    "rows": 31,
    "state": "COMPLETED"
   }
@@ -667,8 +671,8 @@
   {
    "id": "VALIDATION",
    "label": "Validation",
-   "lastRun": "2026-11-19T21:01:33.335Z",
-   "lastSuccess": "2026-11-19T21:01:33.335Z",
+   "lastRun": "2026-11-19T22:00:34.327Z",
+   "lastSuccess": "2026-11-19T22:00:34.327Z",
    "durationSec": null,
    "status": "OK",
    "items": 31,
@@ -689,8 +693,8 @@
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "lastRun": "2026-11-19T21:01:32.698Z",
-   "lastSuccess": "2026-11-19T21:01:32.698Z",
+   "lastRun": "2026-11-19T22:00:34.030Z",
+   "lastSuccess": "2026-11-19T22:00:34.030Z",
    "durationSec": null,
    "status": "OK",
    "items": 31,
@@ -700,8 +704,8 @@
   {
    "id": "DISPATCH",
    "label": "Dispatch",
-   "lastRun": "2026-11-19T18:00:08.272Z",
-   "lastSuccess": "2026-11-19T18:00:08.272Z",
+   "lastRun": "2026-11-19T22:00:09.365Z",
+   "lastSuccess": "2026-11-19T22:00:09.365Z",
    "durationSec": null,
    "status": "OK",
    "items": 0,
@@ -711,8 +715,8 @@
   {
    "id": "REPLY_PROCESSING",
    "label": "Replies",
-   "lastRun": "2026-11-18T22:00:48.306Z",
-   "lastSuccess": "2026-11-18T22:00:48.306Z",
+   "lastRun": "2026-11-19T22:00:35.291Z",
+   "lastSuccess": "2026-11-19T22:00:35.291Z",
    "durationSec": null,
    "status": "OK",
    "items": null,
@@ -1088,7 +1092,7 @@
    },
    {
     "day": "2026-11-19",
-    "completed": 1,
+    "completed": 2,
     "failed": 0,
     "blocked": 0,
     "unknown": 1
@@ -1103,7 +1107,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-19T21:52:52.342Z",
+   "lastDetected": "2026-11-19T22:17:52.175Z",
    "state": "ACTIVE"
   }
  ],
@@ -1328,7 +1332,7 @@
     "sent": 15,
     "health": "HEALTHY",
     "windows": {
-     "completed": 1,
+     "completed": 2,
      "failed": 0,
      "blocked": 0,
      "unknown": 1
@@ -1403,27 +1407,27 @@
    {
     "name": "foundry_daily_audit",
     "present": true,
-    "asOf": "2026-11-19T21:01:33.335Z"
+    "asOf": "2026-11-19T22:00:34.327Z"
    },
    {
     "name": "foundry_day_review",
     "present": true,
-    "asOf": "2026-11-18T22:00:48.306Z"
+    "asOf": "2026-11-19T22:00:35.291Z"
    },
    {
     "name": "foundry_safety_audit",
     "present": true,
-    "asOf": "2026-11-19T21:01:40.108Z"
+    "asOf": "2026-11-19T22:00:34.914Z"
    },
    {
     "name": "foundry_safe_dispatch_report",
     "present": true,
-    "asOf": "2026-11-19T18:00:08.272Z"
+    "asOf": "2026-11-19T22:00:09.365Z"
    },
    {
     "name": "foundry_final_handoff_report",
     "present": true,
-    "asOf": "2026-11-19T21:01:32.698Z"
+    "asOf": "2026-11-19T22:00:34.030Z"
    },
    {
     "name": "foundry_production_report",

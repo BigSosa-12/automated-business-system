@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-19T21:52:52.342Z",
- "lastLogAt": "2026-11-19T21:01:40.130Z",
+ "generatedAt": "2026-11-19T22:17:52.175Z",
+ "lastLogAt": "2026-11-19T22:00:35.378Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -25,14 +25,14 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-19T21:52:52.342Z",
+   "lastSuccessAt": "2026-11-19T22:17:52.175Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
    "state": "COMPLETED_TODAY",
-   "lastPreparationAt": "2026-11-19T21:01:32.698Z",
+   "lastPreparationAt": "2026-11-19T22:00:34.030Z",
    "lock": "FREE"
   },
   "dispatch": {
@@ -56,13 +56,10 @@
     {
      "id": "AFTERNOON",
      "label": "5:00 PM ET Dispatch",
-     "state": "SCHEDULED"
+     "state": "COMPLETED"
     }
    ],
-   "next": {
-    "label": "5:00 PM ET Dispatch",
-    "at": "2026-11-19T22:00:00.000Z"
-   }
+   "next": null
   }
  },
  "indicators": [
@@ -164,13 +161,18 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-19T21:01:40.130Z",
+   "lastSuccess": "2026-11-19T22:00:34.327Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
    "items": 31,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-19T22:00:34.327Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
      {
       "at": "2026-11-19T21:01:40.130Z",
       "text": "FoundrySafetyAudit.js completed",
@@ -179,11 +181,6 @@
      {
       "at": "2026-11-19T21:01:33.369Z",
       "text": "FoundryDailyAudit.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-19T21:01:33.335Z",
-      "text": "Report written (ok)",
       "ok": true
      },
      {
@@ -211,13 +208,18 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-19T21:01:39.473Z",
+   "lastSuccess": "2026-11-19T22:00:34.030Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
    "items": 31,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-19T22:00:34.030Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
      {
       "at": "2026-11-19T21:01:39.473Z",
       "text": "FoundryReady.js completed",
@@ -226,11 +228,6 @@
      {
       "at": "2026-11-19T21:01:32.749Z",
       "text": "FoundryFinalHandoffExport.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-19T21:01:32.698Z",
-      "text": "Report written (ok)",
       "ok": true
      },
      {
@@ -258,7 +255,7 @@
    "id": "GMAIL_DISPATCH",
    "label": "Gmail Dispatch",
    "state": "OK",
-   "lastSuccess": "2026-11-19T18:02:08.256Z",
+   "lastSuccess": "2026-11-19T22:00:23.053Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
@@ -266,13 +263,18 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-19T18:02:08.256Z",
+      "at": "2026-11-19T22:00:23.053Z",
       "text": "FoundrySend.js completed",
       "ok": true
      },
      {
-      "at": "2026-11-19T18:00:08.272Z",
+      "at": "2026-11-19T22:00:09.365Z",
       "text": "Report written (ok)",
+      "ok": true
+     },
+     {
+      "at": "2026-11-19T18:02:08.256Z",
+      "text": "FoundrySend.js completed",
       "ok": true
      },
      {
@@ -289,11 +291,6 @@
       "at": "2026-11-18T14:06:34.184Z",
       "text": "FoundrySend.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-17T22:00:13.858Z",
-      "text": "FoundrySend.js exit 1",
-      "ok": false
      }
     ],
     "durationSec": null,
@@ -305,7 +302,7 @@
    "id": "REPLY_PROCESSING",
    "label": "Reply Processing",
    "state": "OK",
-   "lastSuccess": "2026-11-18T22:00:48.526Z",
+   "lastSuccess": "2026-11-19T22:00:35.378Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
@@ -313,13 +310,18 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-18T22:00:48.526Z",
+      "at": "2026-11-19T22:00:35.378Z",
       "text": "FoundryDayReview.js completed",
       "ok": true
      },
      {
-      "at": "2026-11-18T22:00:48.306Z",
+      "at": "2026-11-19T22:00:35.291Z",
       "text": "Report written (ok)",
+      "ok": true
+     },
+     {
+      "at": "2026-11-18T22:00:48.526Z",
+      "text": "FoundryDayReview.js completed",
       "ok": true
      },
      {
@@ -333,7 +335,7 @@
       "ok": false
      }
     ],
-    "durationSec": 18.721,
+    "durationSec": 12.325,
     "baselineMedianSec": null,
     "latestIssue": null
    }
@@ -1084,7 +1086,8 @@
   "FoundryDayReview.js": [
    9,
    14,
-   19
+   19,
+   12
   ]
  }
 }

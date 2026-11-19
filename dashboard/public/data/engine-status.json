@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-19T04:57:53.278Z",
+ "generatedAt": "2026-11-19T08:29:13.130Z",
  "lastLogAt": "2026-11-18T22:00:48.526Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -21,17 +21,17 @@
  "state": "IDLE",
  "stoppedKind": null,
  "caution": true,
- "headline": "Snapshot publishing failed",
+ "headline": "Send queue shortage",
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-19T04:57:53.278Z",
-   "lastError": "spawnSync git ETIMEDOUT",
+   "lastSuccessAt": "2026-11-19T08:29:13.130Z",
+   "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "COMPLETED_TODAY",
+   "state": "NO_RUN_EVIDENCE_TODAY",
    "lastPreparationAt": "2026-11-18T22:00:46.127Z",
    "lock": "FREE"
   },
@@ -46,20 +46,23 @@
     {
      "id": "MORNING",
      "label": "9:00 AM ET Dispatch",
-     "state": "COMPLETED"
+     "state": "SCHEDULED"
     },
     {
      "id": "MIDDAY",
      "label": "1:00 PM ET Dispatch",
-     "state": "SKIPPED"
+     "state": "SCHEDULED"
     },
     {
      "id": "AFTERNOON",
      "label": "5:00 PM ET Dispatch",
-     "state": "SKIPPED"
+     "state": "SCHEDULED"
     }
    ],
-   "next": null
+   "next": {
+    "label": "9:00 AM ET Dispatch",
+    "at": "2026-11-19T14:00:00.000Z"
+   }
   }
  },
  "indicators": [
@@ -339,16 +342,6 @@
  "activePathways": [],
  "diagnostics": [
   {
-   "id": "PUBLISH_FAILURE",
-   "rank": 85,
-   "severity": "WARNING",
-   "stage": null,
-   "title": "Snapshot publishing failed",
-   "evidence": [
-    "spawnSync git ETIMEDOUT"
-   ]
-  },
-  {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,
    "severity": "WARNING",
@@ -386,7 +379,7 @@
  ],
  "metrics": {
   "ready": 103,
-  "sentToday": 50,
+  "sentToday": 0,
   "dailyCap": 50,
   "preparedSnapshots": 17,
   "total": 5881

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-19T04:57:53.278Z",
+ "generatedAt": "2026-11-19T08:29:13.130Z",
  "sourceAsOf": "2026-11-18T22:00:48.306Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -12,8 +12,7 @@
  "health": {
   "status": "DEGRADED",
   "reasons": [
-   "READY vs handoff export: CRM 103 · exported 46 · confirmed since export 0",
-   "Dashboard exporter: Last publish problem: spawnSync git ETIMEDOUT"
+   "READY vs handoff export: CRM 103 · exported 46 · confirmed since export 0"
   ],
   "checks": [
    {
@@ -62,7 +61,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 7.0h ago",
+    "detail": "Last prepared 10.5h ago",
     "blocking": false
    },
    {
@@ -103,8 +102,8 @@
    {
     "id": "exporter_last_run",
     "label": "Dashboard exporter",
-    "state": "WARN",
-    "detail": "Last publish problem: spawnSync git ETIMEDOUT",
+    "state": "OK",
+    "detail": "Last export succeeded",
     "blocking": false
    }
   ],
@@ -330,8 +329,8 @@
  },
  "outreach": {
   "dailyCap": 50,
-  "sentToday": 50,
-  "remainingToday": 0,
+  "sentToday": 0,
+  "remainingToday": 50,
   "sentThisWeek": 149,
   "sentThisMonth": 149,
   "sent7d": 149,
@@ -344,10 +343,6 @@
   "evidence": "GMAIL_API_ACCEPTED",
   "inboxDeliveryConfirmed": false,
   "daily": [
-   {
-    "day": "2026-10-20",
-    "count": 0
-   },
    {
     "day": "2026-10-21",
     "count": 0
@@ -463,6 +458,10 @@
    {
     "day": "2026-11-18",
     "count": 50
+   },
+   {
+    "day": "2026-11-19",
+    "count": 0
    }
   ],
   "byCampaign": [
@@ -511,38 +510,38 @@
    {
     "id": "MORNING",
     "label": "9:00 AM ET Dispatch",
-    "scheduledAt": "2026-11-18T14:00:00.000Z",
+    "scheduledAt": "2026-11-19T14:00:00.000Z",
     "startedAt": null,
-    "finishedAt": "2026-11-18T16:34:06.350Z",
-    "sent": 50,
-    "errors": 0,
-    "runId": "foundry_safe_dispatch",
-    "evidence": "GMAIL_API_AND_CRM",
-    "state": "COMPLETED"
+    "finishedAt": null,
+    "sent": null,
+    "errors": null,
+    "runId": null,
+    "evidence": "NONE",
+    "state": "SCHEDULED"
    },
    {
     "id": "MIDDAY",
     "label": "1:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-18T18:00:00.000Z",
+    "scheduledAt": "2026-11-19T18:00:00.000Z",
     "startedAt": null,
-    "finishedAt": "2026-11-18T18:00:10.851Z",
-    "sent": 0,
-    "errors": 0,
-    "runId": "foundry_safe_dispatch",
-    "evidence": "DAILY_CAP_REACHED",
-    "state": "SKIPPED"
+    "finishedAt": null,
+    "sent": null,
+    "errors": null,
+    "runId": null,
+    "evidence": "NONE",
+    "state": "SCHEDULED"
    },
    {
     "id": "AFTERNOON",
     "label": "5:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-18T22:00:00.000Z",
+    "scheduledAt": "2026-11-19T22:00:00.000Z",
     "startedAt": null,
-    "finishedAt": "2026-11-18T22:00:05.212Z",
-    "sent": 0,
-    "errors": 0,
-    "runId": "foundry_safe_dispatch",
-    "evidence": "DAILY_CAP_REACHED",
-    "state": "SKIPPED"
+    "finishedAt": null,
+    "sent": null,
+    "errors": null,
+    "runId": null,
+    "evidence": "NONE",
+    "state": "SCHEDULED"
    }
   ],
   "lastDispatch": {
@@ -788,10 +787,6 @@
   ],
   "emailActivity": [
    {
-    "day": "2026-10-20",
-    "count": 0
-   },
-   {
     "day": "2026-10-21",
     "count": 0
    },
@@ -906,6 +901,10 @@
    {
     "day": "2026-11-18",
     "count": 50
+   },
+   {
+    "day": "2026-11-19",
+    "count": 0
    }
   ],
   "campaignPerformance": [
@@ -1092,6 +1091,13 @@
     "failed": 0,
     "blocked": 0,
     "unknown": 0
+   },
+   {
+    "day": "2026-11-19",
+    "completed": 0,
+    "failed": 0,
+    "blocked": 0,
+    "unknown": 0
    }
   ],
   "conversionTrend": []
@@ -1103,7 +1109,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-19T04:57:53.278Z",
+   "lastDetected": "2026-11-19T08:29:13.130Z",
    "state": "ACTIVE"
   },
   {
@@ -1112,25 +1118,7 @@
    "title": "CRM / handoff mismatch",
    "detail": "READY count differs from the latest handoff export.",
    "firstDetected": "2026-11-17T14:47:51.928Z",
-   "lastDetected": "2026-11-19T04:57:53.278Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "EXPORT_PUBLISH_FAILURE",
-   "severity": "WARNING",
-   "title": "GitHub publish failure",
-   "detail": "spawnSync git ETIMEDOUT",
-   "firstDetected": "2026-11-19T04:57:53.278Z",
-   "lastDetected": "2026-11-19T04:57:53.278Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "DAILY_LIMIT",
-   "severity": "INFO",
-   "title": "Daily limit reached",
-   "detail": "50/50 confirmed sends today.",
-   "firstDetected": "2026-11-18T16:36:33.302Z",
-   "lastDetected": "2026-11-19T04:57:53.278Z",
+   "lastDetected": "2026-11-19T08:29:13.130Z",
    "state": "ACTIVE"
   }
  ],
@@ -1342,6 +1330,20 @@
     "health": "DEGRADED",
     "windows": {
      "completed": 1,
+     "failed": 0,
+     "blocked": 0,
+     "unknown": 0
+    }
+   },
+   {
+    "day": "2026-11-19",
+    "total": 5881,
+    "qualified": 3018,
+    "ready": 103,
+    "sent": 0,
+    "health": "DEGRADED",
+    "windows": {
+     "completed": 0,
      "failed": 0,
      "blocked": 0,
      "unknown": 0

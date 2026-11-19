@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-19T08:29:13.130Z",
- "sourceAsOf": "2026-11-18T22:00:48.306Z",
+ "generatedAt": "2026-11-19T17:14:39.029Z",
+ "sourceAsOf": "2026-11-19T17:14:35.813Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -61,7 +61,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 10.5h ago",
+    "detail": "Last prepared 19.2h ago",
     "blocking": false
    },
    {
@@ -75,7 +75,7 @@
     "id": "production_lock",
     "label": "Execution lock",
     "state": "OK",
-    "detail": "Lock free",
+    "detail": "Held by an active run",
     "blocking": false
    },
    {
@@ -517,7 +517,7 @@
     "errors": null,
     "runId": null,
     "evidence": "NONE",
-    "state": "SCHEDULED"
+    "state": "UNKNOWN"
    },
    {
     "id": "MIDDAY",
@@ -551,7 +551,7 @@
    "state": "COMPLETED",
    "blockers": []
   },
-  "nextDispatchAt": "2026-11-19T14:00:00.000Z",
+  "nextDispatchAt": "2026-11-19T18:00:00.000Z",
   "lastPreparation": {
    "at": "2026-11-18T22:00:46.127Z",
    "rows": 46,
@@ -629,11 +629,11 @@
   }
  ],
  "schedulerEvidence": {
-  "available": true,
-  "reason": null
+  "available": false,
+  "reason": "ETIMEDOUT"
  },
  "locks": {
-  "production": "FREE",
+  "production": "HELD",
   "protectedWindowNow": false
  },
  "pipeline": [
@@ -684,11 +684,11 @@
   {
    "id": "RECONCILIATION",
    "label": "Reconciliation",
-   "lastRun": "2026-11-18T21:16:09.494Z",
-   "lastSuccess": "2026-11-18T21:16:09.494Z",
+   "lastRun": "2026-11-19T17:14:35.813Z",
+   "lastSuccess": "2026-11-19T17:14:35.813Z",
    "durationSec": null,
    "status": "OK",
-   "items": 162,
+   "items": 164,
    "errors": 0,
    "note": null
   },
@@ -1097,7 +1097,7 @@
     "completed": 0,
     "failed": 0,
     "blocked": 0,
-    "unknown": 0
+    "unknown": 1
    }
   ],
   "conversionTrend": []
@@ -1109,7 +1109,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-19T08:29:13.130Z",
+   "lastDetected": "2026-11-19T17:14:39.029Z",
    "state": "ACTIVE"
   },
   {
@@ -1118,7 +1118,7 @@
    "title": "CRM / handoff mismatch",
    "detail": "READY count differs from the latest handoff export.",
    "firstDetected": "2026-11-17T14:47:51.928Z",
-   "lastDetected": "2026-11-19T08:29:13.130Z",
+   "lastDetected": "2026-11-19T17:14:39.029Z",
    "state": "ACTIVE"
   }
  ],
@@ -1346,7 +1346,7 @@
      "completed": 0,
      "failed": 0,
      "blocked": 0,
-     "unknown": 0
+     "unknown": 1
     }
    }
   ]
@@ -1378,8 +1378,8 @@
     "note": "Sales/revenue not recorded"
    },
    "taskScheduler": {
-    "state": "AVAILABLE",
-    "note": "schtasks query"
+    "state": "UNAVAILABLE",
+    "note": "Task definitions only (no run results)"
    }
   },
   "crossChecks": [
@@ -1473,7 +1473,7 @@
    {
     "name": "suppression_reconcile_report",
     "present": true,
-    "asOf": "2026-11-18T21:16:09.494Z"
+    "asOf": "2026-11-19T17:14:35.813Z"
    },
    {
     "name": "foundry_discovery_import_report",

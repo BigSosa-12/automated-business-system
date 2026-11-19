@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-19T08:29:13.130Z",
- "lastLogAt": "2026-11-18T22:00:48.526Z",
+ "generatedAt": "2026-11-19T17:14:39.029Z",
+ "lastLogAt": "2026-11-19T17:15:54.044Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -18,22 +18,30 @@
   "slowMinExtraSec": 30,
   "minBaselineSamples": 5
  },
- "state": "IDLE",
+ "state": "SLOW",
  "stoppedKind": null,
- "caution": true,
- "headline": "Send queue shortage",
- "process": null,
+ "caution": false,
+ "headline": "Step slower than its baseline",
+ "process": {
+  "mode": "Prepare",
+  "jobId": "prepare-2026-11-19-0720",
+  "stage": "QUEUE_PREPARATION",
+  "startedAtLowerBound": "2026-11-19T17:15:16.156Z",
+  "elapsedSecAtLeast": 0,
+  "items": null,
+  "evidence": "foundry_execution.lock held inside a scheduled window"
+ },
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-19T08:29:13.130Z",
+   "lastSuccessAt": "2026-11-19T17:14:39.029Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "NO_RUN_EVIDENCE_TODAY",
+   "state": "RUNNING",
    "lastPreparationAt": "2026-11-18T22:00:46.127Z",
-   "lock": "FREE"
+   "lock": "HELD"
   },
   "dispatch": {
    "state": "GATES_OK",
@@ -46,7 +54,7 @@
     {
      "id": "MORNING",
      "label": "9:00 AM ET Dispatch",
-     "state": "SCHEDULED"
+     "state": "UNKNOWN"
     },
     {
      "id": "MIDDAY",
@@ -60,8 +68,8 @@
     }
    ],
    "next": {
-    "label": "9:00 AM ET Dispatch",
-    "at": "2026-11-19T14:00:00.000Z"
+    "label": "1:00 PM ET Dispatch",
+    "at": "2026-11-19T18:00:00.000Z"
    }
   }
  },
@@ -164,13 +172,18 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-18T22:00:46.831Z",
+   "lastSuccess": "2026-11-19T17:15:16.156Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
    "items": 46,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-19T17:15:16.156Z",
+      "text": "ReconcileSuppression.js completed",
+      "ok": true
+     },
      {
       "at": "2026-11-18T22:00:46.831Z",
       "text": "Report written (ok)",
@@ -195,24 +208,19 @@
       "at": "2026-11-18T21:18:23.153Z",
       "text": "FoundryFinalReconcile.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-18T21:17:42.735Z",
-      "text": "FoundryDailyAudit.js completed",
-      "ok": true
      }
     ],
-    "durationSec": 0.739,
-    "baselineMedianSec": 0,
+    "durationSec": 1029.641,
+    "baselineMedianSec": null,
     "latestIssue": null
    }
   },
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "state": "OK",
+   "state": "ACTIVE",
    "lastSuccess": "2026-11-18T22:00:46.127Z",
-   "activity": null,
+   "activity": "Preparation run holds the execution lock",
    "errors": 0,
    "reason": "Last run completed",
    "items": 46,
@@ -339,8 +347,19 @@
    }
   }
  ],
- "activePathways": [],
+ "activePathways": [
+  "QUEUE_PREPARATION"
+ ],
  "diagnostics": [
+  {
+   "id": "SLOW_VS_BASELINE",
+   "rank": 72,
+   "severity": "WARNING",
+   "title": "Step slower than its baseline",
+   "evidence": [
+    "FoundryRefillPlan.js: 38s vs median 1s (24 samples, threshold 2×)"
+   ]
+  },
   {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,
@@ -474,7 +493,8 @@
    1,
    1,
    1,
-   1
+   1,
+   38
   ],
   "FastTargetedDiscovery.js": [
    5,

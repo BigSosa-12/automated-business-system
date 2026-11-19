@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-19T04:54:36.375Z",
+ "generatedAt": "2026-11-19T04:57:53.278Z",
  "sourceAsOf": "2026-11-18T22:00:48.306Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -12,7 +12,8 @@
  "health": {
   "status": "DEGRADED",
   "reasons": [
-   "READY vs handoff export: CRM 103 · exported 46 · confirmed since export 0"
+   "READY vs handoff export: CRM 103 · exported 46 · confirmed since export 0",
+   "Dashboard exporter: Last publish problem: spawnSync git ETIMEDOUT"
   ],
   "checks": [
    {
@@ -61,7 +62,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 6.9h ago",
+    "detail": "Last prepared 7.0h ago",
     "blocking": false
    },
    {
@@ -102,8 +103,8 @@
    {
     "id": "exporter_last_run",
     "label": "Dashboard exporter",
-    "state": "OK",
-    "detail": "Last export succeeded",
+    "state": "WARN",
+    "detail": "Last publish problem: spawnSync git ETIMEDOUT",
     "blocking": false
    }
   ],
@@ -629,8 +630,8 @@
   }
  ],
  "schedulerEvidence": {
-  "available": false,
-  "reason": "ETIMEDOUT"
+  "available": true,
+  "reason": null
  },
  "locks": {
   "production": "FREE",
@@ -1102,7 +1103,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-19T04:54:36.375Z",
+   "lastDetected": "2026-11-19T04:57:53.278Z",
    "state": "ACTIVE"
   },
   {
@@ -1111,7 +1112,16 @@
    "title": "CRM / handoff mismatch",
    "detail": "READY count differs from the latest handoff export.",
    "firstDetected": "2026-11-17T14:47:51.928Z",
-   "lastDetected": "2026-11-19T04:54:36.375Z",
+   "lastDetected": "2026-11-19T04:57:53.278Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "EXPORT_PUBLISH_FAILURE",
+   "severity": "WARNING",
+   "title": "GitHub publish failure",
+   "detail": "spawnSync git ETIMEDOUT",
+   "firstDetected": "2026-11-19T04:57:53.278Z",
+   "lastDetected": "2026-11-19T04:57:53.278Z",
    "state": "ACTIVE"
   },
   {
@@ -1120,7 +1130,7 @@
    "title": "Daily limit reached",
    "detail": "50/50 confirmed sends today.",
    "firstDetected": "2026-11-18T16:36:33.302Z",
-   "lastDetected": "2026-11-19T04:54:36.375Z",
+   "lastDetected": "2026-11-19T04:57:53.278Z",
    "state": "ACTIVE"
   }
  ],
@@ -1366,8 +1376,8 @@
     "note": "Sales/revenue not recorded"
    },
    "taskScheduler": {
-    "state": "UNAVAILABLE",
-    "note": "Task definitions only (no run results)"
+    "state": "AVAILABLE",
+    "note": "schtasks query"
    }
   },
   "crossChecks": [

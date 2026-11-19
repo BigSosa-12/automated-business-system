@@ -49,19 +49,21 @@ export function buildSnapshot(ctx) {
     for (const id of [...CAMPAIGN_ORDER, 'UNASSIGNED']) {
       const rows = db.byCampaign.filter((r) => r.campaign === id);
       const sum = (f) => rows.filter(f).reduce((a, r) => a + r.n, 0);
-      const total = sum(() => true), ready = sum((r) => r.state === 'READY');
-      const readyEmail = sum((r) => r.state === 'READY' && r.route === 'EMAIL');
+      const total = sum(() => true), classReady = sum((r) => r.state === 'READY');
+      const routes = db.readyRoutesByCampaign.filter((r) => r.campaign === id);
+      const ready = routes.reduce((a, r) => a + r.n, 0);
+      const readyEmail = routes.filter((r) => r.route === 'EMAIL').reduce((a, r) => a + r.n, 0);
       campaigns.push({
         id, label: CAMPAIGNS[id]?.label ?? 'Unassigned', short: CAMPAIGNS[id]?.short ?? 'Needs evidence',
         territory: targets[id]?.territory ?? null, target: targets[id]?.target ?? null,
-        total, qualified: sum((r) => r.state === 'QUALIFIED') + ready, ready, readyEmail, readyForm: sum((r) => r.state === 'READY' && r.route === 'FORM'),
+        total, qualified: sum((r) => r.state === 'QUALIFIED') + classReady, ready, readyEmail, readyForm: routes.filter((r) => r.route === 'FORM').reduce((a, r) => a + r.n, 0),
         unresolved: sum((r) => r.state === 'UNRESOLVED'), suppressed: sum((r) => r.state === 'SUPPRESSED'),
         inventoryState: id === 'UNASSIGNED' ? null : inventoryState(readyEmail),
       });
     }
   }
   const stateN = (k) => db?.byState.find((r) => r.k === k)?.n ?? 0;
-  const readyTotal = db ? stateN('READY') : null;
+  const readyTotal = db ? db.routeQueue.filter((r) => r.status === 'READY').reduce((a, r) => a + r.n, 0) : null;
 
   // ---- sends (confirmed Gmail API acceptance only) ---------------------------------------------
   const seen = new Map();
@@ -274,7 +276,7 @@ export function buildSnapshot(ctx) {
     health: { status, reasons, checks, rule: 'BLOCKED: a blocking check fails. UNKNOWN: critical evidence missing. DEGRADED: any warning. HEALTHY: all checks pass.' },
     leads: db ? {
       total: db.total, classified: db.classified,
-      byQualification: { QUALIFIED: stateN('QUALIFIED'), READY: stateN('READY'), UNRESOLVED: stateN('UNRESOLVED'), SUPPRESSED: stateN('SUPPRESSED') },
+      byQualification: { QUALIFIED: stateN('QUALIFIED'), READY: readyTotal, UNRESOLVED: stateN('UNRESOLVED'), SUPPRESSED: stateN('SUPPRESSED') },
       readyByRoute: { EMAIL: campaigns.reduce((a, c) => a + c.readyEmail, 0), FORM: campaigns.reduce((a, c) => a + c.readyForm, 0) },
       contactChannels: db.contactChannels.map((c) => ({ channel: c.channel, verification: c.verification, n: c.n })),
       potentialDuplicates: db.duplicates, unassigned: campaigns.find((c) => c.id === 'UNASSIGNED')?.total ?? 0,
@@ -330,9 +332,10 @@ function perCampaignSent(perCampaign, id) {
 function crossChecks(db, src) {
   const out = [];
   const ph = src.foundry_final_handoff_report.data, pr = src.foundry_production_report.data, au = src.foundry_daily_audit.data;
-  if (db && ph) out.push({ id: 'crm_vs_handoff', ok: db.byState.find((r) => r.k === 'READY')?.n === ph.exported, detail: `CRM READY ${db.byState.find((r) => r.k === 'READY')?.n} · handoff ${ph.exported}` });
-  if (db && au) out.push({ id: 'crm_vs_audit', ok: db.byState.find((r) => r.k === 'READY')?.n === au.counts?.database_ready, detail: `CRM READY ${db.byState.find((r) => r.k === 'READY')?.n} · audit ${au.counts?.database_ready}` });
-  if (db && pr) out.push({ id: 'crm_vs_production_report', ok: db.byState.find((r) => r.k === 'READY')?.n === pr.counts?.ready, detail: `CRM READY ${db.byState.find((r) => r.k === 'READY')?.n} · older production report ${pr.counts?.ready} (report predates latest cleanup)` });
+  const ready = db?.routeQueue.filter((r) => r.status === 'READY').reduce((a, r) => a + r.n, 0);
+  if (db && ph) out.push({ id: 'crm_vs_handoff', ok: ready === ph.exported, detail: `CRM READY ${ready} · handoff ${ph.exported}` });
+  if (db && au) out.push({ id: 'crm_vs_audit', ok: ready === au.counts?.database_ready, detail: `CRM READY ${ready} · audit ${au.counts?.database_ready}` });
+  if (db && pr) out.push({ id: 'crm_vs_production_report', ok: ready === pr.counts?.ready, detail: `CRM READY ${ready} · older production report ${pr.counts?.ready} (report predates latest cleanup)` });
   if (db) out.push({ id: 'all_classified', ok: db.classified === db.total, detail: `${db.classified} of ${db.total} businesses classified` });
   return out;
 }

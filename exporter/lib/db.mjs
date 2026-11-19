@@ -21,6 +21,7 @@ export function readDatabase(file) {
       suppressionRows: countOf('suppression'),
       contactChannels: all('SELECT channel, verification, COUNT(*) AS n FROM contacts GROUP BY 1,2'),
       routeQueue: all('SELECT service, status, COUNT(*) AS n FROM route_queue GROUP BY 1,2'),
+      readyRoutesByCampaign: all("SELECT service AS campaign, contact_route AS route, COUNT(DISTINCT business_id) AS n FROM route_queue WHERE status='READY' GROUP BY 1,2"),
       blockedReasons: all(`SELECT reason, COUNT(*) AS n FROM route_queue WHERE status='BLOCKED' GROUP BY 1 ORDER BY 2 DESC LIMIT 8`),
       readyMultiService: one(`SELECT COUNT(*) AS n FROM (SELECT business_id FROM route_queue WHERE status='READY' GROUP BY business_id HAVING COUNT(DISTINCT service)>1)`).n,
       readySuppressed: one(`SELECT COUNT(*) AS n FROM route_queue q JOIN business_classification c ON c.business_id=q.business_id WHERE q.status='READY' AND c.suppression_status='SUPPRESSED'`).n,

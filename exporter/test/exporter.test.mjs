@@ -20,7 +20,7 @@ function fixture({ gmailBlocked = true, ready = 3, sendRows = [], confirmedDbSen
     db.exec(`CREATE TABLE businesses(id INTEGER PRIMARY KEY, name TEXT, created_at TEXT);
       CREATE TABLE business_classification(business_id INTEGER PRIMARY KEY, primary_campaign TEXT, contact_route TEXT, qualification_state TEXT, duplicate_status TEXT, suppression_status TEXT);
       CREATE TABLE contacts(id INTEGER PRIMARY KEY, business_id INT, channel TEXT, verification TEXT);
-      CREATE TABLE route_queue(id INTEGER PRIMARY KEY, business_id INT, service TEXT, status TEXT, reason TEXT);
+      CREATE TABLE route_queue(id INTEGER PRIMARY KEY, business_id INT, service TEXT, contact_route TEXT, status TEXT, reason TEXT);
       CREATE TABLE source_jobs(id INTEGER PRIMARY KEY, source TEXT, status TEXT, attempts INT);
       CREATE TABLE audit_events(id INTEGER PRIMARY KEY, event TEXT);
       CREATE TABLE suppression(id INTEGER PRIMARY KEY);`);
@@ -32,7 +32,7 @@ function fixture({ gmailBlocked = true, ready = 3, sendRows = [], confirmedDbSen
       const st = i <= ready ? 'READY' : i === 6 ? 'UNRESOLVED' : 'QUALIFIED';
       db.prepare('INSERT INTO businesses VALUES (?,?,?)').run(i, `Biz ${i}`, '2026-11-03 10:00:00');
       db.prepare('INSERT INTO business_classification VALUES (?,?,?,?,?,?)').run(i, i % 2 ? 'WEBSITE_WORLD' : 'LOCAL_DETAILING', i % 2 ? 'EMAIL' : 'FORM', st, 'UNIQUE_CANDIDATE', 'CLEAR_LOCAL_INDEX');
-      if (st === 'READY') db.prepare('INSERT INTO route_queue VALUES (?,?,?,?,?)').run(i, i, i % 2 ? 'WEBSITE_WORLD' : 'LOCAL_DETAILING', 'READY', 'ok');
+      if (st === 'READY') db.prepare('INSERT INTO route_queue VALUES (?,?,?,?,?,?)').run(i, i, i % 2 ? 'WEBSITE_WORLD' : 'LOCAL_DETAILING', i % 2 ? 'EMAIL' : 'FORM', 'READY', 'ok');
     }
     db.close();
   }
@@ -56,6 +56,17 @@ test('snapshot validates, counts match fixture, READY is not treated as send-rea
   assert.equal(s.leads.byQualification.READY, 3);
   assert.notEqual(s.leads.funnel.find((f) => f.id === 'VERIFIED_READY').count, s.leads.byQualification.READY);
   assert.notEqual(s.health.status, 'HEALTHY');
+});
+test('dashboard READY counts use current route status, not stale classification', () => {
+  const dir = fixture();
+  const db = new DatabaseSync(path.join(dir, 'prospect_foundry.sqlite'));
+  db.prepare("UPDATE route_queue SET status='BLOCKED' WHERE business_id=1").run();
+  db.close();
+  const s = build(dir);
+  assert.equal(s.leads.byQualification.READY, 2);
+  assert.deepEqual(s.leads.readyByRoute, { EMAIL: 1, FORM: 1 });
+  assert.equal(s.leads.byCampaign.find((c) => c.id === 'WEBSITE_WORLD').readyEmail, 1);
+  assert.deepEqual(validateSnapshot(s), []);
 });
 test('missing Gmail authorization => BLOCKED with CRITICAL alert', () => {
   const s = build(fixture({ gmailBlocked: true }));

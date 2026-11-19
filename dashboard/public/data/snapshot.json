@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-19T20:27:52.251Z",
+ "generatedAt": "2026-11-19T20:32:52.163Z",
  "sourceAsOf": "2026-11-19T18:00:08.272Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -59,7 +59,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 3.1h ago",
+    "detail": "Last prepared 3.2h ago",
     "blocking": false
    },
    {
@@ -1107,7 +1107,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-19T20:27:52.251Z",
+   "lastDetected": "2026-11-19T20:32:52.163Z",
    "state": "ACTIVE"
   }
  ],

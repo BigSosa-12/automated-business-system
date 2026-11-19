@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-19T18:17:53.345Z",
+ "generatedAt": "2026-11-19T18:22:51.648Z",
  "lastLogAt": "2026-11-19T18:02:08.256Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,7 +25,7 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-19T18:17:53.345Z",
+   "lastSuccessAt": "2026-11-19T18:22:51.648Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
@@ -353,17 +353,6 @@
     "Website design: 16 EMAIL-ready (CRITICAL < 150)",
     "Inquiry follow-up: 8 EMAIL-ready (CRITICAL < 150)",
     "Estimate follow-up: 4 EMAIL-ready (CRITICAL < 150)"
-   ]
-  },
-  {
-   "id": "CRM_LEDGER_MISMATCH",
-   "rank": 50,
-   "severity": "WARNING",
-   "stage": "VERIFICATION",
-   "title": "CRM and Gmail ledger not reconciled",
-   "evidence": [
-    "CRM READY 31 · handoff 46",
-    "CRM READY 31 · audit 46"
    ]
   },
   {

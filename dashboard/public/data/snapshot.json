@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-19T18:17:53.345Z",
+ "generatedAt": "2026-11-19T18:22:51.648Z",
  "sourceAsOf": "2026-11-19T18:00:08.272Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -10,10 +10,8 @@
   "staleAfterMinutes": 75
  },
  "health": {
-  "status": "DEGRADED",
-  "reasons": [
-   "READY vs handoff export: CRM 31 · exported 46 · confirmed since export 0"
-  ],
+  "status": "HEALTHY",
+  "reasons": [],
   "checks": [
    {
     "id": "sqlite_read",
@@ -61,7 +59,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 1.0h ago",
+    "detail": "Last prepared 1.1h ago",
     "blocking": false
    },
    {
@@ -95,8 +93,8 @@
    {
     "id": "handoff_consistency",
     "label": "READY vs handoff export",
-    "state": "WARN",
-    "detail": "CRM 31 · exported 46 · confirmed since export 0",
+    "state": "OK",
+    "detail": "CRM 31 · exported 46 · confirmed since export 15",
     "blocking": false
    },
    {
@@ -1109,16 +1107,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-19T18:17:53.345Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "CRM_HANDOFF_MISMATCH",
-   "severity": "WARNING",
-   "title": "CRM / handoff mismatch",
-   "detail": "READY count differs from the latest handoff export.",
-   "firstDetected": "2026-11-19T18:17:53.345Z",
-   "lastDetected": "2026-11-19T18:17:53.345Z",
+   "lastDetected": "2026-11-19T18:22:51.648Z",
    "state": "ACTIVE"
   }
  ],
@@ -1341,7 +1330,7 @@
     "qualified": 3003,
     "ready": 31,
     "sent": 15,
-    "health": "DEGRADED",
+    "health": "HEALTHY",
     "windows": {
      "completed": 1,
      "failed": 0,
@@ -1385,13 +1374,13 @@
   "crossChecks": [
    {
     "id": "crm_vs_handoff",
-    "ok": false,
-    "detail": "CRM READY 31 · handoff 46"
+    "ok": true,
+    "detail": "CRM READY 31 · handoff 46 · sent since 15"
    },
    {
     "id": "crm_vs_audit",
-    "ok": false,
-    "detail": "CRM READY 31 · audit 46"
+    "ok": true,
+    "detail": "CRM READY 31 · audit 46 · sent since 15"
    },
    {
     "id": "crm_vs_production_report",

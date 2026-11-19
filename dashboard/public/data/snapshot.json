@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-19T18:22:51.648Z",
+ "generatedAt": "2026-11-19T18:27:51.539Z",
  "sourceAsOf": "2026-11-19T18:00:08.272Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -10,8 +10,10 @@
   "staleAfterMinutes": 75
  },
  "health": {
-  "status": "HEALTHY",
-  "reasons": [],
+  "status": "DEGRADED",
+  "reasons": [
+   "Dashboard exporter: Last publish problem: To https://github.com/BigSosa-12/automated-business-system.git ! [remote rejected] HEAD -> main (cannot lock ref 'refs/…"
+  ],
   "checks": [
    {
     "id": "sqlite_read",
@@ -100,8 +102,8 @@
    {
     "id": "exporter_last_run",
     "label": "Dashboard exporter",
-    "state": "OK",
-    "detail": "Last export succeeded",
+    "state": "WARN",
+    "detail": "Last publish problem: To https://github.com/BigSosa-12/automated-business-system.git ! [remote rejected] HEAD -> main (cannot lock ref 'refs/…",
     "blocking": false
    }
   ],
@@ -1107,7 +1109,16 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-19T18:22:51.648Z",
+   "lastDetected": "2026-11-19T18:27:51.539Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "EXPORT_PUBLISH_FAILURE",
+   "severity": "WARNING",
+   "title": "GitHub publish failure",
+   "detail": "To https://github.com/BigSosa-12/automated-business-system.git ! [remote rejected] HEAD -> main (cannot lock ref 'refs/heads/main': is at 003d984de1232576d464ef46c02111c112a0d1f2 but expected c8469de…",
+   "firstDetected": "2026-11-19T18:27:51.539Z",
+   "lastDetected": "2026-11-19T18:27:51.539Z",
    "state": "ACTIVE"
   }
  ],
@@ -1330,7 +1341,7 @@
     "qualified": 3003,
     "ready": 31,
     "sent": 15,
-    "health": "HEALTHY",
+    "health": "DEGRADED",
     "windows": {
      "completed": 1,
      "failed": 0,

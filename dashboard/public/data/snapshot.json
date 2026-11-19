@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-19T17:22:51.875Z",
+ "generatedAt": "2026-11-19T17:28:11.292Z",
  "sourceAsOf": "2026-11-19T17:19:17.524Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -10,10 +10,8 @@
   "staleAfterMinutes": 75
  },
  "health": {
-  "status": "DEGRADED",
-  "reasons": [
-   "READY vs handoff export: CRM 103 · exported 46 · confirmed since export 0"
-  ],
+  "status": "HEALTHY",
+  "reasons": [],
   "checks": [
    {
     "id": "sqlite_read",
@@ -61,7 +59,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.1h ago",
+    "detail": "Last prepared 0.2h ago",
     "blocking": false
    },
    {
@@ -95,8 +93,8 @@
    {
     "id": "handoff_consistency",
     "label": "READY vs handoff export",
-    "state": "WARN",
-    "detail": "CRM 103 · exported 46 · confirmed since export 0",
+    "state": "OK",
+    "detail": "CRM 46 · exported 46 · confirmed since export 0",
     "blocking": false
    },
    {
@@ -114,12 +112,12 @@
   "classified": 5881,
   "byQualification": {
    "QUALIFIED": 2915,
-   "READY": 103,
+   "READY": 46,
    "UNRESOLVED": 2709,
    "SUPPRESSED": 154
   },
   "readyByRoute": {
-   "EMAIL": 103,
+   "EMAIL": 46,
    "FORM": 0
   },
   "contactChannels": [
@@ -225,8 +223,8 @@
     "target": 300,
     "total": 1181,
     "qualified": 1115,
-    "ready": 41,
-    "readyEmail": 41,
+    "ready": 24,
+    "readyEmail": 24,
     "readyForm": 0,
     "unresolved": 15,
     "suppressed": 51,
@@ -240,8 +238,8 @@
     "target": 300,
     "total": 1239,
     "qualified": 1206,
-    "ready": 17,
-    "readyEmail": 17,
+    "ready": 8,
+    "readyEmail": 8,
     "readyForm": 0,
     "unresolved": 2,
     "suppressed": 31,
@@ -255,8 +253,8 @@
     "target": 300,
     "total": 709,
     "qualified": 653,
-    "ready": 42,
-    "readyEmail": 42,
+    "ready": 11,
+    "readyEmail": 11,
     "readyForm": 0,
     "unresolved": 1,
     "suppressed": 55,
@@ -294,7 +292,7 @@
    {
     "id": "ROUTE_READY",
     "label": "Route-ready",
-    "count": 103,
+    "count": 46,
     "note": "READY = handoff eligible, not safe to email yet"
    },
    {
@@ -926,7 +924,7 @@
     "id": "WEBSITE_WORLD",
     "label": "Website design",
     "sent": 46,
-    "ready": 41,
+    "ready": 24,
     "replies": null,
     "positive": null,
     "converted": null
@@ -935,7 +933,7 @@
     "id": "DIGITAL_INQUIRY",
     "label": "Inquiry follow-up",
     "sent": 31,
-    "ready": 17,
+    "ready": 8,
     "replies": null,
     "positive": null,
     "converted": null
@@ -944,7 +942,7 @@
     "id": "DIGITAL_ESTIMATES",
     "label": "Estimate follow-up",
     "sent": 55,
-    "ready": 42,
+    "ready": 11,
     "replies": null,
     "positive": null,
     "converted": null
@@ -966,19 +964,19 @@
    {
     "id": "WEBSITE_WORLD",
     "label": "Website design",
-    "ready": 41,
+    "ready": 24,
     "blocked": 669
    },
    {
     "id": "DIGITAL_INQUIRY",
     "label": "Inquiry follow-up",
-    "ready": 17,
+    "ready": 8,
     "blocked": 1238
    },
    {
     "id": "DIGITAL_ESTIMATES",
     "label": "Estimate follow-up",
-    "ready": 42,
+    "ready": 11,
     "blocked": 693
    }
   ],
@@ -1105,16 +1103,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-19T17:22:51.875Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "CRM_HANDOFF_MISMATCH",
-   "severity": "WARNING",
-   "title": "CRM / handoff mismatch",
-   "detail": "READY count differs from the latest handoff export.",
-   "firstDetected": "2026-11-17T14:47:51.928Z",
-   "lastDetected": "2026-11-19T17:22:51.875Z",
+   "lastDetected": "2026-11-19T17:28:11.292Z",
    "state": "ACTIVE"
   }
  ],
@@ -1335,9 +1324,9 @@
     "day": "2026-11-19",
     "total": 5881,
     "qualified": 3018,
-    "ready": 103,
+    "ready": 46,
     "sent": 0,
-    "health": "DEGRADED",
+    "health": "HEALTHY",
     "windows": {
      "completed": 0,
      "failed": 0,
@@ -1381,18 +1370,18 @@
   "crossChecks": [
    {
     "id": "crm_vs_handoff",
-    "ok": false,
-    "detail": "CRM READY 103 · handoff 46"
+    "ok": true,
+    "detail": "CRM READY 46 · handoff 46"
    },
    {
     "id": "crm_vs_audit",
-    "ok": false,
-    "detail": "CRM READY 103 · audit 46"
+    "ok": true,
+    "detail": "CRM READY 46 · audit 46"
    },
    {
     "id": "crm_vs_production_report",
     "ok": false,
-    "detail": "CRM READY 103 · older production report 107 (report predates latest cleanup)"
+    "detail": "CRM READY 46 · older production report 107 (report predates latest cleanup)"
    },
    {
     "id": "all_classified",

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-19T17:22:51.875Z",
+ "generatedAt": "2026-11-19T17:28:11.292Z",
  "lastLogAt": "2026-11-19T17:19:17.556Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -18,14 +18,14 @@
   "slowMinExtraSec": 30,
   "minBaselineSamples": 5
  },
- "state": "SLOW",
+ "state": "IDLE",
  "stoppedKind": null,
- "caution": false,
- "headline": "Step slower than its baseline",
+ "caution": true,
+ "headline": "Send queue shortage",
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-19T17:22:51.875Z",
+   "lastSuccessAt": "2026-11-19T17:28:11.292Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
@@ -342,16 +342,6 @@
  "activePathways": [],
  "diagnostics": [
   {
-   "id": "SLOW_VS_BASELINE",
-   "rank": 72,
-   "severity": "WARNING",
-   "stage": "DISCOVERY",
-   "title": "Step slower than its baseline",
-   "evidence": [
-    "ImportDiscovery.js: 48s vs median 15s (24 samples, threshold 2×)"
-   ]
-  },
-  {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,
    "severity": "WARNING",
@@ -360,20 +350,9 @@
    "evidence": [
     "Interior detailing: 3 EMAIL-ready (CRITICAL < 150)",
     "Property services: 0 EMAIL-ready (CRITICAL < 150)",
-    "Website design: 41 EMAIL-ready (CRITICAL < 150)",
-    "Inquiry follow-up: 17 EMAIL-ready (CRITICAL < 150)",
-    "Estimate follow-up: 42 EMAIL-ready (CRITICAL < 150)"
-   ]
-  },
-  {
-   "id": "CRM_LEDGER_MISMATCH",
-   "rank": 50,
-   "severity": "WARNING",
-   "stage": "VERIFICATION",
-   "title": "CRM and Gmail ledger not reconciled",
-   "evidence": [
-    "CRM READY 103 · handoff 46",
-    "CRM READY 103 · audit 46"
+    "Website design: 24 EMAIL-ready (CRITICAL < 150)",
+    "Inquiry follow-up: 8 EMAIL-ready (CRITICAL < 150)",
+    "Estimate follow-up: 11 EMAIL-ready (CRITICAL < 150)"
    ]
   },
   {
@@ -388,7 +367,7 @@
   }
  ],
  "metrics": {
-  "ready": 103,
+  "ready": 46,
   "sentToday": 0,
   "dailyCap": 50,
   "preparedSnapshots": 18,

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T04:57:54.042Z",
+ "generatedAt": "2026-11-20T05:02:52.074Z",
  "sourceAsOf": "2026-11-19T22:00:35.291Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -327,8 +327,8 @@
  },
  "outreach": {
   "dailyCap": 50,
-  "sentToday": 15,
-  "remainingToday": 35,
+  "sentToday": 0,
+  "remainingToday": 50,
   "sentThisWeek": 164,
   "sentThisMonth": 164,
   "sent7d": 164,
@@ -341,10 +341,6 @@
   "evidence": "GMAIL_API_ACCEPTED",
   "inboxDeliveryConfirmed": false,
   "daily": [
-   {
-    "day": "2026-10-21",
-    "count": 0
-   },
    {
     "day": "2026-10-22",
     "count": 0
@@ -460,6 +456,10 @@
    {
     "day": "2026-11-19",
     "count": 15
+   },
+   {
+    "day": "2026-11-20",
+    "count": 0
    }
   ],
   "byCampaign": [
@@ -508,38 +508,38 @@
    {
     "id": "MORNING",
     "label": "9:00 AM ET Dispatch",
-    "scheduledAt": "2026-11-19T14:00:00.000Z",
+    "scheduledAt": "2026-11-20T14:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
     "errors": null,
     "runId": null,
     "evidence": "NONE",
-    "state": "UNKNOWN"
+    "state": "SCHEDULED"
    },
    {
     "id": "MIDDAY",
     "label": "1:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-19T18:00:00.000Z",
+    "scheduledAt": "2026-11-20T18:00:00.000Z",
     "startedAt": null,
-    "finishedAt": "2026-11-19T18:00:08.272Z",
-    "sent": 15,
-    "errors": 0,
-    "runId": "foundry_safe_dispatch",
-    "evidence": "GMAIL_API_AND_CRM",
-    "state": "COMPLETED"
+    "finishedAt": null,
+    "sent": null,
+    "errors": null,
+    "runId": null,
+    "evidence": "NONE",
+    "state": "SCHEDULED"
    },
    {
     "id": "AFTERNOON",
     "label": "5:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-19T22:00:00.000Z",
+    "scheduledAt": "2026-11-20T22:00:00.000Z",
     "startedAt": null,
-    "finishedAt": "2026-11-19T22:00:09.365Z",
-    "sent": 0,
-    "errors": 0,
-    "runId": "foundry_safe_dispatch",
-    "evidence": "GMAIL_API_AND_CRM",
-    "state": "COMPLETED"
+    "finishedAt": null,
+    "sent": null,
+    "errors": null,
+    "runId": null,
+    "evidence": "NONE",
+    "state": "SCHEDULED"
    }
   ],
   "lastDispatch": {
@@ -785,10 +785,6 @@
   ],
   "emailActivity": [
    {
-    "day": "2026-10-21",
-    "count": 0
-   },
-   {
     "day": "2026-10-22",
     "count": 0
    },
@@ -903,6 +899,10 @@
    {
     "day": "2026-11-19",
     "count": 15
+   },
+   {
+    "day": "2026-11-20",
+    "count": 0
    }
   ],
   "campaignPerformance": [
@@ -1096,6 +1096,13 @@
     "failed": 0,
     "blocked": 0,
     "unknown": 1
+   },
+   {
+    "day": "2026-11-20",
+    "completed": 0,
+    "failed": 0,
+    "blocked": 0,
+    "unknown": 0
    }
   ],
   "conversionTrend": []
@@ -1107,7 +1114,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-20T04:57:54.042Z",
+   "lastDetected": "2026-11-20T05:02:52.074Z",
    "state": "ACTIVE"
   }
  ],
@@ -1336,6 +1343,20 @@
      "failed": 0,
      "blocked": 0,
      "unknown": 1
+    }
+   },
+   {
+    "day": "2026-11-20",
+    "total": 5881,
+    "qualified": 3003,
+    "ready": 31,
+    "sent": 0,
+    "health": "HEALTHY",
+    "windows": {
+     "completed": 0,
+     "failed": 0,
+     "blocked": 0,
+     "unknown": 0
     }
    }
   ]

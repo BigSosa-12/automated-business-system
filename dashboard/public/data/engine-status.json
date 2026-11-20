@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T04:57:54.042Z",
+ "generatedAt": "2026-11-20T05:02:52.074Z",
  "lastLogAt": "2026-11-19T22:00:35.378Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,13 +25,13 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-20T04:57:54.042Z",
+   "lastSuccessAt": "2026-11-20T05:02:52.074Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "COMPLETED_TODAY",
+   "state": "NO_RUN_EVIDENCE_TODAY",
    "lastPreparationAt": "2026-11-19T22:00:34.030Z",
    "lock": "FREE"
   },
@@ -46,20 +46,23 @@
     {
      "id": "MORNING",
      "label": "9:00 AM ET Dispatch",
-     "state": "UNKNOWN"
+     "state": "SCHEDULED"
     },
     {
      "id": "MIDDAY",
      "label": "1:00 PM ET Dispatch",
-     "state": "COMPLETED"
+     "state": "SCHEDULED"
     },
     {
      "id": "AFTERNOON",
      "label": "5:00 PM ET Dispatch",
-     "state": "COMPLETED"
+     "state": "SCHEDULED"
     }
    ],
-   "next": null
+   "next": {
+    "label": "9:00 AM ET Dispatch",
+    "at": "2026-11-20T14:00:00.000Z"
+   }
   }
  },
  "indicators": [
@@ -370,7 +373,7 @@
  ],
  "metrics": {
   "ready": 31,
-  "sentToday": 15,
+  "sentToday": 0,
   "dailyCap": 50,
   "preparedSnapshots": 19,
   "total": 5881

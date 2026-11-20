@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T06:55:38.589Z",
+ "generatedAt": "2026-11-20T06:58:26.418Z",
  "lastLogAt": "2026-11-19T22:00:35.378Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -21,12 +21,12 @@
  "state": "IDLE",
  "stoppedKind": null,
  "caution": true,
- "headline": "Send queue shortage",
+ "headline": "Snapshot publishing failed",
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-20T06:55:38.589Z",
-   "lastError": null,
+   "lastSuccessAt": "2026-11-20T06:58:26.418Z",
+   "lastError": "To https://github.com/BigSosa-12/automated-business-system.git ! [remote rejected] HEAD -> main (cannot lock ref 'refs/heads/main': is at 317d3344c4aa9822294f9…",
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
@@ -346,6 +346,16 @@
  ],
  "activePathways": [],
  "diagnostics": [
+  {
+   "id": "PUBLISH_FAILURE",
+   "rank": 85,
+   "severity": "WARNING",
+   "stage": null,
+   "title": "Snapshot publishing failed",
+   "evidence": [
+    "To https://github.com/BigSosa-12/automated-business-system.git ! [remote rejected] HEAD -> main (cannot lock ref 'refs/heads/main': is at 317d3344c4aa9822294f9501545ccfc2626b0298 but expected da724d2…"
+   ]
+  },
   {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,

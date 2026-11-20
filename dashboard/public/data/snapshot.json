@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T06:55:38.589Z",
+ "generatedAt": "2026-11-20T06:58:26.418Z",
  "sourceAsOf": "2026-11-19T22:00:35.291Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -10,8 +10,10 @@
   "staleAfterMinutes": 75
  },
  "health": {
-  "status": "HEALTHY",
-  "reasons": [],
+  "status": "DEGRADED",
+  "reasons": [
+   "Dashboard exporter: Last publish problem: To https://github.com/BigSosa-12/automated-business-system.git ! [remote rejected] HEAD -> main (cannot lock ref 'refs/…"
+  ],
   "checks": [
    {
     "id": "sqlite_read",
@@ -59,7 +61,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 8.9h ago",
+    "detail": "Last prepared 9.0h ago",
     "blocking": false
    },
    {
@@ -100,8 +102,8 @@
    {
     "id": "exporter_last_run",
     "label": "Dashboard exporter",
-    "state": "OK",
-    "detail": "Last export succeeded",
+    "state": "WARN",
+    "detail": "Last publish problem: To https://github.com/BigSosa-12/automated-business-system.git ! [remote rejected] HEAD -> main (cannot lock ref 'refs/…",
     "blocking": false
    }
   ],
@@ -627,8 +629,8 @@
   }
  ],
  "schedulerEvidence": {
-  "available": true,
-  "reason": null
+  "available": false,
+  "reason": "ETIMEDOUT"
  },
  "locks": {
   "production": "FREE",
@@ -1114,7 +1116,16 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-20T06:55:38.589Z",
+   "lastDetected": "2026-11-20T06:58:26.418Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "EXPORT_PUBLISH_FAILURE",
+   "severity": "WARNING",
+   "title": "GitHub publish failure",
+   "detail": "To https://github.com/BigSosa-12/automated-business-system.git ! [remote rejected] HEAD -> main (cannot lock ref 'refs/heads/main': is at 317d3344c4aa9822294f9501545ccfc2626b0298 but expected da724d2…",
+   "firstDetected": "2026-11-20T06:58:26.418Z",
+   "lastDetected": "2026-11-20T06:58:26.418Z",
    "state": "ACTIVE"
   }
  ],
@@ -1351,7 +1362,7 @@
     "qualified": 3003,
     "ready": 31,
     "sent": 0,
-    "health": "HEALTHY",
+    "health": "DEGRADED",
     "windows": {
      "completed": 0,
      "failed": 0,
@@ -1388,8 +1399,8 @@
     "note": "Sales/revenue not recorded"
    },
    "taskScheduler": {
-    "state": "AVAILABLE",
-    "note": "schtasks query"
+    "state": "UNAVAILABLE",
+    "note": "Task definitions only (no run results)"
    }
   },
   "crossChecks": [

@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T13:27:53.692Z",
- "lastLogAt": "2026-11-20T13:28:10.407Z",
+ "generatedAt": "2026-11-20T13:32:52.190Z",
+ "lastLogAt": "2026-11-20T13:30:05.217Z",
  "thresholds": {
   "snapshotStaleMin": 75,
   "processingTtlMin": 6,
@@ -18,30 +18,22 @@
   "slowMinExtraSec": 30,
   "minBaselineSamples": 5
  },
- "state": "SLOW",
+ "state": "IDLE",
  "stoppedKind": null,
- "caution": false,
- "headline": "Prepare run exceeded its time limit",
- "process": {
-  "mode": "Prepare",
-  "jobId": "prepare-2026-11-20-0480",
-  "stage": "CLASSIFICATION",
-  "startedAtLowerBound": "2026-11-20T13:26:59.448Z",
-  "elapsedSecAtLeast": 54,
-  "items": null,
-  "evidence": "foundry_execution.lock held inside a scheduled window"
- },
+ "caution": true,
+ "headline": "Send queue shortage",
+ "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-20T13:27:53.692Z",
+   "lastSuccessAt": "2026-11-20T13:32:52.190Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "RUNNING",
-   "lastPreparationAt": "2026-11-19T22:00:34.030Z",
-   "lock": "HELD"
+   "state": "COMPLETED_TODAY",
+   "lastPreparationAt": "2026-11-20T13:29:53.260Z",
+   "lock": "FREE"
   },
   "dispatch": {
    "state": "GATES_OK",
@@ -124,55 +116,55 @@
   {
    "id": "CLASSIFICATION",
    "label": "Classification",
-   "state": "SLOW",
-   "lastSuccess": "2026-11-20T13:28:10.407Z",
-   "activity": "Preparation run holds the execution lock",
+   "state": "OK",
+   "lastSuccess": "2026-11-20T13:28:31.328Z",
+   "activity": null,
    "errors": 0,
-   "reason": "Run exceeded its 25-minute limit",
+   "reason": "Last run completed",
    "items": 5881,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-20T13:28:10.407Z",
-      "text": "ApplyLocalTargetLocations.js completed",
+      "at": "2026-11-20T13:28:31.328Z",
+      "text": "ApplyCampaignTargets.js completed",
       "ok": true
      },
      {
-      "at": "2026-11-20T13:28:02.104Z",
+      "at": "2026-11-20T13:28:28.946Z",
+      "text": "CategorizeAllBusinesses.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-20T13:28:28.833Z",
       "text": "Report written (ok)",
       "ok": true
      },
      {
-      "at": "2026-11-19T21:00:38.754Z",
+      "at": "2026-11-20T13:28:20.768Z",
       "text": "ApplyCampaignTargets.js completed",
       "ok": true
      },
      {
-      "at": "2026-11-19T21:00:35.504Z",
+      "at": "2026-11-20T13:28:16.562Z",
       "text": "CategorizeAllBusinesses.js completed",
       "ok": true
      },
      {
-      "at": "2026-11-19T21:00:30.382Z",
-      "text": "ApplyCampaignTargets.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-19T21:00:27.901Z",
-      "text": "CategorizeAllBusinesses.js completed",
+      "at": "2026-11-20T13:28:10.407Z",
+      "text": "ApplyLocalTargetLocations.js completed",
       "ok": true
      }
     ],
-    "durationSec": 0.192,
-    "baselineMedianSec": 0,
-    "latestIssue": "Run exceeded its 25-minute limit"
+    "durationSec": 2.382,
+    "baselineMedianSec": 3,
+    "latestIssue": null
    }
   },
   {
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-20T13:26:59.448Z",
+   "lastSuccess": "2026-11-20T13:30:05.217Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
@@ -180,38 +172,38 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-20T13:26:59.448Z",
-      "text": "ReconcileSuppression.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-19T22:00:34.327Z",
-      "text": "Report written (ok)",
-      "ok": true
-     },
-     {
-      "at": "2026-11-19T21:01:40.130Z",
+      "at": "2026-11-20T13:30:05.217Z",
       "text": "FoundrySafetyAudit.js completed",
       "ok": true
      },
      {
-      "at": "2026-11-19T21:01:33.369Z",
+      "at": "2026-11-20T13:29:54.969Z",
       "text": "FoundryDailyAudit.js completed",
       "ok": true
      },
      {
-      "at": "2026-11-19T21:01:31.951Z",
+      "at": "2026-11-20T13:29:53.994Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
+     {
+      "at": "2026-11-20T13:29:52.823Z",
       "text": "FoundryQuarantine.js completed",
       "ok": true
      },
      {
-      "at": "2026-11-19T21:01:31.531Z",
+      "at": "2026-11-20T13:29:52.037Z",
       "text": "FoundryFinalReconcile.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-20T13:29:19.207Z",
+      "text": "FoundryDailyAudit.js completed",
       "ok": true
      }
     ],
-    "durationSec": 1029.641,
-    "baselineMedianSec": null,
+    "durationSec": 0.41,
+    "baselineMedianSec": 0,
     "latestIssue": null
    }
   },
@@ -219,7 +211,7 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-19T22:00:34.030Z",
+   "lastSuccess": "2026-11-20T13:30:04.807Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
@@ -227,8 +219,23 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-19T22:00:34.030Z",
+      "at": "2026-11-20T13:30:04.807Z",
+      "text": "FoundryReady.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-20T13:29:53.329Z",
+      "text": "FoundryFinalHandoffExport.js completed",
+      "ok": true
+     },
+     {
+      "at": "2026-11-20T13:29:53.260Z",
       "text": "Report written (ok)",
+      "ok": true
+     },
+     {
+      "at": "2026-11-20T13:29:47.647Z",
+      "text": "FoundryProductionPipeline.js completed",
       "ok": true
      },
      {
@@ -240,24 +247,9 @@
       "at": "2026-11-19T21:01:32.749Z",
       "text": "FoundryFinalHandoffExport.js completed",
       "ok": true
-     },
-     {
-      "at": "2026-11-19T21:01:27.405Z",
-      "text": "FoundryProductionPipeline.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-19T17:19:17.124Z",
-      "text": "FoundryReady.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-19T17:19:06.835Z",
-      "text": "FoundryFinalHandoffExport.js completed",
-      "ok": true
      }
     ],
-    "durationSec": 4.473,
+    "durationSec": 5.741,
     "baselineMedianSec": 7,
     "latestIssue": null
    }
@@ -352,20 +344,8 @@
    }
   }
  ],
- "activePathways": [
-  "CLASSIFICATION"
- ],
+ "activePathways": [],
  "diagnostics": [
-  {
-   "id": "PREP_DELAY",
-   "rank": 78,
-   "severity": "WARNING",
-   "stage": "CLASSIFICATION",
-   "title": "Prepare run exceeded its time limit",
-   "evidence": [
-    "Lock held at 8:27 AM ET, limit 8:25 AM ET"
-   ]
-  },
   {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,
@@ -395,13 +375,11 @@
   "ready": 31,
   "sentToday": 0,
   "dailyCap": 50,
-  "preparedSnapshots": 19,
+  "preparedSnapshots": 20,
   "total": 5881
  },
  "baselines": {
   "FoundryDailyAudit.js": [
-   1,
-   0,
    1,
    0,
    0,
@@ -429,7 +407,9 @@
    1,
    0,
    0,
-   0
+   0,
+   5,
+   1
   ],
   "FoundrySafetyAudit.js": [
    0,
@@ -441,7 +421,8 @@
    7,
    1,
    0,
-   1
+   1,
+   0
   ],
   "FoundryGmailReconcile.js": [
    9,
@@ -467,7 +448,8 @@
    49,
    12,
    24,
-   17
+   17,
+   29
   ],
   "FoundryRefillPlan.js": [
    1,
@@ -611,8 +593,6 @@
   ],
   "CategorizeAllBusinesses.js": [
    1,
-   1,
-   1,
    0,
    1,
    1,
@@ -639,11 +619,11 @@
    2,
    3,
    1,
-   1
+   1,
+   6,
+   2
   ],
   "ApplyCampaignTargets.js": [
-   3,
-   3,
    3,
    2,
    2,
@@ -671,7 +651,9 @@
    10,
    3,
    2,
-   3
+   3,
+   4,
+   2
   ],
   "AuditWebsiteOpportunities.js": [
    35,
@@ -698,6 +680,7 @@
    0,
    0,
    1,
+   0,
    0
   ],
   "AuditWebsiteExpansion.js": [
@@ -725,6 +708,7 @@
    1,
    0,
    0,
+   1,
    1
   ],
   "EnrichPublicContacts.js": [
@@ -750,6 +734,7 @@
    45,
    39,
    0,
+   1,
    1,
    1
   ],
@@ -777,7 +762,8 @@
    0,
    0,
    2,
-   1
+   1,
+   3
   ],
   "PromoteWebsiteOpportunities.js": [
    1,
@@ -795,6 +781,7 @@
    1,
    1,
    2,
+   1,
    1,
    1,
    1,
@@ -825,7 +812,8 @@
    64,
    35,
    25,
-   24
+   24,
+   28
   ],
   "WebsiteFallbackReady.js": [
    3,
@@ -853,7 +841,8 @@
    4,
    2,
    2,
-   1
+   1,
+   2
   ],
   "FoundryQuarantine.js": [
    0,
@@ -874,7 +863,8 @@
    2,
    0,
    1,
-   0
+   0,
+   1
   ],
   "FoundryFinalHandoffExport.js": [
    0,
@@ -891,6 +881,7 @@
    0,
    0,
    9,
+   1,
    1,
    1,
    1
@@ -912,6 +903,7 @@
    4,
    1,
    1,
+   0,
    0
   ],
   "FoundryContactAudit.js": [
@@ -931,7 +923,8 @@
    3,
    1,
    0,
-   0
+   0,
+   1
   ],
   "FoundryReady.js": [
    6,
@@ -950,7 +943,8 @@
    70,
    7,
    7,
-   4
+   4,
+   6
   ],
   "FoundryBounceReview.js": [
    2,
@@ -966,7 +960,8 @@
    24,
    6,
    5,
-   6
+   6,
+   13
   ],
   "FoundryRecoverDomains.js": [
    5
@@ -991,7 +986,8 @@
    2,
    0,
    2,
-   1
+   1,
+   2
   ],
   "FoundryVerifyOfficialContacts.js": [
    0,
@@ -1009,6 +1005,7 @@
    1,
    0,
    5,
+   0,
    0,
    0,
    0,
@@ -1035,6 +1032,7 @@
    0,
    0,
    0,
+   0,
    0
   ],
   "FoundryLeadReconciliation.js": [
@@ -1049,7 +1047,8 @@
    11,
    4,
    2,
-   1
+   1,
+   3
   ],
   "FoundryValidateDiscovery.js": [
    6,
@@ -1108,6 +1107,7 @@
    7,
    3,
    1,
+   3,
    3
   ],
   "ReconcileSuppression.js": [

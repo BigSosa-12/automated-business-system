@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T14:22:52.599Z",
+ "generatedAt": "2026-11-20T14:27:52.368Z",
  "lastLogAt": "2026-11-20T14:02:00.095Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -21,12 +21,12 @@
  "state": "IDLE",
  "stoppedKind": null,
  "caution": true,
- "headline": "Send queue shortage",
+ "headline": "Snapshot publishing failed",
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-20T14:22:52.599Z",
-   "lastError": null,
+   "lastSuccessAt": "2026-11-20T14:27:52.368Z",
+   "lastError": "warning: in the working copy of 'dashboard/public/data/engine-status.json', LF will be replaced by CRLF the next time Git touches it warning: in the working co…",
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
@@ -346,6 +346,16 @@
  ],
  "activePathways": [],
  "diagnostics": [
+  {
+   "id": "PUBLISH_FAILURE",
+   "rank": 85,
+   "severity": "WARNING",
+   "stage": null,
+   "title": "Snapshot publishing failed",
+   "evidence": [
+    "warning: in the working copy of 'dashboard/public/data/engine-status.json', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'dashboard/public/data/snapshot.js…"
+   ]
+  },
   {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,

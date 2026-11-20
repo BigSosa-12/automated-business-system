@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T14:22:52.599Z",
+ "generatedAt": "2026-11-20T14:27:52.368Z",
  "sourceAsOf": "2026-11-20T14:00:08.803Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -10,8 +10,10 @@
   "staleAfterMinutes": 75
  },
  "health": {
-  "status": "HEALTHY",
-  "reasons": [],
+  "status": "DEGRADED",
+  "reasons": [
+   "Dashboard exporter: Last publish problem: warning: in the working copy of 'dashboard/public/data/engine-status.json', LF will be replaced by CRLF the next time G…"
+  ],
   "checks": [
    {
     "id": "sqlite_read",
@@ -59,7 +61,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.9h ago",
+    "detail": "Last prepared 1.0h ago",
     "blocking": false
    },
    {
@@ -100,8 +102,8 @@
    {
     "id": "exporter_last_run",
     "label": "Dashboard exporter",
-    "state": "OK",
-    "detail": "Last export succeeded",
+    "state": "WARN",
+    "detail": "Last publish problem: warning: in the working copy of 'dashboard/public/data/engine-status.json', LF will be replaced by CRLF the next time G…",
     "blocking": false
    }
   ],
@@ -1114,7 +1116,16 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-20T14:22:52.599Z",
+   "lastDetected": "2026-11-20T14:27:52.368Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "EXPORT_PUBLISH_FAILURE",
+   "severity": "WARNING",
+   "title": "GitHub publish failure",
+   "detail": "warning: in the working copy of 'dashboard/public/data/engine-status.json', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'dashboard/public/data/snapshot.js…",
+   "firstDetected": "2026-11-20T14:27:52.368Z",
+   "lastDetected": "2026-11-20T14:27:52.368Z",
    "state": "ACTIVE"
   }
  ],
@@ -1351,7 +1362,7 @@
     "qualified": 2990,
     "ready": 18,
     "sent": 13,
-    "health": "HEALTHY",
+    "health": "DEGRADED",
     "windows": {
      "completed": 1,
      "failed": 0,

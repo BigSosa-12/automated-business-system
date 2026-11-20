@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T04:22:51.988Z",
+ "generatedAt": "2026-11-20T04:27:52.141Z",
  "sourceAsOf": "2026-11-19T22:00:35.291Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -10,8 +10,10 @@
   "staleAfterMinutes": 75
  },
  "health": {
-  "status": "HEALTHY",
-  "reasons": [],
+  "status": "DEGRADED",
+  "reasons": [
+   "Dashboard exporter: Last publish problem: spawnSync git ETIMEDOUT"
+  ],
   "checks": [
    {
     "id": "sqlite_read",
@@ -59,7 +61,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 6.4h ago",
+    "detail": "Last prepared 6.5h ago",
     "blocking": false
    },
    {
@@ -100,8 +102,8 @@
    {
     "id": "exporter_last_run",
     "label": "Dashboard exporter",
-    "state": "OK",
-    "detail": "Last export succeeded",
+    "state": "WARN",
+    "detail": "Last publish problem: spawnSync git ETIMEDOUT",
     "blocking": false
    }
   ],
@@ -1107,7 +1109,16 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-20T04:22:51.988Z",
+   "lastDetected": "2026-11-20T04:27:52.141Z",
+   "state": "ACTIVE"
+  },
+  {
+   "id": "EXPORT_PUBLISH_FAILURE",
+   "severity": "WARNING",
+   "title": "GitHub publish failure",
+   "detail": "spawnSync git ETIMEDOUT",
+   "firstDetected": "2026-11-20T04:27:52.141Z",
+   "lastDetected": "2026-11-20T04:27:52.141Z",
    "state": "ACTIVE"
   }
  ],
@@ -1330,7 +1341,7 @@
     "qualified": 3003,
     "ready": 31,
     "sent": 15,
-    "health": "HEALTHY",
+    "health": "DEGRADED",
     "windows": {
      "completed": 2,
      "failed": 0,

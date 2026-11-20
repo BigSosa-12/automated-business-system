@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T04:22:51.988Z",
+ "generatedAt": "2026-11-20T04:27:52.141Z",
  "lastLogAt": "2026-11-19T22:00:35.378Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -21,12 +21,12 @@
  "state": "IDLE",
  "stoppedKind": null,
  "caution": true,
- "headline": "Send queue shortage",
+ "headline": "Snapshot publishing failed",
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-20T04:22:51.988Z",
-   "lastError": null,
+   "lastSuccessAt": "2026-11-20T04:27:52.141Z",
+   "lastError": "spawnSync git ETIMEDOUT",
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
@@ -343,6 +343,16 @@
  ],
  "activePathways": [],
  "diagnostics": [
+  {
+   "id": "PUBLISH_FAILURE",
+   "rank": 85,
+   "severity": "WARNING",
+   "stage": null,
+   "title": "Snapshot publishing failed",
+   "evidence": [
+    "spawnSync git ETIMEDOUT"
+   ]
+  },
   {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,

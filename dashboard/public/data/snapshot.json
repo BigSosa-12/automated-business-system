@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T13:37:52.051Z",
- "sourceAsOf": "2026-11-20T13:30:05.121Z",
+ "generatedAt": "2026-11-20T13:42:52.545Z",
+ "sourceAsOf": "2026-11-20T13:38:38.750Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -59,7 +59,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.1h ago",
+    "detail": "Last prepared 0.2h ago",
     "blocking": false
    },
    {
@@ -496,7 +496,7 @@
   "duplicatesPrevented": null,
   "queued": {
    "routeReady": 31,
-   "preparedSnapshots": 20,
+   "preparedSnapshots": 21,
    "queueRows": 0,
    "agingHours": null
   },
@@ -1110,7 +1110,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-20T13:37:52.051Z",
+   "lastDetected": "2026-11-20T13:42:52.545Z",
    "state": "ACTIVE"
   }
  ],
@@ -1414,7 +1414,7 @@
    {
     "name": "foundry_contact_evidence_audit",
     "present": true,
-    "asOf": "2026-11-20T13:29:56.112Z"
+    "asOf": "2026-11-20T13:38:34.910Z"
    },
    {
     "name": "foundry_health_report",
@@ -1434,7 +1434,7 @@
    {
     "name": "foundry_safety_audit",
     "present": true,
-    "asOf": "2026-11-20T13:30:05.121Z"
+    "asOf": "2026-11-20T13:38:38.750Z"
    },
    {
     "name": "foundry_safe_dispatch_report",

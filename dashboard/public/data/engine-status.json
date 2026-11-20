@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T06:58:26.418Z",
+ "generatedAt": "2026-11-20T13:26:14.062Z",
  "lastLogAt": "2026-11-19T22:00:35.378Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -18,22 +18,30 @@
   "slowMinExtraSec": 30,
   "minBaselineSamples": 5
  },
- "state": "IDLE",
+ "state": "SLOW",
  "stoppedKind": null,
- "caution": true,
- "headline": "Snapshot publishing failed",
- "process": null,
+ "caution": false,
+ "headline": "Prepare run exceeded its time limit",
+ "process": {
+  "mode": "Prepare",
+  "jobId": "prepare-2026-11-20-0480",
+  "stage": "DISCOVERY",
+  "startedAtLowerBound": "2026-11-20T13:00:00.000Z",
+  "elapsedSecAtLeast": 1574,
+  "items": null,
+  "evidence": "foundry_execution.lock held inside a scheduled window"
+ },
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-20T06:58:26.418Z",
-   "lastError": "To https://github.com/BigSosa-12/automated-business-system.git ! [remote rejected] HEAD -> main (cannot lock ref 'refs/heads/main': is at 317d3344c4aa9822294f9…",
+   "lastSuccessAt": "2026-11-20T13:26:14.062Z",
+   "lastError": "spawnSync git ETIMEDOUT",
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
-   "state": "NO_RUN_EVIDENCE_TODAY",
+   "state": "RUNNING",
    "lastPreparationAt": "2026-11-19T22:00:34.030Z",
-   "lock": "FREE"
+   "lock": "HELD"
   },
   "dispatch": {
    "state": "GATES_OK",
@@ -69,11 +77,11 @@
   {
    "id": "DISCOVERY",
    "label": "Discovery",
-   "state": "WARN",
+   "state": "SLOW",
    "lastSuccess": "2026-11-19T21:00:26.738Z",
-   "activity": null,
+   "activity": "Preparation run holds the execution lock",
    "errors": 1,
-   "reason": "1 source job(s) unavailable",
+   "reason": "Run exceeded its 25-minute limit",
    "items": 3492,
    "detail": {
     "recent": [
@@ -110,7 +118,7 @@
     ],
     "durationSec": 5.861,
     "baselineMedianSec": 15,
-    "latestIssue": "1 source job(s) unavailable"
+    "latestIssue": "Run exceeded its 25-minute limit"
    }
   },
   {
@@ -344,7 +352,9 @@
    }
   }
  ],
- "activePathways": [],
+ "activePathways": [
+  "DISCOVERY"
+ ],
  "diagnostics": [
   {
    "id": "PUBLISH_FAILURE",
@@ -353,7 +363,17 @@
    "stage": null,
    "title": "Snapshot publishing failed",
    "evidence": [
-    "To https://github.com/BigSosa-12/automated-business-system.git ! [remote rejected] HEAD -> main (cannot lock ref 'refs/heads/main': is at 317d3344c4aa9822294f9501545ccfc2626b0298 but expected da724d2…"
+    "spawnSync git ETIMEDOUT"
+   ]
+  },
+  {
+   "id": "PREP_DELAY",
+   "rank": 78,
+   "severity": "WARNING",
+   "stage": "DISCOVERY",
+   "title": "Prepare run exceeded its time limit",
+   "evidence": [
+    "Lock held at 8:26 AM ET, limit 8:25 AM ET"
    ]
   },
   {

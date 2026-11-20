@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T14:32:52.091Z",
+ "generatedAt": "2026-11-20T14:37:52.128Z",
  "lastLogAt": "2026-11-20T14:02:00.095Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -25,14 +25,14 @@
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-20T14:32:52.091Z",
+   "lastSuccessAt": "2026-11-20T14:37:52.128Z",
    "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
    "state": "COMPLETED_TODAY",
-   "lastPreparationAt": "2026-11-20T14:31:12.289Z",
+   "lastPreparationAt": "2026-11-20T14:35:43.396Z",
    "lock": "FREE"
   },
   "dispatch": {
@@ -164,15 +164,15 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-20T14:31:12.431Z",
+   "lastSuccess": "2026-11-20T14:35:43.555Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 14,
+   "items": 12,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-20T14:31:12.431Z",
+      "at": "2026-11-20T14:35:43.555Z",
       "text": "Report written (ok)",
       "ok": true
      },
@@ -211,15 +211,15 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-20T14:31:12.289Z",
+   "lastSuccess": "2026-11-20T14:35:43.396Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 14,
+   "items": 12,
    "detail": {
     "recent": [
      {
-      "at": "2026-11-20T14:31:12.289Z",
+      "at": "2026-11-20T14:35:43.396Z",
       "text": "Report written (ok)",
       "ok": true
      },
@@ -258,7 +258,7 @@
    "id": "GMAIL_DISPATCH",
    "label": "Gmail Dispatch",
    "state": "OK",
-   "lastSuccess": "2026-11-20T14:02:00.095Z",
+   "lastSuccess": "2026-11-20T14:36:52.595Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
@@ -266,13 +266,13 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-20T14:02:00.095Z",
-      "text": "FoundrySend.js completed",
+      "at": "2026-11-20T14:36:52.595Z",
+      "text": "Report written (ok)",
       "ok": true
      },
      {
-      "at": "2026-11-20T14:00:08.803Z",
-      "text": "Report written (ok)",
+      "at": "2026-11-20T14:02:00.095Z",
+      "text": "FoundrySend.js completed",
       "ok": true
      },
      {
@@ -305,7 +305,7 @@
    "id": "REPLY_PROCESSING",
    "label": "Reply Processing",
    "state": "OK",
-   "lastSuccess": "2026-11-19T22:00:35.378Z",
+   "lastSuccess": "2026-11-20T14:35:43.936Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
@@ -313,13 +313,13 @@
    "detail": {
     "recent": [
      {
-      "at": "2026-11-19T22:00:35.378Z",
-      "text": "FoundryDayReview.js completed",
+      "at": "2026-11-20T14:35:43.936Z",
+      "text": "Report written (ok)",
       "ok": true
      },
      {
-      "at": "2026-11-19T22:00:35.291Z",
-      "text": "Report written (ok)",
+      "at": "2026-11-19T22:00:35.378Z",
+      "text": "FoundryDayReview.js completed",
       "ok": true
      },
      {
@@ -355,7 +355,7 @@
    "evidence": [
     "Interior detailing: 3 EMAIL-ready (CRITICAL < 150)",
     "Property services: 0 EMAIL-ready (CRITICAL < 150)",
-    "Website design: 8 EMAIL-ready (CRITICAL < 150)",
+    "Website design: 6 EMAIL-ready (CRITICAL < 150)",
     "Inquiry follow-up: 2 EMAIL-ready (CRITICAL < 150)",
     "Estimate follow-up: 1 EMAIL-ready (CRITICAL < 150)"
    ]
@@ -372,7 +372,7 @@
   }
  ],
  "metrics": {
-  "ready": 14,
+  "ready": 12,
   "sentToday": 13,
   "dailyCap": 50,
   "preparedSnapshots": 21,

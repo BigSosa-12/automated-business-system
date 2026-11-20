@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T14:27:52.368Z",
- "sourceAsOf": "2026-11-20T14:00:08.803Z",
+ "generatedAt": "2026-11-20T14:32:52.091Z",
+ "sourceAsOf": "2026-11-20T14:31:12.884Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -10,10 +10,8 @@
   "staleAfterMinutes": 75
  },
  "health": {
-  "status": "DEGRADED",
-  "reasons": [
-   "Dashboard exporter: Last publish problem: warning: in the working copy of 'dashboard/public/data/engine-status.json', LF will be replaced by CRLF the next time G…"
-  ],
+  "status": "HEALTHY",
+  "reasons": [],
   "checks": [
    {
     "id": "sqlite_read",
@@ -26,7 +24,7 @@
     "id": "contact_evidence",
     "label": "Evidence-backed email routes",
     "state": "OK",
-    "detail": "31 of 31 routes pass the contact source check",
+    "detail": "14 of 14 routes pass the contact source check",
     "blocking": true
    },
    {
@@ -61,7 +59,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 1.0h ago",
+    "detail": "Last prepared 0.0h ago",
     "blocking": false
    },
    {
@@ -96,14 +94,14 @@
     "id": "handoff_consistency",
     "label": "READY vs handoff export",
     "state": "OK",
-    "detail": "CRM 18 · exported 31 · confirmed since export 13",
+    "detail": "CRM 14 · exported 14 · confirmed since export 0",
     "blocking": false
    },
    {
     "id": "exporter_last_run",
     "label": "Dashboard exporter",
-    "state": "WARN",
-    "detail": "Last publish problem: warning: in the working copy of 'dashboard/public/data/engine-status.json', LF will be replaced by CRLF the next time G…",
+    "state": "OK",
+    "detail": "Last export succeeded",
     "blocking": false
    }
   ],
@@ -114,12 +112,12 @@
   "classified": 5881,
   "byQualification": {
    "QUALIFIED": 2915,
-   "READY": 18,
-   "UNRESOLVED": 2709,
+   "READY": 14,
+   "UNRESOLVED": 2713,
    "SUPPRESSED": 182
   },
   "readyByRoute": {
-   "EMAIL": 18,
+   "EMAIL": 14,
    "FORM": 0
   },
   "contactChannels": [
@@ -152,8 +150,8 @@
   "potentialDuplicates": 29,
   "unassigned": 2687,
   "routeQueue": {
-   "ready": 18,
-   "blocked": 3478
+   "ready": 14,
+   "blocked": 3482
   },
   "blockedReasons": [
    {
@@ -185,11 +183,11 @@
     "n": 3
    },
    {
-    "reason": "Unsafe business name for final message",
-    "n": 1
+    "reason": "Noncommercial or malformed recipient domain",
+    "n": 2
    }
   ],
-  "quarantined": 542,
+  "quarantined": 546,
   "byCampaign": [
    {
     "id": "LOCAL_DETAILING",
@@ -228,11 +226,11 @@
     "territory": "WORLDWIDE",
     "target": 300,
     "total": 1181,
-    "qualified": 1103,
-    "ready": 12,
-    "readyEmail": 12,
+    "qualified": 1099,
+    "ready": 8,
+    "readyEmail": 8,
     "readyForm": 0,
-    "unresolved": 15,
+    "unresolved": 19,
     "suppressed": 63,
     "inventoryState": "CRITICAL"
    },
@@ -292,13 +290,13 @@
    {
     "id": "QUALIFIED",
     "label": "Qualified",
-    "count": 2990,
+    "count": 2986,
     "note": "QUALIFIED + READY classification"
    },
    {
     "id": "ROUTE_READY",
     "label": "Route-ready",
-    "count": 18,
+    "count": 14,
     "note": "READY = handoff eligible, not safe to email yet"
    },
    {
@@ -501,7 +499,7 @@
   "bounces": null,
   "duplicatesPrevented": null,
   "queued": {
-   "routeReady": 18,
+   "routeReady": 14,
    "preparedSnapshots": 21,
    "queueRows": 0,
    "agingHours": null
@@ -553,8 +551,8 @@
   },
   "nextDispatchAt": "2026-11-20T18:00:00.000Z",
   "lastPreparation": {
-   "at": "2026-11-20T13:29:53.260Z",
-   "rows": 31,
+   "at": "2026-11-20T14:31:12.289Z",
+   "rows": 14,
    "state": "COMPLETED"
   }
  },
@@ -673,11 +671,11 @@
   {
    "id": "VALIDATION",
    "label": "Validation",
-   "lastRun": "2026-11-20T13:29:53.994Z",
-   "lastSuccess": "2026-11-20T13:29:53.994Z",
+   "lastRun": "2026-11-20T14:31:12.431Z",
+   "lastSuccess": "2026-11-20T14:31:12.431Z",
    "durationSec": null,
    "status": "OK",
-   "items": 31,
+   "items": 14,
    "errors": 0,
    "note": null
   },
@@ -695,11 +693,11 @@
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "lastRun": "2026-11-20T13:29:53.260Z",
-   "lastSuccess": "2026-11-20T13:29:53.260Z",
+   "lastRun": "2026-11-20T14:31:12.289Z",
+   "lastSuccess": "2026-11-20T14:31:12.289Z",
    "durationSec": null,
    "status": "OK",
-   "items": 31,
+   "items": 14,
    "errors": 0,
    "note": null
   },
@@ -930,7 +928,7 @@
     "id": "WEBSITE_WORLD",
     "label": "Website design",
     "sent": 58,
-    "ready": 12,
+    "ready": 8,
     "replies": null,
     "positive": null,
     "converted": null
@@ -970,8 +968,8 @@
    {
     "id": "WEBSITE_WORLD",
     "label": "Website design",
-    "ready": 12,
-    "blocked": 681
+    "ready": 8,
+    "blocked": 685
    },
    {
     "id": "DIGITAL_INQUIRY",
@@ -1116,16 +1114,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-20T14:27:52.368Z",
-   "state": "ACTIVE"
-  },
-  {
-   "id": "EXPORT_PUBLISH_FAILURE",
-   "severity": "WARNING",
-   "title": "GitHub publish failure",
-   "detail": "warning: in the working copy of 'dashboard/public/data/engine-status.json', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'dashboard/public/data/snapshot.js…",
-   "firstDetected": "2026-11-20T14:27:52.368Z",
-   "lastDetected": "2026-11-20T14:27:52.368Z",
+   "lastDetected": "2026-11-20T14:32:52.091Z",
    "state": "ACTIVE"
   }
  ],
@@ -1359,10 +1348,10 @@
    {
     "day": "2026-11-20",
     "total": 5881,
-    "qualified": 2990,
-    "ready": 18,
+    "qualified": 2986,
+    "ready": 14,
     "sent": 13,
-    "health": "DEGRADED",
+    "health": "HEALTHY",
     "windows": {
      "completed": 1,
      "failed": 0,
@@ -1407,17 +1396,17 @@
    {
     "id": "crm_vs_handoff",
     "ok": true,
-    "detail": "CRM READY 18 · handoff 31 · sent since 13"
+    "detail": "CRM READY 14 · handoff 14 · sent since 0"
    },
    {
     "id": "crm_vs_audit",
     "ok": true,
-    "detail": "CRM READY 18 · audit 31 · sent since 13"
+    "detail": "CRM READY 14 · audit 14 · sent since 0"
    },
    {
     "id": "crm_vs_production_report",
     "ok": false,
-    "detail": "CRM READY 18 · older production report 92 (report predates latest cleanup)"
+    "detail": "CRM READY 14 · older production report 92 (report predates latest cleanup)"
    },
    {
     "id": "all_classified",
@@ -1429,7 +1418,7 @@
    {
     "name": "foundry_contact_evidence_audit",
     "present": true,
-    "asOf": "2026-11-20T13:38:34.910Z"
+    "asOf": "2026-11-20T14:31:12.707Z"
    },
    {
     "name": "foundry_health_report",
@@ -1439,7 +1428,7 @@
    {
     "name": "foundry_daily_audit",
     "present": true,
-    "asOf": "2026-11-20T13:29:53.994Z"
+    "asOf": "2026-11-20T14:31:12.431Z"
    },
    {
     "name": "foundry_day_review",
@@ -1449,7 +1438,7 @@
    {
     "name": "foundry_safety_audit",
     "present": true,
-    "asOf": "2026-11-20T13:38:38.750Z"
+    "asOf": "2026-11-20T14:31:12.884Z"
    },
    {
     "name": "foundry_safe_dispatch_report",
@@ -1459,7 +1448,7 @@
    {
     "name": "foundry_final_handoff_report",
     "present": true,
-    "asOf": "2026-11-20T13:29:53.260Z"
+    "asOf": "2026-11-20T14:31:12.289Z"
    },
    {
     "name": "foundry_production_report",
@@ -1504,7 +1493,7 @@
    {
     "name": "foundry_quarantine_report",
     "present": true,
-    "asOf": "2026-11-20T13:29:52.783Z"
+    "asOf": "2026-11-20T14:31:12.082Z"
    }
   ]
  }

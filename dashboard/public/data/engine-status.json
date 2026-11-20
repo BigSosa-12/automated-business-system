@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T14:27:52.368Z",
+ "generatedAt": "2026-11-20T14:32:52.091Z",
  "lastLogAt": "2026-11-20T14:02:00.095Z",
  "thresholds": {
   "snapshotStaleMin": 75,
@@ -21,18 +21,18 @@
  "state": "IDLE",
  "stoppedKind": null,
  "caution": true,
- "headline": "Snapshot publishing failed",
+ "headline": "Send queue shortage",
  "process": null,
  "heartbeats": {
   "exporter": {
-   "lastSuccessAt": "2026-11-20T14:27:52.368Z",
-   "lastError": "warning: in the working copy of 'dashboard/public/data/engine-status.json', LF will be replaced by CRLF the next time Git touches it warning: in the working co…",
+   "lastSuccessAt": "2026-11-20T14:32:52.091Z",
+   "lastError": null,
    "staleAfterMin": 75,
    "note": "Age is judged from this file’s publish time on GitHub Pages"
   },
   "pipeline": {
    "state": "COMPLETED_TODAY",
-   "lastPreparationAt": "2026-11-20T13:29:53.260Z",
+   "lastPreparationAt": "2026-11-20T14:31:12.289Z",
    "lock": "FREE"
   },
   "dispatch": {
@@ -164,13 +164,18 @@
    "id": "VERIFICATION",
    "label": "Verification",
    "state": "OK",
-   "lastSuccess": "2026-11-20T13:30:05.217Z",
+   "lastSuccess": "2026-11-20T14:31:12.431Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 31,
+   "items": 14,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-20T14:31:12.431Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
      {
       "at": "2026-11-20T13:30:05.217Z",
       "text": "FoundrySafetyAudit.js completed",
@@ -179,11 +184,6 @@
      {
       "at": "2026-11-20T13:29:54.969Z",
       "text": "FoundryDailyAudit.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-20T13:29:53.994Z",
-      "text": "Report written (ok)",
       "ok": true
      },
      {
@@ -211,13 +211,18 @@
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
    "state": "OK",
-   "lastSuccess": "2026-11-20T13:30:04.807Z",
+   "lastSuccess": "2026-11-20T14:31:12.289Z",
    "activity": null,
    "errors": 0,
    "reason": "Last run completed",
-   "items": 31,
+   "items": 14,
    "detail": {
     "recent": [
+     {
+      "at": "2026-11-20T14:31:12.289Z",
+      "text": "Report written (ok)",
+      "ok": true
+     },
      {
       "at": "2026-11-20T13:30:04.807Z",
       "text": "FoundryReady.js completed",
@@ -226,11 +231,6 @@
      {
       "at": "2026-11-20T13:29:53.329Z",
       "text": "FoundryFinalHandoffExport.js completed",
-      "ok": true
-     },
-     {
-      "at": "2026-11-20T13:29:53.260Z",
-      "text": "Report written (ok)",
       "ok": true
      },
      {
@@ -347,16 +347,6 @@
  "activePathways": [],
  "diagnostics": [
   {
-   "id": "PUBLISH_FAILURE",
-   "rank": 85,
-   "severity": "WARNING",
-   "stage": null,
-   "title": "Snapshot publishing failed",
-   "evidence": [
-    "warning: in the working copy of 'dashboard/public/data/engine-status.json', LF will be replaced by CRLF the next time Git touches it warning: in the working copy of 'dashboard/public/data/snapshot.js…"
-   ]
-  },
-  {
    "id": "QUEUE_SHORTAGE",
    "rank": 55,
    "severity": "WARNING",
@@ -365,7 +355,7 @@
    "evidence": [
     "Interior detailing: 3 EMAIL-ready (CRITICAL < 150)",
     "Property services: 0 EMAIL-ready (CRITICAL < 150)",
-    "Website design: 12 EMAIL-ready (CRITICAL < 150)",
+    "Website design: 8 EMAIL-ready (CRITICAL < 150)",
     "Inquiry follow-up: 2 EMAIL-ready (CRITICAL < 150)",
     "Estimate follow-up: 1 EMAIL-ready (CRITICAL < 150)"
    ]
@@ -382,7 +372,7 @@
   }
  ],
  "metrics": {
-  "ready": 18,
+  "ready": 14,
   "sentToday": 13,
   "dailyCap": 50,
   "preparedSnapshots": 21,

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T05:12:52.850Z",
+ "generatedAt": "2026-11-20T06:55:38.589Z",
  "sourceAsOf": "2026-11-19T22:00:35.291Z",
  "timezone": "America/New_York",
  "exporter": {
@@ -59,7 +59,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 7.2h ago",
+    "detail": "Last prepared 8.9h ago",
     "blocking": false
    },
    {
@@ -627,8 +627,8 @@
   }
  ],
  "schedulerEvidence": {
-  "available": false,
-  "reason": "ETIMEDOUT"
+  "available": true,
+  "reason": null
  },
  "locks": {
   "production": "FREE",
@@ -1114,7 +1114,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-20T05:12:52.850Z",
+   "lastDetected": "2026-11-20T06:55:38.589Z",
    "state": "ACTIVE"
   }
  ],
@@ -1388,8 +1388,8 @@
     "note": "Sales/revenue not recorded"
    },
    "taskScheduler": {
-    "state": "UNAVAILABLE",
-    "note": "Task definitions only (no run results)"
+    "state": "AVAILABLE",
+    "note": "schtasks query"
    }
   },
   "crossChecks": [

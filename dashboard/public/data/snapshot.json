@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-20T21:52:52.457Z",
- "sourceAsOf": "2026-11-20T21:05:01.804Z",
+ "generatedAt": "2026-11-21T08:28:04.938Z",
+ "sourceAsOf": "2026-11-20T22:00:50.190Z",
  "timezone": "America/New_York",
  "exporter": {
   "version": "1.0.0",
@@ -59,7 +59,7 @@
     "id": "preparation_fresh",
     "label": "Preparation freshness",
     "state": "OK",
-    "detail": "Last prepared 0.8h ago",
+    "detail": "Last prepared 10.5h ago",
     "blocking": false
    },
    {
@@ -164,7 +164,7 @@
    },
    {
     "reason": "Matched local suppression index",
-    "n": 182
+    "n": 180
    },
    {
     "reason": "No material automated website opportunity detected",
@@ -327,8 +327,8 @@
  },
  "outreach": {
   "dailyCap": 50,
-  "sentToday": 13,
-  "remainingToday": 37,
+  "sentToday": 0,
+  "remainingToday": 50,
   "sentThisWeek": 177,
   "sentThisMonth": 177,
   "sent7d": 177,
@@ -341,10 +341,6 @@
   "evidence": "GMAIL_API_ACCEPTED",
   "inboxDeliveryConfirmed": false,
   "daily": [
-   {
-    "day": "2026-10-22",
-    "count": 0
-   },
    {
     "day": "2026-10-23",
     "count": 0
@@ -460,6 +456,10 @@
    {
     "day": "2026-11-20",
     "count": 13
+   },
+   {
+    "day": "2026-11-21",
+    "count": 0
    }
   ],
   "byCampaign": [
@@ -508,31 +508,31 @@
    {
     "id": "MORNING",
     "label": "9:00 AM ET Dispatch",
-    "scheduledAt": "2026-11-20T14:00:00.000Z",
+    "scheduledAt": "2026-11-21T14:00:00.000Z",
     "startedAt": null,
-    "finishedAt": "2026-11-20T14:00:08.803Z",
-    "sent": 13,
-    "errors": 0,
-    "runId": "foundry_safe_dispatch",
-    "evidence": "GMAIL_API_AND_CRM",
-    "state": "COMPLETED"
+    "finishedAt": null,
+    "sent": null,
+    "errors": null,
+    "runId": null,
+    "evidence": "NONE",
+    "state": "SCHEDULED"
    },
    {
     "id": "MIDDAY",
     "label": "1:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-20T18:00:00.000Z",
+    "scheduledAt": "2026-11-21T18:00:00.000Z",
     "startedAt": null,
-    "finishedAt": "2026-11-20T18:00:09.562Z",
-    "sent": 0,
-    "errors": 0,
-    "runId": "foundry_safe_dispatch",
-    "evidence": "GMAIL_API_AND_CRM",
-    "state": "COMPLETED"
+    "finishedAt": null,
+    "sent": null,
+    "errors": null,
+    "runId": null,
+    "evidence": "NONE",
+    "state": "SCHEDULED"
    },
    {
     "id": "AFTERNOON",
     "label": "5:00 PM ET Dispatch",
-    "scheduledAt": "2026-11-20T22:00:00.000Z",
+    "scheduledAt": "2026-11-21T22:00:00.000Z",
     "startedAt": null,
     "finishedAt": null,
     "sent": null,
@@ -549,9 +549,9 @@
    "state": "COMPLETED",
    "blockers": []
   },
-  "nextDispatchAt": "2026-11-20T22:00:00.000Z",
+  "nextDispatchAt": "2026-11-21T14:00:00.000Z",
   "lastPreparation": {
-   "at": "2026-11-20T21:04:44.626Z",
+   "at": "2026-11-20T22:00:47.679Z",
    "rows": 12,
    "state": "COMPLETED"
   }
@@ -671,8 +671,8 @@
   {
    "id": "VALIDATION",
    "label": "Validation",
-   "lastRun": "2026-11-20T21:04:46.688Z",
-   "lastSuccess": "2026-11-20T21:04:46.688Z",
+   "lastRun": "2026-11-20T22:00:48.409Z",
+   "lastSuccess": "2026-11-20T22:00:48.409Z",
    "durationSec": null,
    "status": "OK",
    "items": 12,
@@ -693,8 +693,8 @@
   {
    "id": "QUEUE_PREPARATION",
    "label": "Queue Prep",
-   "lastRun": "2026-11-20T21:04:44.626Z",
-   "lastSuccess": "2026-11-20T21:04:44.626Z",
+   "lastRun": "2026-11-20T22:00:47.679Z",
+   "lastSuccess": "2026-11-20T22:00:47.679Z",
    "durationSec": null,
    "status": "OK",
    "items": 12,
@@ -715,8 +715,8 @@
   {
    "id": "REPLY_PROCESSING",
    "label": "Replies",
-   "lastRun": "2026-11-20T14:35:43.936Z",
-   "lastSuccess": "2026-11-20T14:35:43.936Z",
+   "lastRun": "2026-11-20T22:00:50.190Z",
+   "lastSuccess": "2026-11-20T22:00:50.190Z",
    "durationSec": null,
    "status": "OK",
    "items": null,
@@ -784,10 +784,6 @@
    }
   ],
   "emailActivity": [
-   {
-    "day": "2026-10-22",
-    "count": 0
-   },
    {
     "day": "2026-10-23",
     "count": 0
@@ -903,6 +899,10 @@
    {
     "day": "2026-11-20",
     "count": 13
+   },
+   {
+    "day": "2026-11-21",
+    "count": 0
    }
   ],
   "campaignPerformance": [
@@ -1103,6 +1103,13 @@
     "failed": 0,
     "blocked": 0,
     "unknown": 0
+   },
+   {
+    "day": "2026-11-21",
+    "completed": 0,
+    "failed": 0,
+    "blocked": 0,
+    "unknown": 0
    }
   ],
   "conversionTrend": []
@@ -1114,7 +1121,7 @@
    "title": "EMAIL-ready inventory critical",
    "detail": "5 campaign(s) under 150 EMAIL-ready: Interior detailing, Property services, Website design, Inquiry follow-up, Estimate follow-up.",
    "firstDetected": "2026-11-04T17:56:36.760Z",
-   "lastDetected": "2026-11-20T21:52:52.457Z",
+   "lastDetected": "2026-11-21T08:28:04.938Z",
    "state": "ACTIVE"
   }
  ],
@@ -1358,6 +1365,20 @@
      "blocked": 0,
      "unknown": 0
     }
+   },
+   {
+    "day": "2026-11-21",
+    "total": 5881,
+    "qualified": 2927,
+    "ready": 12,
+    "sent": 0,
+    "health": "HEALTHY",
+    "windows": {
+     "completed": 0,
+     "failed": 0,
+     "blocked": 0,
+     "unknown": 0
+    }
    }
   ]
  },
@@ -1428,27 +1449,27 @@
    {
     "name": "foundry_daily_audit",
     "present": true,
-    "asOf": "2026-11-20T21:04:46.688Z"
+    "asOf": "2026-11-20T22:00:48.409Z"
    },
    {
     "name": "foundry_day_review",
     "present": true,
-    "asOf": "2026-11-20T14:35:43.936Z"
+    "asOf": "2026-11-20T22:00:50.190Z"
    },
    {
     "name": "foundry_safety_audit",
     "present": true,
-    "asOf": "2026-11-20T21:05:01.804Z"
+    "asOf": "2026-11-20T22:00:48.899Z"
    },
    {
     "name": "foundry_safe_dispatch_report",
     "present": true,
-    "asOf": "2026-11-20T18:00:09.562Z"
+    "asOf": "2026-11-20T22:00:09.313Z"
    },
    {
     "name": "foundry_final_handoff_report",
     "present": true,
-    "asOf": "2026-11-20T21:04:44.626Z"
+    "asOf": "2026-11-20T22:00:47.679Z"
    },
    {
     "name": "foundry_production_report",
